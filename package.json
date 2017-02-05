@@ -1,0 +1,66 @@
+{
+  "name": "codimo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Códimo FTW",
+  "main": "src/main.js",
+  "scripts": {
+    "check-deps": "dep-tool compare . -a",
+    "flow": "flow",
+    "lint": "eslint src dev-elements .dev-tools --ext .js --ext .jsx --fix",
+    "start": "webpack-dev-server --config ./.dev-tools/config/webpack.config.dev.js --open",
+    "stats": "webpack --config ./.dev-tools/config/webpack.config.dev.js --profile --json > stats.json",
+    "test": "babel-node .dev-tools/scripts/test.js",
+    "test:coverage": "babel-node .dev-tools/scripts/test.js --coverage"
+  },
+  "author": "Luciano Graziani <lgraziani2712@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "codimo",
+    "pixijs",
+    "webgl",
+    "canvas",
+    "education"
+  ],
+  "moduleRoots": [
+    "src",
+    "dev-elements"
+  ],
+  "dependencies": {
+    "dotenv": "4.0.0",
+    "pixi.js": "4.3.4",
+    "react": "15.4.2",
+    "react-dom": "15.4.2"
+  },
+  "devDependencies": {
+    "babel-cli": "6.22.0",
+    "babel-core": "6.22.0",
+    "babel-eslint": "7.1.1",
+    "babel-jest": "18.0.0",
+    "babel-loader": "6.2.10",
+    "babel-plugin-dynamic-import-node": "1.0.0",
+    "babel-plugin-dynamic-import-webpack": "1.0.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "6.22.0",
+    "babel-plugin-transform-flow-strip-types": "6.22.0",
+    "babel-plugin-transform-react-jsx-source": "6.22.0",
+    "babel-polyfill": "6.22.0",
+    "babel-preset-env": "1.1.8",
+    "babel-preset-es2015": "6.22.0",
+    "babel-preset-es2017": "6.22.0",
+    "babel-preset-react": "6.22.0",
+    "babel-preset-stage-2": "6.22.0",
+    "babel-register": "6.22.0",
+    "dependency-comparator": "2.0.0",
+    "eslint": "3.14.0",
+    "eslint-import-resolver-webpack": "0.8.1",
+    "eslint-plugin-flowtype": "2.30.0",
+    "eslint-plugin-import": "2.2.0",
+    "eslint-plugin-react": "6.9.0",
+    "eslint-watch": "2.1.14",
+    "flow-bin": "0.38.0",
+    "jest": "18.1.0",
+    "react-addons-test-utils": "15.4.2",
+    "webpack": "2.2.0",
+    "webpack-dev-server": "2.2.0"
+  }
+}

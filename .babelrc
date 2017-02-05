@@ -1,0 +1,26 @@
+{
+  "presets": [
+    "es2017",
+    ["es2015", { "modules": false }],
+    "react",
+    "stage-2"
+  ],
+  "plugins": [
+    "transform-flow-strip-types"
+  ],
+  "env": {
+    "development": {
+      "plugins": ["transform-react-jsx-source"]
+    },
+    "test": {
+      "plugins": [
+        "transform-es2015-modules-commonjs",
+        "dynamic-import-node"
+      ]
+    },
+    "targets": {
+      "chrome": 55
+    },
+    "loose": true
+  }
+}
