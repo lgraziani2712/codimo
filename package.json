@@ -8,6 +8,7 @@
     "check-deps": "dep-tool compare . -a",
     "flow": "flow",
     "lint": "eslint src dev-elements .dev-tools --ext .js --ext .jsx --fix",
+    "playground:start": "webpack-dev-server --config ./.dev-tools/config/webpack.config.playground.js --open",
     "start": "webpack-dev-server --config ./.dev-tools/config/webpack.config.dev.js --open",
     "stats": "webpack --config ./.dev-tools/config/webpack.config.dev.js --profile --json > stats.json",
     "test": "babel-node .dev-tools/scripts/test.js",
@@ -24,7 +25,7 @@
   ],
   "moduleRoots": [
     "src",
-    "dev-elements"
+    "dev_elements"
   ],
   "dependencies": {
     "dotenv": "4.0.0",

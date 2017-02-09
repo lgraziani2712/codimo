@@ -1,9 +1,9 @@
 // @flow
 import * as PIXI from 'pixi.js';
 
-import { FIGHTER_SPRITE, FIGHTER_FRAME_SIZE, getFighterSequence } from 'constants/routes';
-import { ANCHOR_CENTERED } from 'constants/pixi';
-import { getHalfSize } from 'helpers/pixi';
+import { FIGHTER_SPRITE, FIGHTER_FRAME_SIZE, getFighterSequence } from 'playground/pixi/constants/routes';
+import { ANCHOR_CENTERED } from 'playground/pixi/constants/pixi';
+import { getHalfSize } from 'playground/pixi/helpers/pixi';
 
 type Props = {
 	app: Object,

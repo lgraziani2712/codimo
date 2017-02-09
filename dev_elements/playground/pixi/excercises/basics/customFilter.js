@@ -1,7 +1,7 @@
 // @flow
 import * as PIXI from 'pixi.js';
 
-import { BKG_GRASS_IMG, CUSTOM_SHADER_SHD } from 'constants/routes';
+import { BKG_GRASS_IMG, CUSTOM_SHADER_SHD } from 'playground/pixi/constants/routes';
 
 const FILTER_VEL = 0.035;
 

@@ -1,9 +1,9 @@
 // @flow
 import * as PIXI from 'pixi.js';
 
-import { ANCHOR_CENTERED } from 'constants/pixi';
-import { BUNNY_IMG } from 'constants/routes';
-import { getHalfSize } from 'helpers/pixi';
+import { ANCHOR_CENTERED } from 'playground/pixi/constants/pixi';
+import { BUNNY_IMG } from 'playground/pixi/constants/routes';
+import { getHalfSize } from 'playground/pixi/helpers/pixi';
 
 type Props = {
 	app: Object,

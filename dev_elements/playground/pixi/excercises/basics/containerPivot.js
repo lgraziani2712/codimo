@@ -7,9 +7,9 @@ import {
 	SPACE_BETWEEN_BUNNIES,
 	ANCHOR_CENTERED,
 	BUNNY_BASE_ROTATION_DEGREE,
-} from 'constants/pixi';
-import { BUNNY_IMG } from 'constants/routes';
-import { getHalfSize } from 'helpers/pixi';
+} from 'playground/pixi/constants/pixi';
+import { BUNNY_IMG } from 'playground/pixi/constants/routes';
+import { getHalfSize } from 'playground/pixi/helpers/pixi';
 
 type Props = {
 	app: Object,

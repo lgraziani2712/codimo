@@ -1,8 +1,14 @@
 // @flow
 import * as PIXI from 'pixi.js';
 
-import { BUNNIES, BUNNIES_PER_ROW, SPACE_BETWEEN_BUNNIES, ANCHOR_CENTERED, HALF_SIZE } from 'constants/pixi';
-import { BUNNY_IMG } from 'constants/routes';
+import {
+	BUNNIES,
+	BUNNIES_PER_ROW,
+	SPACE_BETWEEN_BUNNIES,
+	ANCHOR_CENTERED,
+	HALF_SIZE,
+} from 'playground/pixi/constants/pixi';
+import { BUNNY_IMG } from 'playground/pixi/constants/routes';
 
 type Props = {
 	app: Object,

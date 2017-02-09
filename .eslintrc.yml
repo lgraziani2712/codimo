@@ -30,9 +30,8 @@ settings:
         - .jsx
       moduleDirectory:
         - node_modules
-        - assets
         - src
-        - dev-elements
+        - dev_elements
 
 parserOptions:
   ecmaVersion: 6
