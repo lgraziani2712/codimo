@@ -12,7 +12,7 @@ function resolveApp(relativePath) {
 module.exports = {
 	appDist: resolveApp('dist'),
 	appHtml: resolveApp('public/index.html'),
-	appMainJs: resolveApp('src/main.js'),
+	appMainJs: resolveApp('src/main'),
 	appPackageJson: resolveApp('package.json'),
 	appPublic: resolveApp('public'),
 	appSrc: resolveApp('src'),

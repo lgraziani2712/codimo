@@ -170,5 +170,5 @@ rules:
 
 globals:
   __VERSION__: true
-  __DEV__: true
   process: true
+  Blockly: true

@@ -23,7 +23,9 @@ const defaults = {
 export default function App({ size, options }: Props = defaults) {
 	const app = new Application(size.width, size.height, options);
 
-	document.body.appendChild(app.view);
+	if (document.body) {
+		document.body.appendChild(app.view);
+	}
 
 	return app;
 }

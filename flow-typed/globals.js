@@ -9,8 +9,6 @@ declare var module: {
 		accept: Function,
 	},
 };
-declare var document: {
-	body: {
-		appendChild: Function,
-	},
-};
+declare var Blockly: {
+	inject(elementId: string, options: Object): Object,
+}
