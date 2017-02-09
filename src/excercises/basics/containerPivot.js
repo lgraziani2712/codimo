@@ -1,28 +1,44 @@
 // @flow
 import * as PIXI from 'pixi.js';
 
-export default function containerPivot() {
-	const size = {
-		width: 800,
-		height: 600,
-	};
-	const options = { backgroundColor: 0x1099bb };
-	const app = new PIXI.Application(size.width, size.height, options);
-	const BUNNIES = 25;
-	const BUNNIES_PER_ROW = 5;
-	const SPACE_BETWEEN_BUNNIES = 40;
-	const ANCHOR_CENTERED = 0.5;
-	const HALF_SIZE = 2;
-	const BASE_ROTATION_DEGREE = 0.1;
+import {
+	BUNNIES,
+	BUNNIES_PER_ROW,
+	SPACE_BETWEEN_BUNNIES,
+	ANCHOR_CENTERED,
+	BUNNY_BASE_ROTATION_DEGREE,
+} from 'constants/pixi';
+import { BUNNY_IMG } from 'constants/routes';
+import { getHalfSize } from 'helpers/pixi';
 
-	document.body.appendChild(app.view);
-
+type Props = {
+	app: Object,
+};
+export default function containerPivot({ app }: Props) {
 	const container = new PIXI.Container();
 
 	app.stage.addChild(container);
+	generateBunnies(container);
 
+	// move container to the center
+	container.x = getHalfSize(app.renderer.width);
+	container.y = getHalfSize(app.renderer.height);
+
+	// Center bunny sprite in local container coordinates
+	container.pivot.x = getHalfSize(container.width);
+	container.pivot.y = getHalfSize(container.height);
+
+	// Listen for animate update
+	app.ticker.add((delta) => {
+		// rotate the container!
+		// use delta to create frame-independent tranform
+		container.rotation -= BUNNY_BASE_ROTATION_DEGREE / delta;
+	});
+}
+
+function generateBunnies(container) {
 	// Cache images
-	const texture = PIXI.Texture.fromImage('/images/bunny.png');
+	const texture = PIXI.Texture.fromImage(BUNNY_IMG);
 
 	// Create a 5x5 grid of bunnies
 	for (let i = 0; i < BUNNIES; i++) {
@@ -33,19 +49,4 @@ export default function containerPivot() {
 		bunny.y = Math.floor(i / BUNNIES_PER_ROW) * SPACE_BETWEEN_BUNNIES;
 		container.addChild(bunny);
 	}
-
-	// move container to the center
-	container.x = app.renderer.width / HALF_SIZE;
-	container.y = app.renderer.height / HALF_SIZE;
-
-	// Center bunny sprite in local container coordinates
-	container.pivot.x = container.width / HALF_SIZE;
-	container.pivot.y = container.height / HALF_SIZE;
-
-	// Listen for animate update
-	app.ticker.add((delta) => {
-		// rotate the container!
-		// use delta to create frame-independent tranform
-		container.rotation -= BASE_ROTATION_DEGREE / delta;
-	});
 }

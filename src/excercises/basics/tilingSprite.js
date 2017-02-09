@@ -1,15 +1,15 @@
 // @flow
 import * as PIXI from 'pixi.js';
 
-export default function tilingSprite() {
-	const app = new PIXI.Application();
-	const TILING_SCALE_VELOCITY = 0.005;
-	const TILING_SCALE_BASE = 2;
+import { P2_IMG } from 'constants/routes';
+import { TILING_SCALE_VELOCITY, TILING_SCALE_BASE } from 'constants/pixi';
 
-	document.body.appendChild(app.view);
-
+type Props = {
+	app: Object,
+};
+export default function tilingSprite({ app }: Props) {
 	// create a texture from an image path
-	const texture = PIXI.Texture.fromImage('/images/p2.jpeg');
+	const texture = PIXI.Texture.fromImage(P2_IMG);
 
 	/* create a tiling sprite ...
 	* requires a texture, a width and a height

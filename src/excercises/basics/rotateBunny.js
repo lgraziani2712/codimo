@@ -1,28 +1,24 @@
 // @flow
 import * as PIXI from 'pixi.js';
 
-export default function rotateBunny() {
-	const size = {
-		width: 800,
-		height: 600,
-	};
-	const options = { backgroundColor: 0x1099bb };
-	const app = new PIXI.Application(size.width, size.height, options);
-	const HALF_SIZE = 2;
-	const ANCHOR_CENTERED = 0.5;
+import { ANCHOR_CENTERED } from 'constants/pixi';
+import { BUNNY_IMG } from 'constants/routes';
+import { getHalfSize } from 'helpers/pixi';
+
+type Props = {
+	app: Object,
+};
+export default function rotateBunny({ app }: Props) {
 	const BASE_ROTATION_DEGREE = 0.1;
-
-	document.body.appendChild(app.view);
-
-	const bunny = PIXI.Sprite.fromImage('/images/bunny.png');
+	const bunny = PIXI.Sprite.fromImage(BUNNY_IMG);
 
 
 	// center the sprite's anchor point
 	bunny.anchor.set(ANCHOR_CENTERED);
 
 	// move the sprite to the center of the screen
-	bunny.x = app.renderer.width / HALF_SIZE;
-	bunny.y = app.renderer.height / HALF_SIZE;
+	bunny.x = getHalfSize(app.renderer.width);
+	bunny.y = getHalfSize(app.renderer.height);
 
 	app.stage.addChild(bunny);
 

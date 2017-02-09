@@ -1,34 +1,17 @@
 // @flow
 import * as PIXI from 'pixi.js';
 
-export default function renderTexture() {
-	const size = {
-		width: 800,
-		height: 600,
-	};
-	const options = { backgroundColor: 0x1099bb };
-	const app = new PIXI.Application(size.width, size.height, options);
-	const BUNNIES = 25;
-	const BUNNIES_PER_ROW = 5;
-	const SPACE_BETWEEN_BUNNIES = 30;
-	const ROTATION_MULTIPLIER = 2;
+import { BUNNIES, BUNNIES_PER_ROW, SPACE_BETWEEN_BUNNIES, ROTATION_MULTIPLIER } from 'constants/pixi';
+import { BUNNY_IMG } from 'constants/routes';
 
-	document.body.appendChild(app.view);
-
+type Props = {
+	app: Object,
+};
+export default function renderTexture({ app }: Props) {
 	const container = new PIXI.Container();
 
 	app.stage.addChild(container);
-
-	const texture = PIXI.Texture.fromImage('/images/bunny.png');
-
-	for (let i = 0; i < BUNNIES; i++) {
-		const bunny = new PIXI.Sprite(texture);
-
-		bunny.x = (i % BUNNIES_PER_ROW) * SPACE_BETWEEN_BUNNIES;
-		bunny.y = Math.floor(i / BUNNIES_PER_ROW) * SPACE_BETWEEN_BUNNIES;
-		bunny.rotation = Math.random() * (Math.PI * ROTATION_MULTIPLIER);
-		container.addChild(bunny);
-	}
+	generateBunnies(container);
 
 	const brtData = {
 		width: 300,
@@ -59,4 +42,17 @@ export default function renderTexture() {
 		 */
 		app.renderer.render(container, renderTexture);
 	});
+}
+
+function generateBunnies(container: Object) {
+	const texture = PIXI.Texture.fromImage(BUNNY_IMG);
+
+	for (let i = 0; i < BUNNIES; i++) {
+		const bunny = new PIXI.Sprite(texture);
+
+		bunny.x = (i % BUNNIES_PER_ROW) * SPACE_BETWEEN_BUNNIES;
+		bunny.y = Math.floor(i / BUNNIES_PER_ROW) * SPACE_BETWEEN_BUNNIES;
+		bunny.rotation = Math.random() * (Math.PI * ROTATION_MULTIPLIER);
+		container.addChild(bunny);
+	}
 }

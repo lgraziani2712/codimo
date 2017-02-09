@@ -1,23 +1,21 @@
 // @flow
 import * as PIXI from 'pixi.js';
 
-export default function spriteSheet() {
-	const app = new PIXI.Application();
+import { FIGHTER_SPRITE, FIGHTER_FRAME_SIZE, getFighterSequence } from 'constants/routes';
+import { ANCHOR_CENTERED } from 'constants/pixi';
+import { getHalfSize } from 'helpers/pixi';
 
-	document.body.appendChild(app.view);
-	PIXI.loader.add('/images/fighter.json').load(onAssetsLoaded);
-
-	function onAssetsLoaded() {
+type Props = {
+	app: Object,
+};
+export default function spriteSheet({ app }: Props) {
+	PIXI.loader.add(FIGHTER_SPRITE).load(() => {
 		// create an array of textures from an image path
 		const frames = [];
-		const FIGHTER_FRAME_SIZE = 30;
-		const TWO_DIGITS = 10;
 
 		for (let i = 0; i < FIGHTER_FRAME_SIZE; i++) {
-			const val = i < TWO_DIGITS ? `0${i}` : i;
-
 			// magically works since the spritesheet was loaded with the pixi loader
-			frames.push(PIXI.Texture.fromFrame(`rollSequence00${val}.png`));
+			frames.push(PIXI.Texture.fromFrame(getFighterSequence(i)));
 		}
 
 		// create an AnimatedSprite (brings back memories from the days of Flash, right ?)
@@ -27,11 +25,8 @@ export default function spriteSheet() {
 		* An AnimatedSprite inherits all the properties of a PIXI sprite
 		* so you can change its position, its anchor, mask it, etc
 		*/
-		const HALF_SIZE = 2;
-		const ANCHOR_CENTERED = 0.5;
-
-		anim.x = app.renderer.width / HALF_SIZE;
-		anim.y = app.renderer.height / HALF_SIZE;
+		anim.x = getHalfSize(app.renderer.width);
+		anim.y = getHalfSize(app.renderer.height);
 		anim.anchor.set(ANCHOR_CENTERED);
 		anim.animationSpeed = 0.5;
 		anim.play();
@@ -42,5 +37,5 @@ export default function spriteSheet() {
 		app.ticker.add(() => {
 			anim.rotation += 0.01;
 		});
-	}
+	});
 }

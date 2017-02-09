@@ -1,13 +1,16 @@
 // @flow
 import * as PIXI from 'pixi.js';
 
-export default function customFilter() {
-	const app = new PIXI.Application();
+import { BKG_GRASS_IMG, CUSTOM_SHADER_SHD } from 'constants/routes';
 
-	document.body.appendChild(app.view);
+const FILTER_VEL = 0.035;
 
+type Props = {
+	app: Object,
+};
+export default function customFilter({ app }: Props) {
 	// Create background image
-	const background = PIXI.Sprite.fromImage('/images/bkg-grass.jpg');
+	const background = PIXI.Sprite.fromImage(BKG_GRASS_IMG);
 
 	background.width = app.renderer.width;
 	background.height = app.renderer.height;
@@ -16,7 +19,7 @@ export default function customFilter() {
 	// Stop application wait for load to finish
 	app.stop();
 
-	PIXI.loader.add('shader', '/shaders/shader.frag').load(onLoaded);
+	PIXI.loader.add('shader', CUSTOM_SHADER_SHD).load(onLoaded);
 
 	let filter;
 
@@ -34,6 +37,6 @@ export default function customFilter() {
 
 	// Animate the filter
 	app.ticker.add((delta) => {
-		filter.uniforms.customUniform += 0.04 / delta;
+		filter.uniforms.customUniform += FILTER_VEL / delta;
 	});
 }

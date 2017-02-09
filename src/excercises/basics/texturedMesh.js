@@ -1,11 +1,10 @@
 // @flow
 import * as PIXI from 'pixi.js';
 
-export default function texturedMesh() {
-	const app = new PIXI.Application();
-
-	document.body.appendChild(app.view);
-
+type Props = {
+	app: Object,
+};
+export default function texturedMesh({ app }: Props) {
 	// build a rope!
 	const ROPE_MOVEMENT_VELOCITY = 0.1;
 	const graphicsData = {
