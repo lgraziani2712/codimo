@@ -35,6 +35,10 @@ acorn-jsx@^3.0.0, acorn-jsx@^3.0.1:
   dependencies:
     acorn "^3.0.4"
 
+acorn@4.0.4, acorn@^4.0.3, acorn@^4.0.4:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-4.0.4.tgz#17a8d6a7a6c4ef538b814ec9abac2779293bf30a"
+
 acorn@^2.1.0, acorn@^2.4.0:
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-2.7.0.tgz#ab6e7d9d886aaca8b085bc3312b79a198433f0e7"
@@ -42,10 +46,6 @@ acorn@^2.1.0, acorn@^2.4.0:
 acorn@^3.0.4:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-3.3.0.tgz#45e37fb39e8da3f25baee3ff5369e2bb5f22017a"
-
-acorn@^4.0.1, acorn@^4.0.3, acorn@^4.0.4:
-  version "4.0.4"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-4.0.4.tgz#17a8d6a7a6c4ef538b814ec9abac2779293bf30a"
 
 after@0.8.2:
   version "0.8.2"
@@ -77,6 +77,10 @@ amdefine@>=0.0.4:
 ansi-escapes@^1.1.0, ansi-escapes@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-1.4.0.tgz#d3a8a83b319aa67793662b13e761c7911422306e"
+
+ansi-html@0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/ansi-html/-/ansi-html-0.0.7.tgz#813584021962a9e9e6fd039f940d12f56ca7859e"
 
 ansi-regex@2, ansi-regex@^2.0.0:
   version "2.1.1"
@@ -231,11 +235,11 @@ aws4@^1.2.1:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.5.0.tgz#0a29ffb79c31c9e712eeb087e8e7a64b4a56d755"
 
-babel-cli@6.22.0:
-  version "6.22.0"
-  resolved "https://registry.yarnpkg.com/babel-cli/-/babel-cli-6.22.0.tgz#cdd910ad881412de577d7c5f82cfa2d9aea88ded"
+babel-cli@6.22.2:
+  version "6.22.2"
+  resolved "https://registry.yarnpkg.com/babel-cli/-/babel-cli-6.22.2.tgz#3f814c8acf52759082b8fedd9627f938936ab559"
   dependencies:
-    babel-core "^6.22.0"
+    babel-core "^6.22.1"
     babel-polyfill "^6.22.0"
     babel-register "^6.22.0"
     babel-runtime "^6.22.0"
@@ -260,7 +264,31 @@ babel-code-frame@^6.16.0, babel-code-frame@^6.22.0:
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
-babel-core@6.22.0, babel-core@^6.0.0, babel-core@^6.22.0:
+babel-core@6.22.1, babel-core@^6.22.1:
+  version "6.22.1"
+  resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-6.22.1.tgz#9c5fd658ba1772d28d721f6d25d968fc7ae21648"
+  dependencies:
+    babel-code-frame "^6.22.0"
+    babel-generator "^6.22.0"
+    babel-helpers "^6.22.0"
+    babel-messages "^6.22.0"
+    babel-register "^6.22.0"
+    babel-runtime "^6.22.0"
+    babel-template "^6.22.0"
+    babel-traverse "^6.22.1"
+    babel-types "^6.22.0"
+    babylon "^6.11.0"
+    convert-source-map "^1.1.0"
+    debug "^2.1.1"
+    json5 "^0.5.0"
+    lodash "^4.2.0"
+    minimatch "^3.0.2"
+    path-is-absolute "^1.0.0"
+    private "^0.1.6"
+    slash "^1.0.0"
+    source-map "^0.5.0"
+
+babel-core@^6.0.0, babel-core@^6.22.0:
   version "6.22.0"
   resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-6.22.0.tgz#643deaeb520bcd2b06c11e39945c877e0200d128"
   dependencies:
@@ -942,6 +970,20 @@ babel-template@^6.16.0, babel-template@^6.22.0:
 babel-traverse@^6.15.0, babel-traverse@^6.18.0, babel-traverse@^6.22.0:
   version "6.22.0"
   resolved "https://registry.yarnpkg.com/babel-traverse/-/babel-traverse-6.22.0.tgz#998b6de3228bd2bab0d748a6ec0588c32033d3c7"
+  dependencies:
+    babel-code-frame "^6.22.0"
+    babel-messages "^6.22.0"
+    babel-runtime "^6.22.0"
+    babel-types "^6.22.0"
+    babylon "^6.15.0"
+    debug "^2.2.0"
+    globals "^9.0.0"
+    invariant "^2.2.0"
+    lodash "^4.2.0"
+
+babel-traverse@^6.22.1:
+  version "6.22.1"
+  resolved "https://registry.yarnpkg.com/babel-traverse/-/babel-traverse-6.22.1.tgz#3b95cd6b7427d6f1f757704908f2fc9748a5f59f"
   dependencies:
     babel-code-frame "^6.22.0"
     babel-messages "^6.22.0"
@@ -1955,9 +1997,9 @@ eslint-watch@2.1.14:
     optionator "^0.8.1"
     text-table "^0.2.0"
 
-eslint@3.14.0:
-  version "3.14.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-3.14.0.tgz#2c617e5f782fda5cbee5bc8be7ef5053af8e63a3"
+eslint@3.15.0:
+  version "3.15.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-3.15.0.tgz#bdcc6a6c5ffe08160e7b93c066695362a91e30f2"
   dependencies:
     babel-code-frame "^6.16.0"
     chalk "^1.1.3"
@@ -1965,7 +2007,7 @@ eslint@3.14.0:
     debug "^2.1.1"
     doctrine "^1.2.2"
     escope "^3.6.0"
-    espree "^3.3.1"
+    espree "^3.4.0"
     estraverse "^4.2.0"
     esutils "^2.0.2"
     file-entry-cache "^2.0.0"
@@ -1994,11 +2036,11 @@ eslint@3.14.0:
     text-table "~0.2.0"
     user-home "^2.0.0"
 
-espree@^3.3.1:
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/espree/-/espree-3.3.2.tgz#dbf3fadeb4ecb4d4778303e50103b3d36c88b89c"
+espree@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/espree/-/espree-3.4.0.tgz#41656fa5628e042878025ef467e78f125cb86e1d"
   dependencies:
-    acorn "^4.0.1"
+    acorn "4.0.4"
     acorn-jsx "^3.0.0"
 
 esprima@^2.6.0, esprima@^2.7.1:
@@ -2241,9 +2283,9 @@ flat-cache@^1.2.1:
     graceful-fs "^4.1.2"
     write "^0.2.1"
 
-flow-bin@0.38.0:
-  version "0.38.0"
-  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.38.0.tgz#3ae096d401c969cc8b5798253fb82381e2d0237a"
+flow-bin@0.39.0:
+  version "0.39.0"
+  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.39.0.tgz#b1012a14460df1aa79d3a728e10f93c6944226d0"
 
 for-in@^0.1.5:
   version "0.1.6"
@@ -2521,6 +2563,10 @@ html-encoding-sniffer@^1.0.1:
   resolved "https://registry.yarnpkg.com/html-encoding-sniffer/-/html-encoding-sniffer-1.0.1.tgz#79bf7a785ea495fe66165e734153f363ff5437da"
   dependencies:
     whatwg-encoding "^1.0.1"
+
+html-entities@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/html-entities/-/html-entities-1.2.0.tgz#41948caf85ce82fed36e4e6a0ed371a6664379e2"
 
 http-deceiver@^1.2.4:
   version "1.2.7"
@@ -3260,9 +3306,9 @@ load-json-file@^1.0.0:
     pinkie-promise "^2.0.0"
     strip-bom "^2.0.0"
 
-loader-runner@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/loader-runner/-/loader-runner-2.2.0.tgz#824c1b699c4e7a2b6501b85902d5b862bf45b3fa"
+loader-runner@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/loader-runner/-/loader-runner-2.3.0.tgz#f482aea82d543e07921700d5a46ef26fdac6b8a2"
 
 loader-utils@^0.2.11, loader-utils@^0.2.16:
   version "0.2.16"
@@ -3936,9 +3982,9 @@ pixi-gl-core@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/pixi-gl-core/-/pixi-gl-core-1.0.3.tgz#3bd4fb3538a2ee601a048d8dc01f6df55e0b3550"
 
-pixi.js@4.3.4:
-  version "4.3.4"
-  resolved "https://registry.yarnpkg.com/pixi.js/-/pixi.js-4.3.4.tgz#b8258f3f61565563b60c0eeb423eaa67ce505b9e"
+pixi.js@4.3.5:
+  version "4.3.5"
+  resolved "https://registry.yarnpkg.com/pixi.js/-/pixi.js-4.3.5.tgz#26fe02a9fe8d54b8a05b00dffd127e299b2f4670"
   dependencies:
     bit-twiddle "^1.0.2"
     earcut "^2.0.7"
@@ -5013,14 +5059,16 @@ webpack-dev-middleware@^1.9.0:
     path-is-absolute "^1.0.0"
     range-parser "^1.0.3"
 
-webpack-dev-server@2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/webpack-dev-server/-/webpack-dev-server-2.2.0.tgz#364967eccaf8ff1d7e1681b7a8cc24fab4ced8a6"
+webpack-dev-server@2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/webpack-dev-server/-/webpack-dev-server-2.3.0.tgz#0437704bbd4d941a6e4c061eb3cc232ed7d06101"
   dependencies:
+    ansi-html "0.0.7"
     chokidar "^1.6.0"
     compression "^1.5.2"
     connect-history-api-fallback "^1.3.0"
     express "^4.13.3"
+    html-entities "^1.2.0"
     http-proxy-middleware "~0.17.1"
     opn "4.0.2"
     portfinder "^1.0.9"
@@ -5040,9 +5088,9 @@ webpack-sources@^0.1.4:
     source-list-map "~0.1.7"
     source-map "~0.5.3"
 
-webpack@2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-2.2.0.tgz#09246336b5581c9002353f75bcadb598a648f977"
+webpack@2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-2.2.1.tgz#7bb1d72ae2087dd1a4af526afec15eed17dda475"
   dependencies:
     acorn "^4.0.4"
     acorn-dynamic-import "^2.0.0"
@@ -5052,7 +5100,7 @@ webpack@2.2.0:
     enhanced-resolve "^3.0.0"
     interpret "^1.0.0"
     json-loader "^0.5.4"
-    loader-runner "^2.2.0"
+    loader-runner "^2.3.0"
     loader-utils "^0.2.16"
     memory-fs "~0.4.1"
     mkdirp "~0.5.0"
