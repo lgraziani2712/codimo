@@ -2,6 +2,7 @@
 coverage
 build
 dist/**/*.js
+flow-typed/npm
 node_modules/
 npm-debug.log
 yarn-error.log
