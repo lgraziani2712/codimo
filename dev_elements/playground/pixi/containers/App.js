@@ -19,7 +19,6 @@ const defaults = {
 	},
 };
 
-// TODO hooks for constructor, get props, etc
 export default function App({ size, options }: Props = defaults) {
 	const app = new Application(size.width, size.height, options);
 
