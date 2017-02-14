@@ -1,6 +1,6 @@
 /**
  * @license MIT License http://www.opensource.org/licenses/mit-license.php
- * @author Luciano Graziani @lgraziani2712
+ * @author Luciano Graziani @LucianoGraziani
  */
 declare var Blockly: {
 	inject(elementId: string | HTMLElement, options: Object): Object,
@@ -13,6 +13,10 @@ declare var Blockly: {
 	},
 	Events: {
 		disableOrphans(event: Event): void,
+	},
+	Xml: {
+		textToDom(text: string): HTMLElement;
+		domToWorkspace(workspace: Object, block: HTMLElement): void;
 	},
 	Msg: Object,
 	ALIGN_CENTRE: string,

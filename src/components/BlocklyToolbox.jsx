@@ -1,29 +1,41 @@
+/**
+ * @license MIT License http://www.opensource.org/licenses/mit-license.php
+ * @author Luciano Graziani @LucianoGraziani
+ */
 // @flow
 import React from 'react';
 
 type Props = {
-	blocklyApp: string,
+	handleWorkspaceCreation: Function,
 };
 export default class BlocklyToolbox extends React.Component {
 	props: Props;
 	toolbox: Element;
 
 	componentDidMount() {
-		const { blocklyApp } = this.props;
+		const { handleWorkspaceCreation } = this.props;
 
 		// https://developers.google.com/blockly/guides/configure/web/toolbox
-		Blockly.inject(blocklyApp, { toolbox: this.toolbox });
+		handleWorkspaceCreation(this.toolbox);
 	}
 	render() {
 		return (
 			<xml ref={toolbox => this.toolbox = toolbox} style={{ display: 'none' }}>
-				<block type="controls_if" />
-				<block type="controls_repeat_ext" />
-				<block type="logic_compare" />
-				<block type="math_number" />
-				<block type="math_arithmetic" />
-				<block type="text" />
-				<block type="text_print" />
+				<category name="Control">
+					<block type="controls_if" />
+					<block type="controls_repeat_ext" />
+				</category>
+				<category name="Logic">
+					<block type="logic_compare" />
+					<block type="math_number" />
+					<block type="math_arithmetic" />
+				</category>
+				<category name="Acciones">
+					<block type="MoveForward" />
+					<block type="MoveBackward" />
+					<block type="MoveRight" />
+					<block type="MoveLeft" />
+				</category>
 			</xml>
 		);
 	}

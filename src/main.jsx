@@ -1,9 +1,10 @@
+/**
+ * @license MIT License http://www.opensource.org/licenses/mit-license.php
+ * @author Luciano Graziani @LucianoGraziani
+ */
 // @flow
-import 'blockly/blocks_compressed';
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import 'blockly/msg/js/es';
 
 import BlocklyApp from 'components/BlocklyApp';
 
