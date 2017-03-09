@@ -1,8 +1,9 @@
 /**
- * @license MIT License http://www.opensource.org/licenses/mit-license.php
- * @author Luciano Graziani @LucianoGraziani
+ * @author Luciano Graziani @lgraziani2712
+ * @license {@link http://www.opensource.org/licenses/mit-license.php|MIT License}
+ *
+ * @flow
  */
-// @flow
 import 'blockly/msg/js/es';
 
 Blockly.Msg.ACTION_CONTAINER_TITLE = 'Contenedor de acciones';

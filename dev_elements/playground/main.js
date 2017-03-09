@@ -14,7 +14,7 @@ import graphics from 'playground/pixi/excercises/basics/graphics';
 // import customFilter from 'playground/pixi/excercises/basics/customFilter';
 
 const props = {
-	app: new App(),
+  app: new App(),
 };
 
 // rotateBunny(props);

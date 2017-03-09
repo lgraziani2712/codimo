@@ -18,7 +18,7 @@ const argv = process.argv.slice(2);
 
 // Watch unless on CI or in coverage mode
 if (!process.env.CI && argv.indexOf('--coverage') < 0) {
-	argv.push('--watch');
+  argv.push('--watch');
 }
 
 // This is not necessary after eject because we embed config into package.json.
@@ -27,9 +27,9 @@ const path = require('path');
 const paths = require('../config/paths');
 
 argv.push('--config', JSON.stringify(createJestConfig(
-	relativePath => path.resolve(__dirname, '..', relativePath),
-	path.resolve(paths.appSrc, '..'),
-	false,
+  relativePath => path.resolve(__dirname, '..', relativePath),
+  path.resolve(paths.appSrc, '..'),
+  false,
 )));
 
 jest.run(argv);
