@@ -1,7 +1,8 @@
 {
   "presets": [
-    "es2017",
-    ["es2015", { "modules": false }],
+    ["env", {
+      "es2015": { "modules": false }
+    }],
     "react",
     "stage-2"
   ],
@@ -15,12 +16,12 @@
     },
     "test": {
       "plugins": [
-        "transform-es2015-modules-commonjs",
-        "dynamic-import-node"
+        "dynamic-import-node",
+        "transform-es2015-modules-commonjs"
       ]
     },
     "targets": {
-      "chrome": 55
+      "browsers": ["last 2 versions"]
     },
     "loose": true
   }
