@@ -2,8 +2,9 @@
 
 const webpack = require('webpack');
 
-const paths = require('./paths');
 const { version, moduleRoots } = require('../../package');
+
+const paths = require('./paths');
 
 const modules = ['node_modules'].concat(moduleRoots);
 const GLOBALS = {

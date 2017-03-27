@@ -10,7 +10,13 @@ process.env.PUBLIC_URL = '';
 // https://github.com/motdotla/dotenv
 require('dotenv').config({ silent: true });
 
+const path = require('path');
+
 const jest = require('jest');
+
+// This is not necessary after eject because we embed config into package.json.
+const createJestConfig = require('../utils/createJestConfig');
+const paths = require('../config/paths');
 
 // Get the options that may be passed on the script invocation.
 // E.g: node ./.dev-tools/scripts/test.js --env=jsdom
@@ -20,11 +26,6 @@ const argv = process.argv.slice(2);
 if (!process.env.CI && argv.indexOf('--coverage') < 0) {
   argv.push('--watch');
 }
-
-// This is not necessary after eject because we embed config into package.json.
-const createJestConfig = require('../utils/createJestConfig');
-const path = require('path');
-const paths = require('../config/paths');
 
 argv.push('--config', JSON.stringify(createJestConfig(
   relativePath => path.resolve(__dirname, '..', relativePath),
