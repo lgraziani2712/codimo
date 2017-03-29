@@ -17,4 +17,5 @@
   - 🆕 `:new:` when added new dependencies
   - ⬆ `:arrow_up:` when upgrading dependencies
   - ⬇ `:arrow_down:` when downgrading dependencies
+  - 🗑 `🗑` when removing dependencies
   - 👕 `:shirt:` when removing linter warnings
