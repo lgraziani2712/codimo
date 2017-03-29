@@ -54,7 +54,7 @@ rules:
   arrow-body-style: 1
   arrow-parens: 0
   arrow-spacing: 1
-  brace-style: 1
+  brace-style: [1, 1tbs, { allowSingleLine: true }]
   camelcase: 2
   comma-dangle: [1, {
     arrays: always-multiline,
