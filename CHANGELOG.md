@@ -1,5 +1,6 @@
 ## HEAD
 
+- [2017-02-28] `engine/components/{Block|Maze}`: first version of unit elements of a Maze. Add one story for unit development. PixiJS ❤ ReactStoryBook.
 - [2017-02-27] `engine/helpers/assetLoader`: create first version. It has a decent type definition.
 - [2017-02-14] Add authorship to every file.
 - [2017-02-14] `blockly/components/ActionContainer`: add block's container. Also make it work with its children.
