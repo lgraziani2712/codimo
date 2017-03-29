@@ -24,6 +24,7 @@ export default function customFilter({ app }: Props) {
   let filter;
 
   // Handle the load completed
+  // eslint-disable-next-line no-unused-vars
   function onLoaded (loader, res) {
     // Create the new filter, arguments: (vertexShader, framentSource)
     filter = new PIXI.Filter(null, res.shader.data);
