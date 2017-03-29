@@ -20,7 +20,6 @@ const id = 'blockly-app';
 export default class BlocklyApp extends React.Component {
   handleWorkspaceCreation: Function;
   handleClick: Function;
-  blocklyApp: HTMLElement;
   workspace: Object;
 
   constructor() {
