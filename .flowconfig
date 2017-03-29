@@ -1,6 +1,5 @@
 [ignore]
-.*\/node_modules\/fbjs\/.*
-.*\/node_modules\/jest-validate\/.*
+.*\/node_modules\/.*
 .*\/build\/.*
 .*\/.imdone\/.*
 
@@ -10,6 +9,7 @@
 flow-typed/
 
 [options]
+emoji=true
 module.system.node.resolve_dirname=node_modules
 module.system.node.resolve_dirname=src
 module.system.node.resolve_dirname=dev-elements
