@@ -2,7 +2,7 @@
 import * as PIXI from 'pixi.js';
 
 type Props = {
-  app: Object,
+  app: PIXI.Application,
 };
 export default function texturedMesh({ app }: Props) {
   // build a rope!

@@ -6,7 +6,7 @@
  */
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
-import { Application, Container, Sprite } from 'pixi.js';
+import { Application, Container } from 'pixi.js';
 
 import blockCreator from './Block';
 import MazeData from './MazeData.json';
@@ -15,14 +15,14 @@ import MazeData from './MazeData.json';
 // What we need is a 32px square.
 // First colored.
 type Props = {
-  component: Sprite,
+  component: Container,
   height: number,
   width: number,
 };
 class PixiWrapper extends React.Component {
   props: Props;
   app: Application;
-  view: HTMLElement;
+  view: HTMLCanvasElement;
 
   componentDidMount() {
     const { component, width, height } = this.props;

@@ -6,7 +6,7 @@ type Props = {
     width: number,
     height: number,
   },
-  options: Object,
+  options: PixiRendererOptionsParameterType,
 };
 const defaults = {
   size: {

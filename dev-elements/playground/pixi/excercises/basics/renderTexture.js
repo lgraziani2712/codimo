@@ -10,7 +10,7 @@ import {
 import { BUNNY_IMG } from 'playground/pixi/constants/routes';
 
 type Props = {
-  app: Object,
+  app: PIXI.Application,
 };
 export default function renderTexture({ app }: Props) {
   const container = new PIXI.Container();
@@ -49,7 +49,7 @@ export default function renderTexture({ app }: Props) {
   });
 }
 
-function generateBunnies(container: Object) {
+function generateBunnies(container) {
   const texture = PIXI.Texture.fromImage(BUNNY_IMG);
 
   for (let i = 0; i < BUNNIES; i++) {

@@ -1,5 +1,6 @@
 ## HEAD
 
+- 🆕 [2017-02-31] `flow-typed/pixi_v4.x.x`: finish the first version of the PixiJS' type definition.
 - [2017-02-28] `engine/components/{Block|Maze}`: first version of unit elements of a Maze. Add one story for unit development. PixiJS ❤ ReactStoryBook.
 - [2017-02-27] `engine/helpers/assetLoader`: create first version. It has a decent type definition.
 - [2017-02-14] Add authorship to every file.

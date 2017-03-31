@@ -6,7 +6,7 @@ import { BUNNY_IMG } from 'playground/pixi/constants/routes';
 import { POINTER_DOWN } from 'playground/pixi/constants/events';
 
 type Props = {
-  app: Object,
+  app: PIXI.Application,
 };
 export default function click({ app }: Props) {
   // Scale mode for all textures, will retain pixelation

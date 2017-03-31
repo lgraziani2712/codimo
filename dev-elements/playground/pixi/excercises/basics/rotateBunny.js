@@ -6,7 +6,7 @@ import { BUNNY_IMG } from 'playground/pixi/constants/routes';
 import { getHalfSize } from 'playground/pixi/helpers/pixi';
 
 type Props = {
-  app: Object,
+  app: PIXI.Application,
 };
 export default function rotateBunny({ app }: Props) {
   const BASE_ROTATION_DEGREE = 0.1;

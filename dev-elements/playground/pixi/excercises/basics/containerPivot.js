@@ -12,7 +12,7 @@ import { BUNNY_IMG } from 'playground/pixi/constants/routes';
 import { getHalfSize } from 'playground/pixi/helpers/pixi';
 
 type Props = {
-  app: Object,
+  app: PIXI.Application,
 };
 export default function containerPivot({ app }: Props) {
   const container = new PIXI.Container();

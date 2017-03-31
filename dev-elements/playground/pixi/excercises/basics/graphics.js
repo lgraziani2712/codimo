@@ -2,7 +2,7 @@
 import * as PIXI from 'pixi.js';
 
 type Props = {
-  app: Object,
+  app: PIXI.Application,
 };
 export default function graphics({ app }: Props) {
   app.renderer.backgroundColor = 0x000;
@@ -62,7 +62,7 @@ export default function graphics({ app }: Props) {
   app.stage.addChild(graphics);
 }
 
-function drawTriangle(graphics: Object, shape: Object) {
+function drawTriangle(graphics, shape) {
   // set a fill and line style
   graphics.beginFill(shape.backgroundColor);
   graphics.lineStyle(shape.line.width, shape.line.color, shape.line.alpha);
@@ -74,14 +74,14 @@ function drawTriangle(graphics: Object, shape: Object) {
   graphics.endFill();
 }
 
-function drawRectangle(graphics: Object, rectangle: Object) {
+function drawRectangle(graphics: PIXI.Graphics, rectangle) {
   // set a fill and a line style again and draw a rectangle
   graphics.lineStyle(rectangle.line.width, rectangle.line.color);
   graphics.beginFill(rectangle.backgroundColor);
   graphics.drawRect(rectangle.point.x, rectangle.point.y, rectangle.width, rectangle.height);
 }
 
-function drawRoundedRectangle(graphics: Object, roundedRectangle: Object) {
+function drawRoundedRectangle(graphics: PIXI.Graphics, roundedRectangle) {
   // draw a rounded rectangle
   graphics.lineStyle(roundedRectangle.line.width, roundedRectangle.line.color);
   graphics.beginFill(roundedRectangle.background.color, roundedRectangle.background.alpha);
@@ -95,7 +95,7 @@ function drawRoundedRectangle(graphics: Object, roundedRectangle: Object) {
   graphics.endFill();
 }
 
-function drawCircle(graphics: Object, circle) {
+function drawCircle(graphics: PIXI.Graphics, circle) {
   // draw a circle, set the lineStyle to zero so the circle doesn't have an outline
   graphics.lineStyle();
   graphics.beginFill(circle.background.color, circle.background.alpha);

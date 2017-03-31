@@ -11,7 +11,7 @@ import {
 import { BUNNY_IMG } from 'playground/pixi/constants/routes';
 
 type Props = {
-  app: Object,
+  app: PIXI.Application,
 };
 export default function container({ app }: Props) {
   const container = new PIXI.Container();

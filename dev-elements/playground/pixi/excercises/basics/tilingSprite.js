@@ -5,7 +5,7 @@ import { P2_IMG } from 'playground/pixi/constants/routes';
 import { TILING_SCALE_VELOCITY, TILING_SCALE_BASE } from 'playground/pixi/constants/pixi';
 
 type Props = {
-  app: Object,
+  app: PIXI.Application,
 };
 export default function tilingSprite({ app }: Props) {
   // create a texture from an image path

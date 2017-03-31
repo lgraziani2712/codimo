@@ -6,22 +6,7 @@
  */
 import { loader as pixiLoader } from 'pixi.js';
 
-type Asset = string | {
-  name?: string,
-  url: string,
-  options?: {
-    crossOrigin?: boolean,
-    loadType?: number,
-    xhrType?: string,
-    metadata?: {
-      loadElement: HTMLImageElement | HTMLAudioElement | HTMLVideoElement,
-      skipSource: boolean,
-    },
-  },
-  onComplete?: Function,
-};
-
-export default function assetLoader(assets: Array<Asset>) {
+export default function assetLoader(assets: Array<string | PixiResourceType>) {
   return new Promise((resolve, reject) => {
     pixiLoader.add(assets);
     pixiLoader.onError.add(reject);

@@ -6,7 +6,7 @@ import { BKG_GRASS_IMG, CUSTOM_SHADER_SHD } from 'playground/pixi/constants/rout
 const FILTER_VEL = 0.035;
 
 type Props = {
-  app: Object,
+  app: PIXI.Application,
 };
 export default function customFilter({ app }: Props) {
   // Create background image
@@ -27,7 +27,7 @@ export default function customFilter({ app }: Props) {
   // eslint-disable-next-line no-unused-vars
   function onLoaded (loader, res) {
     // Create the new filter, arguments: (vertexShader, framentSource)
-    filter = new PIXI.Filter(null, res.shader.data);
+    filter = new PIXI.Filter(undefined, res.shader.data);
 
     // Add the filter
     background.filters = [filter];

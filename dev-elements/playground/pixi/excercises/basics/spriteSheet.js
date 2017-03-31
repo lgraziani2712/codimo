@@ -6,7 +6,7 @@ import { ANCHOR_CENTERED } from 'playground/pixi/constants/pixi';
 import { getHalfSize } from 'playground/pixi/helpers/pixi';
 
 type Props = {
-  app: Object,
+  app: PIXI.Application,
 };
 export default function spriteSheet({ app }: Props) {
   PIXI.loader.add(FIGHTER_SPRITE).load(() => {
