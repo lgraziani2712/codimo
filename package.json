@@ -7,7 +7,8 @@
   "scripts": {
     "build-storybook": "build-storybook",
     "check-deps": "dep-tool compare . -a",
-    "flow": "flow check",
+    "flow:check": "flow check",
+    "flow:stop": "flow stop",
     "lint": "eslint src dev-elements .dev-tools --ext .js --ext .jsx --fix",
     "playground:start": "webpack-dev-server --config ./.dev-tools/config/webpack.config.playground.js --open",
     "start": "webpack-dev-server --config ./.dev-tools/config/webpack.config.dev.js --open",
@@ -51,7 +52,7 @@
     "babel-plugin-transform-class-properties": "6.23.0",
     "babel-plugin-transform-es2015-modules-commonjs": "6.24.0",
     "babel-plugin-transform-flow-strip-types": "6.22.0",
-    "babel-preset-env": "1.2.2",
+    "babel-preset-env": "1.3.2",
     "babel-preset-react": "6.23.0",
     "babel-preset-stage-2": "6.22.0",
     "dependency-comparator": "2.0.0",
