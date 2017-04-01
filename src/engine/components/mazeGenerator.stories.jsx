@@ -22,18 +22,16 @@ const basicMaze = mazeGenerator();
 storiesOf('engine > components > Maze', module)
   .add('basic Maze', () => (<PixiWrapper component={basicMaze} height={HEIGHT} width={WIDTH} />))
   .add('one moving number Maze', () => {
-    const number = numberGenerator(ONE);
+    const number = numberGenerator(-ONE);
 
     basicMaze.addChild(number.view);
 
-    number.position = MazeData[0].split(',').map((string: string): number => (parseInt(string)));
-    number.updatePosition(number.position);
+    number.updatePosition(MazeData[0]);
 
     (async () => {
       for (let i = 1; i < MazeData.length; i++) {
         await wait(250); // eslint-disable-line no-magic-numbers
-        number.position = MazeData[i].split(',').map((string: string): number => (parseInt(string)));
-        number.updatePosition(number.position);
+        number.updatePosition(MazeData[i]);
       }
     })();
 
