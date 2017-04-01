@@ -13,10 +13,10 @@ import numberGenerator from './numberGenerator';
 
 const WIDTH = 64;
 const HEIGHT = WIDTH;
-const one = numberGenerator(1); // eslint-disable-line no-magic-numbers
-const ten = numberGenerator(10); // eslint-disable-line no-magic-numbers
-const negativeOne = numberGenerator(-1); // eslint-disable-line no-magic-numbers
-const negativeTen = numberGenerator(-10); // eslint-disable-line no-magic-numbers
+const one = numberGenerator(1).view; // eslint-disable-line no-magic-numbers
+const ten = numberGenerator(10).view; // eslint-disable-line no-magic-numbers
+const negativeOne = numberGenerator(-1).view; // eslint-disable-line no-magic-numbers
+const negativeTen = numberGenerator(-10).view; // eslint-disable-line no-magic-numbers
 
 storiesOf('engine > components > Number', module)
   .add('one digit', () => (<PixiWrapper component={one} height={HEIGHT} width={WIDTH} />))

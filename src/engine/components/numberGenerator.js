@@ -25,13 +25,27 @@ const style = new TextStyle({
   dropShadowDistance: 2,
 });
 
-const numberGenerator = (number: number): Text => {
-  const texturedNumber = new Text(number.toString(), style);
+type Actor = {|
+  view: Text,
+  position: Array<number>,
+  updatePosition: Function,
+|};
+const numberGenerator = (number: number): Actor => {
+  const view = new Text(number.toString(), style);
 
-  texturedNumber.x = (WIDTH - texturedNumber.width) / HALF - ONE;
-  texturedNumber.y = (HEIGHT - texturedNumber.height) / HALF + ONE;
+  view.x = (WIDTH - view.width) / HALF - ONE;
+  view.y = (HEIGHT - view.height) / HALF + ONE;
 
-  return texturedNumber;
+  function updatePosition(newPosition: Array<number>) {
+    view.x = newPosition[0] * WIDTH + (WIDTH - view.width) / HALF - ONE;
+    view.y = newPosition[1] * WIDTH + (HEIGHT - view.height) / HALF + ONE;
+  }
+
+  return {
+    view,
+    position: [],
+    updatePosition,
+  };
 };
 
 export default numberGenerator;
