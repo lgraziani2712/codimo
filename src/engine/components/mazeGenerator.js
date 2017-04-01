@@ -40,10 +40,10 @@ const mazeGenerator = (): Container => {
                     ? BLOCKS.border()
                     : BLOCKS.wall();
       }
-      block.position.x = x * BLOCK_SIZE;
-      block.position.y = y * BLOCK_SIZE;
+      block.view.position.x = x * BLOCK_SIZE;
+      block.view.position.y = y * BLOCK_SIZE;
 
-      component.addChild(block);
+      component.addChild(block.view);
     }
   }
 

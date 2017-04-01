@@ -11,15 +11,21 @@ export const BLOCK_DEFINITIONS = {
   PATH: 0x2a2a2a,
   WALL: 0xda4b4b,
 };
+type Block = {|
+  view: Sprite,
+  position: string,
+|};
+const blockGenerator = (type: number = BLOCK_DEFINITIONS.WALL) => (): Block => {
+  const view = new Sprite(Texture.WHITE);
 
-const blockGenerator = (type: number = BLOCK_DEFINITIONS.WALL) => (): Sprite => {
-  const block = new Sprite(Texture.WHITE);
+  view.alpha = 1;
+  view.height = view.width = 64;
+  view.tint = type;
 
-  block.alpha = 1;
-  block.height = block.width = 64;
-  block.tint = type;
-
-  return block;
+  return {
+    view,
+    position: '',
+  };
 };
 
 export default blockGenerator;
