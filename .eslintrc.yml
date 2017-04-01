@@ -100,7 +100,7 @@ rules:
   no-template-curly-in-string: 2
   no-trailing-spaces: 1
   no-underscore-dangle: [2, { allow: [_id, _rev] }]
-  no-unneeded-ternary: 1
+  no-unneeded-ternary: [1, { defaultAssignment: false }]
   no-unused-vars: [2, { args: all }]
   no-useless-concat: 1
   no-useless-constructor: 1
