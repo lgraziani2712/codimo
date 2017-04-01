@@ -4,3 +4,8 @@
  *
  * @flow
  */
+
+export const HALF = 2;
+export const ONE = 1;
+
+export const BLOCK_SIZE = 64;
