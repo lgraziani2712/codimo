@@ -42,6 +42,7 @@ const mazeGenerator = (): Container => {
       }
       block.view.position.x = x * BLOCK_SIZE;
       block.view.position.y = y * BLOCK_SIZE;
+      block.position = `${x},${y}`;
 
       component.addChild(block.view);
     }
