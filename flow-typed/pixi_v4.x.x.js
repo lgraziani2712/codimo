@@ -353,13 +353,12 @@ declare module 'pixi.js' {
      */
     children: Array<DisplayObject>;
     height: number;
-    // TODO Point
-    position: Object;
     width: number;
 
     constructor(): Container;
-    addChild(child: DisplayObject): DisplayObject;
-    addChildAt(child: DisplayObject, index: number): DisplayObject;
+    // TODO create an interface
+    addChild(child: DisplayObject): Container;
+    addChildAt(child: DisplayObject, index: number): Container;
   }
   /**
    * Abstract class
