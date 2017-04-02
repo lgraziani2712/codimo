@@ -7,11 +7,12 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 
+import { BLOCK_SIZE } from 'constants/numbers';
 import PixiWrapper from 'test/PixiWrapper';
 
 import numberGenerator from './numberGenerator';
 
-const WIDTH = 64;
+const WIDTH = BLOCK_SIZE;
 const HEIGHT = WIDTH;
 const POSITION = '0,0';
 const one = numberGenerator(1, POSITION).view; // eslint-disable-line no-magic-numbers
@@ -19,7 +20,7 @@ const ten = numberGenerator(10, POSITION).view; // eslint-disable-line no-magic-
 const negativeOne = numberGenerator(-1, POSITION).view; // eslint-disable-line no-magic-numbers
 const negativeTen = numberGenerator(-10, POSITION).view; // eslint-disable-line no-magic-numbers
 
-storiesOf('engine > components > Number', module)
+storiesOf('engine.components.Number', module)
   .add('one digit', () => (<PixiWrapper component={one} height={HEIGHT} width={WIDTH} />))
   .add('two digits', () => (<PixiWrapper component={ten} height={HEIGHT} width={WIDTH} />))
   .add('negative one digit', () => (<PixiWrapper component={negativeOne} height={HEIGHT} width={WIDTH} />))

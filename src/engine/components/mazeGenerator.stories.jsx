@@ -21,7 +21,7 @@ const basicMaze = mazeGenerator();
 const simpleNumberMaze = mazeGenerator();
 const number = numberGenerator(-TEN, MazeData[0]);
 
-storiesOf('engine > components > Maze', module)
+storiesOf('engine.components.Maze', module)
   .add('basic Maze', () => (<PixiWrapper component={basicMaze} height={HEIGHT} width={WIDTH} />))
   .add('one moving number Maze', () => {
     simpleNumberMaze.addChild(number.view);
