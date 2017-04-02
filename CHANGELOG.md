@@ -1,5 +1,6 @@
 ## HEAD
 
+- 🚀 [2017-04-02] `engine/components/numberGenerator`: add GSAP TweenLite for movement animation.
 - ⚙ [2017-03-31] `test/PixiWrapper`: extract it from `engine/components/mazeGenerator.stories`. It's a little more generical!
 - ⚙ [2017-03-31] `engine/components/Block -> blockGenerator`: now it has one curry function to receive the representation color and then returns the blockGenerator specifically for that color. In the near future it will receive a texture instead of a color.
 - ⚙ [2017-03-31] `engine/components/Maze -> mazeGenerator`: extract the implementation that was done in the story. Then refactore it for the new blockGenerator implementation.

@@ -5,11 +5,13 @@
  * @flow
  */
 import { Text, TextStyle } from 'pixi.js';
+import { TweenLite, Linear } from 'gsap';
 
 import { BLOCK_SIZE, HALF, ONE } from 'constants/numbers';
 
 const WIDTH = BLOCK_SIZE;
 const HEIGHT = WIDTH;
+const ACTOR_MOVEMENT_DURATION = 0.5;
 const style = new TextStyle({
   fontFamily: 'Arial',
   fontSize: 38,
@@ -27,27 +29,39 @@ const style = new TextStyle({
 
 type Actor = {|
   view: Text,
+  initialPosition: Array<number>,
   position: string,
   updatePosition: Function,
+  resetPosition: Function,
 |};
 function updatePosition(newPosition: string): void {
   // Object scope
-  this.position = newPosition.split(',');
-  const positionNumbers = this.position.map((string: string): number => (parseInt(string)));
+  this.position = newPosition;
+  const positionNumbers = this.position.split(',').map((string: string): number => (parseInt(string)));
 
-  this.view.x = positionNumbers[0] * WIDTH + (WIDTH - this.view.width) / HALF - ONE;
-  this.view.y = positionNumbers[1] * WIDTH + (HEIGHT - this.view.height) / HALF + ONE;
+  TweenLite.to(this.view, ACTOR_MOVEMENT_DURATION, {
+    x: positionNumbers[0] * WIDTH + (WIDTH - this.view.width) / HALF - ONE,
+    y: positionNumbers[1] * WIDTH + (HEIGHT - this.view.height) / HALF + ONE,
+    ease: Linear.easeNone,
+  });
 }
-const numberGenerator = (number: number): Actor => {
+function resetPosition(): void {
+  this.view.x = this.initialPosition[0] * WIDTH + (WIDTH - this.view.width) / HALF - ONE;
+  this.view.y = this.initialPosition[1] * WIDTH + (HEIGHT - this.view.height) / HALF + ONE;
+}
+const numberGenerator = (number: number, position: string): Actor => {
   const view = new Text(number.toString(), style);
+  const positionValues = position.split(',').map((string: string): number => (parseInt(string)));
 
-  view.x = (WIDTH - view.width) / HALF - ONE;
-  view.y = (HEIGHT - view.height) / HALF + ONE;
+  view.x = positionValues[0] * WIDTH + (WIDTH - view.width) / HALF - ONE;
+  view.y = positionValues[1] * WIDTH + (HEIGHT - view.height) / HALF + ONE;
 
   return {
     view,
-    position: '',
+    initialPosition: positionValues,
+    position,
     updatePosition,
+    resetPosition,
   };
 };
 
