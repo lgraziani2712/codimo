@@ -8,11 +8,11 @@ import React from 'react';
 import { Application, Container } from 'pixi.js';
 
 
-type Props = {
+type Props = {|
   component: Container,
   height: number,
   width: number,
-};
+|};
 
 export default class PixiWrapper extends React.Component {
   props: Props;
