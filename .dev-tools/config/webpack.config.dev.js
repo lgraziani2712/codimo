@@ -14,7 +14,8 @@ const GLOBALS = {
 
 module.exports = {
   // more info: https://webpack.js.org/configuration/devtool/
-  devtool: 'inline-source-map',
+  // see https://github.com/webpack/webpack/issues/2145
+  devtool: 'cheap-module-source-map',
   entry: [
     // Used for async/await to work
     'babel-polyfill',

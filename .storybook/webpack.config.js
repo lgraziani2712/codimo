@@ -25,7 +25,7 @@ const GLOBALS = {
 module.exports = (config, env) => {
   const storyBookBaseConfig = genDefaultConfig(config, env);
 
-  storyBookBaseConfig.devtool = 'inline-source-map';
+  storyBookBaseConfig.devtool = 'cheap-module-source-map';
   storyBookBaseConfig.plugins.push(new webpack.DefinePlugin(GLOBALS));
   storyBookBaseConfig.resolve = {
     root: paths.appDirectory,
