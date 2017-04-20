@@ -7,7 +7,7 @@
 import React from 'react';
 
 type Props = {
-  handleClick: Function,
+  handleClick: (event: SyntheticEvent) => void,
 };
 export default function ExecuteButton({ handleClick }: Props) {
   return (<button type="button" onClick={handleClick}>{'Dale play!'}</button>);

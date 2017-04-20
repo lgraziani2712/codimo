@@ -7,17 +7,15 @@
 import React from 'react';
 
 type Props = {
-  handleWorkspaceCreation: Function,
+  handleWorkspaceCreation: (toolbox: HTMLElement) => void,
 };
 export default class BlocklyToolbox extends React.Component {
   props: Props;
-  toolbox: Element;
+  toolbox: HTMLElement;
 
   componentDidMount() {
-    const { handleWorkspaceCreation } = this.props;
-
     // https://developers.google.com/blockly/guides/configure/web/toolbox
-    handleWorkspaceCreation(this.toolbox);
+    this.props.handleWorkspaceCreation(this.toolbox);
   }
   render() {
     return (

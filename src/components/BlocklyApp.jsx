@@ -18,8 +18,8 @@ import BlocklyToolbox from 'components/BlocklyToolbox';
 const id = 'blockly-app';
 
 export default class BlocklyApp extends React.Component {
-  handleWorkspaceCreation: Function;
-  handleClick: Function;
+  handleWorkspaceCreation: (toolbox: HTMLElement) => void;
+  handleClick: () => void;
   workspace: Object;
 
   constructor() {
