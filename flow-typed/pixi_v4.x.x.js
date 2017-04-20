@@ -357,7 +357,7 @@ declare module 'pixi.js' {
 
     constructor(): Container;
     // TODO create an interface
-    addChild(child: DisplayObject): Container;
+    addChild(...children: Array<DisplayObject>): DisplayObject;
     addChildAt(child: DisplayObject, index: number): Container;
   }
   /**
@@ -385,6 +385,8 @@ declare module 'pixi.js' {
     skew: ObservablePoint;
     x: number;
     y: number;
+
+    setParent(container: Container): Container;
   }
   declare class Ellipse {
     height: number;
