@@ -8,8 +8,8 @@ import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 import wait from 'speculation/wait';
 
-import { TEN } from 'constants/numbers';
 import PixiWrapper from 'test/PixiWrapper';
+import { TEN } from 'constants/numbers';
 
 import mazeGenerator from './mazeGenerator';
 import MazeData from './MazeData.json';

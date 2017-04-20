@@ -12,39 +12,54 @@ import {
   NUMERIC_LINE_BG_COLOR,
   NUMERIC_LINE_HEIGHT,
   NUMERIC_LINE_NUMBER_BG_COLOR,
+  ZERO,
   ONE,
+  TEN,
 } from 'constants/numbers';
+import { type NumberActor } from 'engine/components/numberGenerator';
 
-const lineGenerator = (numbersLength: number): Graphics => {
-  const line = new Graphics();
+// margin-top = 10 margin-bottom = 10
+const MARGIN = 20;
+
+function receiveNumberAtPosition(number: NumberActor, position: number) {
+  number.view.setParent(this.view.getChildAt(position - ONE));
+
+  number.view.x = number.view.y = BLOCK_SIZE / HALF;
+  // FIXME this must be configured inside the numberGenerator function
+  number.view.anchor.x = number.view.anchor.y = 0.5;
+}
+const lineGenerator = (numbersLength: number) => {
+  const view = new Graphics();
   const width = numbersLength * BLOCK_SIZE + BLOCK_SIZE;
   const spaceInBetweenX = BLOCK_SIZE / (numbersLength + ONE);
-  const spaceInBetweenY = (NUMERIC_LINE_HEIGHT - BLOCK_SIZE) / HALF;
+  const spaceInBetweenY = (NUMERIC_LINE_HEIGHT - BLOCK_SIZE - MARGIN) / HALF;
 
-  /* eslint-disable no-magic-numbers */
-  line
+  view
     .beginFill(NUMERIC_LINE_BG_COLOR)
-    .drawRect(0, 10, width, NUMERIC_LINE_HEIGHT - 20)
+    .drawRect(ZERO, ZERO, width, NUMERIC_LINE_HEIGHT - MARGIN)
     .endFill();
-  /* eslint-enable */
+
+  view.x = ZERO;
+  view.y = TEN;
 
   for (let i = 0; i < numbersLength; i++) {
     const square = new Graphics();
 
     square
       .beginFill(NUMERIC_LINE_NUMBER_BG_COLOR)
-      .drawRect(
-        i * BLOCK_SIZE + (spaceInBetweenX + i * spaceInBetweenX),
-        spaceInBetweenY,
-        BLOCK_SIZE,
-        BLOCK_SIZE,
-      )
+      .drawRect(ZERO, ZERO, BLOCK_SIZE, BLOCK_SIZE)
       .endFill();
 
-    line.addChild(square);
+    square.x = i * BLOCK_SIZE + (spaceInBetweenX + i * spaceInBetweenX);
+    square.y = spaceInBetweenY;
+
+    view.addChild(square);
   }
 
-  return line;
+  return {
+    view,
+    receiveNumberAtPosition,
+  };
 };
 
 export default lineGenerator;

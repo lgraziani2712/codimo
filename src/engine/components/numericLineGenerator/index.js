@@ -6,24 +6,31 @@
  */
 import { Container } from 'pixi.js';
 
+import { type NumberActor } from 'engine/components/numberGenerator';
+
 import arrowGenerator from './arrowGenerator';
 import lineGenerator from './lineGenerator';
 
-const numericLineGenerator = (numbersLength: number): Container => {
+function receiveNumberAtPosition(number: NumberActor, position: number) {
+  this.line.receiveNumberAtPosition(number, position);
+}
+
+const numericLineGenerator = (numbersLength: number) => {
   const leftArrow = arrowGenerator();
   const rightArrow = arrowGenerator(true);
   const line = lineGenerator(numbersLength);
-  const numericLine = new Container();
+  const view = new Container();
 
-  line.x = leftArrow.width;
-  rightArrow.x = line.width;
+  line.view.x = leftArrow.width;
+  rightArrow.x = line.view.width + leftArrow.width;
 
-  numericLine
-    .addChild(leftArrow)
-    .addChild(line)
-    .addChild(rightArrow);
+  view.addChild(leftArrow, line.view, rightArrow);
 
-  return numericLine;
+  return {
+    view,
+    line,
+    receiveNumberAtPosition,
+  };
 };
 
 export default numericLineGenerator;

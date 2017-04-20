@@ -7,8 +7,8 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 
-import { BLOCK_SIZE } from 'constants/numbers';
 import PixiWrapper from 'test/PixiWrapper';
+import { BLOCK_SIZE } from 'constants/numbers';
 
 import numberGenerator from './numberGenerator';
 

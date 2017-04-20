@@ -1,6 +1,17 @@
 ## HEAD
 
-- 🚀 [2017-04-02] `engine/components/numbericLine`: add first version.
+- [2017-04-19] `engine/components/numericLineGenerator/lineGenerator`:
+  - 🐛 Fix how are defined each number square. This allow to add a number easly without the need to calculate any coordinate. Is the original expected behavior.
+  - 🚀 Change firm. Instead of returning a `Container`, it follows the actual standard and returns an object that contains a `view` and another public properties.
+  - 🚀 Add one property:
+    - `receiveNumberAtPosition`: a function to add a `number` into an square at an specific `position`.
+- [2017-04-19] `engine/components/numericLineGenerator`:
+  - 🐛 Fix how children are setted.
+  - 🚀 Change firm. Instead of returning a `Container`, it follows the actual standard and returns an object that contains a `view` and another public properties.
+  - 🚀 Add two properties:
+    - `line`: it contains the visible numbers.
+    - `receiveNumberAtPosition`: a function to add a number to the `line`.
+- 🚀 [2017-04-02] `engine/components/numericLineGenerator`: add first version.
 - 🚀 [2017-04-02] `engine/components/numberGenerator`: add GSAP TweenLite for movement animation.
 - ⚙ [2017-03-31] `test/PixiWrapper`: extract it from `engine/components/mazeGenerator.stories`. It's a little more generical!
 - ⚙ [2017-03-31] `engine/components/Block -> blockGenerator`: now it has one curry function to receive the representation color and then returns the blockGenerator specifically for that color. In the near future it will receive a texture instead of a color.

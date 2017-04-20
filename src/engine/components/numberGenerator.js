@@ -27,12 +27,12 @@ const style = new TextStyle({
   dropShadowDistance: 2,
 });
 
-type Actor = {|
+export type NumberActor = {|
   view: Text,
   initialPosition: Array<number>,
   position: string,
-  updatePosition: Function,
-  resetPosition: Function,
+  updatePosition: (newPosition: string) => void,
+  resetPosition: () => void,
 |};
 function updatePosition(newPosition: string): void {
   // Object scope
@@ -49,7 +49,7 @@ function resetPosition(): void {
   this.view.x = this.initialPosition[0] * WIDTH + (WIDTH - this.view.width) / HALF - ONE;
   this.view.y = this.initialPosition[1] * WIDTH + (HEIGHT - this.view.height) / HALF + ONE;
 }
-const numberGenerator = (number: number, position: string): Actor => {
+const numberGenerator = (number: number, position: string): NumberActor => {
   const view = new Text(number.toString(), style);
   const positionValues = position.split(',').map((string: string): number => (parseInt(string)));
 
