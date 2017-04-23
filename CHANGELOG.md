@@ -1,5 +1,6 @@
 ## HEAD
 
+- ⚙ [2017-04-23] `engine/components/mazeGenerator`: update `MazeData.json` structure. Now it also contains the exit positions.
 - [2017-04-19] `engine/components/numericLineGenerator/lineGenerator`:
   - 🐛 Fix how are defined each number square. This allow to add a number easly without the need to calculate any coordinate. Is the original expected behavior.
   - 🚀 Change firm. Instead of returning a `Container`, it follows the actual standard and returns an object that contains a `view` and another public properties.

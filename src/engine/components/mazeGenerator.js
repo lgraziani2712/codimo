@@ -33,7 +33,7 @@ const mazeGenerator = (): Container => {
     for (let y = 0; y < BLOCKS_LENGHT.Y; y++) {
       let block;
 
-      if (MazeData.includes(`${x},${y}`)) {
+      if (MazeData.path.includes(`${x},${y}`)) {
         block = BLOCKS.path();
       } else {
         block = x === BLOCK_FIRST || x === BLOCKS_LAST.X || y === BLOCK_FIRST || y === BLOCKS_LAST.Y

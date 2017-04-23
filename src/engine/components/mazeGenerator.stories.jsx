@@ -19,7 +19,7 @@ const WIDTH = 960;
 const HEIGHT = 448;
 const basicMaze = mazeGenerator();
 const simpleNumberMaze = mazeGenerator();
-const number = numberGenerator(-TEN, MazeData[0]);
+const number = numberGenerator(-TEN, MazeData.path[0]);
 
 storiesOf('engine.components.Maze', module)
   .add('basic Maze', () => (<PixiWrapper component={basicMaze} height={HEIGHT} width={WIDTH} />))
@@ -27,9 +27,8 @@ storiesOf('engine.components.Maze', module)
     simpleNumberMaze.addChild(number.view);
 
     (async () => {
-      for (let i = 1; i < MazeData.length; i++) {
-        await wait(500); // eslint-disable-line no-magic-numbers
-        number.updatePosition(MazeData[i]);
+      for (let i = 1; i < MazeData.path.length; i++) {
+        await number.updatePosition(MazeData.path[i]);
       }
       await wait(2000); // eslint-disable-line no-magic-numbers
       number.resetPosition();
