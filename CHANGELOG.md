@@ -1,5 +1,6 @@
 ## HEAD
 
+- ⚙ [2017-04-23] `engine/components/numericLineGenerator/lineGenerator`: update `receiveNumberAtPosition`. Now follows the promised animations rule.
 - ⚙ [2017-04-23] `engine/components/numberGenerator`: update `updatePosition`.
   - NOW: returns a `Promise<void>`. When the animation completes, resolves the promise.
 - ⚙ [2017-04-23] `engine/components/mazeGenerator`: update `MazeData.json` structure. Now it also contains the exit positions.

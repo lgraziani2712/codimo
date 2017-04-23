@@ -23,7 +23,7 @@ import { type NumberActor } from 'engine/components/numberGenerator';
 // margin-top = 10 margin-bottom = 10
 const MARGIN = 20;
 
-function receiveNumberAtPosition(number: NumberActor, position: number) {
+function receiveNumberAtPosition(number: NumberActor, position: number): Promise<void> {
   number.view.setParent(this.view.getChildAt(position - ONE));
 
   // FIXME this must be configured inside the numberGenerator function
@@ -32,9 +32,12 @@ function receiveNumberAtPosition(number: NumberActor, position: number) {
   number.view.x = BLOCK_SIZE / HALF;
   number.view.y = BLOCK_SIZE + (BLOCK_SIZE + MARGIN) / HALF;
 
-  TweenLite.to(number.view, ACTOR_MOVEMENT_DURATION, {
-    y: BLOCK_SIZE / HALF,
-    ease: Linear.easeNone,
+  return new Promise((onComplete) => {
+    TweenLite.to(number.view, ACTOR_MOVEMENT_DURATION, {
+      y: BLOCK_SIZE / HALF,
+      ease: Linear.easeNone,
+      onComplete,
+    });
   });
 }
 const lineGenerator = (numbersLength: number) => {
