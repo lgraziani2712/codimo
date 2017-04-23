@@ -1,5 +1,7 @@
 ## HEAD
 
+- ⚙ [2017-04-23] `engine/components/numberGenerator`: update `updatePosition`.
+  - NOW: returns a `Promise<void>`. When the animation completes, resolves the promise.
 - ⚙ [2017-04-23] `engine/components/mazeGenerator`: update `MazeData.json` structure. Now it also contains the exit positions.
 - [2017-04-19] `engine/components/numericLineGenerator/lineGenerator`:
   - 🐛 Fix how are defined each number square. This allow to add a number easly without the need to calculate any coordinate. Is the original expected behavior.

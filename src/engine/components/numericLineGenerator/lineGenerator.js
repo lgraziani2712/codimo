@@ -5,8 +5,10 @@
  * @flow
  */
 import { Graphics } from 'pixi.js';
+import { TweenLite, Linear } from 'gsap';
 
 import {
+  ACTOR_MOVEMENT_DURATION,
   BLOCK_SIZE,
   HALF,
   NUMERIC_LINE_BG_COLOR,
@@ -24,9 +26,16 @@ const MARGIN = 20;
 function receiveNumberAtPosition(number: NumberActor, position: number) {
   number.view.setParent(this.view.getChildAt(position - ONE));
 
-  number.view.x = number.view.y = BLOCK_SIZE / HALF;
   // FIXME this must be configured inside the numberGenerator function
   number.view.anchor.x = number.view.anchor.y = 0.5;
+
+  number.view.x = BLOCK_SIZE / HALF;
+  number.view.y = BLOCK_SIZE + (BLOCK_SIZE + MARGIN) / HALF;
+
+  TweenLite.to(number.view, ACTOR_MOVEMENT_DURATION, {
+    y: BLOCK_SIZE / HALF,
+    ease: Linear.easeNone,
+  });
 }
 const lineGenerator = (numbersLength: number) => {
   const view = new Graphics();

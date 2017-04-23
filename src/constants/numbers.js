@@ -10,6 +10,8 @@ export const ZERO = 0;
 export const ONE = 1;
 export const TEN = 10;
 
+export const ACTOR_MOVEMENT_DURATION = 0.5;
+
 export const BLOCK_SIZE = 64;
 
 export const NUMERIC_LINE_BG_COLOR = 0xffd900;

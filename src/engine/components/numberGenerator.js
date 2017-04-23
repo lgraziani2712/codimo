@@ -7,11 +7,10 @@
 import { Text, TextStyle } from 'pixi.js';
 import { TweenLite, Linear } from 'gsap';
 
-import { BLOCK_SIZE, HALF, ONE } from 'constants/numbers';
+import { BLOCK_SIZE, HALF, ONE, ACTOR_MOVEMENT_DURATION } from 'constants/numbers';
 
 const WIDTH = BLOCK_SIZE;
 const HEIGHT = WIDTH;
-const ACTOR_MOVEMENT_DURATION = 0.5;
 const style = new TextStyle({
   fontFamily: 'Arial',
   fontSize: 38,
@@ -31,34 +30,37 @@ export type NumberActor = {|
   view: Text,
   initialPosition: Array<number>,
   position: string,
-  updatePosition: (newPosition: string) => void,
+  updatePosition: (newPosition: string) => Promise<void>,
   resetPosition: () => void,
 |};
-function updatePosition(newPosition: string): void {
+function updatePosition(newPosition: string): Promise<void> {
   // Object scope
   this.position = newPosition;
   const positionNumbers = this.position.split(',').map((string: string): number => (parseInt(string)));
 
-  TweenLite.to(this.view, ACTOR_MOVEMENT_DURATION, {
-    x: positionNumbers[0] * WIDTH + (WIDTH - this.view.width) / HALF - ONE,
-    y: positionNumbers[1] * WIDTH + (HEIGHT - this.view.height) / HALF + ONE,
-    ease: Linear.easeNone,
+  return new Promise((onComplete) => {
+    TweenLite.to(this.view, ACTOR_MOVEMENT_DURATION, {
+      x: positionNumbers[0] * WIDTH + (WIDTH - this.view.width) / HALF - ONE,
+      y: positionNumbers[1] * HEIGHT + (HEIGHT - this.view.height) / HALF + ONE,
+      ease: Linear.easeNone,
+      onComplete,
+    });
   });
 }
 function resetPosition(): void {
   this.view.x = this.initialPosition[0] * WIDTH + (WIDTH - this.view.width) / HALF - ONE;
-  this.view.y = this.initialPosition[1] * WIDTH + (HEIGHT - this.view.height) / HALF + ONE;
+  this.view.y = this.initialPosition[1] * HEIGHT + (HEIGHT - this.view.height) / HALF + ONE;
 }
 const numberGenerator = (number: number, position: string): NumberActor => {
   const view = new Text(number.toString(), style);
-  const positionValues = position.split(',').map((string: string): number => (parseInt(string)));
+  const initialPosition = position.split(',').map((string: string): number => (parseInt(string)));
 
-  view.x = positionValues[0] * WIDTH + (WIDTH - view.width) / HALF - ONE;
-  view.y = positionValues[1] * WIDTH + (HEIGHT - view.height) / HALF + ONE;
+  view.x = initialPosition[0] * WIDTH + (WIDTH - view.width) / HALF - ONE;
+  view.y = initialPosition[1] * HEIGHT + (HEIGHT - view.height) / HALF + ONE;
 
   return {
     view,
-    initialPosition: positionValues,
+    initialPosition,
     position,
     updatePosition,
     resetPosition,
