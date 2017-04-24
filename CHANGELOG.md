@@ -1,5 +1,8 @@
 ## HEAD
 
+- ⚙ [2017-04-24] `engine/components/mazeGenerator`: update generator firm.
+  - 🚀 New parametter: `mazeData`.
+  - `MazeData.json` -> `mazeData.json` and is going to be deleted. Its structure is morphing into something useful. It contains the meta information necessary to generate a new game.
 - ⚙ [2017-04-24] `engine/components/numericLineGenerator`: update generator firm to match `lineGenerator`.
 - ⚙ [2017-04-24] `engine/components/numericLineGenerator/lineGenerator`: update generator firm.
   - 🚀 New parametter: `numbers`. Map of [position, number].

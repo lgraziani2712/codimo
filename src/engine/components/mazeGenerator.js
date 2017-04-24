@@ -9,7 +9,6 @@ import { Container } from 'pixi.js';
 import { ONE, BLOCK_SIZE } from 'constants/numbers';
 
 import blockCreator, { BLOCK_DEFINITIONS } from './blockGenerator';
-import MazeData from './MazeData.json';
 
 const BLOCKS_LENGHT = {
   X: 15,
@@ -26,14 +25,25 @@ const BLOCKS = {
   wall: blockCreator(BLOCK_DEFINITIONS.WALL),
 };
 
-const mazeGenerator = (): Container => {
+export type MazeDataStructure = {|
+  path: Array<string>,
+  accesses: Array<string>,
+  exits: Array<string>,
+  numbers: {|
+    actors: Array<number>,
+    statics: Array<number | null>,
+    accesses: Array<number>,
+  |},
+|};
+
+const mazeGenerator = (mazeData: MazeDataStructure): Container => {
   const component = new Container();
 
   for (let x = 0; x < BLOCKS_LENGHT.X; x++) {
     for (let y = 0; y < BLOCKS_LENGHT.Y; y++) {
       let block;
 
-      if (MazeData.path.includes(`${x},${y}`)) {
+      if (mazeData.path.includes(`${x},${y}`)) {
         block = BLOCKS.path();
       } else {
         block = x === BLOCK_FIRST || x === BLOCKS_LAST.X || y === BLOCK_FIRST || y === BLOCKS_LAST.Y

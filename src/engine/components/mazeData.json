@@ -26,5 +26,10 @@
     "2,1"
   ],
   "accesses": ["4,6"],
-  "exits": ["2,1"]
+  "exits": ["2,1"],
+  "numbers": {
+    "actors": [3],
+    "statics": [2, null, 4, 5, 6, 7, 8, 9, 10, 11],
+    "accesses": [1]
+  }
 }
