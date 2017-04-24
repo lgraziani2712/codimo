@@ -9,16 +9,20 @@ import { Container } from 'pixi.js';
 import { type NumberActor } from 'engine/components/numberGenerator';
 
 import arrowGenerator from './arrowGenerator';
-import lineGenerator from './lineGenerator';
+import lineGenerator, { type Line } from './lineGenerator';
 
-function receiveNumberAtPosition(number: NumberActor, position: number) {
-  this.line.receiveNumberAtPosition(number, position);
-}
+const receiveNumberAtPositionConfig = (line: Line) => (number: NumberActor, position: number): void => {
+  line.receiveNumberAtPosition(number, position);
+};
 
-const numericLineGenerator = (numbersLength: number, numbers?: Array<Array<number>>) => {
+export type NumericLine = {|
+  view: Container,
+  receiveNumberAtPosition(number: NumberActor, position: number): void,
+|};
+const numericLineGenerator = (numbers: Array<number | null>): NumericLine => {
   const leftArrow = arrowGenerator();
   const rightArrow = arrowGenerator(true);
-  const line = lineGenerator(numbersLength, numbers);
+  const line = lineGenerator(numbers);
   const view = new Container();
 
   line.view.x = leftArrow.width;
@@ -28,8 +32,7 @@ const numericLineGenerator = (numbersLength: number, numbers?: Array<Array<numbe
 
   return {
     view,
-    line,
-    receiveNumberAtPosition,
+    receiveNumberAtPosition: receiveNumberAtPositionConfig(line),
   };
 };
 

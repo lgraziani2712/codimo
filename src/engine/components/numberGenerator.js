@@ -30,8 +30,8 @@ export type NumberActor = {|
   view: Text,
   initialPosition: Array<number>,
   position: string,
-  updatePosition: (newPosition: string) => Promise<void>,
-  resetPosition: () => void,
+  updatePosition(newPosition: string): Promise<void>,
+  resetPosition(): void,
 |};
 
 export const staticNumberGenerator = (number: number) => {

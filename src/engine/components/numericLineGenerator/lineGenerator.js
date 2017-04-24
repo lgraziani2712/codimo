@@ -20,6 +20,17 @@ import {
 } from 'constants/numbers';
 import { staticNumberGenerator, type NumberActor } from 'engine/components/numberGenerator';
 
+function addVisualNumber(square: Graphics, numbers: Array<number | null>, i: number) {
+  if (numbers[i] === null) {
+    return;
+  }
+  const number = staticNumberGenerator(numbers[i]);
+
+  number.view.x = number.view.y = BLOCK_SIZE / HALF;
+
+  square.addChild(number.view);
+}
+
 // margin-top = 10 margin-bottom = 10
 const MARGIN = 20;
 
@@ -30,7 +41,7 @@ function receiveNumberAtPosition(number: NumberActor, position: number): Promise
   number.view.anchor.x = number.view.anchor.y = 0.5;
 
   number.view.x = BLOCK_SIZE / HALF;
-  number.view.y = BLOCK_SIZE + (BLOCK_SIZE + MARGIN) / HALF;
+  number.view.y = BLOCK_SIZE + (BLOCK_SIZE) / HALF;
 
   return new Promise((onComplete) => {
     TweenLite.to(number.view, ACTOR_MOVEMENT_DURATION, {
@@ -40,17 +51,20 @@ function receiveNumberAtPosition(number: NumberActor, position: number): Promise
     });
   });
 }
+export type Line = {|
+  view: Graphics,
+  receiveNumberAtPosition(number: NumberActor, position: number): Promise<void>,
+|};
 /**
  * It generates the line with the numbers
  *
- * @param  {number} numbersLength how many number slots must be created
- * @param  {Array<Array<number>>} [numbers=[]] [position, number] what `number` needs to create at which `position`.
+ * @param  {Array<number | null>} numbers what `number` needs to create.
  * @return {Object} the line
  */
-const lineGenerator = (numbersLength: number, numbers: Array<Array<number>> = []) => {
+const lineGenerator = (numbers: Array<number | null>): Line => {
   const view = new Graphics();
-  const width = numbersLength * BLOCK_SIZE + BLOCK_SIZE;
-  const spaceInBetweenX = BLOCK_SIZE / (numbersLength + ONE);
+  const width = numbers.length * BLOCK_SIZE + BLOCK_SIZE;
+  const spaceInBetweenX = BLOCK_SIZE / (numbers.length + ONE);
   const spaceInBetweenY = (NUMERIC_LINE_HEIGHT - BLOCK_SIZE - MARGIN) / HALF;
 
   view
@@ -61,7 +75,7 @@ const lineGenerator = (numbersLength: number, numbers: Array<Array<number>> = []
   view.x = ZERO;
   view.y = TEN;
 
-  for (let i = 0; i < numbersLength; i++) {
+  for (let i = 0; i < numbers.length; i++) {
     const square = new Graphics();
 
     square
@@ -74,20 +88,7 @@ const lineGenerator = (numbersLength: number, numbers: Array<Array<number>> = []
 
     view.addChild(square);
 
-    // Add visual numbers
-    for (let j = 0; j < numbers.length; j++) {
-      if (numbers[j][0] < i) {
-        continue;
-      }
-      if (numbers[j][0] > i) {
-        break;
-      }
-      const number = staticNumberGenerator(numbers[j][1]);
-
-      number.view.x = number.view.y = BLOCK_SIZE / HALF;
-
-      square.addChild(number.view);
-    }
+    addVisualNumber(square, numbers, i);
   }
 
   return {

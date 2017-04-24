@@ -1,5 +1,11 @@
 ## HEAD
 
+- ⚙ [2017-04-24] `engine/components/numericLineGenerator`: refactor to match `lineGenerator` refactor and inner improvements:
+  - 🔥 Remove `line` from public props. This follows the curry policy for private props.
+  - 🚀 Add type definition.
+- ⚙ [2017-04-24] `engine/components/numericLineGenerator/lineGenerator`: update.
+  - ⚙ Update generator firm. It receives only an array of numbers and nulls representing each position of the line. Nulls values are expected to be the numbers the user will move around the maze.
+  - 🚀 Add type definition.
 - ⚙ [2017-04-24] `engine/components/mazeGenerator`: update generator firm.
   - 🚀 New parametter: `mazeData`.
   - `MazeData.json` -> `mazeData.json` and is going to be deleted. Its structure is morphing into something useful. It contains the meta information necessary to generate a new game.
