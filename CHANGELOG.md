@@ -1,5 +1,8 @@
 ## HEAD
 
+- 🚀 [2017-04-24] `engine/containers/gameGenerator`: complete the first version of the maze game generator!
+  - It receives a mazeData, and generates everything. This object will be the bridge between pixi.js and blockly.
+  - Follows the curry policy for private props.
 - ⚙ [2017-04-24] `engine/components/numericLineGenerator`: refactor to match `lineGenerator` refactor and inner improvements:
   - 🔥 Remove `line` from public props. This follows the curry policy for private props.
   - 🚀 Add type definition.
