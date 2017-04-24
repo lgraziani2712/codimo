@@ -15,10 +15,10 @@ function receiveNumberAtPosition(number: NumberActor, position: number) {
   this.line.receiveNumberAtPosition(number, position);
 }
 
-const numericLineGenerator = (numbersLength: number) => {
+const numericLineGenerator = (numbersLength: number, numbers?: Array<Array<number>>) => {
   const leftArrow = arrowGenerator();
   const rightArrow = arrowGenerator(true);
-  const line = lineGenerator(numbersLength);
+  const line = lineGenerator(numbersLength, numbers);
   const view = new Container();
 
   line.view.x = leftArrow.width;

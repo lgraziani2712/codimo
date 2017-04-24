@@ -33,6 +33,17 @@ export type NumberActor = {|
   updatePosition: (newPosition: string) => Promise<void>,
   resetPosition: () => void,
 |};
+
+export const staticNumberGenerator = (number: number) => {
+  const view = new Text(number.toString(), style);
+
+  view.anchor.x = view.anchor.y = 0.5;
+
+  return {
+    view,
+  };
+};
+
 function updatePosition(newPosition: string): Promise<void> {
   // Object scope
   this.position = newPosition;

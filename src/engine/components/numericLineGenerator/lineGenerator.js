@@ -18,13 +18,13 @@ import {
   ONE,
   TEN,
 } from 'constants/numbers';
-import { type NumberActor } from 'engine/components/numberGenerator';
+import { staticNumberGenerator, type NumberActor } from 'engine/components/numberGenerator';
 
 // margin-top = 10 margin-bottom = 10
 const MARGIN = 20;
 
 function receiveNumberAtPosition(number: NumberActor, position: number): Promise<void> {
-  number.view.setParent(this.view.getChildAt(position - ONE));
+  number.view.setParent(this.view.getChildAt(position));
 
   // FIXME this must be configured inside the numberGenerator function
   number.view.anchor.x = number.view.anchor.y = 0.5;
@@ -40,7 +40,14 @@ function receiveNumberAtPosition(number: NumberActor, position: number): Promise
     });
   });
 }
-const lineGenerator = (numbersLength: number) => {
+/**
+ * It generates the line with the numbers
+ *
+ * @param  {number} numbersLength how many number slots must be created
+ * @param  {Array<Array<number>>} [numbers=[]] [position, number] what `number` needs to create at which `position`.
+ * @return {Object} the line
+ */
+const lineGenerator = (numbersLength: number, numbers: Array<Array<number>> = []) => {
   const view = new Graphics();
   const width = numbersLength * BLOCK_SIZE + BLOCK_SIZE;
   const spaceInBetweenX = BLOCK_SIZE / (numbersLength + ONE);
@@ -66,6 +73,21 @@ const lineGenerator = (numbersLength: number) => {
     square.y = spaceInBetweenY;
 
     view.addChild(square);
+
+    // Add visual numbers
+    for (let j = 0; j < numbers.length; j++) {
+      if (numbers[j][0] < i) {
+        continue;
+      }
+      if (numbers[j][0] > i) {
+        break;
+      }
+      const number = staticNumberGenerator(numbers[j][1]);
+
+      number.view.x = number.view.y = BLOCK_SIZE / HALF;
+
+      square.addChild(number.view);
+    }
   }
 
   return {

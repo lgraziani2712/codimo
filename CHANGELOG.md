@@ -1,5 +1,9 @@
 ## HEAD
 
+- ⚙ [2017-04-24] `engine/components/numericLineGenerator`: update generator firm to match `lineGenerator`.
+- ⚙ [2017-04-24] `engine/components/numericLineGenerator/lineGenerator`: update generator firm.
+  - 🚀 New parametter: `numbers`. Map of [position, number].
+- ⚙ [2017-04-24] `engine/components/numberGenerator`: add `staticNumberGenerator` for non animated numbers.
 - ⚙ [2017-04-23] `engine/components/numericLineGenerator/lineGenerator`: update `receiveNumberAtPosition`. Now follows the promised animations rule.
 - ⚙ [2017-04-23] `engine/components/numberGenerator`: update `updatePosition`.
   - NOW: returns a `Promise<void>`. When the animation completes, resolves the promise.

@@ -19,7 +19,7 @@ const WIDTH = 960;
 const HEIGHT = 448;
 const basicMaze = mazeGenerator();
 const simpleNumberMaze = mazeGenerator();
-const number = numberGenerator(-TEN, MazeData.path[0]);
+const number = numberGenerator(-TEN, MazeData.accesses[0]);
 
 storiesOf('engine.components.Maze', module)
   .add('basic Maze', () => (<PixiWrapper component={basicMaze} height={HEIGHT} width={WIDTH} />))
