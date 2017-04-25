@@ -17,9 +17,10 @@ import numberGenerator from './numberGenerator';
 
 const WIDTH = 960;
 const HEIGHT = 448;
+const NUMBER_SIZE = 64;
 const basicMaze = mazeGenerator(mazeData);
 const simpleNumberMaze = mazeGenerator(mazeData);
-const number = numberGenerator(-TEN, mazeData.accesses[0]);
+const number = numberGenerator(-TEN, mazeData.accesses[0], NUMBER_SIZE);
 
 storiesOf('engine.components.Maze', module)
   .add('basic Maze', () => (<PixiWrapper component={basicMaze} height={HEIGHT} width={WIDTH} />))

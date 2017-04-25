@@ -6,52 +6,50 @@
  */
 import { Container } from 'pixi.js';
 
-import { ONE, BLOCK_SIZE } from 'constants/numbers';
+import { ONE } from 'constants/numbers';
 
-import blockCreator, { BLOCK_DEFINITIONS } from './blockGenerator';
+import blockCreatorConfig, { BLOCK_DEFINITIONS } from './blockGenerator';
 
-const BLOCKS_LENGHT = {
-  X: 15,
-  Y: 7,
-};
 const BLOCK_FIRST = 0;
-const BLOCKS_LAST = {
-  X: BLOCKS_LENGHT.X - ONE,
-  Y: BLOCKS_LENGHT.Y - ONE,
-};
-const BLOCKS = {
-  border: blockCreator(BLOCK_DEFINITIONS.BORDER),
-  path: blockCreator(BLOCK_DEFINITIONS.PATH),
-  wall: blockCreator(BLOCK_DEFINITIONS.WALL),
-};
 
 export type MazeDataStructure = {|
-  path: Array<string>,
   accesses: Array<string>,
   exits: Array<string>,
+  height: number,
   numbers: {|
     actors: Array<number>,
     statics: Array<number | null>,
     accesses: Array<number>,
   |},
+  path: Array<string>,
+  size: number,
+  width: number,
 |};
-
 const mazeGenerator = (mazeData: MazeDataStructure): Container => {
   const component = new Container();
+  const BLOCKS_LAST = {
+    X: mazeData.width - ONE,
+    Y: mazeData.height - ONE,
+  };
+  const BLOCKS = {
+    borderCreator: blockCreatorConfig(BLOCK_DEFINITIONS.BORDER, mazeData.size),
+    pathCreator: blockCreatorConfig(BLOCK_DEFINITIONS.PATH, mazeData.size),
+    wallCreator: blockCreatorConfig(BLOCK_DEFINITIONS.WALL, mazeData.size),
+  };
 
-  for (let x = 0; x < BLOCKS_LENGHT.X; x++) {
-    for (let y = 0; y < BLOCKS_LENGHT.Y; y++) {
+  for (let x = 0; x < mazeData.width; x++) {
+    for (let y = 0; y < mazeData.height; y++) {
       let block;
 
       if (mazeData.path.includes(`${x},${y}`)) {
-        block = BLOCKS.path();
+        block = BLOCKS.pathCreator();
       } else {
         block = x === BLOCK_FIRST || x === BLOCKS_LAST.X || y === BLOCK_FIRST || y === BLOCKS_LAST.Y
-                    ? BLOCKS.border()
-                    : BLOCKS.wall();
+              ? BLOCKS.borderCreator()
+              : BLOCKS.wallCreator();
       }
-      block.view.x = x * BLOCK_SIZE;
-      block.view.y = y * BLOCK_SIZE;
+      block.view.x = x * mazeData.size;
+      block.view.y = y * mazeData.size;
       block.position = `${x},${y}`;
 
       component.addChild(block.view);

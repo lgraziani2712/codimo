@@ -9,7 +9,6 @@ import { TweenLite, Linear } from 'gsap';
 
 import {
   ACTOR_MOVEMENT_DURATION,
-  BLOCK_SIZE,
   HALF,
   NUMERIC_LINE_BG_COLOR,
   NUMERIC_LINE_HEIGHT,
@@ -20,37 +19,41 @@ import {
 } from 'constants/numbers';
 import { staticNumberGenerator, type NumberActor } from 'engine/components/numberGenerator';
 
-function addVisualNumber(square: Graphics, numbers: Array<number | null>, i: number) {
-  if (numbers[i] === null) {
-    return;
-  }
-  const number = staticNumberGenerator(numbers[i]);
-
-  number.view.x = number.view.y = BLOCK_SIZE / HALF;
-
-  square.addChild(number.view);
-}
-
 // margin-top = 10 margin-bottom = 10
 const MARGIN = 20;
 
-function receiveNumberAtPosition(number: NumberActor, position: number): Promise<void> {
-  number.view.setParent(this.view.getChildAt(position));
+const receiveNumberAtPositionConfig = (
+  view: Graphics,
+  size: number,
+) => (number: NumberActor, position: number): Promise<void> => {
+  number.view.setParent(view.getChildAt(position));
 
   // FIXME this must be configured inside the numberGenerator function
   number.view.anchor.x = number.view.anchor.y = 0.5;
 
-  number.view.x = BLOCK_SIZE / HALF;
-  number.view.y = BLOCK_SIZE + (BLOCK_SIZE) / HALF;
+  number.view.x = size / HALF;
+  number.view.y = size + (size) / HALF;
 
   return new Promise((onComplete) => {
     TweenLite.to(number.view, ACTOR_MOVEMENT_DURATION, {
-      y: BLOCK_SIZE / HALF,
+      y: size / HALF,
       ease: Linear.easeNone,
       onComplete,
     });
   });
+};
+
+function addVisualNumber(square: Graphics, numbers: Array<number | null>, size: number, i: number) {
+  if (numbers[i] === null) {
+    return;
+  }
+  const number = staticNumberGenerator(numbers[i], size);
+
+  number.view.x = number.view.y = size / HALF;
+
+  square.addChild(number.view);
 }
+
 export type Line = {|
   view: Graphics,
   receiveNumberAtPosition(number: NumberActor, position: number): Promise<void>,
@@ -59,13 +62,14 @@ export type Line = {|
  * It generates the line with the numbers
  *
  * @param  {Array<number | null>} numbers what `number` needs to create.
+ * @param {number} size width and height of each space
  * @return {Object} the line
  */
-const lineGenerator = (numbers: Array<number | null>): Line => {
+const lineGenerator = (numbers: Array<number | null>, size: number): Line => {
   const view = new Graphics();
-  const width = numbers.length * BLOCK_SIZE + BLOCK_SIZE;
-  const spaceInBetweenX = BLOCK_SIZE / (numbers.length + ONE);
-  const spaceInBetweenY = (NUMERIC_LINE_HEIGHT - BLOCK_SIZE - MARGIN) / HALF;
+  const width = numbers.length * size + size;
+  const spaceInBetweenX = size / (numbers.length + ONE);
+  const spaceInBetweenY = (NUMERIC_LINE_HEIGHT - size - MARGIN) / HALF;
 
   view
     .beginFill(NUMERIC_LINE_BG_COLOR)
@@ -80,20 +84,20 @@ const lineGenerator = (numbers: Array<number | null>): Line => {
 
     square
       .beginFill(NUMERIC_LINE_NUMBER_BG_COLOR)
-      .drawRect(ZERO, ZERO, BLOCK_SIZE, BLOCK_SIZE)
+      .drawRect(ZERO, ZERO, size, size)
       .endFill();
 
-    square.x = i * BLOCK_SIZE + (spaceInBetweenX + i * spaceInBetweenX);
+    square.x = i * size + (spaceInBetweenX + i * spaceInBetweenX);
     square.y = spaceInBetweenY;
 
     view.addChild(square);
 
-    addVisualNumber(square, numbers, i);
+    addVisualNumber(square, numbers, size, i);
   }
 
   return {
     view,
-    receiveNumberAtPosition,
+    receiveNumberAtPosition: receiveNumberAtPositionConfig(view, size),
   };
 };
 

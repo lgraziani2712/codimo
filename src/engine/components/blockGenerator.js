@@ -15,11 +15,11 @@ type Block = {|
   view: Sprite,
   position: string,
 |};
-const blockGenerator = (type: number = BLOCK_DEFINITIONS.WALL) => (): Block => {
+const blockCreatorConfig = (type: number, size: number) => (): Block => {
   const view = new Sprite(Texture.WHITE);
 
   view.alpha = 1;
-  view.height = view.width = 64;
+  view.height = view.width = size;
   view.tint = type;
 
   return {
@@ -28,4 +28,4 @@ const blockGenerator = (type: number = BLOCK_DEFINITIONS.WALL) => (): Block => {
   };
 };
 
-export default blockGenerator;
+export default blockCreatorConfig;

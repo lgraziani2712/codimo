@@ -50,12 +50,12 @@ const moveNumberToConfig = (
 
 export default function gameGenerator(mazeData: MazeDataStructure) {
   const view = new Container();
-  const numericLine = numericLineGenerator(mazeData.numbers.statics);
+  const numericLine = numericLineGenerator(mazeData.numbers.statics, mazeData.size);
   const maze = mazeGenerator(mazeData);
   const numbers: Array<NumberActor> = [];
 
   for (let i = 0; i < mazeData.numbers.actors.length; i++) {
-    const number = numberGenerator(mazeData.numbers.actors[i], mazeData.accesses[i]);
+    const number = numberGenerator(mazeData.numbers.actors[i], mazeData.accesses[i], mazeData.size);
 
     maze.addChild(number.view);
     numbers.push(number);

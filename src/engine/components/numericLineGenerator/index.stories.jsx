@@ -16,6 +16,7 @@ import lineGenerator from './lineGenerator';
 
 import numericLineGenerator from './index';
 
+const SIZE = 64;
 const WIDTH_NUMERIC_LINE = 960;
 const HEIGHT_NUMERIC_LINE = 300;
 const WIDTH_ARROW = 104;
@@ -49,7 +50,7 @@ storiesOf('engine.components.numericLine', module)
   // Line
   //////////////////////////////////
   .add('simple line', () => {
-    const line = lineGenerator([null, null, null, null, null, null, null, null]);
+    const line = lineGenerator([null, null, null, null, null, null, null, null], SIZE);
 
     line.view.x = 32;
     line.view.y = HEIGHT_LINE / QUARTER;
@@ -58,7 +59,7 @@ storiesOf('engine.components.numericLine', module)
   })
   .add('line with static numbers', () => {
     // eslint-disable-next-line no-magic-numbers
-    const line = lineGenerator([0, 1, 2, 3, 4, 5, 6, 7]);
+    const line = lineGenerator([0, 1, 2, 3, 4, 5, 6, 7], SIZE);
 
     line.view.x = 32;
     line.view.y = HEIGHT_LINE / QUARTER;
@@ -68,8 +69,8 @@ storiesOf('engine.components.numericLine', module)
     );
   })
   .add('line with an animated number', () => {
-    const line = lineGenerator([null, null, null, null, null, null, null, null]);
-    const ten = numberGenerator(TEN, '0,0');
+    const line = lineGenerator([null, null, null, null, null, null, null, null], SIZE);
+    const ten = numberGenerator(TEN, '0,0', SIZE);
 
     line.view.x = 32;
     line.view.y = HEIGHT_LINE / QUARTER;
@@ -84,7 +85,10 @@ storiesOf('engine.components.numericLine', module)
   // Numeric Line
   //////////////////////////////////
   .add('basic numeric line', () => {
-    const numericLine = numericLineGenerator([null, null, null, null, null, null, null, null, null, null]);
+    const numericLine = numericLineGenerator(
+      [null, null, null, null, null, null, null, null, null, null],
+      SIZE,
+    );
 
     numericLine.view.x = (WIDTH_NUMERIC_LINE - numericLine.view.width) / HALF;
     numericLine.view.y = (HEIGHT_NUMERIC_LINE - numericLine.view.height) / HALF;
@@ -95,8 +99,8 @@ storiesOf('engine.components.numericLine', module)
   })
   .add('numeric line with animated and static numbers', () => {
     // eslint-disable-next-line no-magic-numbers
-    const numericLine = numericLineGenerator([1, 2, 3, 4, 5, 6, 7, 8, 9, null]);
-    const ten = numberGenerator(TEN, '0,0');
+    const numericLine = numericLineGenerator([1, 2, 3, 4, 5, 6, 7, 8, 9, null], SIZE);
+    const ten = numberGenerator(TEN, '0,0', SIZE);
 
     numericLine.receiveNumberAtPosition(ten, NINE);
 

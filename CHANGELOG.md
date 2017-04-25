@@ -1,5 +1,19 @@
 ## HEAD
 
+- 🚀 [2017-04-25] `engine/components/blockGenerator`: update generator firm.
+- ⚙ [2017-04-25] `engine/containers/mazeGenerator`: refactor.
+  - 🚀 Added new props to the maze metadata structure.
+  - 🔥 Remove unnecessary information related to the maze metadata.
+- ⚙ [2017-04-25] `engine/containers/numericLineGenerator`: refactor.
+  - ⚙ Update generator firm. Adds `size` prop for the box size.
+- ⚙ [2017-04-25] `engine/containers/lineGenerator`: refactor.
+  - Follows the curry policy for private props.
+  - ⚙ Update generator firm. Adds `size` prop for the box size.
+  - 🔥 Remove unnecessary information related to the maze metadata.
+- ⚙ [2017-04-25] `engine/containers/numberGenerator`: refactor.
+  - Follows the curry policy for private props.
+  - ⚙ Update generator firm. Adds `size` prop for the box size.
+  - 🔥 Remove unnecessary information related to the maze metadata.
 - 🚀 [2017-04-24] `engine/containers/gameGenerator`: complete the first version of the maze game generator!
   - It receives a mazeData, and generates everything. This object will be the bridge between pixi.js and blockly.
   - Follows the curry policy for private props.
