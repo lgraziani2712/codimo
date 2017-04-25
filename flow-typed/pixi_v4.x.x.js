@@ -2,6 +2,7 @@
  * @author Luciano Graziani @lgraziani2712
  * @license {@link http://www.opensource.org/licenses/mit-license.php|MIT License}
  *
+ * @flow
  */
 declare type PixiRendererOptionsParameterType = {|
   view?: HTMLCanvasElement,
@@ -387,6 +388,7 @@ declare module 'pixi.js' {
     y: number;
 
     setParent(container: Container): Container;
+    getChildAt(index: number): Container;
   }
   declare class Ellipse {
     height: number;
