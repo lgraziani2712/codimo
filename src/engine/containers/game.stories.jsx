@@ -5,9 +5,9 @@
  * @flow
  */
 import React from 'react';
-import { storiesOf } from '@kadira/storybook';
 import wait from 'speculation/wait';
 
+import { storiesOf } from 'test/storybook-facades';
 import PixiWrapper from 'test/PixiWrapper';
 import mazeData from 'engine/components/mazeData.json';
 

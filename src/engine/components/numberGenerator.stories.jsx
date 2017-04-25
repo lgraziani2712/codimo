@@ -5,8 +5,8 @@
  * @flow
  */
 import React from 'react';
-import { storiesOf } from '@kadira/storybook';
 
+import { storiesOf } from 'test/storybook-facades';
 import PixiWrapper from 'test/PixiWrapper';
 import { BLOCK_SIZE } from 'constants/numbers';
 
