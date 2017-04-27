@@ -18,7 +18,6 @@ module.exports = {
   appSrc: resolveApp('src'),
   appNodeModules: resolveApp('node_modules'),
   devElements: resolveApp('dev-elements'),
-  devPlayground: resolveApp('dev-elements/playground'),
   testsSetup: resolveApp('src/setupTests.js'),
   yarnLockFile: resolveApp('yarn.lock'),
 };
