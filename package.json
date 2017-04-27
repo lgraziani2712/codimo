@@ -12,7 +12,7 @@
     "lint": "eslint src dev-elements .dev-tools --ext .js --ext .jsx --fix",
     "start": "webpack-dev-server --config ./.dev-tools/config/webpack.config.dev.js",
     "stats": "webpack --config ./.dev-tools/config/webpack.config.dev.js --profile --json > stats.json",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -s ./dist -p 6006",
     "test": "babel-node .dev-tools/scripts/test.js",
     "test:coverage": "babel-node .dev-tools/scripts/test.js --coverage"
   },
