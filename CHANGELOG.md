@@ -1,5 +1,9 @@
 ## HEAD
 
+- ⚙ [2017-04-27] `blockly/components/BlocklyToolbox`: move it into its own folder.
+  - 🔥 Delete the hardcoded structure.
+  - 🚀 New property: `elements`: represents the list of blocks who are going to be used.
+  - 🚀 Add BlocklyToolbox blocks generators.
 - 🔥 [2017-04-27] `blockly/executorGenerator`: complete v1.0.1.
   - Refactor private function. This fix an error occurred when multiple blocks added a `BlockExecutor` with the same name.
   - Add snapshot test for the resultant code.
