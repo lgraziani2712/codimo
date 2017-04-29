@@ -1,5 +1,11 @@
 ## HEAD
 
+- 🚀 [2017-04-27] `blockly/components/BlocklyApp`: update v0.2.0.
+  - 🚀 New property: `gameMetadata`: contains everything it needs to generate a game.
+    - 🚀 New property: `blockDefinitions`: list of the blocks who are going to be used.
+    - 🚀 New property: `defaultElements`: a string representation of pre setted blocks.
+    - 🚀 New property: `elements`: represents the list of blocks who are going to be used. Reflects the change to `BlocklyToolbox`.
+  - 🚀 Integrate `executorGenerator`.
 - ⚙ [2017-04-27] `blockly/components/BlocklyToolbox`: move it into its own folder.
   - 🔥 Delete the hardcoded structure.
   - 🚀 New property: `elements`: represents the list of blocks who are going to be used.

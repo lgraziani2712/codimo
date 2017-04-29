@@ -8,10 +8,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import BlocklyApp from 'components/BlocklyApp';
+import gameMetadata from 'components/gameMetadata.json';
 
 const rootElement = document.getElementById('app');
 
 ReactDOM.render(
-  <BlocklyApp />,
+  <BlocklyApp gameMetadata={gameMetadata} />,
   rootElement,
 );
