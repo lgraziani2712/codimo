@@ -1,5 +1,7 @@
 ## HEAD
 
+- 🚀 [2017-04-27] `blockly/executorGenerator`: complete v1.0.0.
+  - This function is responsible for generating the executor object, who is in charge of running the resultant blockly code. Its API is extremly simple.
 - 🚀 [2017-04-25] `engine/components/blockGenerator`: update generator firm.
 - ⚙ [2017-04-25] `engine/containers/mazeGenerator`: refactor.
   - 🚀 Added new props to the maze metadata structure.
