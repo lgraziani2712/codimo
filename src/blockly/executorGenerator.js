@@ -9,8 +9,8 @@
 
 // FIXME This function need to be more generic
 // Right now only works for one specific function
-function componentExecutionConfig(blockName: string, functionName: string) {
-  Blockly.JavaScript[blockName] = (block) => (`this.${functionName}(${block.number}, '${blockName}');`);
+function componentExecutionConfig(blockName: string) {
+  Blockly.JavaScript[blockName] = (block) => (`this.${blockName}(${block.number}, '${blockName}');`);
 }
 
 export type BlockExecutor = (...args: Array<*>) => void;
@@ -28,9 +28,9 @@ export type Executor = {
  */
 const executorGenerator = () => ({
   addBlockExecutor(blockName: string, func: (...args: Array<*>) => void) {
-    componentExecutionConfig(blockName, func.name);
+    componentExecutionConfig(blockName);
 
-    this[func.name] = func;
+    this[blockName] = func;
   },
   run: (code: string) => {
     eval(code);

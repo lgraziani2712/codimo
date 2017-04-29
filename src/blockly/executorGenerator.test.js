@@ -15,7 +15,7 @@ import executorGenerator from './executorGenerator';
 describe('blockly > components', () => {
   it('should generate a new Blockly.Javascript element', () => {
     const blockData = {
-      number: 0,
+      number: 1,
     };
     const helloNumber = (number: number, action: string) => {
       expect(number).toBe(blockData.number);
@@ -29,7 +29,7 @@ describe('blockly > components', () => {
 
     excecutor.run(code);
 
-    expect(code).toBe(`this.helloNumber(${blockData.number}, '${blockNames.MOVE_BACKWARD}');`);
+    expect(code).toMatchSnapshot();
     expect(Blockly.JavaScript[blockNames.MOVE_BACKWARD]).toBeInstanceOf(Function);
   });
 });

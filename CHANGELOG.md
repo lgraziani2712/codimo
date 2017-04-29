@@ -1,5 +1,8 @@
 ## HEAD
 
+- 🔥 [2017-04-27] `blockly/executorGenerator`: complete v1.0.1.
+  - Refactor private function. This fix an error occurred when multiple blocks added a `BlockExecutor` with the same name.
+  - Add snapshot test for the resultant code.
 - 🔥 [2017-04-27] `blockly/components`: remove JS action executors.
   - 🔥 One step towards removing this section completely. Blockly components are going to be JSON data.
   - 🐛 TEMPORARY: extracted each component's name into a new constant: `blockly/constants.blockNames`.
@@ -30,11 +33,11 @@
   - ⚙ Update generator firm. It receives only an array of numbers and nulls representing each position of the line. Nulls values are expected to be the numbers the user will move around the maze.
   - 🚀 Add type definition.
 - ⚙ [2017-04-24] `engine/components/mazeGenerator`: update generator firm.
-  - 🚀 New parametter: `mazeData`.
+  - 🚀 New parameter: `mazeData`.
   - `MazeData.json` -> `mazeData.json` and is going to be deleted. Its structure is morphing into something useful. It contains the meta information necessary to generate a new game.
 - ⚙ [2017-04-24] `engine/components/numericLineGenerator`: update generator firm to match `lineGenerator`.
 - ⚙ [2017-04-24] `engine/components/numericLineGenerator/lineGenerator`: update generator firm.
-  - 🚀 New parametter: `numbers`. Map of [position, number].
+  - 🚀 New parameter: `numbers`. Map of [position, number].
 - ⚙ [2017-04-24] `engine/components/numberGenerator`: add `staticNumberGenerator` for non animated numbers.
 - ⚙ [2017-04-23] `engine/components/numericLineGenerator/lineGenerator`: update `receiveNumberAtPosition`. Now follows the promised animations rule.
 - ⚙ [2017-04-23] `engine/components/numberGenerator`: update `updatePosition`.
