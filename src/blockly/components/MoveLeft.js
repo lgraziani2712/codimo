@@ -4,26 +4,16 @@
  *
  * @flow
  */
-import { colors } from 'blockly/constants';
+import { colors, blockNames } from 'blockly/constants';
 
-Blockly.Blocks.MoveLeft = {
+Blockly.Blocks[blockNames.MOVE_LEFT] = {
   init: function init() {
     this.appendDummyInput()
-      .setAlign(Blockly.ALIGN_CENTRE)
-      .appendField(Blockly.Msg.MOVE_LEFT_TITLE);
+        .setAlign(Blockly.ALIGN_CENTRE)
+        .appendField(Blockly.Msg.MOVE_LEFT_TITLE);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(colors.ACTION);
     this.setTooltip(Blockly.Msg.MOVE_LEFT_TOOLTIP);
   },
 };
-
-function MoveLeft() {
-  const code = `
-    alert('${Blockly.Msg.MOVE_LEFT_TITLE}');
-  `;
-
-  return code;
-}
-
-Blockly.JavaScript[MoveLeft.name] = MoveLeft;

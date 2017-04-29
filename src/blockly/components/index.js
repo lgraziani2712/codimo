@@ -4,8 +4,9 @@
  *
  * @flow
  */
+import './ActionContainer';
+
 import './MoveLeft';
 import './MoveRight';
 import './MoveForward';
 import './MoveBackward';
-import './ActionContainer';

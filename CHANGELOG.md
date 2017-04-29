@@ -1,5 +1,9 @@
 ## HEAD
 
+- 🔥 [2017-04-27] `blockly/components`: remove JS action executors.
+  - 🔥 One step towards removing this section completely. Blockly components are going to be JSON data.
+  - 🐛 TEMPORARY: extracted each component's name into a new constant: `blockly/constants.blockNames`.
+  - 🐛 Components' name now must follows the Blockly standard: `lower_underscore`.
 - 🚀 [2017-04-27] `blockly/executorGenerator`: complete v1.0.0.
   - This function is responsible for generating the executor object, who is in charge of running the resultant blockly code. Its API is extremly simple.
 - 🚀 [2017-04-25] `engine/components/blockGenerator`: update generator firm.

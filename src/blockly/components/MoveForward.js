@@ -4,26 +4,16 @@
  *
  * @flow
  */
-import { colors } from 'blockly/constants';
+import { colors, blockNames } from 'blockly/constants';
 
-Blockly.Blocks.MoveForward = {
+Blockly.Blocks[blockNames.MOVE_FORWARD] = {
   init: function init() {
     this.appendDummyInput()
-      .setAlign(Blockly.ALIGN_CENTRE)
-      .appendField(Blockly.Msg.MOVE_FORWARD_TITLE);
+        .setAlign(Blockly.ALIGN_CENTRE)
+        .appendField(Blockly.Msg.MOVE_FORWARD_TITLE);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(colors.ACTION);
     this.setTooltip(Blockly.Msg.MOVE_FORWARD_TOOLTIP);
   },
 };
-
-function MoveForward() {
-  const code = `
-    alert('${Blockly.Msg.MOVE_FORWARD_TITLE}');
-  `;
-
-  return code;
-}
-
-Blockly.JavaScript[MoveForward.name] = MoveForward;

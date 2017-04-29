@@ -4,11 +4,11 @@
  *
  * @flow
  */
-import { colors } from 'blockly/constants';
+import { colors, blockNames } from 'blockly/constants';
 
 const mainInput = 'program';
 
-Blockly.Blocks.ActionContainer = {
+Blockly.Blocks[blockNames.ACTION_CONTAINER] = {
   init: function init() {
     this.appendDummyInput()
         .appendField(Blockly.Msg.ACTION_CONTAINER_TITLE);
@@ -21,10 +21,5 @@ Blockly.Blocks.ActionContainer = {
   },
 };
 
-function ActionContainer(block) {
-  const code = Blockly.JavaScript.statementToCode(block, mainInput);
-
-  return code;
-}
-
-Blockly.JavaScript[ActionContainer.name] = ActionContainer;
+Blockly.JavaScript[blockNames.ACTION_CONTAINER] =
+  (block: Object) => (Blockly.JavaScript.statementToCode(block, mainInput));

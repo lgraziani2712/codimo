@@ -4,8 +4,5 @@
  *
  * @flow
  */
-import * as blocklyColors from './colors';
-
-export const colors = blocklyColors;
-
-export const deleteMe = () => {};
+export * as colors from './colors';
+export * as blockNames from './blockNames';
