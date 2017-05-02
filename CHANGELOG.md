@@ -1,14 +1,19 @@
 ## HEAD
 
-- 🚀 [2017-05-02] `mazeGenerator`: update to v2.0.0.
+- 🚀 [2017-05-02] `engine/errors`: New module! v1.0.0.
+  - Will contain every engine specific error definition.
+  - 🚀 `UnableToLeaveTheNumericLine`: v1.0.0.
+  - 🚀 `MazePathError`: v1.0.0.
+  - 🚀 `MazeExitError`: v1.0.0.
+- 🚀 [2017-05-02] `engine/components/mazeGenerator`: update to v2.0.0.
   - 🚀 It follows the `view-standard` for every engine component. With this change, every component has this structure! 🎉
   - 🚀 Update pivot point to `top-center` for easier positioning manipulation.
-- 🚀 [2017-05-02] `executorGenerator`: update to v2.0.0.
+- 🚀 [2017-05-02] `blockly/executorGenerator`: update to v2.0.0.
   - ⚙ API completely: the main point of this refactor is to remove the use of callbacks for each block executor. Instead, we'll use instructions with a specific format. With this change we can centralice everything related to the animation in the engine.
     - `addBlockExecutor`: won't receive callbacks anymore.
     - `run -> parseInstructions`: will return a map of actions for each actor in the game.
 - 🚀 [2017-04-27] `blockly/components/BlocklyApp`: update v0.2.0.
-  - 🚀 New property: `gameMetadata`: contains everything it needs to generate a game.
+  - 🚀 New property: `test/gameMetadata`: contains everything it needs to generate a game.
     - 🚀 New property: `blockDefinitions`: list of the blocks who are going to be used.
     - 🚀 New property: `defaultElements`: a string representation of pre setted blocks.
     - 🚀 New property: `elements`: represents the list of blocks who are going to be used. Reflects the change to `BlocklyToolbox`.
