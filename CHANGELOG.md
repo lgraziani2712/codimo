@@ -1,5 +1,8 @@
 ## HEAD
 
+- 🚀 [2017-05-02] `mazeGenerator`: update to v2.0.0.
+  - 🚀 It follows the `view-standard` for every engine component. With this change, every component has this structure! 🎉
+  - 🚀 Update pivot point to `top-center` for easier positioning manipulation.
 - 🚀 [2017-05-02] `executorGenerator`: update to v2.0.0.
   - ⚙ API completely: the main point of this refactor is to remove the use of callbacks for each block executor. Instead, we'll use instructions with a specific format. With this change we can centralice everything related to the animation in the engine.
     - `addBlockExecutor`: won't receive callbacks anymore.

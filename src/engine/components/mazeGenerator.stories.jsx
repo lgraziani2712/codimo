@@ -7,12 +7,12 @@
 import React from 'react';
 import wait from 'speculation/wait';
 
+import { TEN } from 'constants/numbers';
 import { storiesOf } from 'test/storybook-facades';
 import PixiWrapper from 'test/PixiWrapper';
-import { TEN } from 'constants/numbers';
+import mazeData from 'test/mazeData.json';
 
 import mazeGenerator from './mazeGenerator';
-import mazeData from './mazeData.json';
 import numberGenerator from './numberGenerator';
 
 const WIDTH = 960;
@@ -23,9 +23,9 @@ const simpleNumberMaze = mazeGenerator(mazeData);
 const number = numberGenerator(-TEN, mazeData.accesses[0], NUMBER_SIZE);
 
 storiesOf('engine.components.Maze', module)
-  .add('basic Maze', () => (<PixiWrapper component={basicMaze} height={HEIGHT} width={WIDTH} />))
+  .add('basic Maze', () => (<PixiWrapper component={basicMaze.view} height={HEIGHT} width={WIDTH} />))
   .add('one moving number Maze', () => {
-    simpleNumberMaze.addChild(number.view);
+    simpleNumberMaze.view.addChild(number.view);
 
     (async () => {
       for (let i = 1; i < mazeData.path.length; i++) {
@@ -35,5 +35,5 @@ storiesOf('engine.components.Maze', module)
       number.resetPosition();
     })();
 
-    return <PixiWrapper component={simpleNumberMaze} height={HEIGHT} width={WIDTH} />;
+    return <PixiWrapper component={simpleNumberMaze.view} height={HEIGHT} width={WIDTH} />;
   });

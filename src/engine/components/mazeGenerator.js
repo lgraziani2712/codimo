@@ -6,7 +6,7 @@
  */
 import { Container } from 'pixi.js';
 
-import { ONE } from 'constants/numbers';
+import { HALF, ONE } from 'constants/numbers';
 
 import blockCreatorConfig, { BLOCK_DEFINITIONS } from './blockGenerator';
 
@@ -25,8 +25,11 @@ export type MazeDataStructure = {|
   size: number,
   width: number,
 |};
-const mazeGenerator = (mazeData: MazeDataStructure): Container => {
-  const component = new Container();
+export type Maze = {|
+  view: Container,
+|};
+const mazeGenerator = (mazeData: MazeDataStructure): Maze => {
+  const view = new Container();
   const BLOCKS_LAST = {
     X: mazeData.width - ONE,
     Y: mazeData.height - ONE,
@@ -52,11 +55,16 @@ const mazeGenerator = (mazeData: MazeDataStructure): Container => {
       block.view.y = y * mazeData.size;
       block.position = `${x},${y}`;
 
-      component.addChild(block.view);
+      view.addChild(block.view);
     }
   }
 
-  return component;
+  // Pivot at center top
+  view.pivot.x = view.width / HALF;
+
+  return {
+    view,
+  };
 };
 
 export default mazeGenerator;
