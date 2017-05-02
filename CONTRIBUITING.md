@@ -1,3 +1,9 @@
+# Contribute to CÓDIMO
+
+## Add a CHANGELOG entry for every PR
+
+TODO this section
+
 ## Git Commit Messages
 
 - Use the present tense ("Add feature" not "Added feature")
