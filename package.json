@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "Códimo FTW",
-  "main": "src/main.js",
+  "main": "src/main.jsx",
   "scripts": {
     "build-storybook": "build-storybook",
     "check-deps": "dep-tool compare . -a",
@@ -32,14 +32,12 @@
   "dependencies": {
     "blockly": "1.0.0",
     "dotenv": "4.0.0",
-    "gl-matrix": "2.3.2",
     "gsap": "1.19.1",
     "pixi.js": "4.5.1",
     "react": "15.5.4",
     "react-dom": "15.5.4",
-    "redux": "3.6.0",
     "speculation": "1.0.5",
-    "styled-components": "1.4.5"
+    "styled-components": "1.4.6"
   },
   "devDependencies": {
     "@kadira/storybook": "2.35.3",
