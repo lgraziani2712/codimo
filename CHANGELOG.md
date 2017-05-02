@@ -1,5 +1,9 @@
 ## HEAD
 
+- 🚀 [2017-05-02] `executorGenerator`: update to v2.0.0.
+  - ⚙ API completely: the main point of this refactor is to remove the use of callbacks for each block executor. Instead, we'll use instructions with a specific format. With this change we can centralice everything related to the animation in the engine.
+    - `addBlockExecutor`: won't receive callbacks anymore.
+    - `run -> parseInstructions`: will return a map of actions for each actor in the game.
 - 🚀 [2017-04-27] `blockly/components/BlocklyApp`: update v0.2.0.
   - 🚀 New property: `gameMetadata`: contains everything it needs to generate a game.
     - 🚀 New property: `blockDefinitions`: list of the blocks who are going to be used.

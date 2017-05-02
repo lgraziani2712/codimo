@@ -6,30 +6,37 @@
  *
  * @flow
  */
+/* eslint-disable no-magic-numbers */
 import 'test/BlocklyMock';
 
 import { blockNames } from 'blockly/constants';
 
 import executorGenerator from './executorGenerator';
 
-describe('blockly > components', () => {
-  it('should generate a new Blockly.Javascript element', () => {
+describe('blockly > executorGenerator', () => {
+  it('should generate a Map of actions', () => {
     const blockData = {
-      number: 1,
+      number: 0,
     };
-    const helloNumber = (number: number, action: string) => {
-      expect(number).toBe(blockData.number);
-      expect(action).toBe(blockNames.MOVE_BACKWARD);
-    };
-    const excecutor = executorGenerator();
+    const executor = executorGenerator();
 
-    excecutor.addBlockExecutor(blockNames.MOVE_BACKWARD, helloNumber);
+    executor.addBlockExecutor(blockNames.MOVE_BACKWARD);
 
     const code = Blockly.JavaScript[blockNames.MOVE_BACKWARD](blockData);
 
-    excecutor.run(code);
-
     expect(code).toMatchSnapshot();
     expect(Blockly.JavaScript[blockNames.MOVE_BACKWARD]).toBeInstanceOf(Function);
+
+    const instructions = executor.parseInstructions(code + code);
+    const actions = instructions.get(blockData.number);
+
+    expect(instructions).toBeInstanceOf(Map);
+    expect(instructions.size).toBe(1);
+    expect(actions).toBeInstanceOf(Array);
+    expect(actions).toHaveLength(2);
+    // $FlowDoNotDisturb is NOT undefined
+    actions.forEach(action => {
+      expect(action).toBe(blockNames.MOVE_BACKWARD);
+    });
   });
 });
