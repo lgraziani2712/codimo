@@ -10,8 +10,14 @@ const mainInput = 'program';
 
 Blockly.Blocks[blockNames.ACTION_CONTAINER] = {
   init: function init() {
+    const textInput = new Blockly.FieldTextInput('4');
+
+    textInput.setSpellcheck(false);
     this.appendDummyInput()
-        .appendField(Blockly.Msg.ACTION_CONTAINER_TITLE);
+        .appendField(Blockly.Msg.ACTION_CONTAINER_TITLE)
+        // FIXME harcoded and explicitly for one specific exercise
+        .appendField('para el número:')
+        .appendField(textInput, 'FIELDNAME');
     this.appendStatementInput(mainInput);
     this.setDeletable(false);
     this.setEditable(false);
