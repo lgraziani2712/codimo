@@ -1,0 +1,46 @@
+{
+  "blocksData": {
+    "elements": [{
+      "define": "block",
+      "type": "move_forward"
+    }, {
+      "define": "block",
+      "type": "move_backward"
+    }, {
+      "define": "block",
+      "type": "move_right"
+    }, {
+      "define": "block",
+      "type": "move_left"
+    }],
+    "blockDefinitions": [{
+      "name": "move_forward"
+    }, {
+      "name": "move_backward"
+    }, {
+      "name": "move_right"
+    }, {
+      "name": "move_left"
+    }],
+    "defaultElements": "<block type=\"move_forward\"><next><block type=\"move_forward\"><next><block type=\"move_forward\"><next><block type=\"move_forward\"/></next></block></next></block></next></block>"
+  },
+  "mazeData": {
+    "width": 3,
+    "height": 5,
+    "size": 64,
+    "path": [
+      "1,4",
+      "1,3",
+      "1,2",
+      "1,1",
+      "1,0"
+    ],
+    "accesses": ["1,4"],
+    "exits": ["1,0"],
+    "numbers": {
+      "actors": [4],
+      "statics": [3, null, 5],
+      "accesses": [1]
+    }
+  }
+}

@@ -5,7 +5,7 @@
  * @flow
  */
 import React from 'react';
-import { Application, Container } from 'pixi.js';
+import { Application, type Container } from 'pixi.js';
 
 
 type Props = {|
@@ -13,7 +13,6 @@ type Props = {|
   height: number,
   width: number,
 |};
-
 export default class PixiWrapper extends React.Component {
   props: Props;
   app: Application;
