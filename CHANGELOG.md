@@ -1,5 +1,12 @@
 ## HEAD
 
+- 🚀 [2017-05-02] `engine/containers/{gameGenerator -> mazeEngineGenerator}`: update to v2.0.0.
+  - 🚀 The new name reflects better its purpose.
+  - 🚀 Following `blockly/executorGenerator@2.0.0` changes, the engine now is in completely charge of running the set of instructions and animating things in the way.
+  - 🔥 Delete `numberHasLeftMaze` from API. Is a private function now 🎉.
+  - ⚙ `@moveNumberTo -> excecuteSetOfInstructions`: this change of name reflects better what it does.
+  - 🎨 Better error handling thanks to `engine/errors@1.0.0`.
+  - 🚀 Add a battery of tests.
 - 🚀 [2017-05-02] `engine/errors`: New module! v1.0.0.
   - Will contain every engine specific error definition.
   - 🚀 `UnableToLeaveTheNumericLine`: v1.0.0.

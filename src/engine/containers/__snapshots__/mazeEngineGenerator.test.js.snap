@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`engine > containers > mazeEngineGenerator should parse an array of correct actions and return a response 1`] = `"This position is not an exit"`;
