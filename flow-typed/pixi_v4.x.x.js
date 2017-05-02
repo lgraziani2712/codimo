@@ -113,7 +113,7 @@ declare class EventEmitter {
 
 /**
  * @mixin
- * FIXME is definition this OK?
+ * FIXME is this definition OK?
  */
 declare class InteractiveTarget {
   /**

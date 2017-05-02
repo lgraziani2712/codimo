@@ -4,12 +4,24 @@
  *
  * @flow
  */
+class FieldTextInput {
+  spellcheck: boolean;
+  text: string;
+
+  constructor(text: string) {
+    this.text = text;
+  }
+  setSpellcheck(spellcheck: boolean) {
+    this.spellcheck = spellcheck;
+  }
+}
 declare var Blockly: {
   Blocks: {
     [key: string]: {|
       init(): void,
     |},
   },
+  FieldTextInput: typeof FieldTextInput,
   inject(elementId: string | HTMLElement, options: Object): Object,
   JavaScript: {
     ORDER_ATOMIC: string,
