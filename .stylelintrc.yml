@@ -1,0 +1,18 @@
+extends: stylelint-config-standard
+
+plugins: [stylelint-order]
+
+processors: [stylelint-processor-styled-components]
+
+syntax: scss
+
+rules:
+  rule-empty-line-before: never
+
+  # Order
+  order/order: [
+    custom-properties,
+    declarations,
+    rules
+  ]
+  order/properties-alphabetical-order: true

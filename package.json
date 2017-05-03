@@ -2,7 +2,7 @@
   "name": "codimo",
   "version": "1.0.0",
   "private": true,
-  "description": "Códimo FTW",
+  "description": "CÓDIMO",
   "main": "src/main.jsx",
   "scripts": {
     "build-storybook": "build-storybook",
@@ -10,6 +10,7 @@
     "flow:check": "flow check",
     "flow:stop": "flow stop",
     "lint": "eslint src dev-elements .dev-tools --ext .js --ext .jsx --fix",
+    "lint:css": "stylelint src/**/*.jsx src/**/*.js",
     "start": "webpack-dev-server --config ./.dev-tools/config/webpack.config.dev.js",
     "stats": "webpack --config ./.dev-tools/config/webpack.config.dev.js --profile --json > stats.json",
     "storybook": "start-storybook -s ./dist -p 6006",
@@ -63,6 +64,10 @@
     "flow-bin": "0.45.0",
     "jest": "19.0.2",
     "storybook-addon-specifications": "1.0.16",
+    "stylelint": "7.10.1",
+    "stylelint-config-standard": "16.0.0",
+    "stylelint-order": "0.4.4",
+    "stylelint-processor-styled-components": "0.1.0",
     "webpack": "2.4.1",
     "webpack-dev-server": "2.4.5"
   }
