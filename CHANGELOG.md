@@ -1,5 +1,8 @@
 ## HEAD
 
+- 🔥 [2017-05-02] `engine/components/lineGenerator`: update to v1.2.0.
+  - 🔥 Delete `receiveNumberAtPosition` internal implementation. Now is responsability of `numberGenerator` to do that internal job.
+  - Simplify internal API.
 - 🚀 [2017-05-02] `engine/components/numberGenerator`: update to v1.2.0.
   - 🚀 Add `hasEnteredToNumericLine` to the API: it is a new animation function for entering the numeric line.
   - 🚀 Add battery of tests.

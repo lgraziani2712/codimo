@@ -5,10 +5,8 @@
  * @flow
  */
 import { Graphics } from 'pixi.js';
-import { TweenLite, Linear } from 'gsap';
 
 import {
-  ACTOR_MOVEMENT_DURATION,
   HALF,
   NUMERIC_LINE_BG_COLOR,
   NUMERIC_LINE_HEIGHT,
@@ -20,27 +18,18 @@ import {
 import { staticNumberGenerator, type NumberActor } from 'engine/components/numberGenerator';
 
 // margin-top = 10 margin-bottom = 10
-const MARGIN = 20;
+const MARGIN_BOTTOM = TEN;
+const MARGIN = TEN + MARGIN_BOTTOM;
 
 const receiveNumberAtPositionConfig = (
   view: Graphics,
-  size: number,
 ) => (number: NumberActor, position: number): Promise<void> => {
   number.view.setParent(view.getChildAt(position));
 
   // FIXME this must be configured inside the numberGenerator function
   number.view.anchor.x = number.view.anchor.y = 0.5;
 
-  number.view.x = size / HALF;
-  number.view.y = size + (size) / HALF;
-
-  return new Promise((onComplete) => {
-    TweenLite.to(number.view, ACTOR_MOVEMENT_DURATION, {
-      y: size / HALF,
-      ease: Linear.easeNone,
-      onComplete,
-    });
-  });
+  return number.hasEnteredToNumericLine(MARGIN_BOTTOM);
 };
 
 function addVisualNumber(square: Graphics, numbers: Array<number | null>, size: number, i: number) {
@@ -48,8 +37,6 @@ function addVisualNumber(square: Graphics, numbers: Array<number | null>, size: 
     return;
   }
   const number = staticNumberGenerator(numbers[i], size);
-
-  number.view.x = number.view.y = size / HALF;
 
   square.addChild(number.view);
 }
@@ -97,7 +84,7 @@ const lineGenerator = (numbers: Array<number | null>, size: number): Line => {
 
   return {
     view,
-    receiveNumberAtPosition: receiveNumberAtPositionConfig(view, size),
+    receiveNumberAtPosition: receiveNumberAtPositionConfig(view),
   };
 };
 
