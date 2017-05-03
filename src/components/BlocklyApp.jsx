@@ -5,6 +5,7 @@
  * @flow
  */
 import React from 'react';
+import styled from 'styled-components';
 
 import 'blockly/blocks_compressed';
 import 'blockly/javascript_compressed';
@@ -12,25 +13,32 @@ import 'blockly/javascript_compressed';
 import 'blockly/localize/es';
 import 'blockly/components';
 
-import executorGenerator, { type Executor } from 'blockly/executorGenerator';
+import executorGenerator, { type ActorsToActions, type Executor } from 'blockly/executorGenerator';
 import BlocklyToolbox, { type BlocklyToolboxElement } from 'components/BlocklyToolbox';
 import ExecuteButton from 'components/ExecuteButton';
 import { blockNames } from 'blockly/constants';
 
 const ID = 'blockly-app';
+const BlocklyWorkspace = styled.div`
+  height: 420px;
+  width: 600px;
+`;
 
-export type GameMetadata = {|
+type GameMetadataShape = {|
   blockDefinitions: Array<BlockDefinition>,
   defaultElements: string,
   elements: Array<BlocklyToolboxElement>,
 |};
+// TODO exact shapes to this workaround
+// @see https://github.com/facebook/flow/issues/2405
+export type GameMetadata = GameMetadataShape & $Shape<GameMetadataShape>;
 
 type BlockDefinition = {|
   name: string,
-  blockExecutor: (...args: Array<*>) => void,
 |};
 type Props = {|
   gameMetadata: GameMetadata,
+  handleSetOfInstructions(instructions: ActorsToActions): void;
 |};
 
 export default class BlocklyApp extends React.Component {
@@ -46,11 +54,10 @@ export default class BlocklyApp extends React.Component {
 
     this.executor = executorGenerator();
 
-    props.gameMetadata.blockDefinitions.forEach(({ name, blockExecutor }) => {
-      this.executor.addBlockExecutor(name, blockExecutor);
+    props.gameMetadata.blockDefinitions.forEach(({ name }) => {
+      this.executor.addBlockExecutor(name);
     });
   }
-
   /**
    * This function is the Blockly workspace constructor. Every Blockly
    * configuration must be placed here.
@@ -79,23 +86,22 @@ export default class BlocklyApp extends React.Component {
       this.workspace,
     );
   }
-
   handleClick = () => {
-    const code = Blockly.JavaScript.workspaceToCode(this.workspace);
+    const rawInstructions = Blockly.JavaScript.workspaceToCode(this.workspace);
 
-    this.executor.run(code);
+    this.props.handleSetOfInstructions(this.executor.parseInstructions(rawInstructions));
   }
   render() {
     const { gameMetadata } = this.props;
 
     return (
       <div>
-        <div id={ID} style={{ height: '420px', width: '600px' }}>
+        <BlocklyWorkspace id={ID}>
           <BlocklyToolbox
             elements={gameMetadata.elements}
             handleWorkspaceCreation={this.handleWorkspaceCreation}
           />
-        </div>
+        </BlocklyWorkspace>
         <ExecuteButton handleClick={this.handleClick} />
       </div>
     );

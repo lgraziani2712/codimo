@@ -1,5 +1,10 @@
 ## HEAD
 
+- 🚀 [2017-05-02] `blockly/components/BlocklyApp`: update to v2.1.0.
+  - 🚀 Adapt to the following module updates:
+    - `blockly/executorGenerator@2.0.0`,
+    - `engine/containers/mazeEngineGenerator@2.0.0`.
+  - 🚀 Add styles through `styled-components`.
 - 🔥 [2017-05-02] `engine/components/lineGenerator`: update to v1.2.0.
   - 🔥 Delete `receiveNumberAtPosition` internal implementation. Now is responsability of `numberGenerator` to do that internal job.
   - Simplify internal API.

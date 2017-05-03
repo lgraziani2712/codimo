@@ -6,12 +6,10 @@
  */
 import React from 'react';
 
-import { storiesOf, action } from 'test/storybook-facades';
-import { ZERO } from 'constants/numbers';
+import { storiesOf } from 'test/storybook-facades';
 
 import BlocklyApp from './BlocklyApp';
 
-const moveExecutor = (number: number = ZERO, blockName: string) => { action(`${blockName}: ${number}`)(); };
 const gameMetadata = {
   elements: [{
     define: 'block',
@@ -28,16 +26,12 @@ const gameMetadata = {
   }],
   blockDefinitions: [{
     name: 'move_forward',
-    blockExecutor: moveExecutor,
   }, {
     name: 'move_backward',
-    blockExecutor: moveExecutor,
   }, {
     name: 'move_right',
-    blockExecutor: moveExecutor,
   }, {
     name: 'move_left',
-    blockExecutor: moveExecutor,
   }],
   defaultElements: `
     <block type="move_forward">
@@ -57,4 +51,4 @@ const gameMetadata = {
 };
 
 storiesOf('components.BlocklyApp', module)
-  .add('simple Blockly app', () => (<BlocklyApp gameMetadata={gameMetadata} />));
+  .add('simple Blockly app', () => (<BlocklyApp gameMetadata={gameMetadata} handleSetOfInstructions={() => {}} />));
