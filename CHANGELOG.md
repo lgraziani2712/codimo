@@ -1,5 +1,7 @@
 ## HEAD
 
+- 🚀 [2017-05-02] `containers/MazeGameContainer`: add v1.0.0.
+  - 🚀 Add first game container! 🎉
 - 🚀 [2017-05-02] `blockly/components/BlocklyApp`: update to v2.1.0.
   - 🚀 Adapt to the following module updates:
     - `blockly/executorGenerator@2.0.0`,
