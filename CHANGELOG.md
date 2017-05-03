@@ -1,5 +1,12 @@
 ## HEAD
 
+- 🚀 [2017-05-03] `engine/components/numericLineGenerator`: update v2.2.0.
+  - 🚀 `./arrowGenerator`: update v2.2.0.
+    - 🐛 Its `height` and `width` are relative to the `size` property. This solves the issue related to wrong position between the line and the arrows.
+  - 🚀 `./lineGenerator`: update v2.2.0.
+    - 🐛 Its `height` and `width` are relative to the `size` property. This solves the issue related to wrong position between the line and the arrows.
+    - 🔥 Remove some internal constants.
+  - 🚀 Update pivot point to `top-center` for easier positioning manipulation.
 - 🚀 [2017-05-02] `containers/MazeGameContainer`: add v1.0.0.
   - 🚀 Add first game container! 🎉
 - 🚀 [2017-05-02] `blockly/components/BlocklyApp`: update to v2.1.0.

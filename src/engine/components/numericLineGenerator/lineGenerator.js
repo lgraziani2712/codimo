@@ -7,9 +7,7 @@
 import { Graphics } from 'pixi.js';
 
 import {
-  HALF,
   NUMERIC_LINE_BG_COLOR,
-  NUMERIC_LINE_HEIGHT,
   NUMERIC_LINE_NUMBER_BG_COLOR,
   ZERO,
   ONE,
@@ -17,9 +15,8 @@ import {
 } from 'constants/numbers';
 import { staticNumberGenerator, type NumberActor } from 'engine/components/numberGenerator';
 
-// margin-top = 10 margin-bottom = 10
-const MARGIN_BOTTOM = TEN;
-const MARGIN = TEN + MARGIN_BOTTOM;
+// FIXME this must be a percentage of the size? Like 10%?
+const MARGIN = TEN;
 
 const receiveNumberAtPositionConfig = (
   view: Graphics,
@@ -29,7 +26,7 @@ const receiveNumberAtPositionConfig = (
   // FIXME this must be configured inside the numberGenerator function
   number.view.anchor.x = number.view.anchor.y = 0.5;
 
-  return number.hasEnteredToNumericLine(MARGIN_BOTTOM);
+  return number.hasEnteredToNumericLine(MARGIN);
 };
 
 function addVisualNumber(square: Graphics, numbers: Array<number | null>, size: number, i: number) {
@@ -54,13 +51,12 @@ export type Line = {|
  */
 const lineGenerator = (numbers: Array<number | null>, size: number): Line => {
   const view = new Graphics();
-  const width = numbers.length * size + size;
-  const spaceInBetweenX = size / (numbers.length + ONE);
-  const spaceInBetweenY = (NUMERIC_LINE_HEIGHT - size - MARGIN) / HALF;
+  const width = numbers.length * size + (numbers.length + ONE) * MARGIN;
+  const height = size + (MARGIN + MARGIN);
 
   view
     .beginFill(NUMERIC_LINE_BG_COLOR)
-    .drawRect(ZERO, ZERO, width, NUMERIC_LINE_HEIGHT - MARGIN)
+    .drawRect(ZERO, ZERO, width, height)
     .endFill();
 
   view.x = ZERO;
@@ -74,8 +70,8 @@ const lineGenerator = (numbers: Array<number | null>, size: number): Line => {
       .drawRect(ZERO, ZERO, size, size)
       .endFill();
 
-    square.x = i * size + (spaceInBetweenX + i * spaceInBetweenX);
-    square.y = spaceInBetweenY;
+    square.x = i * size + (MARGIN + i * MARGIN);
+    square.y = MARGIN;
 
     view.addChild(square);
 

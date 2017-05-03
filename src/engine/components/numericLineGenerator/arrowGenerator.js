@@ -6,21 +6,28 @@
  */
 import { Graphics } from 'pixi.js';
 
-import { NUMERIC_LINE_BG_COLOR } from 'constants/numbers';
+import { NUMERIC_LINE_BG_COLOR, TEN, HALF, ZERO } from 'constants/numbers';
 
-const arrowCreator = (toTheRight?: boolean): Graphics => {
+const MARGIN_HEIGHT = TEN + TEN;
+const arrowCreator = (size: number, toTheRight?: boolean): Graphics => {
   const arrow = new Graphics();
+  /**
+   * Arrow's height is MARGIN_HEIGHT greater than the line.
+   * That's why needs to add it twice.
+   */
+  const height = size + MARGIN_HEIGHT + MARGIN_HEIGHT;
+  const width = height / HALF;
 
   arrow.beginFill(NUMERIC_LINE_BG_COLOR);
-  /* eslint-disable no-magic-numbers */
+
   if (toTheRight) {
-    arrow.moveTo(0, 0)
-      .lineTo(0, 100).lineTo(50, 50).closePath();
+    arrow.moveTo(ZERO, ZERO)
+      .lineTo(ZERO, height).lineTo(width, width).closePath();
   } else {
-    arrow.moveTo(0, 50)
-      .lineTo(50, 0).lineTo(50, 100).closePath();
+    arrow.moveTo(ZERO, width)
+      .lineTo(width, ZERO).lineTo(width, height).closePath();
   }
-  /* eslint-enable */
+
   arrow.endFill();
 
   return arrow;
