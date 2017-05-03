@@ -9,7 +9,7 @@ import React from 'react';
 import { storiesOf } from 'test/storybook-facades';
 import PixiWrapper from 'test/PixiWrapper';
 
-import numberGenerator from './numberGenerator';
+import numberGenerator from './';
 
 const POSITION = '0,0';
 const SIZES = {

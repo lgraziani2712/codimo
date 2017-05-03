@@ -1,5 +1,11 @@
 ## HEAD
 
+- 🚀 [2017-05-02] `engine/components/numberGenerator`: update to v1.2.0.
+  - 🚀 Add `hasEnteredToNumericLine` to the API: it is a new animation function for entering the numeric line.
+  - 🚀 Add battery of tests.
+  - 🐛 Fix `resetPositionConfig` bug. `position` prop was not being resetted.
+  - 🎨 Better error handling thanks to `engine/errors@1.0.0`.
+  - 📝 Better documentation.
 - 🚀 [2017-05-02] `engine/containers/{gameGenerator -> mazeEngineGenerator}`: update to v2.0.0.
   - 🚀 The new name reflects better its purpose.
   - 🚀 Following `blockly/executorGenerator@2.0.0` changes, the engine now is in completely charge of running the set of instructions and animating things in the way.
