@@ -25,18 +25,38 @@
     "defaultElements": "<block type=\"move_forward\"><next><block type=\"move_forward\"><next><block type=\"move_forward\"><next><block type=\"move_forward\"/></next></block></next></block></next></block>"
   },
   "mazeData": {
-    "width": 3,
+    "canvas": {
+      "height": 500,
+      "width": 450
+    },
+    "width": 5,
     "height": 5,
+    "margin": 10,
     "size": 64,
     "path": [
-      "1,4",
-      "1,3",
-      "1,2",
-      "1,1",
-      "1,0"
+      "2,4",
+      "2,3",
+      "2,2",
+      "2,1",
+      "2,0"
     ],
-    "accesses": ["1,4"],
-    "exits": ["1,0"],
+    "activePathBorders": [{
+      "top": true
+    }, {
+      "top": true,
+      "bottom": true
+    }, {
+      "top": true,
+      "bottom": true
+    }, {
+      "top": true,
+      "bottom": true
+    }, {
+      "top": true,
+      "bottom": true
+    }],
+    "accesses": ["2,4"],
+    "exits": ["2,0"],
     "numbers": {
       "actors": [4],
       "statics": [3, null, 5],

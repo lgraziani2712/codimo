@@ -1,5 +1,9 @@
 ## HEAD
 
+- 🚀 [2017-05-04] `engine/components/mazeGenerator`: update to v2.1.0.
+  - 🚀 Define new props to `MazeDataStructure` in order to achieve better block positioning.
+  - ⚙ Update code related to the new `blockGeneratorConfig@2.0.0`.
+  - 🚀 The new margin system for blocks' borders made easier how block position is calculated.
 - 🚀 [2017-05-04] `engine/components/blockGenerator -> blockGeneratorConfig`: update v2.0.0.
   - 🚀 Improve its generator function:
     - ⚙ Some `mazeGenerator`'s code is now responsability of this generator.
