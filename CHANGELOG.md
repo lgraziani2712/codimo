@@ -1,5 +1,11 @@
 ## HEAD
 
+- 🚀 [2017-05-04] `engine/components/blockGenerator -> blockGeneratorConfig`: update v2.0.0.
+  - 🚀 Improve its generator function:
+    - ⚙ Some `mazeGenerator`'s code is now responsability of this generator.
+    - 🚀 Block borders are configured here.
+  - 🚀 New parameter: `activePathBorders`: it defines wich borders are considered doors.
+  - 🚀 New stories!
 - 🚀 [2017-05-03] `engine/components/numericLineGenerator`: update v2.2.0.
   - 🚀 `./arrowGenerator`: update v2.2.0.
     - 🐛 Its `height` and `width` are relative to the `size` property. This solves the issue related to wrong position between the line and the arrows.
@@ -23,7 +29,7 @@
   - 🐛 Fix `resetPositionConfig` bug. `position` prop was not being resetted.
   - 🎨 Better error handling thanks to `engine/errors@1.0.0`.
   - 📝 Better documentation.
-- 🚀 [2017-05-02] `engine/containers/{gameGenerator -> mazeEngineGenerator}`: update to v2.0.0.
+- 🚀 [2017-05-02] `engine/containers/gameGenerator -> mazeEngineGenerator`: update to v2.0.0.
   - 🚀 The new name reflects better its purpose.
   - 🚀 Following `blockly/executorGenerator@2.0.0` changes, the engine now is in completely charge of running the set of instructions and animating things in the way.
   - 🔥 Delete `numberHasLeftMaze` from API. Is a private function now 🎉.
