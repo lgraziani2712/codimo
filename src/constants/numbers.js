@@ -8,6 +8,7 @@
 export const HALF = 2;
 export const ZERO = 0;
 export const ONE = 1;
+export const FOUR = 4;
 export const TEN = 10;
 
 export const ACTOR_MOVEMENT_DURATION = 0.5;

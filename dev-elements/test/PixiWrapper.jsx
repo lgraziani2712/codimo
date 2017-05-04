@@ -7,9 +7,11 @@
 import React from 'react';
 import { Application, type Container } from 'pixi.js';
 
+const HALF = 2;
 
 type Props = {|
   component: Container,
+  isContainer: boolean,
   height: number,
   width: number,
 |};
@@ -19,14 +21,20 @@ export default class PixiWrapper extends React.Component {
   view: HTMLCanvasElement;
 
   componentDidMount() {
-    const { component, width, height } = this.props;
+    const { component, isContainer, width, height } = this.props;
 
     this.app = new Application(width, height, {
       backgroundColor: 0x2a2a2a,
       view: this.view,
     });
-
     this.app.stage.addChild(component);
+
+    if (isContainer) {
+      component.pivot.x = component.width / HALF;
+      component.pivot.y = component.height / HALF;
+      component.x = width / HALF;
+      component.y = height / HALF;
+    }
   }
   componentWillUnmount() {
     this.app.stop();
