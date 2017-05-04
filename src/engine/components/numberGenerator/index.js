@@ -7,7 +7,7 @@
 import { Text, TextStyle } from 'pixi.js';
 import { TweenLite, Linear } from 'gsap';
 
-import { HALF, ONE, ACTOR_MOVEMENT_DURATION } from 'constants/numbers';
+import { HALF, ACTOR_MOVEMENT_DURATION } from 'constants/numbers';
 import { UnableToLeaveTheNumericLine } from 'engine/helpers/errors';
 
 const HEIGHT = 8;
@@ -29,8 +29,8 @@ const styleRaw = {
 export type NumberActor = {|
   view: Text,
   position: string,
-  hasEnteredToNumericLine(marginBottom: number): Promise<void>,
-  resetPosition(): void,
+  hasEnteredToNumericLine(void): Promise<void>,
+  resetPosition(void): void,
   updatePosition(newPosition: string): Promise<void>,
 |};
 export type StaticNumberActor = {|
@@ -55,17 +55,17 @@ export const staticNumberGenerator = (number: number, size: number): StaticNumbe
 const hasEnteredToNumericLineConfig = (
   view: Text,
   size: number,
+  margin: number,
   /**
    * This function needs the number's scope. That's why is a named function.
    *
-   * @param  {string} marginBottom margin between the numeric line block and the maze
-   * @return {Promise<void>}       animation promise
+   * @return {Promise<void>} animation promise
    */
-) => (function hasEnteredToNumericLine(marginBottom: number): Promise<void> {
+) => (function hasEnteredToNumericLine(): Promise<void> {
   this.position = undefined;
 
   view.x = size / HALF;
-  view.y = size + view.x + marginBottom;
+  view.y = size + view.x + margin + margin;
 
   return new Promise((onComplete) => {
     TweenLite.to(view, ACTOR_MOVEMENT_DURATION, {
@@ -79,6 +79,7 @@ const hasEnteredToNumericLineConfig = (
 const updatePositionConfig = (
   view: Text,
   size: number,
+  margin: number,
   /**
    * This function needs the number's scope. That's why is a named function.
    *
@@ -94,8 +95,8 @@ const updatePositionConfig = (
 
   return new Promise((onComplete) => {
     TweenLite.to(view, ACTOR_MOVEMENT_DURATION, {
-      x: positionNumbers[0] * size + (size - view.width) / HALF - ONE,
-      y: positionNumbers[1] * size + (size - view.height) / HALF + ONE,
+      x: positionNumbers[0] * (size + margin) + size / HALF + margin,
+      y: positionNumbers[1] * (size + margin) + size / HALF + margin,
       ease: Linear.easeNone,
       onComplete,
     });
@@ -105,11 +106,12 @@ const resetPositionConfig = (
   view: Text,
   initialPosition: Array<number>,
   size: number,
+  margin: number,
 ) => (function resetPosition() {
   this.position = `${initialPosition[0]},${initialPosition[1]}`;
 
-  view.x = initialPosition[0] * size + (size - view.width) / HALF - ONE;
-  view.y = initialPosition[1] * size + (size - view.height) / HALF + ONE;
+  view.x = initialPosition[0] * (size + margin) + size / HALF + margin;
+  view.y = initialPosition[1] * (size + margin) + size / HALF + margin;
 });
 
 /**
@@ -121,9 +123,10 @@ const resetPositionConfig = (
  * @param  {number} number   what number will be rendered. Valid values: [-99, 99].
  * @param  {string} position Follows the format 'x,y'.
  * @param  {number} size     The size of a block used as relative value
+ * @param  {number} margin   size of block's margin
  * @return {NumberActor}     Used for animate a number
  */
-const numberGenerator = (number: number, position: string, size: number): NumberActor => {
+const numberGenerator = (number: number, position: string, size: number, margin: number): NumberActor => {
   const style = new TextStyle({
     ...styleRaw,
     fontSize: size / HALF + size / HEIGHT,
@@ -131,15 +134,17 @@ const numberGenerator = (number: number, position: string, size: number): Number
   const view = new Text(number.toString(), style);
   const initialPosition = position.split(',').map((string: string): number => (parseInt(string)));
 
-  view.x = initialPosition[0] * size + (size - view.width) / HALF - ONE;
-  view.y = initialPosition[1] * size + (size - view.height) / HALF + ONE;
+  view.anchor.x = view.anchor.y = 0.5;
+
+  view.x = initialPosition[0] * (size + margin) + size / HALF + margin;
+  view.y = initialPosition[1] * (size + margin) + size / HALF + margin;
 
   return {
     view,
     position,
-    resetPosition: resetPositionConfig(view, initialPosition, size),
-    updatePosition: updatePositionConfig(view, size),
-    hasEnteredToNumericLine: hasEnteredToNumericLineConfig(view, size),
+    resetPosition: resetPositionConfig(view, initialPosition, size, margin),
+    updatePosition: updatePositionConfig(view, size, margin),
+    hasEnteredToNumericLine: hasEnteredToNumericLineConfig(view, size, margin),
   };
 };
 

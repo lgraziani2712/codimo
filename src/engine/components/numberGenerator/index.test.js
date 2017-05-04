@@ -11,7 +11,8 @@ describe('engine > components > numberGenerator', () => {
     const rawNumber = 3;
     const initPosition = '1,1';
     const size = 64;
-    const number = numberGenerator(rawNumber, initPosition, size);
+    const margin = 10;
+    const number = numberGenerator(rawNumber, initPosition, size, margin);
     const initX = number.view.x;
     const initY = number.view.y;
     const newPosition = '2,2';
@@ -32,12 +33,12 @@ describe('engine > components > numberGenerator', () => {
     const rawNumber = 3;
     const initPosition = '1,1';
     const size = 64;
-    const marginBottom = 10;
-    const number = numberGenerator(rawNumber, initPosition, size);
+    const margin = 10;
+    const number = numberGenerator(rawNumber, initPosition, size, margin);
     const initX = number.view.x;
     const initY = number.view.y;
 
-    await number.hasEnteredToNumericLine(marginBottom);
+    await number.hasEnteredToNumericLine();
 
     expect(number.position).toBeUndefined();
     expect(number.view.x).not.toBe(initX);
@@ -49,10 +50,10 @@ describe('engine > components > numberGenerator', () => {
       const rawNumber = 3;
       const initPosition = '1,1';
       const size = 64;
-      const marginBottom = 10;
-      const number = numberGenerator(rawNumber, initPosition, size);
+      const margin = 10;
+      const number = numberGenerator(rawNumber, initPosition, size, margin);
 
-      await number.hasEnteredToNumericLine(marginBottom);
+      await number.hasEnteredToNumericLine();
 
       try {
         number.updatePosition('1,2');
@@ -62,5 +63,5 @@ describe('engine > components > numberGenerator', () => {
       }
     },
   );
-  xit('should stop the animation if the promise was canceled. It should reset its position while clearing the canceled promise');
+  xit('should stop the animation if the promise was canceled. It should reset its position');
 });

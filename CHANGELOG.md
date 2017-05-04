@@ -1,5 +1,9 @@
 ## HEAD
 
+- 🚀 [2017-05-04] `engine/components/numberGenerator`: update to v2.0.0.
+  - 🐛 Fix how its position is defined. This change simplifies its calculation.
+  - 🚀 New parameter: `margin`. This new param is related the block's border.
+  - 🐛 Fix and update its type definition.
 - 🚀 [2017-05-04] `engine/components/mazeGenerator`: update to v2.1.0.
   - 🚀 Define new props to `MazeDataStructure` in order to achieve better block positioning.
   - ⚙ Update code related to the new `blockGeneratorConfig@2.0.0`.
