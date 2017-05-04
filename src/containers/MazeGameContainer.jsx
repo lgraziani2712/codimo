@@ -10,13 +10,14 @@ import styled from 'styled-components';
 
 import { type ActorsToActions } from 'blockly/executorGenerator';
 import BlocklyApp, { type GameMetadata } from 'components/BlocklyApp';
+import { HALF } from 'constants/numbers';
 import mazeEngineGenerator, { type Engine } from 'engine/containers/mazeEngineGenerator';
 import { type MazeDataStructure } from 'engine/components/mazeGenerator';
 
-const WIDTH = 300;
-const HEIGHT = 420;
 const TwoColumns = styled.div`
+  align-items: center;
   display: flex;
+  justify-content: space-between;
 `;
 
 type Props = {|
@@ -39,12 +40,20 @@ export default class MazeGameContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.app = new Application(WIDTH, HEIGHT, {
-      transparent: true,
+    const { gameMetadata } = this.props;
+    const { mazeData } = gameMetadata;
+    const { canvas } = mazeData;
+
+    this.app = new Application(canvas.width, canvas.height, {
+      backgroundColor: 0x2a2a2a,
       view: this.view,
     });
-
     this.app.stage.addChild(this.engine.view);
+
+    this.engine.view.pivot.x = this.engine.view.width / HALF;
+    this.engine.view.pivot.y = this.engine.view.height / HALF;
+    this.engine.view.x = canvas.width / HALF;
+    this.engine.view.y = canvas.height / HALF;
   }
   // TODO destroy app? reset on new props
   componentWillUnmount() {

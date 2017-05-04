@@ -6,21 +6,27 @@
  */
 import { Graphics } from 'pixi.js';
 
-import { NUMERIC_LINE_BG_COLOR } from 'constants/numbers';
+import { NUMERIC_LINE_BG_COLOR, HALF, ZERO, FOUR } from 'constants/numbers';
 
-const arrowCreator = (toTheRight?: boolean): Graphics => {
+const arrowCreator = (size: number, margin: number, toTheRight?: boolean): Graphics => {
   const arrow = new Graphics();
+  /**
+   * Arrow's height must be `margin * 2` greater than the line.
+   * That's why needs to multiply it by FOUR.
+   */
+  const height = size + margin * FOUR;
+  const width = height / HALF;
 
   arrow.beginFill(NUMERIC_LINE_BG_COLOR);
-  /* eslint-disable no-magic-numbers */
+
   if (toTheRight) {
-    arrow.moveTo(0, 0)
-      .lineTo(0, 100).lineTo(50, 50).closePath();
+    arrow.moveTo(ZERO, ZERO)
+      .lineTo(ZERO, height).lineTo(width, width).closePath();
   } else {
-    arrow.moveTo(0, 50)
-      .lineTo(50, 0).lineTo(50, 100).closePath();
+    arrow.moveTo(ZERO, width)
+      .lineTo(width, ZERO).lineTo(width, height).closePath();
   }
-  /* eslint-enable */
+
   arrow.endFill();
 
   return arrow;

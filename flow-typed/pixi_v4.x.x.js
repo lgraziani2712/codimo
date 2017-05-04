@@ -89,7 +89,7 @@ declare class Resource {
 declare class ResourceLoader {
   defaultQueryString: string;
   onComplete: {| add(cb: OnCompleteSignal): void |};
-  onError: {| add(): void |};
+  onError: {| add(cb: OnErrorSignal): void |};
 
   constructor(baseUrl?: string, concurrency?: number): ResourceLoader;
 
@@ -101,13 +101,13 @@ declare class ResourceLoader {
   add(url: Array<string | PixiResourceType>): ResourceLoader;
 
   load(cb?: Function): ResourceLoader;
-  reset(): ResourceLoader;
+  reset(void): ResourceLoader;
 }
 
 // TODO all props and methods
 // https://nodejs.org/api/events.html#events_class_eventemitter
 declare class EventEmitter {
-  constructor(): EventEmitter;
+  constructor(void): EventEmitter;
   on(eventName: string, listener: Function): void;
 }
 
@@ -163,12 +163,12 @@ declare class Ticker {
   speed: number;
   started: boolean;
 
-  constructor(): Ticker;
+  constructor(void): Ticker;
   add(fn: Function, context?: Function): Ticker;
   addOnce(fn: Function, context?: Function): Ticker;
   remove(fn?: Function, context?: Function): Ticker;
-  start(): void;
-  stop(): void;
+  start(void): void;
+  stop(void): void;
   update(currentTime?: number): void;
 }
 
@@ -182,8 +182,8 @@ declare module 'pixi.js' {
     constructor(textures: Array<Texture | Object>, autoUpdate?: boolean): AnimatedSprite;
     gotoAndPlay(frameNumber: number): void;
     gotoAndStop(frameNumber: number): void;
-    play(): void;
-    stop(): void;
+    play(void): void;
+    stop(void): void;
   }
   declare class Application {
     renderer: WebGLRenderer | CanvasRenderer;
@@ -206,9 +206,9 @@ declare module 'pixi.js' {
       useSharedTicker?: boolean,
     ): Application;
     destroy(removeView?: boolean): void;
-    render(): void;
-    start(): void;
-    stop(): void;
+    render(void): void;
+    start(void): void;
+    stop(void): void;
   }
   /**
    * @event error   Fired when a not-immediately-available source fails to load.
@@ -310,9 +310,9 @@ declare module 'pixi.js' {
       scaleMode?: number,
       resolution?: number,
     ): BaseTexture;
-    destroy(): void;
-    dispose(): void;
-    update(): void;
+    destroy(void): void;
+    dispose(void): void;
+    update(void): void;
     updateSourceImage(newSrc: string): void;
   }
   // TODO all props and methods
@@ -343,9 +343,9 @@ declare module 'pixi.js' {
     y: number;
 
     constructor(x?: number, y?: number, radius?: number): Circle;
-    clone(): Circle;
+    clone(void): Circle;
     contains(x: number, y: number): boolean;
-    getBounds(): Rectangle;
+    getBounds(void): Rectangle;
   }
   // TODO all props and methods
   declare class Container extends DisplayObject {
@@ -356,7 +356,7 @@ declare module 'pixi.js' {
     height: number;
     width: number;
 
-    constructor(): Container;
+    constructor(void): Container;
     // TODO create an interface
     addChild(...children: Array<DisplayObject>): DisplayObject;
     addChildAt(child: DisplayObject, index: number): Container;
@@ -402,9 +402,9 @@ declare module 'pixi.js' {
     y: number;
 
     constructor(x?: number, y?: number, width?: number, height?: number): Ellipse;
-    clone(): Ellipse;
+    clone(void): Ellipse;
     contains(x: number, y: number): boolean;
-    getBounds(): Rectangle;
+    getBounds(void): Rectangle;
   }
   declare class Filter extends Shader {
     static defaultFragmentSrc: string;
@@ -433,7 +433,7 @@ declare module 'pixi.js' {
   // TODO all props
   declare class Graphics extends Container {
     constructor(nativeLines?: boolean): Graphics;
-    addHole(): Graphics;
+    addHole(void): Graphics;
     arc(
       cx: number,
       cy: number,
@@ -445,9 +445,9 @@ declare module 'pixi.js' {
     arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): Graphics;
     beginFill(color?: number, alpha?: number): Graphics;
     bezierCurveTo(cpX: number, cpY: number, cpX2: number, cpY2: number, toX: number, toY: number): Graphics;
-    clear(): Graphics;
-    clone(): Graphics;
-    closePath(): Graphics;
+    clear(void): Graphics;
+    clone(void): Graphics;
+    closePath(void): Graphics;
     containsPoint(point: Point): boolean;
     destroy(options?: boolean | {|
       children?: boolean,
@@ -460,14 +460,14 @@ declare module 'pixi.js' {
     drawRect(x: number, y: number, width: number, height: number): Graphics;
     drawRoundedRect(x: number, y: number, width: number, height: number, radius: number): Graphics;
     drawShape(shape: Circle | Ellipse | Polygon | Rectangle | RoundedRectangle): Graphics;
-    endFill(): Graphics;
+    endFill(void): Graphics;
     generateCanvasTexture(scaleMode: number, resolution: number): Texture;
-    isFastRect(): boolean;
+    isFastRect(void): boolean;
     lineStyle(lineWidth?: number, color?: number, alpha?: number): Graphics;
     lineTo(x: number, y: number): Graphics;
     moveTo(x: number, y: number): Graphics;
     quadraticCurveTo(cpX: number, cpY: number, toX: number, toY: number): Graphics;
-    updateLocalBounds(): void;
+    updateLocalBounds(void): void;
   }
   // TODO add props
   // TODO add internal API?
@@ -510,7 +510,7 @@ declare module 'pixi.js' {
     y: number;
 
     constructor(x?: number, y?: number): Point;
-    clone(): Point;
+    clone(void): Point;
     copy(p: Point): void;
     equals(p: Point): boolean;
     set(x?: number, y?: number): void;
@@ -524,8 +524,8 @@ declare module 'pixi.js' {
     type: number;
 
     constructor(points: Array<Point | number>): Polygon;
-    clone(): Polygon;
-    close(): void;
+    clone(void): Polygon;
+    close(void): void;
     contains(x: number, y: number): boolean;
   }
   declare class Rectangle {
@@ -546,7 +546,7 @@ declare module 'pixi.js' {
     y: number;
 
     constructor(x?: number, y?: number, width?: number, height?: number): Rectangle;
-    clone(): Rectangle;
+    clone(void): Rectangle;
     contains(x: number, y: number): boolean;
     copy(rectangle: Rectangle): Rectangle;
     enlarge(rectangle: Rectangle): void;
@@ -574,7 +574,7 @@ declare module 'pixi.js' {
   // TODO add props
   declare class Rope extends Mesh {
     constructor(texture: Texture, points: Array<Point>): Rope;
-    refresh(): void;
+    refresh(void): void;
   }
   declare class RoundedRectangle {
     height: number;
@@ -589,7 +589,7 @@ declare module 'pixi.js' {
     y: number;
 
     constructor(x?: number, y?: number, width?: number, height?: number, radius?: number): RoundedRectangle;
-    clone(): RoundedRectangle;
+    clone(void): RoundedRectangle;
     contains(x: number, y: number): boolean;
   }
   // TODO props, methods and extends
@@ -678,8 +678,8 @@ declare module 'pixi.js' {
   }
   declare class TextStyle {
     constructor(style?: PixiTextStyleType): TextStyle;
-    clone(): TextStyle;
-    reset(): void;
+    clone(void): TextStyle;
+    reset(void): void;
   }
   /**
    * @event update
@@ -744,9 +744,9 @@ declare module 'pixi.js' {
       trim?: Rectangle,
       rotate?: number,
     ): Texture;
-    clone(): Texture;
+    clone(void): Texture;
     destroy(destroyBase: boolean): void;
-    update(): void;
+    update(void): void;
   }
   declare class TilingSprite extends Sprite {
     clampMargin: number;
@@ -794,8 +794,8 @@ declare module 'pixi.js' {
     clear(clearColor?: number): void;
     clearRenderTexture(renderTexture: RenderTexture, clearColor?: number): WebGLRenderer;
     // TODO VertexArrayObject
-    createVao(): Object;
-    flush(): void;
+    createVao(void): Object;
+    flush(void): void;
     render(
       displayObject: DisplayObject,
       renderTexture: RenderTexture,
@@ -804,7 +804,7 @@ declare module 'pixi.js' {
       transform?: Object,
       skipUpdateTransform?: boolean,
     ): void;
-    reset(): WebGLRenderer;
+    reset(void): WebGLRenderer;
     /**
      * @see BLEND_MODES
      */

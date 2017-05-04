@@ -8,6 +8,7 @@ import React from 'react';
 
 import { storiesOf } from 'test/storybook-facades';
 import PixiWrapper from 'test/PixiWrapper';
+import { TEN, ONE } from 'constants/numbers';
 
 import numberGenerator from './';
 
@@ -18,21 +19,47 @@ const SIZES = {
   negativeOne: 256,
   negativeTen: 512,
 };
-// eslint-disable-next-line no-magic-numbers
-const one = numberGenerator(1, POSITION, SIZES.one).view;
-// eslint-disable-next-line no-magic-numbers
-const ten = numberGenerator(10, POSITION, SIZES.ten).view;
-// eslint-disable-next-line no-magic-numbers
-const negativeOne = numberGenerator(-1, POSITION, SIZES.negativeOne).view;
-// eslint-disable-next-line no-magic-numbers
-const negativeTen = numberGenerator(-10, POSITION, SIZES.negativeTen).view;
+const MARGINS = {
+  one: 10,
+  ten: 20,
+  negativeOne: 30,
+  negativeTen: 40,
+};
+const one = numberGenerator(ONE, POSITION, SIZES.one, MARGINS.one).view;
+const ten = numberGenerator(TEN, POSITION, SIZES.ten, MARGINS.ten).view;
+const negativeOne = numberGenerator(-ONE, POSITION, SIZES.negativeOne, MARGINS.negativeOne).view;
+const negativeTen = numberGenerator(-TEN, POSITION, SIZES.negativeTen, MARGINS.negativeTen).view;
 
 storiesOf('engine.components.Number', module)
-  .add('one digit', () => (<PixiWrapper component={one} height={SIZES.one} width={SIZES.one} />))
-  .add('two digits', () => (<PixiWrapper component={ten} height={SIZES.ten} width={SIZES.ten} />))
+  .add('one digit', () => (
+    <PixiWrapper
+      component={one}
+      isContainer={false}
+      height={SIZES.one + MARGINS.one + MARGINS.one}
+      width={SIZES.one + MARGINS.one + MARGINS.one}
+    />
+  ))
+  .add('two digits', () => (
+    <PixiWrapper
+      component={ten}
+      isContainer={false}
+      height={SIZES.ten + MARGINS.ten + MARGINS.ten}
+      width={SIZES.ten + MARGINS.ten + MARGINS.ten}
+    />
+  ))
   .add('negative one digit', () => (
-    <PixiWrapper component={negativeOne} height={SIZES.negativeOne} width={SIZES.negativeOne} />
+    <PixiWrapper
+      component={negativeOne}
+      isContainer={false}
+      height={SIZES.negativeOne + MARGINS.negativeOne + MARGINS.negativeOne}
+      width={SIZES.negativeOne + MARGINS.negativeOne + MARGINS.negativeOne}
+    />
   ))
   .add('negative two digits', () => (
-    <PixiWrapper component={negativeTen} height={SIZES.negativeTen} width={SIZES.negativeTen} />
+    <PixiWrapper
+      component={negativeTen}
+      isContainer={false}
+      height={SIZES.negativeTen + MARGINS.negativeTen + MARGINS.negativeTen}
+      width={SIZES.negativeTen + MARGINS.negativeTen + MARGINS.negativeTen}
+    />
   ));

@@ -19,16 +19,18 @@ export type NumericLine = {|
   view: Container,
   receiveNumberAtPosition(number: NumberActor, position: number): void,
 |};
-const numericLineGenerator = (numbers: Array<number | null>, size: number): NumericLine => {
-  const leftArrow = arrowGenerator();
-  const rightArrow = arrowGenerator(true);
-  const line = lineGenerator(numbers, size);
+const numericLineGenerator = (numbers: Array<number | null>, size: number, margin: number): NumericLine => {
   const view = new Container();
+  const leftArrow = arrowGenerator(size, margin);
+  const rightArrow = arrowGenerator(size, margin, true);
+  const line = lineGenerator(numbers, size, margin);
 
   line.view.x = leftArrow.width;
   rightArrow.x = line.view.width + leftArrow.width;
 
   view.addChild(leftArrow, line.view, rightArrow);
+
+  view.x = size + margin - leftArrow.width;
 
   return {
     view,
