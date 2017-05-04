@@ -6,16 +6,15 @@
  */
 import { Graphics } from 'pixi.js';
 
-import { NUMERIC_LINE_BG_COLOR, TEN, HALF, ZERO } from 'constants/numbers';
+import { NUMERIC_LINE_BG_COLOR, HALF, ZERO, FOUR } from 'constants/numbers';
 
-const MARGIN_HEIGHT = TEN + TEN;
-const arrowCreator = (size: number, toTheRight?: boolean): Graphics => {
+const arrowCreator = (size: number, margin: number, toTheRight?: boolean): Graphics => {
   const arrow = new Graphics();
   /**
-   * Arrow's height is MARGIN_HEIGHT greater than the line.
-   * That's why needs to add it twice.
+   * Arrow's height must be `margin * 2` greater than the line.
+   * That's why needs to multiply it by FOUR.
    */
-  const height = size + MARGIN_HEIGHT + MARGIN_HEIGHT;
+  const height = size + margin * FOUR;
   const width = height / HALF;
 
   arrow.beginFill(NUMERIC_LINE_BG_COLOR);

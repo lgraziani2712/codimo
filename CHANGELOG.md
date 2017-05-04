@@ -1,5 +1,14 @@
 ## HEAD
 
+- 🚀 [2017-05-04] `engine/components/numericLineGenerator`: update to v3.0.0.
+  - 🚀 New parameter: `margin`. This new param is related the block's border.
+  - 🐛 Fix how its position is defined. This change simplifies its calculation.
+  - 🚀 `./arrowGenerator`: update to v3.0.0.
+    - 🚀 New parameter: `margin`.
+    - 🔥 Clear code.
+  - 🚀 `./lineGenerator`: update to v3.0.0.
+    - 🚀 New parameter: `margin`.
+    - 🔥 Much more clear code. Some hardcoded values were deleted.
 - 🚀 [2017-05-04] `engine/components/numberGenerator`: update to v2.0.0.
   - 🐛 Fix how its position is defined. This change simplifies its calculation.
   - 🚀 New parameter: `margin`. This new param is related the block's border.
@@ -8,16 +17,16 @@
   - 🚀 Define new props to `MazeDataStructure` in order to achieve better block positioning.
   - ⚙ Update code related to the new `blockGeneratorConfig@2.0.0`.
   - 🚀 The new margin system for blocks' borders made easier how block position is calculated.
-- 🚀 [2017-05-04] `engine/components/blockGenerator -> blockGeneratorConfig`: update v2.0.0.
+- 🚀 [2017-05-04] `engine/components/blockGenerator -> blockGeneratorConfig`: update to v2.0.0.
   - 🚀 Improve its generator function:
     - ⚙ Some `mazeGenerator`'s code is now responsability of this generator.
     - 🚀 Block borders are configured here.
   - 🚀 New parameter: `activePathBorders`: it defines wich borders are considered doors.
   - 🚀 New stories!
-- 🚀 [2017-05-03] `engine/components/numericLineGenerator`: update v2.2.0.
-  - 🚀 `./arrowGenerator`: update v2.2.0.
+- 🚀 [2017-05-03] `engine/components/numericLineGenerator`: update to v2.2.0.
+  - 🚀 `./arrowGenerator`: update to v2.2.0.
     - 🐛 Its `height` and `width` are relative to the `size` property. This solves the issue related to wrong position between the line and the arrows.
-  - 🚀 `./lineGenerator`: update v2.2.0.
+  - 🚀 `./lineGenerator`: update to v2.2.0.
     - 🐛 Its `height` and `width` are relative to the `size` property. This solves the issue related to wrong position between the line and the arrows.
     - 🔥 Remove some internal constants.
   - 🚀 Update pivot point to `top-center` for easier positioning manipulation.
@@ -56,7 +65,7 @@
   - ⚙ API completely: the main point of this refactor is to remove the use of callbacks for each block executor. Instead, we'll use instructions with a specific format. With this change we can centralice everything related to the animation in the engine.
     - `addBlockExecutor`: won't receive callbacks anymore.
     - `run -> parseInstructions`: will return a map of actions for each actor in the game.
-- 🚀 [2017-04-27] `blockly/components/BlocklyApp`: update v0.2.0.
+- 🚀 [2017-04-27] `blockly/components/BlocklyApp`: update to v0.2.0.
   - 🚀 New property: `test/gameMetadata`: contains everything it needs to generate a game.
     - 🚀 New property: `blockDefinitions`: list of the blocks who are going to be used.
     - 🚀 New property: `defaultElements`: a string representation of pre setted blocks.

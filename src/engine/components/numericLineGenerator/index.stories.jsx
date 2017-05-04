@@ -30,48 +30,58 @@ storiesOf('engine.components.numericLine', module)
   // Arrows
   //////////////////////////////////
   .add('simple left arrow', () => {
-    const arrow = arrowGenerator(SIZE);
+    const arrow = arrowGenerator(SIZE, TEN);
 
     arrow.x = WIDTH_ARROW / QUARTER;
     arrow.y = HEIGHT_ARROW / QUARTER;
 
-    return <PixiWrapper component={arrow} height={HEIGHT_ARROW} width={WIDTH_ARROW} />;
+    return <PixiWrapper component={arrow} isContainer={true} height={HEIGHT_ARROW} width={WIDTH_ARROW} />;
   })
   .add('simple right arrow', () => {
-    const arrow = arrowGenerator(SIZE, true);
+    const arrow = arrowGenerator(SIZE, TEN, true);
 
     arrow.x = WIDTH_ARROW / QUARTER;
     arrow.y = HEIGHT_ARROW / QUARTER;
 
-    return <PixiWrapper component={arrow} height={HEIGHT_ARROW} width={WIDTH_ARROW} />;
+    return <PixiWrapper component={arrow} isContainer={true} height={HEIGHT_ARROW} width={WIDTH_ARROW} />;
   })
   //////////////////////////////////
   // Line
   //////////////////////////////////
   .add('simple line', () => {
-    const line = lineGenerator([null, null, null, null, null, null, null, null], SIZE);
+    const line = lineGenerator([null, null, null, null, null, null, null, null], SIZE, TEN);
 
     line.view.x = 32;
     line.view.y = 28;
 
     return (
-      <PixiWrapper component={line.view} height={line.view.height + SIZE} width={line.view.width + SIZE} />
+      <PixiWrapper
+        component={line.view}
+        isContainer={true}
+        height={line.view.height + SIZE}
+        width={line.view.width + SIZE}
+      />
     );
   })
   .add('line with static numbers', () => {
     // eslint-disable-next-line no-magic-numbers
-    const line = lineGenerator([0, 1, 2, 3, 4, 5, 6, 7], SIZE);
+    const line = lineGenerator([0, 1, 2, 3, 4, 5, 6, 7], SIZE, TEN);
 
     line.view.x = 32;
     line.view.y = 28;
 
     return (
-      <PixiWrapper component={line.view} height={line.view.height + SIZE} width={line.view.width + SIZE} />
+      <PixiWrapper
+        component={line.view}
+        isContainer={true}
+        height={line.view.height + SIZE}
+        width={line.view.width + SIZE}
+      />
     );
   })
   .add('line with an animated number', () => {
-    const line = lineGenerator([null, null, null, null, null, null, null, null], SIZE);
-    const ten = numberGenerator(TEN, '0,0', SIZE);
+    const line = lineGenerator([null, null, null, null, null, null, null, null], SIZE, TEN);
+    const ten = numberGenerator(TEN, '0,0', SIZE, TEN);
 
     line.view.x = 32;
     line.view.y = 28;
@@ -82,7 +92,12 @@ storiesOf('engine.components.numericLine', module)
     })();
 
     return (
-      <PixiWrapper component={line.view} height={line.view.height + SIZE + SIZE} width={line.view.width + SIZE} />
+      <PixiWrapper
+        component={line.view}
+        isContainer={true}
+        height={line.view.height + SIZE + SIZE}
+        width={line.view.width + SIZE}
+      />
     );
   })
   //////////////////////////////////
@@ -92,29 +107,38 @@ storiesOf('engine.components.numericLine', module)
     const numericLine = numericLineGenerator(
       [null, null, null, null, null, null, null, null, null, null],
       SIZE,
+      TEN,
     );
 
-    numericLine.view.x = WIDTH_NUMERIC_LINE / HALF;
     numericLine.view.y = (HEIGHT_NUMERIC_LINE - numericLine.view.height) / HALF;
 
     return (
-      <PixiWrapper component={numericLine.view} height={HEIGHT_NUMERIC_LINE} width={WIDTH_NUMERIC_LINE} />
+      <PixiWrapper
+        component={numericLine.view}
+        isContainer={true}
+        height={HEIGHT_NUMERIC_LINE}
+        width={WIDTH_NUMERIC_LINE}
+      />
     );
   })
   .add('numeric line with animated and static numbers', () => {
     // eslint-disable-next-line no-magic-numbers
-    const numericLine = numericLineGenerator([1, 2, 3, 4, 5, 6, 7, 8, 9, null], SIZE);
-    const ten = numberGenerator(TEN, '0,0', SIZE);
+    const numericLine = numericLineGenerator([1, 2, 3, 4, 5, 6, 7, 8, 9, null], SIZE, TEN);
+    const ten = numberGenerator(TEN, '0,0', SIZE, TEN);
 
     (async () => {
       await wait(500); // eslint-disable-line no-magic-numbers
       await numericLine.receiveNumberAtPosition(ten, NINE);
     })();
 
-    numericLine.view.x = WIDTH_NUMERIC_LINE / HALF;
     numericLine.view.y = (HEIGHT_NUMERIC_LINE - numericLine.view.height) / HALF;
 
     return (
-      <PixiWrapper component={numericLine.view} height={HEIGHT_NUMERIC_LINE} width={WIDTH_NUMERIC_LINE} />
+      <PixiWrapper
+        component={numericLine.view}
+        isContainer={true}
+        height={HEIGHT_NUMERIC_LINE}
+        width={WIDTH_NUMERIC_LINE}
+      />
     );
   });
