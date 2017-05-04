@@ -14,8 +14,8 @@ import { blockNames } from 'blockly/constants';
 
 import mazeEngineGenerator from './mazeEngineGenerator';
 
-const WIDTH = 960;
-const HEIGHT = 460;
+const WIDTH = 1300;
+const HEIGHT = 660;
 
 storiesOf('engine.containers.mazeEngineGenerator', module)
   .add('simple mazeEngine', () => {
@@ -47,6 +47,7 @@ storiesOf('engine.containers.mazeEngineGenerator', module)
       blockNames.MOVE_LEFT,
       blockNames.MOVE_LEFT,
       blockNames.MOVE_FORWARD,
+      blockNames.MOVE_FORWARD,
     ]);
 
     (async () => {
@@ -54,5 +55,8 @@ storiesOf('engine.containers.mazeEngineGenerator', module)
       await mazeEngine.excecuteSetOfInstructions(actions);
     })();
 
-    return <PixiWrapper component={mazeEngine.view} height={HEIGHT} width={WIDTH} />;
+    mazeEngine.view.x += 32;
+    mazeEngine.view.y += 16;
+
+    return <PixiWrapper component={mazeEngine.view} isContainer={true} height={HEIGHT} width={WIDTH} />;
   });

@@ -6,7 +6,7 @@
  */
 import { Container } from 'pixi.js';
 
-import { HALF, ZERO, ONE } from 'constants/numbers';
+import { ZERO, ONE } from 'constants/numbers';
 import { type ActorsToActions } from 'blockly/executorGenerator';
 import mazeGenerator, { type MazeDataStructure } from 'engine/components/mazeGenerator';
 import numberGenerator, { type NumberActor } from 'engine/components/numberGenerator';
@@ -25,7 +25,6 @@ const numberHasLeftMazeConfig = (
 
   numericLine.receiveNumberAtPosition(number, mazeData.numbers.accesses[exit]);
 };
-
 /* eslint-disable camelcase */
 const directions = {
   move_forward: [ZERO, -ONE],
@@ -78,24 +77,25 @@ export type Engine = {|
 |};
 export default function mazeEngineGenerator(mazeData: MazeDataStructure): Engine {
   const view = new Container();
-  const numericLine = numericLineGenerator(mazeData.numbers.statics, mazeData.size);
+  const numericLine = numericLineGenerator(mazeData.numbers.statics, mazeData.size, mazeData.margin);
   const maze = mazeGenerator(mazeData);
   const numbers: Array<NumberActor> = [];
 
   for (let i = 0; i < mazeData.numbers.actors.length; i++) {
-    const number = numberGenerator(mazeData.numbers.actors[i], mazeData.accesses[i], mazeData.size);
+    const number = numberGenerator(
+      mazeData.numbers.actors[i],
+      mazeData.accesses[i],
+      mazeData.size,
+      mazeData.margin,
+    );
 
     maze.view.addChild(number.view);
     numbers.push(number);
   }
 
-  numericLine.view.x = 1;
-  view.addChild(maze.view, numericLine.view);
+  maze.view.y = numericLine.view.height - mazeData.margin;
 
-  // FIXME hardcoded values
-  maze.view.y = 91;
-  // eslint-disable-next-line no-magic-numbers
-  maze.view.x = view.width / HALF - 47;
+  view.addChild(maze.view, numericLine.view);
 
   return {
     view,
