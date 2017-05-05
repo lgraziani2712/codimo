@@ -1,5 +1,7 @@
 ## HEAD
 
+- 🚀 [2017-05-05] `engine/helpers/randomConfigurations`: v1.0.0!
+  - 🚀 `randomizeActorsConfig` v1.0.0!: This function returns a new array of new valid actors' numbers. This doesn't create new Actors, just new valid numbers for each actor.
 - 🚀 [2017-05-04] `engine/components/numericLineGenerator`: update to v3.0.0.
   - 🚀 New parameter: `margin`. This new param is related the block's border.
   - 🐛 Fix how its position is defined. This change simplifies its calculation.
