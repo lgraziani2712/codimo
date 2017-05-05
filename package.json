@@ -45,7 +45,7 @@
     "babel-cli": "6.24.1",
     "babel-eslint": "7.2.3",
     "babel-loader": "7.0.0",
-    "babel-plugin-dynamic-import-node": "1.0.1",
+    "babel-plugin-dynamic-import-node": "1.0.2",
     "babel-plugin-dynamic-import-webpack": "1.0.1",
     "babel-plugin-transform-class-properties": "6.24.1",
     "babel-plugin-transform-es2015-modules-commonjs": "6.24.1",
