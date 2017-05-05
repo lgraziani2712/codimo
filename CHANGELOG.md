@@ -1,5 +1,14 @@
 ## HEAD
 
+- 🚀 [2017-05-05] `engine/containers/mazeEngineGenerator`: update to v3.0.0.
+  - 🚀 New parameter: `numericLineData`.
+  - 🚀 Add `handleResetGame` to its API!: uses `randomizeActors` to generate a new array of actors, and reset their positions.
+  - 🔥 This new change made possible to delete one prop from the `gameMetadata.mazeData` structure: `actors`.
+- 🚀 [2017-05-05] `engine/containers/numberGenerator`: update to v2.1.0.
+  - 🚀 Add `changeActor` to its API!: updates the represented number.
+- 🚀 [2017-05-05] `engine/components/numericLineGenerator`: new `numericLineData` structure description.
+- 🔥 [2017-05-05] `engine/components/mazeGenerator`: remove `numbers` structure description from `MazeData` to match new `gameMetadata` shape. Also update `MazeDataStructure -> MazeData`.
+- ⚙ [2017-05-05] `gameMetadata.mazeData.numbers -> gameMetadata.numericLineData`: this refactor makes the shape of the metadata more accurate.
 - 🚀 [2017-05-05] `engine/helpers/randomConfigurations`: v1.0.0!
   - 🚀 `randomizeActorsConfig` v1.0.0!: This function returns a new array of new valid actors' numbers. This doesn't create new Actors, just new valid numbers for each actor.
 - 🚀 [2017-05-04] `engine/components/numericLineGenerator`: update to v3.0.0.
@@ -16,7 +25,7 @@
   - 🚀 New parameter: `margin`. This new param is related the block's border.
   - 🐛 Fix and update its type definition.
 - 🚀 [2017-05-04] `engine/components/mazeGenerator`: update to v2.1.0.
-  - 🚀 Define new props to `MazeDataStructure` in order to achieve better block positioning.
+  - 🚀 Define new props to `MazeData` in order to achieve better block positioning.
   - ⚙ Update code related to the new `blockGeneratorConfig@2.0.0`.
   - 🚀 The new margin system for blocks' borders made easier how block position is calculated.
 - 🚀 [2017-05-04] `engine/components/blockGenerator -> blockGeneratorConfig`: update to v2.0.0.

@@ -15,6 +15,10 @@ const receiveNumberAtPositionConfig = (line: Line) => (number: NumberActor, posi
   line.receiveNumberAtPosition(number, position);
 };
 
+export type NumericLineData = {|
+  statics: Array<number | null>,
+  accesses: Array<number>,
+|};
 export type NumericLine = {|
   view: Container,
   receiveNumberAtPosition(number: NumberActor, position: number): void,

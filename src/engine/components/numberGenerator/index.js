@@ -10,7 +10,7 @@ import { TweenLite, Linear } from 'gsap';
 import { HALF, ACTOR_MOVEMENT_DURATION } from 'constants/numbers';
 import { UnableToLeaveTheNumericLine } from 'engine/helpers/errors';
 
-const HEIGHT = 8;
+const EIGHT = 8;
 
 const styleRaw = {
   fontFamily: 'Arial',
@@ -29,6 +29,7 @@ const styleRaw = {
 export type NumberActor = {|
   view: Text,
   position: string,
+  changeActor(number: number): void,
   hasEnteredToNumericLine(void): Promise<void>,
   resetPosition(void): void,
   updatePosition(newPosition: string): Promise<void>,
@@ -40,7 +41,7 @@ export type StaticNumberActor = {|
 export const staticNumberGenerator = (number: number, size: number): StaticNumberActor => {
   const style = new TextStyle({
     ...styleRaw,
-    fontSize: size / HALF + size / HEIGHT,
+    fontSize: size / HALF + size / EIGHT,
   });
   const view = new Text(number.toString(), style);
 
@@ -113,6 +114,11 @@ const resetPositionConfig = (
   view.x = initialPosition[0] * (size + margin) + size / HALF + margin;
   view.y = initialPosition[1] * (size + margin) + size / HALF + margin;
 });
+const changeActorConfig = (
+  view: Text,
+) => (number: number) => {
+  view.text = number.toString();
+};
 
 /**
  * This generator returns a new instance of NumberActor.
@@ -129,7 +135,7 @@ const resetPositionConfig = (
 const numberGenerator = (number: number, position: string, size: number, margin: number): NumberActor => {
   const style = new TextStyle({
     ...styleRaw,
-    fontSize: size / HALF + size / HEIGHT,
+    fontSize: size / HALF + size / EIGHT,
   });
   const view = new Text(number.toString(), style);
   const initialPosition = position.split(',').map((string: string): number => (parseInt(string)));
@@ -142,9 +148,10 @@ const numberGenerator = (number: number, position: string, size: number, margin:
   return {
     view,
     position,
+    changeActor: changeActorConfig(view),
+    hasEnteredToNumericLine: hasEnteredToNumericLineConfig(view, size, margin),
     resetPosition: resetPositionConfig(view, initialPosition, size, margin),
     updatePosition: updatePositionConfig(view, size, margin),
-    hasEnteredToNumericLine: hasEnteredToNumericLineConfig(view, size, margin),
   };
 };
 

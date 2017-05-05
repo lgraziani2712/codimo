@@ -4,7 +4,8 @@
  *
  * @flow
  */
-import mazeData from 'test/mazeData.json';
+/* eslint-disable no-magic-numbers */
+import gameMetadataDataWithoutBlocks from 'test/gameMetadataDataWithoutBlocks.json';
 import { blockNames } from 'blockly/constants';
 
 import mazeEngineGenerator from './mazeEngineGenerator';
@@ -12,10 +13,11 @@ import mazeEngineGenerator from './mazeEngineGenerator';
 const ACTOR = 0;
 const ONE = 1;
 const TWO = 2;
+const { mazeData, numericLineData } = gameMetadataDataWithoutBlocks;
 
 describe('engine > containers > mazeEngineGenerator', () => {
   it('should parse an array of correct actions and return a response', async () => {
-    const mazeEngine = mazeEngineGenerator(mazeData);
+    const mazeEngine = mazeEngineGenerator(mazeData, numericLineData);
     const actions = new Map();
 
     actions.set(ACTOR, [
@@ -40,12 +42,12 @@ describe('engine > containers > mazeEngineGenerator', () => {
       ...mazeData,
       accesses: [mazeData.accesses[0], mazeData.accesses[0]],
       exits: [mazeData.exits[0], mazeData.exits[0]],
-      numbers: {
-        ...mazeData.numbers,
-        actors: [mazeData.numbers.actors[0], ACTOR2],
-      },
     };
-    const mazeEngine = mazeEngineGenerator(newMazeData);
+    const newNumericLineData = {
+      statics: [1, null, 5, null, 9],
+      accesses: [1, 3],
+    };
+    const mazeEngine = mazeEngineGenerator(newMazeData, newNumericLineData);
     const actions = new Map();
 
     actions.set(ACTOR, [
@@ -61,6 +63,8 @@ describe('engine > containers > mazeEngineGenerator', () => {
     } catch (errors) {
       expect(errors).toBeInstanceOf(Array);
       expect(errors.length).toBe(TWO);
+      expect(errors[0].name).toBe('MazePathError');
+      expect(errors[1].name).toBe('MazeExitError');
     }
   });
 });
