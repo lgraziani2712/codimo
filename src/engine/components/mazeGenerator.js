@@ -12,7 +12,7 @@ import blockGeneratorConfig, { BLOCK_DEFINITIONS, type ActivePathBorders } from 
 
 const BLOCK_FIRST = 0;
 
-export type MazeDataStructure = {|
+export type MazeData = {|
   accesses: Array<string>,
   exits: Array<string>,
   canvas: {|
@@ -21,11 +21,6 @@ export type MazeDataStructure = {|
   |},
   height: number,
   margin: number,
-  numbers: {|
-    actors: Array<number>,
-    statics: Array<number | null>,
-    accesses: Array<number>,
-  |},
   /**
    * `path` and `activePathBorders` must have the same length.
    *
@@ -40,7 +35,7 @@ export type MazeDataStructure = {|
 export type Maze = {|
   view: Container,
 |};
-const mazeGenerator = (mazeData: MazeDataStructure): Maze => {
+const mazeGenerator = (mazeData: MazeData): Maze => {
   const view = new Container();
   const BLOCKS_LAST = {
     X: mazeData.width - ONE,

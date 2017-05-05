@@ -56,11 +56,10 @@
       "bottom": true
     }],
     "accesses": ["2,4"],
-    "exits": ["2,0"],
-    "numbers": {
-      "actors": [4],
-      "statics": [3, null, 5],
-      "accesses": [1]
-    }
+    "exits": ["2,0"]
+  },
+  "numericLineData": {
+    "statics": [1, null, 5],
+    "accesses": [1]
   }
 }

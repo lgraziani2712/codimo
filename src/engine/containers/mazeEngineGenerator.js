@@ -8,13 +8,18 @@ import { Container } from 'pixi.js';
 
 import { ZERO, ONE } from 'constants/numbers';
 import { type ActorsToActions } from 'blockly/executorGenerator';
-import mazeGenerator, { type MazeDataStructure } from 'engine/components/mazeGenerator';
+import mazeGenerator, { type MazeData, type Maze } from 'engine/components/mazeGenerator';
 import numberGenerator, { type NumberActor } from 'engine/components/numberGenerator';
-import numericLineGenerator, { type NumericLine } from 'engine/components/numericLineGenerator';
+import numericLineGenerator, {
+  type NumericLineData,
+  type NumericLine,
+} from 'engine/components/numericLineGenerator';
 import { MazePathError, MazeExitError } from 'engine/helpers/errors';
+import { randomizeActorsConfig } from 'engine/helpers/randomConfigurations';
 
 const numberHasLeftMazeConfig = (
-  mazeData: MazeDataStructure,
+  mazeData: MazeData,
+  numericLineData: NumericLineData,
   numericLine: NumericLine,
 ) => (number: NumberActor, numberIndex: number): void => {
   const exit = mazeData.exits.indexOf(number.position);
@@ -23,7 +28,7 @@ const numberHasLeftMazeConfig = (
     throw new MazeExitError(numberIndex);
   }
 
-  numericLine.receiveNumberAtPosition(number, mazeData.numbers.accesses[exit]);
+  numericLine.receiveNumberAtPosition(number, numericLineData.accesses[exit]);
 };
 /* eslint-disable camelcase */
 const directions = {
@@ -35,7 +40,7 @@ const directions = {
 /* eslint-enable */
 
 const excecuteSetOfInstructionsConfig = (
-  mazeData: MazeDataStructure,
+  mazeData: MazeData,
   numbers: Array<NumberActor>,
   numberHasLeft: (number: NumberActor, numberIndex: number) => void,
 ) => async (instructions: ActorsToActions): Promise<void> => {
@@ -70,28 +75,49 @@ const excecuteSetOfInstructionsConfig = (
     throw errors;
   }
 };
+const handleResetGameConfig = (
+  randomizeActors: (void) => Array<number>,
+  numbers: Array<NumberActor>,
+  maze: Maze,
+) => () => {
+  const newActors = randomizeActors();
+
+  numbers.forEach((number, i) => {
+    number.changeActor(newActors[i]);
+    number.view.setParent(maze.view);
+    number.resetPosition();
+  });
+};
 
 export type Engine = {|
   view: Container,
   excecuteSetOfInstructions(instructions: ActorsToActions): Promise<void>,
+  handleResetGame(void): void,
 |};
-export default function mazeEngineGenerator(mazeData: MazeDataStructure): Engine {
+export default function mazeEngineGenerator(
+  mazeData: MazeData,
+  numericLineData: NumericLineData,
+): Engine {
   const view = new Container();
-  const numericLine = numericLineGenerator(mazeData.numbers.statics, mazeData.size, mazeData.margin);
+  const numericLine = numericLineGenerator(
+    numericLineData.statics,
+    mazeData.size,
+    mazeData.margin,
+  );
   const maze = mazeGenerator(mazeData);
-  const numbers: Array<NumberActor> = [];
-
-  for (let i = 0; i < mazeData.numbers.actors.length; i++) {
-    const number = numberGenerator(
-      mazeData.numbers.actors[i],
+  const randomizeActors = randomizeActorsConfig(numericLineData.statics, numericLineData.accesses);
+  const numbers: Array<NumberActor> = randomizeActors().map((number, i) => {
+    const actor = numberGenerator(
+      number,
       mazeData.accesses[i],
       mazeData.size,
       mazeData.margin,
     );
 
-    maze.view.addChild(number.view);
-    numbers.push(number);
-  }
+    maze.view.addChild(actor.view);
+
+    return actor;
+  });
 
   maze.view.y = numericLine.view.height - mazeData.margin;
 
@@ -100,7 +126,8 @@ export default function mazeEngineGenerator(mazeData: MazeDataStructure): Engine
   return {
     view,
     excecuteSetOfInstructions: excecuteSetOfInstructionsConfig(
-      mazeData, numbers, numberHasLeftMazeConfig(mazeData, numericLine),
+      mazeData, numbers, numberHasLeftMazeConfig(mazeData, numericLineData, numericLine),
     ),
+    handleResetGame: handleResetGameConfig(randomizeActors, numbers, maze),
   };
 }

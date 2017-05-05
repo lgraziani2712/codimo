@@ -9,13 +9,14 @@ import { Container } from 'pixi.js';
 
 import { storiesOf } from 'test/storybook-facades';
 import PixiWrapper from 'test/PixiWrapper';
-import mazeData from 'test/mazeData.json';
+import gameMetadataDataWithoutBlocks from 'test/gameMetadataDataWithoutBlocks.json';
 import { ZERO } from 'constants/numbers';
 
 import blockGeneratorConfig, { BLOCK_DEFINITIONS } from './blockGeneratorConfig';
 
 const WIDTH = 256;
 const HEIGHT = 256;
+const { mazeData } = gameMetadataDataWithoutBlocks;
 const container = new Container();
 const wallBlockGenerator = blockGeneratorConfig(BLOCK_DEFINITIONS.WALL, mazeData.size, mazeData.margin);
 const borderBlockGenerator = blockGeneratorConfig(BLOCK_DEFINITIONS.BORDER, mazeData.size, mazeData.margin);

@@ -9,7 +9,7 @@ import wait from 'speculation/wait';
 
 import { storiesOf } from 'test/storybook-facades';
 import PixiWrapper from 'test/PixiWrapper';
-import mazeData from 'test/mazeData.json';
+import gameMetadataDataWithoutBlocks from 'test/gameMetadataDataWithoutBlocks.json';
 import { TEN } from 'constants/numbers';
 
 import mazeGenerator from './mazeGenerator';
@@ -17,6 +17,7 @@ import numberGenerator from './numberGenerator';
 
 const WIDTH = 1200;
 const HEIGHT = 620;
+const { mazeData } = gameMetadataDataWithoutBlocks;
 const basicMaze = mazeGenerator(mazeData);
 const simpleNumberMaze = mazeGenerator(mazeData);
 const number = numberGenerator(-TEN, mazeData.accesses[0], mazeData.size, mazeData.margin);

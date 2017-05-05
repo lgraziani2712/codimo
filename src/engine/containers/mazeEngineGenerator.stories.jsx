@@ -9,17 +9,18 @@ import wait from 'speculation/wait';
 
 import { storiesOf } from 'test/storybook-facades';
 import PixiWrapper from 'test/PixiWrapper';
-import mazeData from 'test/mazeData.json';
+import gameMetadataDataWithoutBlocks from 'test/gameMetadataDataWithoutBlocks.json';
 import { blockNames } from 'blockly/constants';
 
 import mazeEngineGenerator from './mazeEngineGenerator';
 
 const WIDTH = 1300;
 const HEIGHT = 660;
+const { mazeData, numericLineData } = gameMetadataDataWithoutBlocks;
 
 storiesOf('engine.containers.mazeEngineGenerator', module)
   .add('simple mazeEngine', () => {
-    const mazeEngine = mazeEngineGenerator(mazeData);
+    const mazeEngine = mazeEngineGenerator(mazeData, numericLineData);
     const actions = new Map();
     const ACTOR = 0;
 
