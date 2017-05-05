@@ -13,10 +13,11 @@ import 'blockly/javascript_compressed';
 import 'blockly/localize/es';
 import 'blockly/components';
 
-import executorGenerator, { type ActorsToActions, type Executor } from 'blockly/executorGenerator';
-import BlocklyToolbox, { type BlocklyToolboxElement } from 'components/BlocklyToolbox';
-import ExecuteButton from 'components/ExecuteButton';
 import { blockNames } from 'blockly/constants';
+import executorGenerator, { type ActorsToActions, type Executor } from 'blockly/executorGenerator';
+
+import BlocklyToolbox, { type BlocklyToolboxElement } from './BlocklyToolbox';
+import Button from './Button';
 
 const ID = 'blockly-app';
 const BlocklyWorkspace = styled.div`
@@ -39,6 +40,7 @@ type BlockDefinition = {|
 type Props = {|
   gameMetadata: GameMetadata,
   handleSetOfInstructions(instructions: ActorsToActions): void;
+  handleResetGame(void): void;
 |};
 
 export default class BlocklyApp extends React.Component {
@@ -86,7 +88,7 @@ export default class BlocklyApp extends React.Component {
       this.workspace,
     );
   }
-  handleClick = () => {
+  handleStartGame = () => {
     const rawInstructions = Blockly.JavaScript.workspaceToCode(this.workspace);
 
     this.props.handleSetOfInstructions(this.executor.parseInstructions(rawInstructions));
@@ -102,7 +104,9 @@ export default class BlocklyApp extends React.Component {
             handleWorkspaceCreation={this.handleWorkspaceCreation}
           />
         </BlocklyWorkspace>
-        <ExecuteButton handleClick={this.handleClick} />
+        {/* FIXME hardcoded title */}
+        <Button handleClick={this.handleStartGame} title="Dale play!" />
+        <Button handleClick={this.props.handleResetGame} title="Reseteá!" />
       </div>
     );
   }

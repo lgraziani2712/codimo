@@ -12,7 +12,8 @@ import { type ActorsToActions } from 'blockly/executorGenerator';
 import BlocklyApp, { type GameMetadata } from 'components/BlocklyApp';
 import { HALF } from 'constants/numbers';
 import mazeEngineGenerator, { type Engine } from 'engine/containers/mazeEngineGenerator';
-import { type MazeDataStructure } from 'engine/components/mazeGenerator';
+import { type MazeData } from 'engine/components/mazeGenerator';
+import { type NumericLineData } from 'engine/components/numericLineGenerator';
 
 const TwoColumns = styled.div`
   align-items: center;
@@ -23,7 +24,8 @@ const TwoColumns = styled.div`
 type Props = {|
   gameMetadata: {|
     blocksData: GameMetadata,
-    mazeData: MazeDataStructure,
+    mazeData: MazeData,
+    numericLineData: NumericLineData,
   |},
 |};
 export default class MazeGameContainer extends React.Component {
@@ -36,7 +38,7 @@ export default class MazeGameContainer extends React.Component {
   constructor(props: Props) {
     super(props);
 
-    this.engine = mazeEngineGenerator(props.gameMetadata.mazeData);
+    this.engine = mazeEngineGenerator(props.gameMetadata.mazeData, props.gameMetadata.numericLineData);
   }
 
   componentDidMount() {
@@ -70,6 +72,7 @@ export default class MazeGameContainer extends React.Component {
         <BlocklyApp
           gameMetadata={this.props.gameMetadata.blocksData}
           handleSetOfInstructions={this.handleSetOfInstructions}
+          handleResetGame={this.engine.handleResetGame}
         />
       </TwoColumns>
     );

@@ -51,4 +51,6 @@ const gameMetadata = {
 };
 
 storiesOf('components.BlocklyApp', module)
-  .add('simple Blockly app', () => (<BlocklyApp gameMetadata={gameMetadata} handleSetOfInstructions={() => {}} />));
+  .add('simple Blockly app', () => (
+    <BlocklyApp gameMetadata={gameMetadata} handleSetOfInstructions={() => {}} handleResetGame={() => {}} />
+  ));

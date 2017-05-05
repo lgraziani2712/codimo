@@ -1,5 +1,10 @@
 ## HEAD
 
+- 🚀 [2017-05-05] `containers/MazeGameContainer`: update v1.1.0.
+  - 🚀 Add the new required property to the <BlocklyApp /> instance.
+- 🚀 [2017-05-05] `blockly/components/BlocklyApp`: update to v3.0.0.
+  - 🚀 Add new reset button!
+  - 🚀 New required property: `handleResetGame`.
 - 🚀 [2017-05-05] `engine/containers/mazeEngineGenerator`: update to v3.0.0.
   - 🚀 New parameter: `numericLineData`.
   - 🚀 Add `handleResetGame` to its API!: uses `randomizeActors` to generate a new array of actors, and reset their positions.
