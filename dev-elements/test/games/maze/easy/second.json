@@ -1,0 +1,68 @@
+{
+  "mazeData": {
+    "canvas": {
+      "height": 500,
+      "width": 450
+    },
+    "width": 5,
+    "height": 5,
+    "margin": 10,
+    "size": 64,
+    "path": [
+      "0,4",
+      "1,4",
+      "1,3",
+      "2,3",
+      "3,3",
+      "3,2",
+      "2,2",
+      "1,2",
+      "1,1",
+      "1,0",
+      "2,0",
+      "3,0"
+    ],
+    "activePathBorders": [{
+      "right": true
+    }, {
+      "top": true,
+      "left": true
+    }, {
+      "bottom": true,
+      "right": true
+    }, {
+      "left": true,
+      "right": true
+    }, {
+      "top": true,
+      "left": true
+    }, {
+      "bottom": true,
+      "left": true
+    }, {
+      "left": true,
+      "right": true
+    }, {
+      "top": true,
+      "right": true
+    }, {
+      "top": true,
+      "bottom": true
+    }, {
+      "bottom": true,
+      "right": true
+    }, {
+      "left": true,
+      "right": true
+    }, {
+      "top": true,
+      "left": true
+    }],
+    "accesses": ["0,4"],
+    "exits": ["3,0"]
+  },
+  "numericLineData": {
+    "statics": [1, 5, null],
+    "accesses": [2]
+  }
+}
