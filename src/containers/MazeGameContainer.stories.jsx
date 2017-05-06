@@ -7,9 +7,11 @@
 import React from 'react';
 
 import { storiesOf } from 'test/storybook-facades';
-import gameMetadata from 'test/gameMetadata.json';
+import gameMetadata, { blocklyData } from 'test/gameMetadata';
 
 import MazeGameContainer from './MazeGameContainer';
 
 storiesOf('containers.MazeGameContainer', module)
-  .add('first game', () => (<MazeGameContainer gameMetadata={gameMetadata} />));
+  .add('first game', () => (
+    <MazeGameContainer blocklyData={blocklyData} gameMetadata={gameMetadata} />
+  ));

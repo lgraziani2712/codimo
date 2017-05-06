@@ -9,7 +9,7 @@ import { Application } from 'pixi.js';
 import styled from 'styled-components';
 
 import { type ActorsToActions } from 'blockly/executorGenerator';
-import BlocklyApp, { type GameMetadata } from 'components/BlocklyApp';
+import BlocklyApp, { type BlocklyData } from 'components/BlocklyApp';
 import { HALF } from 'constants/numbers';
 import mazeEngineGenerator, { type Engine } from 'engine/containers/mazeEngineGenerator';
 import { type MazeData } from 'engine/components/mazeGenerator';
@@ -18,12 +18,16 @@ import { type NumericLineData } from 'engine/components/numericLineGenerator';
 const TwoColumns = styled.div`
   align-items: center;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
+
+  & * {
+    margin-left: 3px;
+  }
 `;
 
 type Props = {|
+  blocklyData: BlocklyData,
   gameMetadata: {|
-    blocksData: GameMetadata,
     mazeData: MazeData,
     numericLineData: NumericLineData,
   |},
@@ -42,9 +46,7 @@ export default class MazeGameContainer extends React.Component {
   }
 
   componentDidMount() {
-    const { gameMetadata } = this.props;
-    const { mazeData } = gameMetadata;
-    const { canvas } = mazeData;
+    const { canvas } = this.props.gameMetadata.mazeData;
 
     this.app = new Application(canvas.width, canvas.height, {
       backgroundColor: 0x2a2a2a,
@@ -70,7 +72,7 @@ export default class MazeGameContainer extends React.Component {
       <TwoColumns>
         <canvas ref={(view) => this.view = view} />
         <BlocklyApp
-          gameMetadata={this.props.gameMetadata.blocksData}
+          blocklyData={this.props.blocklyData}
           handleSetOfInstructions={this.handleSetOfInstructions}
           handleResetGame={this.engine.handleResetGame}
         />
