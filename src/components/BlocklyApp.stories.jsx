@@ -10,7 +10,7 @@ import { storiesOf } from 'test/storybook-facades';
 
 import BlocklyApp from './BlocklyApp';
 
-const gameMetadata = {
+const blocklyData = {
   elements: [{
     define: 'block',
     type: 'move_forward',
@@ -52,5 +52,5 @@ const gameMetadata = {
 
 storiesOf('components.BlocklyApp', module)
   .add('simple Blockly app', () => (
-    <BlocklyApp gameMetadata={gameMetadata} handleSetOfInstructions={() => {}} handleResetGame={() => {}} />
+    <BlocklyApp blocklyData={blocklyData} handleSetOfInstructions={() => {}} handleResetGame={() => {}} />
   ));

@@ -21,24 +21,24 @@ import Button from './Button';
 
 const ID = 'blockly-app';
 const BlocklyWorkspace = styled.div`
-  height: 420px;
-  width: 600px;
+  height: 520px;
+  width: 630px;
 `;
 
-type GameMetadataShape = {|
+type BlocklyDataShape = {|
   blockDefinitions: Array<BlockDefinition>,
   defaultElements: string,
   elements: Array<BlocklyToolboxElement>,
 |};
 // TODO exact shapes to this workaround
 // @see https://github.com/facebook/flow/issues/2405
-export type GameMetadata = GameMetadataShape & $Shape<GameMetadataShape>;
+export type BlocklyData = BlocklyDataShape & $Shape<BlocklyDataShape>;
 
 type BlockDefinition = {|
   name: string,
 |};
 type Props = {|
-  gameMetadata: GameMetadata,
+  blocklyData: BlocklyData,
   handleSetOfInstructions(instructions: ActorsToActions): void;
   handleResetGame(void): void;
 |};
@@ -56,7 +56,7 @@ export default class BlocklyApp extends React.Component {
 
     this.executor = executorGenerator();
 
-    props.gameMetadata.blockDefinitions.forEach(({ name }) => {
+    props.blocklyData.blockDefinitions.forEach(({ name }) => {
       this.executor.addBlockExecutor(name);
     });
   }
@@ -68,7 +68,13 @@ export default class BlocklyApp extends React.Component {
    * @returns {void}
    */
   handleWorkspaceCreation = (toolbox: HTMLElement) => {
-    this.workspace = Blockly.inject(ID, { toolbox });
+    this.workspace = Blockly.inject(ID, {
+      scrollbars: true,
+      toolbox,
+      zoom: {
+        startScale: 1.25,
+      },
+    });
 
     // 1. Will make orphans a little transparent and they won't be
     //    executed even when Blockly ask to parse workspaceToCode
@@ -80,7 +86,7 @@ export default class BlocklyApp extends React.Component {
         <xml>
           <block type="${blockNames.ACTION_CONTAINER}">
             <statement name="program">
-              ${this.props.gameMetadata.defaultElements}
+              ${this.props.blocklyData.defaultElements}
             </statement>
           </block>
         </xml>
@@ -94,13 +100,13 @@ export default class BlocklyApp extends React.Component {
     this.props.handleSetOfInstructions(this.executor.parseInstructions(rawInstructions));
   }
   render() {
-    const { gameMetadata } = this.props;
+    const { blocklyData } = this.props;
 
     return (
       <div>
         <BlocklyWorkspace id={ID}>
           <BlocklyToolbox
-            elements={gameMetadata.elements}
+            elements={blocklyData.elements}
             handleWorkspaceCreation={this.handleWorkspaceCreation}
           />
         </BlocklyWorkspace>

@@ -1,5 +1,12 @@
 ## HEAD
 
+- 🚀 [2017-05-06] Add the first three working levels!!!
+- 🚀 [2017-05-06] `gameMetadata`: update to v3.0.0.
+  - Change `blocksData -> blocklyData`.
+  - Split the metadata in two files. One for blockly definitions, another for games. This reduce the amount of metadata since blocks definitions are shared across multiple games.
+- 🐛 [2017-05-06] `engine/helpers/randomConfigurations`: update to v1.0.1.
+  - 🐛 Fix an error when `null` values where defined at first and last position.
+  - ✅ Add new test.
 - 🚀 [2017-05-05] `containers/MazeGameContainer`: update v1.1.0.
   - 🚀 Add the new required property to the <BlocklyApp /> instance.
 - 🚀 [2017-05-05] `blockly/components/BlocklyApp`: update to v3.0.0.
