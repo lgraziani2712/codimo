@@ -1,5 +1,8 @@
 ## HEAD
 
+- 🐛 [2017-05-06] `engine/helpers/randomConfigurations`: update to v1.0.1.
+  - 🐛 Fix an error when `null` values where defined at first and last position.
+  - ✅ Add new test.
 - 🚀 [2017-05-05] `containers/MazeGameContainer`: update v1.1.0.
   - 🚀 Add the new required property to the <BlocklyApp /> instance.
 - 🚀 [2017-05-05] `blockly/components/BlocklyApp`: update to v3.0.0.

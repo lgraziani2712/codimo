@@ -6,6 +6,9 @@
  */
 import { ONE } from 'constants/numbers';
 
+const MIN = 0;
+const MAX = 9;
+
 function getRandomInt(rawMin: number, max: number) {
   const min = rawMin + ONE;
 
@@ -16,12 +19,12 @@ function getRandomInt(rawMin: number, max: number) {
 // eslint-disable-next-line import/prefer-default-export
 export const randomizeActorsConfig = (statics: Array<number | null>, accesses: Array<number>) => {
   const definedRanges = accesses.map((actorPosition) => ({
-    min: statics[actorPosition - ONE],
-    max: statics[actorPosition + ONE],
+    min: typeof statics[actorPosition - ONE] === 'number' ? statics[actorPosition - ONE] : MIN - ONE,
+    max: typeof statics[actorPosition + ONE] === 'number' ? statics[actorPosition + ONE] : MAX + ONE,
   }));
 
   return () => (
-    // $FlowDoNotDisturb it will NEVER receive nulls from definedRanges!
+    // $FlowDoNotDisturb they ARE numbers!
     definedRanges.map(({ min, max }) => (getRandomInt(min, max)))
   );
 };

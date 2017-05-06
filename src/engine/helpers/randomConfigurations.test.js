@@ -10,24 +10,30 @@ import { randomizeActorsConfig } from './randomConfigurations';
 describe('helpers/randomConfigurations', () => {
   describe('randomizeActorConfig', () => {
     it('should return an appropriate number for each empty position on the numeric line', () => {
-      const numericLine = [0, null, 5];
+      const statics = [0, null, 5];
       const accesses = [1];
-      const result = randomizeActorsConfig(numericLine, accesses)();
+      const result = randomizeActorsConfig(statics, accesses)();
 
       expect(result).toBeInstanceOf(Array);
       expect(result.length).toBe(accesses.length);
-      expect(result[0]).toBeGreaterThan(numericLine[0]);
-      expect(result[0]).toBeLessThan(numericLine[2]);
+      expect(result[0]).toBeGreaterThan(statics[0]);
+      expect(result[0]).toBeLessThan(statics[2]);
     });
     it('should always return the same number if the diff between min and max is eq 2', () => {
-      const numericLine = [1, null, 3, null, 5];
+      const statics = [1, null, 3, null, 5];
       const accesses = [1, 3];
-      const result = randomizeActorsConfig(numericLine, accesses)();
+      const result = randomizeActorsConfig(statics, accesses)();
 
-      expect(result).toBeInstanceOf(Array);
-      expect(result.length).toBe(accesses.length);
-      expect(result[0]).toBe(numericLine[0] + 1);
-      expect(result[1]).toBe(numericLine[4] - 1);
+      expect(result[0]).toBe(statics[0] + 1);
+      expect(result[1]).toBe(statics[4] - 1);
+    });
+    it('should work as expected when the `null` are defined at first and last position', () => {
+      const statics = [null, 5, null];
+      const accesses = [0, 2];
+      const result = randomizeActorsConfig(statics, accesses)();
+
+      expect(typeof result[0]).toBe('number');
+      expect(typeof result[1]).toBe('number');
     });
   });
 });
