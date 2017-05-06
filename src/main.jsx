@@ -7,9 +7,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import Viewer from './Viewer';
+import Routes from './Routes';
+
 const rootElement = document.getElementById('app');
 
 ReactDOM.render(
-  <div>{'CÓDIMO is coming soon... >:D'}</div>,
+  <Viewer routes={Routes} />,
   rootElement,
 );
