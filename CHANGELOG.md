@@ -1,5 +1,8 @@
 ## HEAD
 
+- 🐛 [2017-05-07] `engine/containers/mazeEngineGenerator`: update to v3.0.1.
+  - 🐛 Fix #8. It validate path AND walls.
+  - ✅ Add new test.
 - 🚀 [2017-05-07] `gameMetadata`: update to v4.0.0.
   - 🔥 Remove `mazeData.activePathBorders` attribute.
   - ⚙ Refactor `mazeData.path` from `Array<string>` to `Array<[string, ActivePathBorders]>`.

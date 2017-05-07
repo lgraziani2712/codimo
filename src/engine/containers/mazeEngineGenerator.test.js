@@ -69,4 +69,37 @@ describe('engine > containers > mazeEngineGenerator', () => {
       expect(errors[1].name).toBe('MazeExitError');
     }
   });
+  it('should throw a MazePathError if a wall is between valid paths', async () => {
+    const newMazeData = {
+      canvas: { height: 500, width: 450 },
+      width: 5,
+      height: 5,
+      margin: 10,
+      size: 64,
+      path: new Map([['0,0', {}], ['1,0', {}]]),
+      accesses: ['0,0'],
+      exits: ['1,0'],
+    };
+    const newNumericLineData = {
+      statics: [null, 6, 9],
+      accesses: [0],
+    };
+    const mazeEngine = mazeEngineGenerator(newMazeData, newNumericLineData);
+    const actions = new Map();
+
+    actions.set(ACTOR, [
+      blockNames.MOVE_RIGHT,
+    ]);
+
+    try {
+      await mazeEngine.excecuteSetOfInstructions(actions);
+    } catch (errors) {
+      expect(errors).toBeInstanceOf(Array);
+      expect(errors.length).toBe(ONE);
+      expect(errors[0].name).toBe('MazePathError');
+
+      return;
+    }
+    expect('true').toBe('not evaluated');
+  });
 });
