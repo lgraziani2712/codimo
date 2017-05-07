@@ -15,6 +15,8 @@ const ONE = 1;
 const TWO = 2;
 const { mazeData, numericLineData } = gameMetadataDataWithoutBlocks;
 
+mazeData.path = new Map(mazeData.path);
+
 describe('engine > containers > mazeEngineGenerator', () => {
   it('should parse an array of correct actions and return a response', async () => {
     const mazeEngine = mazeEngineGenerator(mazeData, numericLineData);

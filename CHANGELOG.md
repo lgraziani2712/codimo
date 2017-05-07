@@ -1,5 +1,9 @@
 ## HEAD
 
+- 🚀 [2017-05-07] `gameMetadata`: update to v4.0.0.
+  - 🔥 Remove `mazeData.activePathBorders` attribute.
+  - ⚙ Refactor `mazeData.path` from `Array<string>` to `Array<[string, ActivePathBorders]>`.
+  - This change allow to validate path AND walls in a simple way.
 - 🚀 [2017-05-06] Add the first three working levels!!!
 - 🚀 [2017-05-06] `gameMetadata`: update to v3.0.0.
   - Change `blocksData -> blocklyData`.
