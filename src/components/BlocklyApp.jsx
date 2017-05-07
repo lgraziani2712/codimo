@@ -25,11 +25,11 @@ const BlocklyWorkspace = styled.div`
   width: 630px;
 `;
 
-type BlocklyDataShape = {|
+type BlocklyDataShape = {
   blockDefinitions: Array<BlockDefinition>,
   defaultElements: string,
   elements: Array<BlocklyToolboxElement>,
-|};
+};
 // TODO exact shapes to this workaround
 // @see https://github.com/facebook/flow/issues/2405
 export type BlocklyData = BlocklyDataShape & $Shape<BlocklyDataShape>;

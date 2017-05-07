@@ -18,6 +18,9 @@ import numberGenerator from './numberGenerator';
 const WIDTH = 1200;
 const HEIGHT = 620;
 const { mazeData } = gameMetadataDataWithoutBlocks;
+
+mazeData.path = new Map(mazeData.path);
+
 const basicMaze = mazeGenerator(mazeData);
 const simpleNumberMaze = mazeGenerator(mazeData);
 const number = numberGenerator(-TEN, mazeData.accesses[0], mazeData.size, mazeData.margin);
