@@ -13,22 +13,26 @@ import BlocklyApp, { type BlocklyData } from 'components/BlocklyApp';
 import { HALF } from 'constants/numbers';
 import mazeEngineGenerator, { type Engine } from 'engine/containers/mazeEngineGenerator';
 import { type MazeData } from 'engine/components/mazeGenerator';
+import { type ActivePathBorders } from 'engine/components/blockGeneratorConfig';
 import { type NumericLineData } from 'engine/components/numericLineGenerator';
 
 const TwoColumns = styled.div`
   align-items: center;
   display: flex;
   justify-content: flex-end;
-
   & * {
     margin-left: 3px;
   }
 `;
 
+type RawMazeData = {|
+  ...MazeData,
+  path: Array<[string, ActivePathBorders]>,
+|};
 type Props = {|
   blocklyData: BlocklyData,
   gameMetadata: {|
-    mazeData: MazeData,
+    mazeData: RawMazeData,
     numericLineData: NumericLineData,
   |},
 |};
@@ -42,7 +46,13 @@ export default class MazeGameContainer extends React.Component {
   constructor(props: Props) {
     super(props);
 
-    this.engine = mazeEngineGenerator(props.gameMetadata.mazeData, props.gameMetadata.numericLineData);
+    // $FlowDoNotDisturb @see https://github.com/facebook/flow/issues/2405
+    const mazeData: MazeData = {
+      ...props.gameMetadata.mazeData,
+      path: new Map(props.gameMetadata.mazeData.path),
+    };
+
+    this.engine = mazeEngineGenerator(mazeData, props.gameMetadata.numericLineData);
   }
 
   componentDidMount() {

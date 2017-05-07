@@ -9,73 +9,25 @@
     "margin": 10,
     "size": 64,
     "path": [
-      "0,4",
-      "0,3",
-      "0,2",
-      "0,1",
-      "0,0",
+      ["0,4", { "top": true, "right": true }],
 
-      "1,4",
-      "2,4",
-      "3,4",
-      "4,4",
-      "4,3",
-      "4,2",
-      "4,1",
-      "4,0",
-      "3,0",
-      "2,0",
-      "1,0"
+      ["0,3", { "top": true, "bottom": true }],
+      ["0,2", { "top": true, "bottom": true }],
+      ["0,1", { "top": true, "bottom": true }],
+      ["0,0", { "bottom": true, "right": true }],
+
+      ["1,4", { "right": true, "left": true }],
+      ["2,4", { "right": true, "left": true }],
+      ["3,4", { "right": true, "left": true }],
+      ["4,4", { "top": true, "left": true }],
+      ["4,3", { "top": true, "bottom": true }],
+      ["4,2", { "top": true, "bottom": true }],
+      ["4,1", { "top": true, "bottom": true }],
+      ["4,0", { "left": true, "bottom": true }],
+      ["3,0", { "right": true, "left": true }],
+      ["2,0", { "right": true, "left": true }],
+      ["1,0", { "top": true, "right": true }]
     ],
-    "activePathBorders": [{
-      "top": true,
-      "right": true
-    }, {
-      "top": true,
-      "bottom": true
-    }, {
-      "top": true,
-      "bottom": true
-    }, {
-      "top": true,
-      "bottom": true
-    }, {
-      "bottom": true,
-      "right": true
-    }, {
-      "right": true,
-      "left": true
-    }, {
-      "right": true,
-      "left": true
-    }, {
-      "right": true,
-      "left": true
-    }, {
-      "top": true,
-      "left": true
-    }, {
-      "top": true,
-      "bottom": true
-    }, {
-      "top": true,
-      "bottom": true
-    }, {
-      "top": true,
-      "bottom": true
-    }, {
-      "left": true,
-      "bottom": true
-    }, {
-      "right": true,
-      "left": true
-    }, {
-      "right": true,
-      "left": true
-    }, {
-      "top": true,
-      "right": true
-    }],
     "accesses": ["0,4"],
     "exits": ["1,0"]
   },

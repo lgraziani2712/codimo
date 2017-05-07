@@ -51,27 +51,12 @@ export default {
     margin: 10,
     size: 64,
     path: [
-      '2,4',
-      '2,3',
-      '2,2',
-      '2,1',
-      '2,0',
+      ['2,4', { top: true }],
+      ['2,3', { top: true, bottom: true }],
+      ['2,2', { top: true, bottom: true }],
+      ['2,1', { top: true, bottom: true }],
+      ['2,0', { top: true, bottom: true }],
     ],
-    activePathBorders: [{
-      top: true,
-    }, {
-      top: true,
-      bottom: true,
-    }, {
-      top: true,
-      bottom: true,
-    }, {
-      top: true,
-      bottom: true,
-    }, {
-      top: true,
-      bottom: true,
-    }],
     accesses: ['2,4'],
     exits: ['2,0'],
   },

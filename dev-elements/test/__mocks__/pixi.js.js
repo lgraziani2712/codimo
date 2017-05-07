@@ -6,7 +6,9 @@
  */
 /* eslint-disable no-magic-numbers */
 
-export class DisplayObject {}
+export class DisplayObject {
+  setParent = (f: Container) => f;
+}
 export class Point {
   x: number;
   y: number;
@@ -29,6 +31,7 @@ export class Container extends DisplayObject {
     this.width = 200;
   }
   addChild = (f: Container) => f;
+  getChildAt = (f: Container) => f;
 }
 
 function returnThis() {

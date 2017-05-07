@@ -37,6 +37,12 @@ const directions = {
   move_backward: [ZERO, ONE],
   move_left: [-ONE, ZERO],
 };
+const directionsToWalls = {
+  move_forward: 'top',
+  move_right: 'right',
+  move_backward: 'bottom',
+  move_left: 'left',
+};
 /* eslint-enable */
 
 const excecuteSetOfInstructionsConfig = (
@@ -55,8 +61,9 @@ const excecuteSetOfInstructionsConfig = (
       const newPosition = oldPosition.split(',')
                             .map((pos, i) => (parseInt(pos) + directions[direction][i]))
                             .join(',');
+      const path = mazeData.path.get(oldPosition);
 
-      if (!mazeData.path.includes(newPosition)) {
+      if (!path || !path[directionsToWalls[direction]]) {
         errors.push(new MazePathError(numberPosition));
         break;
       }
@@ -104,6 +111,7 @@ export default function mazeEngineGenerator(
     mazeData.size,
     mazeData.margin,
   );
+
   const maze = mazeGenerator(mazeData);
   const randomizeActors = randomizeActorsConfig(numericLineData.statics, numericLineData.accesses);
   const numbers: Array<NumberActor> = randomizeActors().map((number, i) => {

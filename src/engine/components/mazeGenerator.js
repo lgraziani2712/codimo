@@ -22,13 +22,10 @@ export type MazeData = {|
   height: number,
   margin: number,
   /**
-   * `path` and `activePathBorders` must have the same length.
-   *
    * The first will define wich blocks are path.
-   * The second will define wich borders are door.
+   * The second will define wich borders are wall.
    */
-  path: Array<string>,
-  activePathBorders: Array<ActivePathBorders>,
+  path: Map<string, ActivePathBorders>,
   size: number,
   width: number,
 |};
@@ -55,11 +52,12 @@ const mazeGenerator = (mazeData: MazeData): Maze => {
       const position = `${x},${y}`;
       let block;
 
-      if (mazeData.path.includes(position)) {
+      if (mazeData.path.has(position)) {
         block = BLOCKS.pathCreator(
           positionX,
           positionY,
-          mazeData.activePathBorders[mazeData.path.indexOf(position)],
+          // $FlowDoNotDisturb https://github.com/facebook/flow/issues/3456
+          mazeData.path.get(position),
         );
       } else {
         block = x === BLOCK_FIRST || x === BLOCKS_LAST.X || y === BLOCK_FIRST || y === BLOCKS_LAST.Y
