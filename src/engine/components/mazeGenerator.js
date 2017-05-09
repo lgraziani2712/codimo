@@ -13,21 +13,30 @@ import blockGeneratorConfig, { BLOCK_DEFINITIONS, type ActivePathBorders } from 
 const BLOCK_FIRST = 0;
 
 export type MazeData = {|
-  accesses: Array<string>,
-  exits: Array<string>,
   canvas: {|
     height: number,
     width: number,
   |},
+  width: number,
   height: number,
   margin: number,
+  size: number,
   /**
    * The first will define wich blocks are path.
    * The second will define wich borders are wall.
    */
   path: Map<string, ActivePathBorders>,
-  size: number,
-  width: number,
+  accesses: Array<string>,
+  exits: Array<string>,
+  /**
+  * Each pair represents start and end positions for one actor.
+  *
+  * - The first element points to an `accesses` position.
+  * - The second element points to an `exits` position.
+  *
+  * @type {Array<[number, number]>}
+  */
+  actorsPositions: Array<[number, number]>,
 |};
 export type Maze = {|
   view: Container,

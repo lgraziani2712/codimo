@@ -25,10 +25,10 @@ const MARGINS = {
   negativeOne: 30,
   negativeTen: 40,
 };
-const one = numberGenerator(ONE, POSITION, SIZES.one, MARGINS.one).view;
-const ten = numberGenerator(TEN, POSITION, SIZES.ten, MARGINS.ten).view;
-const negativeOne = numberGenerator(-ONE, POSITION, SIZES.negativeOne, MARGINS.negativeOne).view;
-const negativeTen = numberGenerator(-TEN, POSITION, SIZES.negativeTen, MARGINS.negativeTen).view;
+const one = numberGenerator(ONE, POSITION, POSITION, SIZES.one, MARGINS.one).view;
+const ten = numberGenerator(TEN, POSITION, POSITION, SIZES.ten, MARGINS.ten).view;
+const negativeOne = numberGenerator(-ONE, POSITION, POSITION, SIZES.negativeOne, MARGINS.negativeOne).view;
+const negativeTen = numberGenerator(-TEN, POSITION, POSITION, SIZES.negativeTen, MARGINS.negativeTen).view;
 
 storiesOf('engine.components.Number', module)
   .add('one digit', () => (

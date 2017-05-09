@@ -29,6 +29,7 @@ const styleRaw = {
 export type NumberActor = {|
   view: Text,
   position: string,
+  finalPosition: string,
   changeActor(number: number): void,
   hasEnteredToNumericLine(void): Promise<void>,
   resetPosition(void): void,
@@ -124,15 +125,21 @@ const changeActorConfig = (
  * This generator returns a new instance of NumberActor.
  *
  * TODO validate number is between valid range.
- * TODO valid position format.
  *
- * @param  {number} number   what number will be rendered. Valid values: [-99, 99].
- * @param  {string} position Follows the format 'x,y'.
- * @param  {number} size     The size of a block used as relative value
- * @param  {number} margin   size of block's margin
- * @return {NumberActor}     Used for animate a number
+ * @param  {number} number        What number will be rendered. Valid values: [-99, 99].
+ * @param  {string} position      Follows the format 'x,y'.
+ * @param  {string} finalPosition Follows the format 'x,y'.
+ * @param  {number} size          The size of a block used as relative value
+ * @param  {number} margin        Size of block's margin
+ * @return {NumberActor}          Used for animate a number
  */
-const numberGenerator = (number: number, position: string, size: number, margin: number): NumberActor => {
+const numberGenerator = (
+  number: number,
+  position: string,
+  finalPosition: string,
+  size: number,
+  margin: number,
+): NumberActor => {
   const style = new TextStyle({
     ...styleRaw,
     fontSize: size / HALF + size / EIGHT,
@@ -148,6 +155,7 @@ const numberGenerator = (number: number, position: string, size: number, margin:
   return {
     view,
     position,
+    finalPosition,
     changeActor: changeActorConfig(view),
     hasEnteredToNumericLine: hasEnteredToNumericLineConfig(view, size, margin),
     resetPosition: resetPositionConfig(view, initialPosition, size, margin),

@@ -44,6 +44,10 @@ describe('engine > containers > mazeEngineGenerator', () => {
       ...mazeData,
       accesses: [mazeData.accesses[0], mazeData.accesses[0]],
       exits: [mazeData.exits[0], mazeData.exits[0]],
+      actorsPositions: [
+        [0, 0],
+        [1, 1],
+      ],
     };
     const newNumericLineData = {
       statics: [1, null, 5, null, 9],
@@ -79,6 +83,7 @@ describe('engine > containers > mazeEngineGenerator', () => {
       path: new Map([['0,0', {}], ['1,0', {}]]),
       accesses: ['0,0'],
       exits: ['1,0'],
+      actorsPositions: [[0, 0]],
     };
     const newNumericLineData = {
       statics: [null, 6, 9],
@@ -97,6 +102,65 @@ describe('engine > containers > mazeEngineGenerator', () => {
       expect(errors).toBeInstanceOf(Array);
       expect(errors.length).toBe(ONE);
       expect(errors[0].name).toBe('MazePathError');
+
+      return;
+    }
+    expect('true').toBe('not evaluated');
+  });
+  it('should be possible to create a maze with 1-actor:n-exits', async () => {
+    const newMazeData = {
+      canvas: { height: 500, width: 450 },
+      width: 5,
+      height: 5,
+      margin: 10,
+      size: 64,
+      path: new Map([['0,0', {}], ['1,0', {}]]),
+      accesses: ['0,0'],
+      exits: ['1,0'],
+      actorsPositions: [[0, 0]],
+    };
+    const newNumericLineData = {
+      statics: [null, 6, null],
+      accesses: [0, 1],
+    };
+    const mazeEngine = mazeEngineGenerator(newMazeData, newNumericLineData);
+
+    expect(mazeEngine).not.toBeUndefined();
+  });
+  it('should throw a MazeWrongExitError if the actor leaves at the wrong exit', async () => {
+    const newMazeData = {
+      canvas: { height: 500, width: 450 },
+      width: 5,
+      height: 5,
+      margin: 10,
+      size: 64,
+      path: new Map([
+        ['0,0', { right: true }],
+        ['1,0', { left: true }],
+      ]),
+      accesses: ['0,0'],
+      exits: ['1,0', '1,1'],
+      actorsPositions: [
+        [0, 1],
+      ],
+    };
+    const newNumericLineData = {
+      statics: [null, 6, null],
+      accesses: [0, 1],
+    };
+    const mazeEngine = mazeEngineGenerator(newMazeData, newNumericLineData);
+    const actions = new Map();
+
+    actions.set(ACTOR, [
+      blockNames.MOVE_RIGHT,
+    ]);
+
+    try {
+      await mazeEngine.excecuteSetOfInstructions(actions);
+    } catch (errors) {
+      expect(errors).toBeInstanceOf(Array);
+      expect(errors.length).toBe(ONE);
+      expect(errors[0].name).toBe('MazeWrongExitError');
 
       return;
     }

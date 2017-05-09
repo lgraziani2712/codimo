@@ -10,12 +10,12 @@ describe('engine > components > numberGenerator', () => {
   it('should update its position acording to the new position', async () => {
     const rawNumber = 3;
     const initPosition = '1,1';
+    const newPosition = '2,2';
     const size = 64;
     const margin = 10;
-    const number = numberGenerator(rawNumber, initPosition, size, margin);
+    const number = numberGenerator(rawNumber, initPosition, newPosition, size, margin);
     const initX = number.view.x;
     const initY = number.view.y;
-    const newPosition = '2,2';
 
     await number.updatePosition(newPosition);
 
@@ -29,12 +29,13 @@ describe('engine > components > numberGenerator', () => {
     expect(number.view.x).toBe(initX);
     expect(number.view.y).toBe(initY);
   });
-  it('should update its position to undefined on enter to numeric line', async () => {
+  it('should update its position to undefined when enter to numeric line', async () => {
     const rawNumber = 3;
     const initPosition = '1,1';
+    const finalPosition = '1,1';
     const size = 64;
     const margin = 10;
-    const number = numberGenerator(rawNumber, initPosition, size, margin);
+    const number = numberGenerator(rawNumber, initPosition, finalPosition, size, margin);
     const initX = number.view.x;
     const initY = number.view.y;
 
@@ -49,9 +50,10 @@ describe('engine > components > numberGenerator', () => {
     async () => {
       const rawNumber = 3;
       const initPosition = '1,1';
+      const finalPosition = '1,1';
       const size = 64;
       const margin = 10;
-      const number = numberGenerator(rawNumber, initPosition, size, margin);
+      const number = numberGenerator(rawNumber, initPosition, finalPosition, size, margin);
 
       await number.hasEnteredToNumericLine();
 

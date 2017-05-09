@@ -29,7 +29,8 @@
       ["1,0", { "top": true, "right": true }]
     ],
     "accesses": ["0,4"],
-    "exits": ["1,0"]
+    "exits": ["1,0"],
+    "actorsPositions": [[0, 0]]
   },
   "numericLineData": {
     "statics": [null, 6, 9],

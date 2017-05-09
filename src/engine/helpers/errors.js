@@ -24,3 +24,11 @@ export function MazeExitError(actor: number) {
   this.message = 'This position is not an exit';
   this.stack = (new Error()).stack;
 }
+
+export function MazeWrongExitError(actor: number) {
+  this.name = MazeWrongExitError.name;
+  this.actor = actor;
+  // FIXME actor value is the actor ID, not the actual actor
+  this.message = `The number ${actor} has left at the wrong exit`;
+  this.stack = (new Error()).stack;
+}
