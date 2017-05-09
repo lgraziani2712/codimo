@@ -23,7 +23,7 @@ mazeData.path = new Map(mazeData.path);
 
 const basicMaze = mazeGenerator(mazeData);
 const simpleNumberMaze = mazeGenerator(mazeData);
-const number = numberGenerator(-TEN, mazeData.accesses[0], mazeData.size, mazeData.margin);
+const number = numberGenerator(-TEN, mazeData.accesses[0], mazeData.exits[0], mazeData.size, mazeData.margin);
 
 storiesOf('engine.components.Maze', module)
   .add('basic Maze', () => (
