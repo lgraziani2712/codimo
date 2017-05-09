@@ -1,5 +1,8 @@
 ## HEAD
 
+- 🚀 [2017-05-09] `engine/containers/mazeEngineGenerator`: update to v3.1.0.
+  - 🚀 Add new validation with new error type (`MazeWrongExitError`) for `numberHasLeftMaze`. This will be thrown if the actual actor's exit is wrong.
+  - 🚀 Update `handleResetGame` to match the new `gameMetadata` prop & how actor-exit relation works now.
 - 🚀 [2017-05-09] `engine/containers/numberGenerator`: update to v3.0.0.
   - 🚀 New generator parameter & property: `finalPosition`. It will be used by the engine to check if the actual exit is the correct one.
 - 🚀 [2017-05-09] `gameMetadata`: update to v4.1.0.

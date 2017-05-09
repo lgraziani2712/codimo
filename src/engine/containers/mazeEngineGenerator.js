@@ -14,7 +14,7 @@ import numericLineGenerator, {
   type NumericLineData,
   type NumericLine,
 } from 'engine/components/numericLineGenerator';
-import { MazePathError, MazeExitError } from 'engine/helpers/errors';
+import { MazePathError, MazeExitError, MazeWrongExitError } from 'engine/helpers/errors';
 import { randomizeActorsConfig } from 'engine/helpers/randomConfigurations';
 
 const numberHasLeftMazeConfig = (
@@ -22,13 +22,19 @@ const numberHasLeftMazeConfig = (
   numericLineData: NumericLineData,
   numericLine: NumericLine,
 ) => (number: NumberActor, numberIndex: number): void => {
-  const exit = mazeData.exits.indexOf(number.position);
+  const exitIdx = mazeData.exits.indexOf(number.position);
 
-  if (exit === -ONE) {
+  if (exitIdx === -ONE) {
     throw new MazeExitError(numberIndex);
   }
 
-  numericLine.receiveNumberAtPosition(number, numericLineData.accesses[exit]);
+  const exit = mazeData.exits[exitIdx];
+
+  numericLine.receiveNumberAtPosition(number, numericLineData.accesses[exitIdx]);
+
+  if (exit !== number.finalPosition) {
+    throw new MazeWrongExitError(numberIndex);
+  }
 };
 /* eslint-disable camelcase */
 const directions = {
@@ -86,11 +92,12 @@ const handleResetGameConfig = (
   randomizeActors: (void) => Array<number>,
   numbers: Array<NumberActor>,
   maze: Maze,
+  actorsPositions: Array<[number, number]>,
 ) => () => {
   const newActors = randomizeActors();
 
-  numbers.forEach((number, i) => {
-    number.changeActor(newActors[i]);
+  numbers.forEach((number, idx) => {
+    number.changeActor(newActors[actorsPositions[idx][1]]);
     number.view.setParent(maze.view);
     number.resetPosition();
   });
@@ -113,11 +120,18 @@ export default function mazeEngineGenerator(
   );
 
   const maze = mazeGenerator(mazeData);
-  const randomizeActors = randomizeActorsConfig(numericLineData.statics, numericLineData.accesses);
-  const numbers: Array<NumberActor> = randomizeActors().map((number, i) => {
+  const randomizeActors = randomizeActorsConfig(
+    numericLineData.statics,
+    numericLineData.accesses,
+  );
+  const randomActors = randomizeActors();
+  const numbers: Array<NumberActor> = mazeData.actorsPositions.map((actorPositions) => {
+    // El actor también tiene que recibir en qué posición sale correctamente, eso se tiene que chequear!!
+    // El número SIEMPRE tiene que entrar a la recta, por más que sea erróneo su lugar
     const actor = numberGenerator(
-      number,
-      mazeData.accesses[i],
+      randomActors[actorPositions[1]],
+      mazeData.accesses[actorPositions[0]],
+      mazeData.exits[actorPositions[1]],
       mazeData.size,
       mazeData.margin,
     );
@@ -136,6 +150,6 @@ export default function mazeEngineGenerator(
     excecuteSetOfInstructions: excecuteSetOfInstructionsConfig(
       mazeData, numbers, numberHasLeftMazeConfig(mazeData, numericLineData, numericLine),
     ),
-    handleResetGame: handleResetGameConfig(randomizeActors, numbers, maze),
+    handleResetGame: handleResetGameConfig(randomizeActors, numbers, maze, mazeData.actorsPositions),
   };
 }
