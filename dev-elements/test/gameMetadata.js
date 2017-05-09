@@ -59,6 +59,7 @@ export default {
     ],
     accesses: ['2,4'],
     exits: ['2,0'],
+    actorsPositions: [[0, 0]],
   },
   numericLineData: {
     statics: [1, null, 5],
