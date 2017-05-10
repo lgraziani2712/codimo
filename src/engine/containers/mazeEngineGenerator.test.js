@@ -13,13 +13,13 @@ import mazeEngineGenerator from './mazeEngineGenerator';
 const ACTOR = 0;
 const ONE = 1;
 const TWO = 2;
-const { mazeData, numericLineData } = gameMetadataDataWithoutBlocks;
+const { mazeData, numericLineData, difficulty } = gameMetadataDataWithoutBlocks;
 
 mazeData.path = new Map(mazeData.path);
 
 describe('engine > containers > mazeEngineGenerator', () => {
   it('should parse an array of correct actions and return a response', async () => {
-    const mazeEngine = mazeEngineGenerator(mazeData, numericLineData);
+    const mazeEngine = mazeEngineGenerator(mazeData, numericLineData, difficulty);
     const actions = new Map();
 
     actions.set(ACTOR, [
@@ -53,7 +53,7 @@ describe('engine > containers > mazeEngineGenerator', () => {
       statics: [1, null, 5, null, 9],
       accesses: [1, 3],
     };
-    const mazeEngine = mazeEngineGenerator(newMazeData, newNumericLineData);
+    const mazeEngine = mazeEngineGenerator(newMazeData, newNumericLineData, difficulty);
     const actions = new Map();
 
     actions.set(ACTOR, [
@@ -89,7 +89,7 @@ describe('engine > containers > mazeEngineGenerator', () => {
       statics: [null, 6, 9],
       accesses: [0],
     };
-    const mazeEngine = mazeEngineGenerator(newMazeData, newNumericLineData);
+    const mazeEngine = mazeEngineGenerator(newMazeData, newNumericLineData, difficulty);
     const actions = new Map();
 
     actions.set(ACTOR, [
@@ -123,7 +123,7 @@ describe('engine > containers > mazeEngineGenerator', () => {
       statics: [null, 6, null],
       accesses: [0, 1],
     };
-    const mazeEngine = mazeEngineGenerator(newMazeData, newNumericLineData);
+    const mazeEngine = mazeEngineGenerator(newMazeData, newNumericLineData, difficulty);
 
     expect(mazeEngine).not.toBeUndefined();
   });
@@ -148,7 +148,7 @@ describe('engine > containers > mazeEngineGenerator', () => {
       statics: [null, 6, null],
       accesses: [0, 1],
     };
-    const mazeEngine = mazeEngineGenerator(newMazeData, newNumericLineData);
+    const mazeEngine = mazeEngineGenerator(newMazeData, newNumericLineData, difficulty);
     const actions = new Map();
 
     actions.set(ACTOR, [

@@ -1,4 +1,5 @@
 {
+  "difficulty": "easy",
   "mazeData": {
     "canvas": {
       "height": 500,

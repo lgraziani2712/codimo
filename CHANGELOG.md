@@ -1,5 +1,7 @@
 ## HEAD
 
+- 🚀 [2017-05-10] `engine/containers/mazeEngineGenerator`: update to v3.2.0.
+  - 🚀 New parameter: `difficulty`: is a string that have 3 possible values and it's used by `randomConfigurations@randomizeActorsConfig`.
 - 🚀 [2017-05-09] `engine/containers/mazeEngineGenerator`: update to v3.1.0.
   - 🚀 Add new validation with new error type (`MazeWrongExitError`) for `numberHasLeftMaze`. This will be thrown if the actual actor's exit is wrong.
   - 🚀 Update `handleResetGame` to match the new `gameMetadata` prop & how actor-exit relation works now.

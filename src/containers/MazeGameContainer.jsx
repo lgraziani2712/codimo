@@ -11,7 +11,10 @@ import styled from 'styled-components';
 import { type ActorsToActions } from 'blockly/executorGenerator';
 import BlocklyApp, { type BlocklyData } from 'components/BlocklyApp';
 import { HALF } from 'constants/numbers';
-import mazeEngineGenerator, { type Engine } from 'engine/containers/mazeEngineGenerator';
+import mazeEngineGenerator, {
+  type Engine,
+  type GameDifficulty,
+} from 'engine/containers/mazeEngineGenerator';
 import { type MazeData } from 'engine/components/mazeGenerator';
 import { type ActivePathBorders } from 'engine/components/blockGeneratorConfig';
 import { type NumericLineData } from 'engine/components/numericLineGenerator';
@@ -32,6 +35,7 @@ type RawMazeData = {|
 type Props = {|
   blocklyData: BlocklyData,
   gameMetadata: {|
+    difficulty: GameDifficulty,
     mazeData: RawMazeData,
     numericLineData: NumericLineData,
   |},
@@ -51,8 +55,9 @@ export default class MazeGameContainer extends React.Component {
       ...props.gameMetadata.mazeData,
       path: new Map(props.gameMetadata.mazeData.path),
     };
+    const { numericLineData, difficulty } = props.gameMetadata;
 
-    this.engine = mazeEngineGenerator(mazeData, props.gameMetadata.numericLineData);
+    this.engine = mazeEngineGenerator(mazeData, numericLineData, difficulty);
   }
 
   componentDidMount() {
