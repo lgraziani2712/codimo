@@ -89,7 +89,7 @@ const excecuteSetOfInstructionsConfig = (
   }
 };
 const handleResetGameConfig = (
-  randomizeActors: (void) => Array<number>,
+  randomizeActors: () => Array<number>,
   numbers: Array<NumberActor>,
   maze: Maze,
   actorsPositions: Array<[number, number]>,
@@ -106,7 +106,7 @@ const handleResetGameConfig = (
 export type Engine = {|
   view: Container,
   excecuteSetOfInstructions(instructions: ActorsToActions): Promise<void>,
-  handleResetGame(void): void,
+  handleResetGame(): void,
 |};
 export default function mazeEngineGenerator(
   mazeData: MazeData,

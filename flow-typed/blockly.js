@@ -18,7 +18,7 @@ class FieldTextInput {
 declare var Blockly: {
   Blocks: {
     [key: string]: {|
-      init(void): void,
+      init(): void,
     |},
   },
   FieldTextInput: typeof FieldTextInput,

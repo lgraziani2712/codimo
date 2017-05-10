@@ -8,7 +8,7 @@ import React from 'react';
 
 type Props = {|
   title: string,
-  handleClick: (void) => void | (event: SyntheticEvent) => void,
+  handleClick: () => void | (event: SyntheticEvent) => void,
 |};
 export default function ExecuteButton({ handleClick, title }: Props) {
   return (<button type="button" onClick={handleClick}>{title}</button>);

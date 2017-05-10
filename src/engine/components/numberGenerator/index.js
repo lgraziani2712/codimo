@@ -31,8 +31,8 @@ export type NumberActor = {|
   position: string,
   finalPosition: string,
   changeActor(number: number): void,
-  hasEnteredToNumericLine(void): Promise<void>,
-  resetPosition(void): void,
+  hasEnteredToNumericLine(): Promise<void>,
+  resetPosition(): void,
   updatePosition(newPosition: string): Promise<void>,
 |};
 export type StaticNumberActor = {|
