@@ -11,6 +11,7 @@ import blocklyData from 'test/games/maze/blocklyData.json';
 import firstMazeData from 'test/games/maze/easy/first.json';
 import secondMazeData from 'test/games/maze/easy/second.json';
 import thirdMazeData from 'test/games/maze/easy/third.json';
+import fourthMazeData from 'test/games/maze/easy/fourth.json';
 import MazeGameContainer from 'containers/MazeGameContainer';
 
 export default [{
@@ -37,4 +38,10 @@ export default [{
   exact: true,
   title: 'Third Maze',
   main: () => (<MazeGameContainer blocklyData={blocklyData} gameMetadata={thirdMazeData} />),
+}, {
+  id: 4,
+  path: '/maze/fourth',
+  exact: true,
+  title: 'Fourth Maze',
+  main: () => (<MazeGameContainer blocklyData={blocklyData} gameMetadata={fourthMazeData} />),
 }];
