@@ -41,6 +41,7 @@ export const blocklyData = {
 };
 
 export default {
+  difficulty: 'easy',
   mazeData: {
     canvas: {
       height: 500,

@@ -103,6 +103,7 @@ const handleResetGameConfig = (
   });
 };
 
+export type GameDifficulty = 'easy' | 'normal' | 'hard';
 export type Engine = {|
   view: Container,
   excecuteSetOfInstructions(instructions: ActorsToActions): Promise<void>,
@@ -111,6 +112,7 @@ export type Engine = {|
 export default function mazeEngineGenerator(
   mazeData: MazeData,
   numericLineData: NumericLineData,
+  difficulty: GameDifficulty,
 ): Engine {
   const view = new Container();
   const numericLine = numericLineGenerator(
@@ -123,6 +125,7 @@ export default function mazeEngineGenerator(
   const randomizeActors = randomizeActorsConfig(
     numericLineData.statics,
     numericLineData.accesses,
+    difficulty,
   );
   const randomActors = randomizeActors();
   const numbers: Array<NumberActor> = mazeData.actorsPositions.map((actorPositions) => {

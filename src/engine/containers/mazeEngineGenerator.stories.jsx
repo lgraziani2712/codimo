@@ -16,13 +16,13 @@ import mazeEngineGenerator from './mazeEngineGenerator';
 
 const WIDTH = 1300;
 const HEIGHT = 660;
-const { mazeData, numericLineData } = gameMetadataDataWithoutBlocks;
+const { mazeData, numericLineData, difficulty } = gameMetadataDataWithoutBlocks;
 
 mazeData.path = new Map(mazeData.path);
 
 storiesOf('engine.containers.mazeEngineGenerator', module)
   .add('simple mazeEngine', () => {
-    const mazeEngine = mazeEngineGenerator(mazeData, numericLineData);
+    const mazeEngine = mazeEngineGenerator(mazeData, numericLineData, difficulty);
     const actions = new Map();
     const ACTOR = 0;
 
