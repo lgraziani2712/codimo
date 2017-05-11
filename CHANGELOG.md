@@ -1,5 +1,7 @@
 ## HEAD
 
+- 🚀 [2017-05-11] `engine/containers/mazeEngineGenerator`: update to v3.3.0.
+  - 🚀 Update methods to match new `beHappy` number's animation.
 - 🚀 [2017-05-11] `engine/components/numericLineGenerator`: update to v3.1.0.
   - 🐛 Fix `receiveNumberAtPosition`: it wasn't returning the promise.
   - 🚀 New method: `beHappy`. Updates the happy state for each number contained by the `Line`.

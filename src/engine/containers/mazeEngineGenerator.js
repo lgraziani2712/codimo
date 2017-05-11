@@ -21,7 +21,8 @@ const numberHasLeftMazeConfig = (
   mazeData: MazeData,
   numericLineData: NumericLineData,
   numericLine: NumericLine,
-) => (number: NumberActor, numberIndex: number): void => {
+  numbers: Array<NumberActor>,
+) => async (number: NumberActor, numberIndex: number): Promise<void> => {
   const exitIdx = mazeData.exits.indexOf(number.position);
 
   if (exitIdx === -ONE) {
@@ -30,11 +31,16 @@ const numberHasLeftMazeConfig = (
 
   const exit = mazeData.exits[exitIdx];
 
-  numericLine.receiveNumberAtPosition(number, numericLineData.accesses[exitIdx]);
+  await numericLine.receiveNumberAtPosition(number, numericLineData.accesses[exitIdx]);
 
   if (exit !== number.finalPosition) {
     throw new MazeWrongExitError(numberIndex);
   }
+
+  numbers.forEach(number => {
+    number.beHappy('start');
+  });
+  numericLine.beHappy('start');
 };
 /* eslint-disable camelcase */
 const directions = {
@@ -54,7 +60,7 @@ const directionsToWalls = {
 const excecuteSetOfInstructionsConfig = (
   mazeData: MazeData,
   numbers: Array<NumberActor>,
-  numberHasLeft: (number: NumberActor, numberIndex: number) => void,
+  numberHasLeft: (number: NumberActor, numberIndex: number) => Promise<void>,
 ) => async (instructions: ActorsToActions): Promise<void> => {
   const errors = [];
 
@@ -79,7 +85,7 @@ const excecuteSetOfInstructionsConfig = (
       continue;
     }
     try {
-      numberHasLeft(number, numberPosition);
+      await numberHasLeft(number, numberPosition);
     } catch (err) {
       errors.push(err);
     }
@@ -93,14 +99,17 @@ const handleResetGameConfig = (
   numbers: Array<NumberActor>,
   maze: Maze,
   actorsPositions: Array<[number, number]>,
+  numericLine: NumericLine,
 ) => () => {
   const newActors = randomizeActors();
 
   numbers.forEach((number, idx) => {
     number.changeActor(newActors[actorsPositions[idx][1]]);
     number.view.setParent(maze.view);
+    number.beHappy('stop');
     number.resetPosition();
   });
+  numericLine.beHappy('stop');
 };
 
 export type GameDifficulty = 'easy' | 'normal' | 'hard';
@@ -151,8 +160,10 @@ export default function mazeEngineGenerator(
   return {
     view,
     excecuteSetOfInstructions: excecuteSetOfInstructionsConfig(
-      mazeData, numbers, numberHasLeftMazeConfig(mazeData, numericLineData, numericLine),
+      mazeData, numbers, numberHasLeftMazeConfig(mazeData, numericLineData, numericLine, numbers),
     ),
-    handleResetGame: handleResetGameConfig(randomizeActors, numbers, maze, mazeData.actorsPositions),
+    handleResetGame: handleResetGameConfig(
+      randomizeActors, numbers, maze, mazeData.actorsPositions, numericLine,
+    ),
   };
 }
