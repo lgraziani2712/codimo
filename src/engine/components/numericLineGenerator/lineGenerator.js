@@ -12,7 +12,12 @@ import {
   ZERO,
   ONE,
 } from 'constants/numbers';
-import { staticNumberGenerator, type NumberActor } from 'engine/components/numberGenerator';
+import {
+  staticNumberGenerator,
+  type NumberActor,
+  type StaticNumberActor,
+  type BeHappyState,
+} from 'engine/components/numberGenerator';
 
 const receiveNumberAtPositionConfig = (
   view: Graphics,
@@ -21,19 +26,18 @@ const receiveNumberAtPositionConfig = (
 
   return number.hasEnteredToNumericLine();
 };
-
-function addVisualNumber(square: Graphics, numbers: Array<number | null>, size: number, i: number) {
-  if (numbers[i] === null) {
-    return;
-  }
-  const number = staticNumberGenerator(numbers[i], size);
-
-  square.addChild(number.view);
-}
+const beHappyConfig = (
+  staticNumbers: Array<StaticNumberActor>,
+) => (state: BeHappyState) => {
+  staticNumbers.forEach((number) => {
+    number.beHappy(state);
+  });
+};
 
 export type Line = {|
   view: Graphics,
   receiveNumberAtPosition(number: NumberActor, position: number): Promise<void>,
+  beHappy(state: BeHappyState): void,
 |};
 /**
  * It generates the line with the numbers
@@ -47,6 +51,7 @@ const lineGenerator = (numbers: Array<number | null>, size: number, margin: numb
   const view = new Graphics();
   const width = numbers.length * size + (numbers.length + ONE) * margin;
   const height = size + (margin + margin);
+  const staticNumbers: Array<StaticNumberActor> = [];
 
   view
     .beginFill(NUMERIC_LINE_BG_COLOR)
@@ -69,12 +74,18 @@ const lineGenerator = (numbers: Array<number | null>, size: number, margin: numb
 
     view.addChild(square);
 
-    addVisualNumber(square, numbers, size, i);
+    if (numbers[i] !== null) {
+      const number = staticNumberGenerator(numbers[i], size);
+
+      square.addChild(number.view);
+      staticNumbers.push(number);
+    }
   }
 
   return {
     view,
     receiveNumberAtPosition: receiveNumberAtPositionConfig(view),
+    beHappy: beHappyConfig(staticNumbers),
   };
 };
 
