@@ -1,5 +1,7 @@
 ## HEAD
 
+- 🚀 [2017-05-11] `engine/containers/numberGenerator`: update to v3.1.0.
+  - 🚀 Add new method `beHappy`: it receives a `state` (`'start' | 'stop'`). Is used when the game has finish correctly.
 - 🚀 [2017-05-11] `engine/helpers/customEases`: v1.0.0!
   - 🚀 Add first custom ease for number happiness animation.
 - 🚀 [2017-05-11] `engine/helpers/randomConfigurations`: update to v1.2.0.

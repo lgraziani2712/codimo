@@ -27,7 +27,6 @@ const MARGINS = {
 };
 const one = numberGenerator(ONE, POSITION, POSITION, SIZES.one, MARGINS.one).view;
 const ten = numberGenerator(TEN, POSITION, POSITION, SIZES.ten, MARGINS.ten).view;
-const negativeOne = numberGenerator(-ONE, POSITION, POSITION, SIZES.negativeOne, MARGINS.negativeOne).view;
 const negativeTen = numberGenerator(-TEN, POSITION, POSITION, SIZES.negativeTen, MARGINS.negativeTen).view;
 
 storiesOf('engine.components.Number', module)
@@ -47,14 +46,20 @@ storiesOf('engine.components.Number', module)
       width={SIZES.ten + MARGINS.ten + MARGINS.ten}
     />
   ))
-  .add('negative one digit', () => (
-    <PixiWrapper
-      component={negativeOne}
-      isContainer={false}
-      height={SIZES.negativeOne + MARGINS.negativeOne + MARGINS.negativeOne}
-      width={SIZES.negativeOne + MARGINS.negativeOne + MARGINS.negativeOne}
-    />
-  ))
+  .add('happy negative one digit', () => {
+    const negativeOne = numberGenerator(-ONE, POSITION, POSITION, SIZES.negativeOne, MARGINS.negativeOne);
+
+    negativeOne.beHappy('start');
+
+    return (
+      <PixiWrapper
+        component={negativeOne.view}
+        isContainer={false}
+        height={SIZES.negativeOne + MARGINS.negativeOne + MARGINS.negativeOne}
+        width={SIZES.negativeOne + MARGINS.negativeOne + MARGINS.negativeOne}
+      />
+    );
+  })
   .add('negative two digits', () => (
     <PixiWrapper
       component={negativeTen}
