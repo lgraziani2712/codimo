@@ -21,8 +21,6 @@ function getRandomInt(rawMin: number, max: number) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-// FIXME when add another export element
-// eslint-disable-next-line import/prefer-default-export
 export const randomizeActorsConfig = (
   statics: Array<number | null>,
   accesses: Array<number>,
@@ -42,3 +40,7 @@ export const randomizeActorsConfig = (
     definedRanges.map(({ min, max }) => (getRandomInt(min, max)))
   );
 };
+
+export function getRandomFloat(min: number, max: number) {
+  return Math.random() * (max - min) + min;
+}
