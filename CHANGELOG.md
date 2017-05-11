@@ -1,5 +1,7 @@
 ## HEAD
 
+- 🚀 [2017-05-11] `engine/helpers/customEases`: v1.0.0!
+  - 🚀 Add first custom ease for number happiness animation.
 - 🚀 [2017-05-11] `engine/helpers/randomConfigurations`: update to v1.2.0.
   - 🚀 Add new export element: `getRandomFloat`. Generate a random float between two numbers.
 - 🚀 [2017-05-10] `engine/helpers/randomConfigurations`: update to v1.1.0.
