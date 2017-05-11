@@ -65,7 +65,7 @@ const beHappyConfig = (
     if (state === 'start') {
       timeline.restart();
     } else {
-      timeline.stop();
+      timeline.time(ZERO).stop();
     }
   };
 };
