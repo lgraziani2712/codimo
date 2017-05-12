@@ -27,7 +27,6 @@ const MARGINS = {
 };
 const one = numberGenerator(ONE, POSITION, POSITION, SIZES.one, MARGINS.one).view;
 const ten = numberGenerator(TEN, POSITION, POSITION, SIZES.ten, MARGINS.ten).view;
-const negativeTen = numberGenerator(-TEN, POSITION, POSITION, SIZES.negativeTen, MARGINS.negativeTen).view;
 
 storiesOf('engine.components.Number', module)
   .add('one digit', () => (
@@ -60,11 +59,17 @@ storiesOf('engine.components.Number', module)
       />
     );
   })
-  .add('negative two digits', () => (
-    <PixiWrapper
-      component={negativeTen}
-      isContainer={false}
-      height={SIZES.negativeTen + MARGINS.negativeTen + MARGINS.negativeTen}
-      width={SIZES.negativeTen + MARGINS.negativeTen + MARGINS.negativeTen}
-    />
-  ));
+  .add('sad negative two digits', () => {
+    const negativeTen = numberGenerator(-TEN, POSITION, POSITION, SIZES.negativeTen, MARGINS.negativeTen);
+
+    negativeTen.beSad('start');
+
+    return (
+      <PixiWrapper
+        component={negativeTen.view}
+        isContainer={false}
+        height={SIZES.negativeTen + MARGINS.negativeTen + MARGINS.negativeTen}
+        width={SIZES.negativeTen + MARGINS.negativeTen + MARGINS.negativeTen}
+      />
+    );
+  });

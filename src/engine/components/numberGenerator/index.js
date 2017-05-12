@@ -9,10 +9,14 @@ import { TweenLite, TimelineLite, Linear } from 'gsap';
 
 import { HALF, ONE, ZERO, TWO, ANCHOR_CENTER, ACTOR_MOVEMENT_DURATION } from 'constants/numbers';
 import { UnableToLeaveTheNumericLine } from 'engine/helpers/errors';
-import { EASE_BE_HAPPY } from 'engine/helpers/customEases';
+import { EASE_BE_HAPPY, EASE_BE_SAD } from 'engine/helpers/customEases';
 import { getRandomFloat } from 'engine/helpers/randomConfigurations';
 
 const EIGHT = 8;
+const SHAKE_DISTANCE = 2.3;
+
+export const START_STATE = 'start';
+export const STOP_STATE = 'stop';
 
 const styleRaw = {
   fontFamily: 'Arial',
@@ -32,7 +36,8 @@ export type NumberActor = {|
   view: Text,
   position: string,
   finalPosition: string,
-  beHappy(state: BeHappyState): void,
+  beHappy(state: ActorEmotionState): void,
+  beSad(state: ActorEmotionState): void,
   changeActor(number: number): void,
   hasEnteredToNumericLine(): Promise<void>,
   resetPosition(): void,
@@ -40,12 +45,15 @@ export type NumberActor = {|
 |};
 export type StaticNumberActor = {|
   view: Text,
-  beHappy(state: BeHappyState): void,
+  beHappy(state: ActorEmotionState): void,
+  beSad(state: ActorEmotionState): void,
 |};
-export type BeHappyState = 'start' | 'stop';
+export type ActorEmotionState = 'start' | 'stop';
 
-const beHappyConfig = (
+const emotionConfig = (
   view: Text,
+  size: number,
+  beHappy: boolean,
 ) => {
   const timeline = new TimelineLite({
     onComplete: () => {
@@ -55,14 +63,22 @@ const beHappyConfig = (
   });
   const delay = getRandomFloat(ZERO, TWO);
 
-  timeline.to(view, ONE, {
-    y: 0,
-    ease: EASE_BE_HAPPY,
-    delay,
-  });
+  if (beHappy) {
+    timeline.to(view, ONE, {
+      y: 0,
+      ease: EASE_BE_HAPPY,
+      delay,
+    });
+  } else {
+    timeline.to(view, ONE, {
+      x: size / SHAKE_DISTANCE,
+      ease: EASE_BE_SAD,
+      delay,
+    });
+  }
 
-  return (state: BeHappyState): void => {
-    if (state === 'start') {
+  return (state: ActorEmotionState): void => {
+    if (state === START_STATE) {
       timeline.restart();
     } else {
       timeline.time(ZERO).stop();
@@ -82,7 +98,8 @@ export const staticNumberGenerator = (number: number, size: number): StaticNumbe
 
   return {
     view,
-    beHappy: beHappyConfig(view),
+    beHappy: emotionConfig(view, size, true),
+    beSad: emotionConfig(view, size, false),
   };
 };
 
@@ -188,7 +205,8 @@ const numberGenerator = (
     view,
     position,
     finalPosition,
-    beHappy: beHappyConfig(view),
+    beHappy: emotionConfig(view, size, true),
+    beSad: emotionConfig(view, size, false),
     changeActor: changeActorConfig(view),
     hasEnteredToNumericLine: hasEnteredToNumericLineConfig(view, size, margin),
     resetPosition: resetPositionConfig(view, initialPosition, size, margin),

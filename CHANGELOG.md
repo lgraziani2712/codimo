@@ -1,5 +1,7 @@
 ## HEAD
 
+- 🚀 [2017-05-12] `engine/containers/numberGenerator`: update to v3.2.0.
+  - 🚀 Add new method `beSad`: it receives a `state` (`'start' | 'stop'`). Is used when the game has finish uncorrectly.
 - 🚀 [2017-05-12] `engine/helpers/customEases`: update to v1.1.0.
   - 🚀 Add new ease for the number sad animation.
 - 🐛 [2017-05-11] `engine/containers/numberGenerator`: update to v3.1.1.
