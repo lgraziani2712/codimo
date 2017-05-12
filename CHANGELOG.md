@@ -1,5 +1,7 @@
 ## HEAD
 
+- 🚀 [2017-05-12] `engine/helpers/customEases`: update to v1.1.0.
+  - 🚀 Add new ease for the number sad animation.
 - 🐛 [2017-05-11] `engine/containers/numberGenerator`: update to v3.1.1.
   - 🐛 Fix the stop state for `beHappy` animation. It wasn't resetting its timeline to zero.
 - 🚀 [2017-05-11] `engine/containers/mazeEngineGenerator`: update to v3.3.0.
