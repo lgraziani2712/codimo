@@ -5,12 +5,18 @@
  * @flow
  */
 import { Text, TextStyle } from 'pixi.js';
-import { TweenLite, Linear } from 'gsap';
+import { TweenLite, TimelineLite, Linear } from 'gsap';
 
-import { HALF, ACTOR_MOVEMENT_DURATION } from 'constants/numbers';
+import { HALF, ONE, ZERO, TWO, ANCHOR_CENTER, ACTOR_MOVEMENT_DURATION } from 'constants/numbers';
 import { UnableToLeaveTheNumericLine } from 'engine/helpers/errors';
+import { EASE_BE_HAPPY, EASE_BE_SAD } from 'engine/helpers/customEases';
+import { getRandomFloat } from 'engine/helpers/randomConfigurations';
 
 const EIGHT = 8;
+const SHAKE_DISTANCE = 2.3;
+
+export const START_STATE = 'start';
+export const STOP_STATE = 'stop';
 
 const styleRaw = {
   fontFamily: 'Arial',
@@ -30,6 +36,8 @@ export type NumberActor = {|
   view: Text,
   position: string,
   finalPosition: string,
+  beHappy(state: ActorEmotionState): void,
+  beSad(state: ActorEmotionState): void,
   changeActor(number: number): void,
   hasEnteredToNumericLine(): Promise<void>,
   resetPosition(): void,
@@ -37,7 +45,46 @@ export type NumberActor = {|
 |};
 export type StaticNumberActor = {|
   view: Text,
+  beHappy(state: ActorEmotionState): void,
+  beSad(state: ActorEmotionState): void,
 |};
+export type ActorEmotionState = 'start' | 'stop';
+
+const emotionConfig = (
+  view: Text,
+  size: number,
+  beHappy: boolean,
+) => {
+  const timeline = new TimelineLite({
+    onComplete: () => {
+      timeline.restart();
+    },
+    paused: true,
+  });
+  const delay = getRandomFloat(ZERO, TWO);
+
+  if (beHappy) {
+    timeline.to(view, ONE, {
+      y: 0,
+      ease: EASE_BE_HAPPY,
+      delay,
+    });
+  } else {
+    timeline.to(view, ONE, {
+      x: size / SHAKE_DISTANCE,
+      ease: EASE_BE_SAD,
+      delay,
+    });
+  }
+
+  return (state: ActorEmotionState): void => {
+    if (state === START_STATE) {
+      timeline.restart();
+    } else {
+      timeline.time(ZERO).stop();
+    }
+  };
+};
 
 export const staticNumberGenerator = (number: number, size: number): StaticNumberActor => {
   const style = new TextStyle({
@@ -46,11 +93,13 @@ export const staticNumberGenerator = (number: number, size: number): StaticNumbe
   });
   const view = new Text(number.toString(), style);
 
-  view.anchor.x = view.anchor.y = 0.5;
+  view.anchor.set(ANCHOR_CENTER);
   view.x = view.y = size / HALF;
 
   return {
     view,
+    beHappy: emotionConfig(view, size, true),
+    beSad: emotionConfig(view, size, false),
   };
 };
 
@@ -147,7 +196,7 @@ const numberGenerator = (
   const view = new Text(number.toString(), style);
   const initialPosition = position.split(',').map((string: string): number => (parseInt(string)));
 
-  view.anchor.x = view.anchor.y = 0.5;
+  view.anchor.set(ANCHOR_CENTER);
 
   view.x = initialPosition[0] * (size + margin) + size / HALF + margin;
   view.y = initialPosition[1] * (size + margin) + size / HALF + margin;
@@ -156,6 +205,8 @@ const numberGenerator = (
     view,
     position,
     finalPosition,
+    beHappy: emotionConfig(view, size, true),
+    beSad: emotionConfig(view, size, false),
     changeActor: changeActorConfig(view),
     hasEnteredToNumericLine: hasEnteredToNumericLineConfig(view, size, margin),
     resetPosition: resetPositionConfig(view, initialPosition, size, margin),
