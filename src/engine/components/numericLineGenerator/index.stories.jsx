@@ -124,6 +124,29 @@ storiesOf('engine.components.numericLine', module)
       />
     );
   })
+  .add('a sad number line', () => {
+    const line = lineGenerator([-99, -45, null, 0, 12, 45, 78, 99], SIZE, TEN);
+    const ten = numberGenerator(TEN, POSITION, POSITION, SIZE, TEN);
+
+    line.view.x = 32;
+    line.view.y = 28;
+
+    (async () => {
+      await wait(500);
+      await line.receiveNumberAtPosition(ten, 2);
+      line.beSad('start');
+      ten.beSad('start');
+    })();
+
+    return (
+      <PixiWrapper
+        component={line.view}
+        isContainer={true}
+        height={line.view.height + SIZE + SIZE}
+        width={line.view.width + SIZE}
+      />
+    );
+  })
   //////////////////////////////////
   // Numeric Line
   //////////////////////////////////
@@ -174,6 +197,28 @@ storiesOf('engine.components.numericLine', module)
       await numericLine.receiveNumberAtPosition(ten, NINE);
       ten.beHappy('start');
       numericLine.beHappy('start');
+    })();
+
+    numericLine.view.y = (HEIGHT_NUMERIC_LINE - numericLine.view.height) / HALF;
+
+    return (
+      <PixiWrapper
+        component={numericLine.view}
+        isContainer={true}
+        height={HEIGHT_NUMERIC_LINE}
+        width={WIDTH_NUMERIC_LINE}
+      />
+    );
+  })
+  .add('a sad numeric line', () => {
+    const numericLine = numericLineGenerator([1, 2, 3, 4, 5, 6, 7, 8, 11, null], SIZE, TEN);
+    const ten = numberGenerator(TEN, POSITION, POSITION, SIZE, TEN);
+
+    (async () => {
+      await wait(500);
+      await numericLine.receiveNumberAtPosition(ten, NINE);
+      ten.beSad('start');
+      numericLine.beSad('start');
     })();
 
     numericLine.view.y = (HEIGHT_NUMERIC_LINE - numericLine.view.height) / HALF;

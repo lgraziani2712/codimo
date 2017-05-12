@@ -6,16 +6,18 @@
  */
 import { Container } from 'pixi.js';
 
-import { type NumberActor, type BeHappyState } from 'engine/components/numberGenerator';
+import { type NumberActor, type ActorEmotionState } from 'engine/components/numberGenerator';
 
 import arrowGenerator from './arrowGenerator';
 import lineGenerator, { type Line } from './lineGenerator';
 
 const receiveNumberAtPositionConfig = (line: Line) =>
   (number: NumberActor, position: number): Promise<void> => line.receiveNumberAtPosition(number, position);
-const beHappyConfig = (line: Line) => (state: BeHappyState): void => {
-  line.beHappy(state);
-};
+const emotionConfig = (line: Line, beHappy: boolean) => (
+  beHappy
+    ? (state: ActorEmotionState): void => line.beHappy(state)
+    : (state: ActorEmotionState): void => line.beSad(state)
+);
 
 export type NumericLineData = {|
   statics: Array<number | null>,
@@ -24,7 +26,8 @@ export type NumericLineData = {|
 export type NumericLine = {|
   view: Container,
   receiveNumberAtPosition(number: NumberActor, position: number): Promise<void>,
-  beHappy: (state: BeHappyState) => void,
+  beHappy(state: ActorEmotionState): void,
+  beSad(state: ActorEmotionState): void,
 |};
 const numericLineGenerator = (numbers: Array<number | null>, size: number, margin: number): NumericLine => {
   const view = new Container();
@@ -42,7 +45,8 @@ const numericLineGenerator = (numbers: Array<number | null>, size: number, margi
   return {
     view,
     receiveNumberAtPosition: receiveNumberAtPositionConfig(line),
-    beHappy: beHappyConfig(line),
+    beHappy: emotionConfig(line, true),
+    beSad: emotionConfig(line, false),
   };
 };
 

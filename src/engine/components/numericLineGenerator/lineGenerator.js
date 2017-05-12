@@ -16,7 +16,7 @@ import {
   staticNumberGenerator,
   type NumberActor,
   type StaticNumberActor,
-  type BeHappyState,
+  type ActorEmotionState,
 } from 'engine/components/numberGenerator';
 
 const receiveNumberAtPositionConfig = (
@@ -26,18 +26,26 @@ const receiveNumberAtPositionConfig = (
 
   return number.hasEnteredToNumericLine();
 };
-const beHappyConfig = (
+const emotionConfig = (
   staticNumbers: Array<StaticNumberActor>,
-) => (state: BeHappyState) => {
-  staticNumbers.forEach((number) => {
-    number.beHappy(state);
-  });
+  beHappy: boolean,
+) => (state: ActorEmotionState) => {
+  if (beHappy) {
+    staticNumbers.forEach((number) => {
+      number.beHappy(state);
+    });
+  } else {
+    staticNumbers.forEach((number) => {
+      number.beSad(state);
+    });
+  }
 };
 
 export type Line = {|
   view: Graphics,
   receiveNumberAtPosition(number: NumberActor, position: number): Promise<void>,
-  beHappy(state: BeHappyState): void,
+  beHappy(state: ActorEmotionState): void,
+  beSad(state: ActorEmotionState): void,
 |};
 /**
  * It generates the line with the numbers
@@ -85,7 +93,8 @@ const lineGenerator = (numbers: Array<number | null>, size: number, margin: numb
   return {
     view,
     receiveNumberAtPosition: receiveNumberAtPositionConfig(view),
-    beHappy: beHappyConfig(staticNumbers),
+    beHappy: emotionConfig(staticNumbers, true),
+    beSad: emotionConfig(staticNumbers, false),
   };
 };
 
