@@ -1,5 +1,7 @@
 ## HEAD
 
+- 🚀 [2017-05-12] `engine/containers/mazeEngineGenerator`: update to v3.4.0.
+  - 🚀 Update methods to match the new `beSad` number's animation.
 - 🚀 [2017-05-12] `engine/components/numericLineGenerator`: update to v3.2.0.
   - 🚀 New method: `beSad`. Updates the sad state for each number contained by the `Line`.
 - 🚀 [2017-05-12] `engine/containers/numberGenerator`: update to v3.2.0.

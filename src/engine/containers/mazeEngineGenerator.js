@@ -9,7 +9,11 @@ import { Container } from 'pixi.js';
 import { ZERO, ONE } from 'constants/numbers';
 import { type ActorsToActions } from 'blockly/executorGenerator';
 import mazeGenerator, { type MazeData, type Maze } from 'engine/components/mazeGenerator';
-import numberGenerator, { type NumberActor } from 'engine/components/numberGenerator';
+import numberGenerator, {
+  START_STATE,
+  STOP_STATE,
+  type NumberActor,
+} from 'engine/components/numberGenerator';
 import numericLineGenerator, {
   type NumericLineData,
   type NumericLine,
@@ -34,13 +38,18 @@ const numberHasLeftMazeConfig = (
   await numericLine.receiveNumberAtPosition(number, numericLineData.accesses[exitIdx]);
 
   if (exit !== number.finalPosition) {
+    numbers.forEach(number => {
+      number.beSad(START_STATE);
+    });
+    numericLine.beSad(START_STATE);
+
     throw new MazeWrongExitError(numberIndex);
   }
 
   numbers.forEach(number => {
-    number.beHappy('start');
+    number.beHappy(START_STATE);
   });
-  numericLine.beHappy('start');
+  numericLine.beHappy(START_STATE);
 };
 /* eslint-disable camelcase */
 const directions = {
@@ -106,10 +115,12 @@ const handleResetGameConfig = (
   numbers.forEach((number, idx) => {
     number.changeActor(newActors[actorsPositions[idx][1]]);
     number.view.setParent(maze.view);
-    number.beHappy('stop');
+    number.beHappy(STOP_STATE);
+    number.beSad(STOP_STATE);
     number.resetPosition();
   });
-  numericLine.beHappy('stop');
+  numericLine.beHappy(STOP_STATE);
+  numericLine.beSad(STOP_STATE);
 };
 
 export type GameDifficulty = 'easy' | 'normal' | 'hard';
