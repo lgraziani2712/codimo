@@ -7,12 +7,14 @@
 /* eslint-disable no-magic-numbers, */
 import { randomizeActorsConfig } from './randomConfigurations';
 
+const EASY = 'easy';
+
 describe('helpers/randomConfigurations', () => {
   describe('randomizeActorConfig', () => {
     it('should return an appropriate number for each empty position on the numeric line', () => {
       const statics = [0, null, 5];
       const accesses = [1];
-      const result = randomizeActorsConfig(statics, accesses)();
+      const result = randomizeActorsConfig(statics, accesses, EASY)();
 
       expect(result).toBeInstanceOf(Array);
       expect(result.length).toBe(accesses.length);
@@ -22,7 +24,7 @@ describe('helpers/randomConfigurations', () => {
     it('should always return the same number if the diff between min and max is eq 2', () => {
       const statics = [1, null, 3, null, 5];
       const accesses = [1, 3];
-      const result = randomizeActorsConfig(statics, accesses)();
+      const result = randomizeActorsConfig(statics, accesses, EASY)();
 
       expect(result[0]).toBe(statics[0] + 1);
       expect(result[1]).toBe(statics[4] - 1);
@@ -30,7 +32,7 @@ describe('helpers/randomConfigurations', () => {
     it('should work as expected when the `null` are defined at first and last position', () => {
       const statics = [null, 5, null];
       const accesses = [0, 2];
-      const result = randomizeActorsConfig(statics, accesses)();
+      const result = randomizeActorsConfig(statics, accesses, EASY)();
 
       expect(typeof result[0]).toBe('number');
       expect(typeof result[1]).toBe('number');

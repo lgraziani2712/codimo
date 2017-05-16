@@ -8,7 +8,6 @@ const globals = {
 };
 const moduleDirectories = ['node_modules'].concat(packageData.moduleRoots);
 
-
 module.exports = (resolve, rootDir) => {
   const config = {
     collectCoverageFrom: ['src/**/*.{js,jsx}'],

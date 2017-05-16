@@ -4,6 +4,7 @@
  *
  * @flow
  */
+/* eslint-disable no-magic-numbers */
 import React from 'react';
 import wait from 'speculation/wait';
 
@@ -65,7 +66,6 @@ storiesOf('engine.components.numericLine', module)
     );
   })
   .add('line with static numbers', () => {
-    // eslint-disable-next-line no-magic-numbers
     const line = lineGenerator([0, 1, 2, 3, 4, 5, 6, 7], SIZE, TEN);
 
     line.view.x = 32;
@@ -88,8 +88,54 @@ storiesOf('engine.components.numericLine', module)
     line.view.y = 28;
 
     (async () => {
-      await wait(500); // eslint-disable-line no-magic-numbers
+      await wait(500);
       await line.receiveNumberAtPosition(ten, ZERO);
+    })();
+
+    return (
+      <PixiWrapper
+        component={line.view}
+        isContainer={true}
+        height={line.view.height + SIZE + SIZE}
+        width={line.view.width + SIZE}
+      />
+    );
+  })
+  .add('a happy number line', () => {
+    const line = lineGenerator([-99, -45, 0, null, 12, 45, 78, 99], SIZE, TEN);
+    const ten = numberGenerator(TEN, POSITION, POSITION, SIZE, TEN);
+
+    line.view.x = 32;
+    line.view.y = 28;
+
+    (async () => {
+      await wait(500);
+      await line.receiveNumberAtPosition(ten, 3);
+      ten.beHappy('start');
+      line.beHappy('start');
+    })();
+
+    return (
+      <PixiWrapper
+        component={line.view}
+        isContainer={true}
+        height={line.view.height + SIZE + SIZE}
+        width={line.view.width + SIZE}
+      />
+    );
+  })
+  .add('a sad number line', () => {
+    const line = lineGenerator([-99, -45, null, 0, 12, 45, 78, 99], SIZE, TEN);
+    const ten = numberGenerator(TEN, POSITION, POSITION, SIZE, TEN);
+
+    line.view.x = 32;
+    line.view.y = 28;
+
+    (async () => {
+      await wait(500);
+      await line.receiveNumberAtPosition(ten, 2);
+      line.beSad('start');
+      ten.beSad('start');
     })();
 
     return (
@@ -123,13 +169,56 @@ storiesOf('engine.components.numericLine', module)
     );
   })
   .add('numeric line with animated and static numbers', () => {
-    // eslint-disable-next-line no-magic-numbers
     const numericLine = numericLineGenerator([1, 2, 3, 4, 5, 6, 7, 8, 9, null], SIZE, TEN);
     const ten = numberGenerator(TEN, POSITION, POSITION, SIZE, TEN);
 
     (async () => {
-      await wait(500); // eslint-disable-line no-magic-numbers
+      await wait(500);
       await numericLine.receiveNumberAtPosition(ten, NINE);
+    })();
+
+    numericLine.view.y = (HEIGHT_NUMERIC_LINE - numericLine.view.height) / HALF;
+
+    return (
+      <PixiWrapper
+        component={numericLine.view}
+        isContainer={true}
+        height={HEIGHT_NUMERIC_LINE}
+        width={WIDTH_NUMERIC_LINE}
+      />
+    );
+  })
+  .add('a happy numeric line', () => {
+    const numericLine = numericLineGenerator([1, 2, 3, 4, 5, 6, 7, 8, 9, null], SIZE, TEN);
+    const ten = numberGenerator(TEN, POSITION, POSITION, SIZE, TEN);
+
+    (async () => {
+      await wait(500);
+      await numericLine.receiveNumberAtPosition(ten, NINE);
+      ten.beHappy('start');
+      numericLine.beHappy('start');
+    })();
+
+    numericLine.view.y = (HEIGHT_NUMERIC_LINE - numericLine.view.height) / HALF;
+
+    return (
+      <PixiWrapper
+        component={numericLine.view}
+        isContainer={true}
+        height={HEIGHT_NUMERIC_LINE}
+        width={WIDTH_NUMERIC_LINE}
+      />
+    );
+  })
+  .add('a sad numeric line', () => {
+    const numericLine = numericLineGenerator([1, 2, 3, 4, 5, 6, 7, 8, 11, null], SIZE, TEN);
+    const ten = numberGenerator(TEN, POSITION, POSITION, SIZE, TEN);
+
+    (async () => {
+      await wait(500);
+      await numericLine.receiveNumberAtPosition(ten, NINE);
+      ten.beSad('start');
+      numericLine.beSad('start');
     })();
 
     numericLine.view.y = (HEIGHT_NUMERIC_LINE - numericLine.view.height) / HALF;

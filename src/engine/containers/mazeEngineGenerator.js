@@ -9,7 +9,11 @@ import { Container } from 'pixi.js';
 import { ZERO, ONE } from 'constants/numbers';
 import { type ActorsToActions } from 'blockly/executorGenerator';
 import mazeGenerator, { type MazeData, type Maze } from 'engine/components/mazeGenerator';
-import numberGenerator, { type NumberActor } from 'engine/components/numberGenerator';
+import numberGenerator, {
+  START_STATE,
+  STOP_STATE,
+  type NumberActor,
+} from 'engine/components/numberGenerator';
 import numericLineGenerator, {
   type NumericLineData,
   type NumericLine,
@@ -21,7 +25,8 @@ const numberHasLeftMazeConfig = (
   mazeData: MazeData,
   numericLineData: NumericLineData,
   numericLine: NumericLine,
-) => (number: NumberActor, numberIndex: number): void => {
+  numbers: Array<NumberActor>,
+) => async (number: NumberActor, numberIndex: number): Promise<void> => {
   const exitIdx = mazeData.exits.indexOf(number.position);
 
   if (exitIdx === -ONE) {
@@ -30,11 +35,21 @@ const numberHasLeftMazeConfig = (
 
   const exit = mazeData.exits[exitIdx];
 
-  numericLine.receiveNumberAtPosition(number, numericLineData.accesses[exitIdx]);
+  await numericLine.receiveNumberAtPosition(number, numericLineData.accesses[exitIdx]);
 
   if (exit !== number.finalPosition) {
+    numbers.forEach(number => {
+      number.beSad(START_STATE);
+    });
+    numericLine.beSad(START_STATE);
+
     throw new MazeWrongExitError(numberIndex);
   }
+
+  numbers.forEach(number => {
+    number.beHappy(START_STATE);
+  });
+  numericLine.beHappy(START_STATE);
 };
 /* eslint-disable camelcase */
 const directions = {
@@ -54,7 +69,7 @@ const directionsToWalls = {
 const excecuteSetOfInstructionsConfig = (
   mazeData: MazeData,
   numbers: Array<NumberActor>,
-  numberHasLeft: (number: NumberActor, numberIndex: number) => void,
+  numberHasLeft: (number: NumberActor, numberIndex: number) => Promise<void>,
 ) => async (instructions: ActorsToActions): Promise<void> => {
   const errors = [];
 
@@ -79,7 +94,7 @@ const excecuteSetOfInstructionsConfig = (
       continue;
     }
     try {
-      numberHasLeft(number, numberPosition);
+      await numberHasLeft(number, numberPosition);
     } catch (err) {
       errors.push(err);
     }
@@ -89,28 +104,35 @@ const excecuteSetOfInstructionsConfig = (
   }
 };
 const handleResetGameConfig = (
-  randomizeActors: (void) => Array<number>,
+  randomizeActors: () => Array<number>,
   numbers: Array<NumberActor>,
   maze: Maze,
   actorsPositions: Array<[number, number]>,
+  numericLine: NumericLine,
 ) => () => {
   const newActors = randomizeActors();
 
   numbers.forEach((number, idx) => {
     number.changeActor(newActors[actorsPositions[idx][1]]);
     number.view.setParent(maze.view);
+    number.beHappy(STOP_STATE);
+    number.beSad(STOP_STATE);
     number.resetPosition();
   });
+  numericLine.beHappy(STOP_STATE);
+  numericLine.beSad(STOP_STATE);
 };
 
+export type GameDifficulty = 'easy' | 'normal' | 'hard';
 export type Engine = {|
   view: Container,
   excecuteSetOfInstructions(instructions: ActorsToActions): Promise<void>,
-  handleResetGame(void): void,
+  handleResetGame(): void,
 |};
 export default function mazeEngineGenerator(
   mazeData: MazeData,
   numericLineData: NumericLineData,
+  difficulty: GameDifficulty,
 ): Engine {
   const view = new Container();
   const numericLine = numericLineGenerator(
@@ -123,6 +145,7 @@ export default function mazeEngineGenerator(
   const randomizeActors = randomizeActorsConfig(
     numericLineData.statics,
     numericLineData.accesses,
+    difficulty,
   );
   const randomActors = randomizeActors();
   const numbers: Array<NumberActor> = mazeData.actorsPositions.map((actorPositions) => {
@@ -148,8 +171,10 @@ export default function mazeEngineGenerator(
   return {
     view,
     excecuteSetOfInstructions: excecuteSetOfInstructionsConfig(
-      mazeData, numbers, numberHasLeftMazeConfig(mazeData, numericLineData, numericLine),
+      mazeData, numbers, numberHasLeftMazeConfig(mazeData, numericLineData, numericLine, numbers),
     ),
-    handleResetGame: handleResetGameConfig(randomizeActors, numbers, maze, mazeData.actorsPositions),
+    handleResetGame: handleResetGameConfig(
+      randomizeActors, numbers, maze, mazeData.actorsPositions, numericLine,
+    ),
   };
 }

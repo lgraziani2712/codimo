@@ -5,9 +5,15 @@
  * @flow
  */
 import { ONE } from 'constants/numbers';
+import { type GameDifficulty } from 'engine/containers/mazeEngineGenerator';
 
-const MIN = 0;
-const MAX = 9;
+/* eslint-disable no-magic-numbers */
+const RANGES = {
+  easy: [0, 9],
+  normal: [0, 99],
+  hard: [-99, 99],
+};
+/* eslint-enable */
 
 function getRandomInt(rawMin: number, max: number) {
   const min = rawMin + ONE;
@@ -15,12 +21,18 @@ function getRandomInt(rawMin: number, max: number) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-// FIXME when add another export element
-// eslint-disable-next-line import/prefer-default-export
-export const randomizeActorsConfig = (statics: Array<number | null>, accesses: Array<number>) => {
+export const randomizeActorsConfig = (
+  statics: Array<number | null>,
+  accesses: Array<number>,
+  difficulty: GameDifficulty,
+) => {
   const definedRanges = accesses.map((actorPosition) => ({
-    min: typeof statics[actorPosition - ONE] === 'number' ? statics[actorPosition - ONE] : MIN - ONE,
-    max: typeof statics[actorPosition + ONE] === 'number' ? statics[actorPosition + ONE] : MAX + ONE,
+    min: typeof statics[actorPosition - ONE] === 'number'
+        ? statics[actorPosition - ONE]
+        : RANGES[difficulty][0] - ONE,
+    max: typeof statics[actorPosition + ONE] === 'number'
+        ? statics[actorPosition + ONE]
+        : RANGES[difficulty][1] + ONE,
   }));
 
   return () => (
@@ -28,3 +40,7 @@ export const randomizeActorsConfig = (statics: Array<number | null>, accesses: A
     definedRanges.map(({ min, max }) => (getRandomInt(min, max)))
   );
 };
+
+export function getRandomFloat(min: number, max: number) {
+  return Math.random() * (max - min) + min;
+}

@@ -17,6 +17,9 @@ export class Point {
     this.x = x;
     this.y = y;
   }
+  set(number: number) {
+    this.x = this.y = number;
+  }
 }
 export class Container extends DisplayObject {
   height: number;

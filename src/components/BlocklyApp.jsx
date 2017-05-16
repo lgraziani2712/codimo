@@ -40,7 +40,7 @@ type BlockDefinition = {|
 type Props = {|
   blocklyData: BlocklyData,
   handleSetOfInstructions(instructions: ActorsToActions): void;
-  handleResetGame(void): void;
+  handleResetGame(): void;
 |};
 
 export default class BlocklyApp extends React.Component {
