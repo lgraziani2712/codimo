@@ -13,7 +13,7 @@ But instead of coding and learning a particular programming language, we want to
 
 ## Installation
 
-Right now there isn't a installation process for users, only for devs.
+Right now there isn't an installation process for users, only for devs.
 
 ### Without the web page
 
