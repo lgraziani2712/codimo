@@ -10,7 +10,7 @@ import wait from 'speculation/wait';
 import { storiesOf } from 'test/storybook-facades';
 import PixiWrapper from 'test/PixiWrapper';
 import gameMetadataDataWithoutBlocks from 'test/gameMetadataDataWithoutBlocks.json';
-import { blockNames } from 'blockly/constants';
+import * as actionNames from 'constants/actions';
 
 import mazeEngineGenerator from './mazeEngineGenerator';
 
@@ -27,30 +27,30 @@ storiesOf('engine.containers.mazeEngineGenerator', module)
     const ACTOR = 0;
 
     actions.set(ACTOR, [
-      blockNames.MOVE_FORWARD,
-      blockNames.MOVE_FORWARD,
-      blockNames.MOVE_RIGHT,
-      blockNames.MOVE_RIGHT,
-      blockNames.MOVE_RIGHT,
-      blockNames.MOVE_RIGHT,
-      blockNames.MOVE_RIGHT,
-      blockNames.MOVE_BACKWARD,
-      blockNames.MOVE_RIGHT,
-      blockNames.MOVE_RIGHT,
-      blockNames.MOVE_FORWARD,
-      blockNames.MOVE_FORWARD,
-      blockNames.MOVE_FORWARD,
-      blockNames.MOVE_LEFT,
-      blockNames.MOVE_LEFT,
-      blockNames.MOVE_LEFT,
-      blockNames.MOVE_LEFT,
-      blockNames.MOVE_LEFT,
-      blockNames.MOVE_LEFT,
-      blockNames.MOVE_LEFT,
-      blockNames.MOVE_LEFT,
-      blockNames.MOVE_LEFT,
-      blockNames.MOVE_FORWARD,
-      blockNames.MOVE_FORWARD,
+      actionNames.MOVE_FORWARD,
+      actionNames.MOVE_FORWARD,
+      actionNames.MOVE_RIGHT,
+      actionNames.MOVE_RIGHT,
+      actionNames.MOVE_RIGHT,
+      actionNames.MOVE_RIGHT,
+      actionNames.MOVE_RIGHT,
+      actionNames.MOVE_BACKWARD,
+      actionNames.MOVE_RIGHT,
+      actionNames.MOVE_RIGHT,
+      actionNames.MOVE_FORWARD,
+      actionNames.MOVE_FORWARD,
+      actionNames.MOVE_FORWARD,
+      actionNames.MOVE_LEFT,
+      actionNames.MOVE_LEFT,
+      actionNames.MOVE_LEFT,
+      actionNames.MOVE_LEFT,
+      actionNames.MOVE_LEFT,
+      actionNames.MOVE_LEFT,
+      actionNames.MOVE_LEFT,
+      actionNames.MOVE_LEFT,
+      actionNames.MOVE_LEFT,
+      actionNames.MOVE_FORWARD,
+      actionNames.MOVE_FORWARD,
     ]);
 
     (async () => {

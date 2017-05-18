@@ -1,5 +1,8 @@
 ## HEAD
 
+- 🐛 [2017-05-18] `engine/containers/mazeEngineGenerator`: update to v3.4.1.
+  - Fix #12. Now checks not only if the number is at one exit but if the next action moves the number forward.
+- ⚙ [2017-05-18] `constants`: every group of constants are only in `src/constants`.
 - 🚀 [2017-05-12] `engine/containers/mazeEngineGenerator`: update to v3.4.0.
   - 🚀 Update methods to match the new `beSad` number's animation.
 - 🚀 [2017-05-12] `engine/components/numericLineGenerator`: update to v3.2.0.

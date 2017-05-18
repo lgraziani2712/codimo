@@ -38,4 +38,4 @@ See [Contributing](CONTRIBUITING.md).
 
 ---
 
-`<>` with ❤ by `@lgraziani2712`
+`</>` with ❤ by `@lgraziani2712`

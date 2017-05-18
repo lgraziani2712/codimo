@@ -4,9 +4,10 @@
  *
  * @flow
  */
-import { colors, blockNames } from 'blockly/constants';
+import * as colors from 'constants/colors';
+import { MOVE_RIGHT } from 'constants/actions';
 
-Blockly.Blocks[blockNames.MOVE_RIGHT] = {
+Blockly.Blocks[MOVE_RIGHT] = {
   init: function init() {
     this.appendDummyInput()
         .setAlign(Blockly.ALIGN_CENTRE)
