@@ -1,5 +1,8 @@
 ## HEAD
 
+- 🚀 [2017-05-18] `blockly/components`: update to v1.1.0.
+  - 🚀 Add `LeaveMaze`.
+  - ⚙ Refactor `index.js` to load every blockly component automatically.
 - 🐛 [2017-05-18] `engine/containers/mazeEngineGenerator`: update to v3.4.1.
   - Fix #12. Now checks not only if the number is at one exit but if the next action moves the number forward.
 - ⚙ [2017-05-18] `constants`: every group of constants are only in `src/constants`.

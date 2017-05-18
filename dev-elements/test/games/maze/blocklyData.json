@@ -11,6 +11,9 @@
   }, {
     "define": "block",
     "type": "move_left"
+  }, {
+    "define": "block",
+    "type": "leave_maze"
   }],
   "blockDefinitions": [{
     "name": "move_forward"
@@ -20,5 +23,7 @@
     "name": "move_right"
   }, {
     "name": "move_left"
+  }, {
+    "name": "leave_maze"
   }]
 }
