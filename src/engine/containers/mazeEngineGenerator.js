@@ -8,6 +8,7 @@ import { Container } from 'pixi.js';
 
 import { ZERO, ONE } from 'constants/numbers';
 import { type ActorsToActions } from 'blockly/executorGenerator';
+import { MOVE_FORWARD, MOVE_RIGHT, MOVE_BACKWARD, MOVE_LEFT } from 'constants/actions';
 import mazeGenerator, { type MazeData, type Maze } from 'engine/components/mazeGenerator';
 import numberGenerator, {
   START_STATE,
@@ -53,42 +54,80 @@ const numberHasLeftMazeConfig = (
 };
 /* eslint-disable camelcase */
 const directions = {
-  move_forward: [ZERO, -ONE],
-  move_right: [ONE, ZERO],
-  move_backward: [ZERO, ONE],
-  move_left: [-ONE, ZERO],
+  [MOVE_FORWARD]: [ZERO, -ONE],
+  [MOVE_RIGHT]: [ONE, ZERO],
+  [MOVE_BACKWARD]: [ZERO, ONE],
+  [MOVE_LEFT]: [-ONE, ZERO],
 };
 const directionsToWalls = {
-  move_forward: 'top',
-  move_right: 'right',
-  move_backward: 'bottom',
-  move_left: 'left',
+  [MOVE_FORWARD]: 'top',
+  [MOVE_RIGHT]: 'right',
+  [MOVE_BACKWARD]: 'bottom',
+  [MOVE_LEFT]: 'left',
 };
 /* eslint-enable */
 
 const excecuteSetOfInstructionsConfig = (
   mazeData: MazeData,
+  mazeDataExits: Array<string>,
   numbers: Array<NumberActor>,
   numberHasLeft: (number: NumberActor, numberIndex: number) => Promise<void>,
+  /**
+   * This is the engine's main function. It will execute every instruction and
+   * animate everything according to the result of each of one of them.
+   *
+   * @param {ActorsToActions} instructions  map of instructions
+   * @return {Promise<void>}                it will finish or throw an exeption
+   */
 ) => async (instructions: ActorsToActions): Promise<void> => {
   const errors = [];
 
   for (const [numberPosition, actions] of instructions) {
     const number = numbers[numberPosition];
+    let lastInstruction;
 
     for (let j = 0; j < actions.length; j++) {
       const direction = actions[j];
       const oldPosition = number.position;
-      const newPosition = oldPosition.split(',')
+      const newPosition = oldPosition
+                            .split(',')
                             .map((pos, i) => (parseInt(pos) + directions[direction][i]))
                             .join(',');
       const path = mazeData.path.get(oldPosition);
+
+      lastInstruction = direction;
 
       if (!path || !path[directionsToWalls[direction]]) {
         errors.push(new MazePathError(numberPosition));
         break;
       }
+      /**
+       * What happend if the number is over an exit and it tries to go forward?
+       * Since there will be an open wall, the engine will try to move it.
+       * But it won't enter the numeric line, it will fall from the maze.
+       * And we don't want that.
+       *
+       * So, we need to check if the number is at one exit and wants to go forward.
+       */
+      if (mazeDataExits.indexOf(oldPosition) !== -ONE && direction === MOVE_FORWARD) {
+        /**
+         * FIXME what if there are even more instructions?
+         * We need to say something about that. Something like:
+         * "your instructions contains more than the necessaries"
+         */
+        break;
+      }
       await number.updatePosition(newPosition);
+    }
+    /**
+     * The number not only needs to stop at the exit,
+     * it also needs to move forward one more time.
+     *
+     * If isn't like that, then it didn't really leave
+     * the maze, just it stood at the exit.
+     */
+    if (mazeDataExits.indexOf(number.position) !== -ONE || lastInstruction !== MOVE_FORWARD) {
+      errors.push(new MazeExitError(numberPosition));
     }
     if (errors[numberPosition]) {
       continue;
@@ -149,8 +188,6 @@ export default function mazeEngineGenerator(
   );
   const randomActors = randomizeActors();
   const numbers: Array<NumberActor> = mazeData.actorsPositions.map((actorPositions) => {
-    // El actor también tiene que recibir en qué posición sale correctamente, eso se tiene que chequear!!
-    // El número SIEMPRE tiene que entrar a la recta, por más que sea erróneo su lugar
     const actor = numberGenerator(
       randomActors[actorPositions[1]],
       mazeData.accesses[actorPositions[0]],
@@ -171,7 +208,7 @@ export default function mazeEngineGenerator(
   return {
     view,
     excecuteSetOfInstructions: excecuteSetOfInstructionsConfig(
-      mazeData, numbers, numberHasLeftMazeConfig(mazeData, numericLineData, numericLine, numbers),
+      mazeData, mazeData.exits, numbers, numberHasLeftMazeConfig(mazeData, numericLineData, numericLine, numbers),
     ),
     handleResetGame: handleResetGameConfig(
       randomizeActors, numbers, maze, mazeData.actorsPositions, numericLine,
