@@ -8,7 +8,7 @@ import { Container } from 'pixi.js';
 
 import { ZERO, ONE } from 'constants/numbers';
 import { type ActorsToActions } from 'blockly/executorGenerator';
-import { MOVE_FORWARD, MOVE_RIGHT, MOVE_BACKWARD, MOVE_LEFT } from 'constants/actions';
+import { MOVE_FORWARD, MOVE_RIGHT, MOVE_BACKWARD, MOVE_LEFT, LEAVE_MAZE } from 'constants/actions';
 import mazeGenerator, { type MazeData, type Maze } from 'engine/components/mazeGenerator';
 import numberGenerator, {
   START_STATE,
@@ -19,7 +19,13 @@ import numericLineGenerator, {
   type NumericLineData,
   type NumericLine,
 } from 'engine/components/numericLineGenerator';
-import { MazePathError, MazeExitError, MazeWrongExitError } from 'engine/helpers/errors';
+import {
+  MazeExitError,
+  MazePathError,
+  MazePathOverflow,
+  MazeStarvationError,
+  MazeWrongExitError,
+} from 'engine/helpers/errors';
 import { randomizeActorsConfig } from 'engine/helpers/randomConfigurations';
 
 const numberHasLeftMazeConfig = (
@@ -84,9 +90,20 @@ const excecuteSetOfInstructionsConfig = (
 
   for (const [numberPosition, actions] of instructions) {
     const number = numbers[numberPosition];
-    let lastInstruction;
 
     for (let j = 0; j < actions.length; j++) {
+      if (errors[numberPosition]) {
+        break;
+      }
+      if (actions[j] === LEAVE_MAZE) {
+        try {
+          await numberHasLeft(number, numberPosition);
+        } catch (err) {
+          errors.push(err);
+        }
+
+        break;
+      }
       const direction = actions[j];
       const oldPosition = number.position;
       const newPosition = oldPosition
@@ -94,8 +111,6 @@ const excecuteSetOfInstructionsConfig = (
                             .map((pos, i) => (parseInt(pos) + directions[direction][i]))
                             .join(',');
       const path = mazeData.path.get(oldPosition);
-
-      lastInstruction = direction;
 
       if (!path || !path[directionsToWalls[direction]]) {
         errors.push(new MazePathError(numberPosition));
@@ -106,36 +121,19 @@ const excecuteSetOfInstructionsConfig = (
        * Since there will be an open wall, the engine will try to move it.
        * But it won't enter the numeric line, it will fall from the maze.
        * And we don't want that.
-       *
-       * So, we need to check if the number is at one exit and wants to go forward.
        */
       if (mazeDataExits.indexOf(oldPosition) !== -ONE && direction === MOVE_FORWARD) {
-        /**
-         * FIXME what if there are even more instructions?
-         * We need to say something about that. Something like:
-         * "your instructions contains more than the necessaries"
-         */
+        errors.push(new MazePathOverflow(numberPosition));
         break;
       }
       await number.updatePosition(newPosition);
     }
     /**
-     * The number not only needs to stop at the exit,
-     * it also needs to move forward one more time.
-     *
-     * If isn't like that, then it didn't really leave
-     * the maze, just it stood at the exit.
+     * If the `position` is not undefined it means
+     * it never left the maze.
      */
-    if (mazeDataExits.indexOf(number.position) !== -ONE || lastInstruction !== MOVE_FORWARD) {
-      errors.push(new MazeExitError(numberPosition));
-    }
-    if (errors[numberPosition]) {
-      continue;
-    }
-    try {
-      await numberHasLeft(number, numberPosition);
-    } catch (err) {
-      errors.push(err);
+    if (number.position) {
+      errors.push(new MazeStarvationError(numberPosition));
     }
   }
   if (errors.length) {

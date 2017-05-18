@@ -1,5 +1,7 @@
 ## HEAD
 
+- 🐛 [2017-05-18] `engine/containers/mazeEngineGenerator`: update to v3.4.2.
+  - Fix #12. Definitely! But with a better approach: it requires the new `leave_maze` action to be called for the number to leave.
 - 🚀 [2017-05-18] `engine/errors`: update to v1.1.0.
   - 🚀 Add `MazeStarvationError`: thrown when the number did not leave.
   - 🚀 Add `MazePathOverflow`: thrown when the number tries to move forward at the end of the maze.
