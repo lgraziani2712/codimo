@@ -6,7 +6,7 @@
  */
 /* eslint-disable no-magic-numbers */
 import gameMetadataDataWithoutBlocks from 'test/gameMetadataDataWithoutBlocks.json';
-import { blockNames } from 'blockly/constants';
+import * as actionNames from 'constants/actions';
 
 import mazeEngineGenerator from './mazeEngineGenerator';
 
@@ -23,8 +23,8 @@ describe('engine > containers > mazeEngineGenerator', () => {
     const actions = new Map();
 
     actions.set(ACTOR, [
-      blockNames.MOVE_FORWARD,
-      blockNames.MOVE_FORWARD,
+      actionNames.MOVE_FORWARD,
+      actionNames.MOVE_FORWARD,
     ]);
 
     try {
@@ -57,11 +57,11 @@ describe('engine > containers > mazeEngineGenerator', () => {
     const actions = new Map();
 
     actions.set(ACTOR, [
-      blockNames.MOVE_LEFT,
+      actionNames.MOVE_LEFT,
     ]);
     actions.set(ACTOR2, [
-      blockNames.MOVE_FORWARD,
-      blockNames.MOVE_FORWARD,
+      actionNames.MOVE_FORWARD,
+      actionNames.MOVE_FORWARD,
     ]);
 
     try {
@@ -93,7 +93,7 @@ describe('engine > containers > mazeEngineGenerator', () => {
     const actions = new Map();
 
     actions.set(ACTOR, [
-      blockNames.MOVE_RIGHT,
+      actionNames.MOVE_RIGHT,
     ]);
 
     try {
@@ -152,7 +152,7 @@ describe('engine > containers > mazeEngineGenerator', () => {
     const actions = new Map();
 
     actions.set(ACTOR, [
-      blockNames.MOVE_RIGHT,
+      actionNames.MOVE_RIGHT,
     ]);
 
     try {

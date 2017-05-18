@@ -9,7 +9,7 @@
 /* eslint-disable no-magic-numbers */
 import 'test/BlocklyMock';
 
-import { blockNames } from 'blockly/constants';
+import { MOVE_BACKWARD } from 'constants/actions';
 
 import executorGenerator from './executorGenerator';
 
@@ -20,12 +20,12 @@ describe('blockly > executorGenerator', () => {
     };
     const executor = executorGenerator();
 
-    executor.addBlockExecutor(blockNames.MOVE_BACKWARD);
+    executor.addBlockExecutor(MOVE_BACKWARD);
 
-    const code = Blockly.JavaScript[blockNames.MOVE_BACKWARD](blockData);
+    const code = Blockly.JavaScript[MOVE_BACKWARD](blockData);
 
     expect(code).toMatchSnapshot();
-    expect(Blockly.JavaScript[blockNames.MOVE_BACKWARD]).toBeInstanceOf(Function);
+    expect(Blockly.JavaScript[MOVE_BACKWARD]).toBeInstanceOf(Function);
 
     const instructions = executor.parseInstructions(code + code);
     const actions = instructions.get(blockData.number);
@@ -36,7 +36,7 @@ describe('blockly > executorGenerator', () => {
     expect(actions).toHaveLength(2);
     // $FlowDoNotDisturb is NOT undefined
     actions.forEach(action => {
-      expect(action).toBe(blockNames.MOVE_BACKWARD);
+      expect(action).toBe(MOVE_BACKWARD);
     });
   });
 });
