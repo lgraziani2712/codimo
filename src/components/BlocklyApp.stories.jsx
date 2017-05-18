@@ -7,32 +7,12 @@
 import React from 'react';
 
 import { storiesOf } from 'test/storybook-facades';
+import { blocklyData } from 'test/gameMetadata';
 
 import BlocklyApp from './BlocklyApp';
 
-const blocklyData = {
-  elements: [{
-    define: 'block',
-    type: 'move_forward',
-  }, {
-    define: 'block',
-    type: 'move_backward',
-  }, {
-    define: 'block',
-    type: 'move_right',
-  }, {
-    define: 'block',
-    type: 'move_left',
-  }],
-  blockDefinitions: [{
-    name: 'move_forward',
-  }, {
-    name: 'move_backward',
-  }, {
-    name: 'move_right',
-  }, {
-    name: 'move_left',
-  }],
+const newBlocklyData = {
+  ...blocklyData,
   defaultElements: `
     <block type="move_forward">
       <next>
@@ -52,5 +32,5 @@ const blocklyData = {
 
 storiesOf('components.BlocklyApp', module)
   .add('simple Blockly app', () => (
-    <BlocklyApp blocklyData={blocklyData} handleSetOfInstructions={() => {}} handleResetGame={() => {}} />
+    <BlocklyApp blocklyData={newBlocklyData} handleSetOfInstructions={() => {}} handleResetGame={() => {}} />
   ));

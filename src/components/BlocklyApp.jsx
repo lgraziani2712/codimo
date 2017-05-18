@@ -13,7 +13,7 @@ import 'blockly/javascript_compressed';
 import 'blockly/localize/es';
 import 'blockly/components';
 
-import { blockNames } from 'blockly/constants';
+import { ACTION_CONTAINER } from 'constants/actions';
 import executorGenerator, { type ActorsToActions, type Executor } from 'blockly/executorGenerator';
 
 import BlocklyToolbox, { type BlocklyToolboxElement } from './BlocklyToolbox';
@@ -84,7 +84,7 @@ export default class BlocklyApp extends React.Component {
     Blockly.Xml.domToWorkspace(
       Blockly.Xml.textToDom(`
         <xml>
-          <block type="${blockNames.ACTION_CONTAINER}">
+          <block type="${ACTION_CONTAINER}">
             <statement name="program">
               ${this.props.blocklyData.defaultElements}
             </statement>

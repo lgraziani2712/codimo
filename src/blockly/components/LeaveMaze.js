@@ -5,16 +5,16 @@
  * @flow
  */
 import * as colors from 'constants/colors';
-import { MOVE_FORWARD } from 'constants/actions';
+import { LEAVE_MAZE } from 'constants/actions';
 
-Blockly.Blocks[MOVE_FORWARD] = {
+Blockly.Blocks[LEAVE_MAZE] = {
   init: function init() {
     this.appendDummyInput()
         .setAlign(Blockly.ALIGN_CENTRE)
-        .appendField(Blockly.Msg.MOVE_FORWARD_TITLE);
+        .appendField(Blockly.Msg.LEAVE_MAZE_TITLE);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(colors.ACTION);
-    this.setTooltip(Blockly.Msg.MOVE_FORWARD_TOOLTIP);
+    this.setTooltip(Blockly.Msg.LEAVE_MAZE_TOOLTIP);
   },
 };

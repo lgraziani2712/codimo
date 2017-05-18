@@ -19,6 +19,9 @@ export const blocklyData = {
   }, {
     define: 'block',
     type: 'move_left',
+  }, {
+    define: 'block',
+    type: 'leave_maze',
   }],
   blockDefinitions: [{
     name: 'move_forward',
@@ -28,6 +31,8 @@ export const blocklyData = {
     name: 'move_right',
   }, {
     name: 'move_left',
+  }, {
+    name: 'leave_maze',
   }],
   defaultElements: `
     <block type="move_forward">

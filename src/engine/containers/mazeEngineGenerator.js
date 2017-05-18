@@ -8,6 +8,7 @@ import { Container } from 'pixi.js';
 
 import { ZERO, ONE } from 'constants/numbers';
 import { type ActorsToActions } from 'blockly/executorGenerator';
+import { MOVE_FORWARD, MOVE_RIGHT, MOVE_BACKWARD, MOVE_LEFT, LEAVE_MAZE } from 'constants/actions';
 import mazeGenerator, { type MazeData, type Maze } from 'engine/components/mazeGenerator';
 import numberGenerator, {
   START_STATE,
@@ -18,7 +19,13 @@ import numericLineGenerator, {
   type NumericLineData,
   type NumericLine,
 } from 'engine/components/numericLineGenerator';
-import { MazePathError, MazeExitError, MazeWrongExitError } from 'engine/helpers/errors';
+import {
+  MazeExitError,
+  MazePathError,
+  MazePathOverflow,
+  MazeStarvationError,
+  MazeWrongExitError,
+} from 'engine/helpers/errors';
 import { randomizeActorsConfig } from 'engine/helpers/randomConfigurations';
 
 const numberHasLeftMazeConfig = (
@@ -53,23 +60,31 @@ const numberHasLeftMazeConfig = (
 };
 /* eslint-disable camelcase */
 const directions = {
-  move_forward: [ZERO, -ONE],
-  move_right: [ONE, ZERO],
-  move_backward: [ZERO, ONE],
-  move_left: [-ONE, ZERO],
+  [MOVE_FORWARD]: [ZERO, -ONE],
+  [MOVE_RIGHT]: [ONE, ZERO],
+  [MOVE_BACKWARD]: [ZERO, ONE],
+  [MOVE_LEFT]: [-ONE, ZERO],
 };
 const directionsToWalls = {
-  move_forward: 'top',
-  move_right: 'right',
-  move_backward: 'bottom',
-  move_left: 'left',
+  [MOVE_FORWARD]: 'top',
+  [MOVE_RIGHT]: 'right',
+  [MOVE_BACKWARD]: 'bottom',
+  [MOVE_LEFT]: 'left',
 };
 /* eslint-enable */
 
 const excecuteSetOfInstructionsConfig = (
   mazeData: MazeData,
+  mazeDataExits: Array<string>,
   numbers: Array<NumberActor>,
   numberHasLeft: (number: NumberActor, numberIndex: number) => Promise<void>,
+  /**
+   * This is the engine's main function. It will execute every instruction and
+   * animate everything according to the result of each of one of them.
+   *
+   * @param {ActorsToActions} instructions  map of instructions
+   * @return {Promise<void>}                it will finish or throw an exeption
+   */
 ) => async (instructions: ActorsToActions): Promise<void> => {
   const errors = [];
 
@@ -77,9 +92,22 @@ const excecuteSetOfInstructionsConfig = (
     const number = numbers[numberPosition];
 
     for (let j = 0; j < actions.length; j++) {
+      if (errors[numberPosition]) {
+        break;
+      }
+      if (actions[j] === LEAVE_MAZE) {
+        try {
+          await numberHasLeft(number, numberPosition);
+        } catch (err) {
+          errors.push(err);
+        }
+
+        break;
+      }
       const direction = actions[j];
       const oldPosition = number.position;
-      const newPosition = oldPosition.split(',')
+      const newPosition = oldPosition
+                            .split(',')
                             .map((pos, i) => (parseInt(pos) + directions[direction][i]))
                             .join(',');
       const path = mazeData.path.get(oldPosition);
@@ -88,15 +116,24 @@ const excecuteSetOfInstructionsConfig = (
         errors.push(new MazePathError(numberPosition));
         break;
       }
+      /**
+       * What happend if the number is over an exit and it tries to go forward?
+       * Since there will be an open wall, the engine will try to move it.
+       * But it won't enter the numeric line, it will fall from the maze.
+       * And we don't want that.
+       */
+      if (mazeDataExits.indexOf(oldPosition) !== -ONE && direction === MOVE_FORWARD) {
+        errors.push(new MazePathOverflow(numberPosition));
+        break;
+      }
       await number.updatePosition(newPosition);
     }
-    if (errors[numberPosition]) {
-      continue;
-    }
-    try {
-      await numberHasLeft(number, numberPosition);
-    } catch (err) {
-      errors.push(err);
+    /**
+     * If the `position` is not undefined it means
+     * it never left the maze.
+     */
+    if (number.position) {
+      errors.push(new MazeStarvationError(numberPosition));
     }
   }
   if (errors.length) {
@@ -149,8 +186,6 @@ export default function mazeEngineGenerator(
   );
   const randomActors = randomizeActors();
   const numbers: Array<NumberActor> = mazeData.actorsPositions.map((actorPositions) => {
-    // El actor también tiene que recibir en qué posición sale correctamente, eso se tiene que chequear!!
-    // El número SIEMPRE tiene que entrar a la recta, por más que sea erróneo su lugar
     const actor = numberGenerator(
       randomActors[actorPositions[1]],
       mazeData.accesses[actorPositions[0]],
@@ -171,7 +206,7 @@ export default function mazeEngineGenerator(
   return {
     view,
     excecuteSetOfInstructions: excecuteSetOfInstructionsConfig(
-      mazeData, numbers, numberHasLeftMazeConfig(mazeData, numericLineData, numericLine, numbers),
+      mazeData, mazeData.exits, numbers, numberHasLeftMazeConfig(mazeData, numericLineData, numericLine, numbers),
     ),
     handleResetGame: handleResetGameConfig(
       randomizeActors, numbers, maze, mazeData.actorsPositions, numericLine,
