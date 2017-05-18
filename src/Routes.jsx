@@ -8,10 +8,10 @@
 import React from 'react';
 
 import blocklyData from 'test/games/maze/blocklyData.json';
-import firstMazeData from 'test/games/maze/easy/first.json';
-import secondMazeData from 'test/games/maze/easy/second.json';
-import thirdMazeData from 'test/games/maze/easy/third.json';
-import fourthMazeData from 'test/games/maze/easy/fourth.json';
+import firstMazeData from 'test/games/maze/easy/001.json';
+import secondMazeData from 'test/games/maze/easy/002.json';
+import thirdMazeData from 'test/games/maze/easy/003.json';
+import fourthMazeData from 'test/games/maze/easy/004.json';
 import MazeGameContainer from 'containers/MazeGameContainer';
 
 export default [{
