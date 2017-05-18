@@ -1,5 +1,8 @@
 ## HEAD
 
+- 🚀 [2017-05-18] `engine/errors`: update to v1.1.0.
+  - 🚀 Add `MazeStarvationError`: thrown when the number did not leave.
+  - 🚀 Add `MazePathOverflow`: thrown when the number tries to move forward at the end of the maze.
 - 🚀 [2017-05-18] `blockly/components`: update to v1.1.0.
   - 🚀 Add `LeaveMaze`.
   - ⚙ Refactor `index.js` to load every blockly component automatically.
