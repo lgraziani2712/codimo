@@ -4,9 +4,10 @@
  *
  * @flow
  */
-import './ActionContainer';
 
-import './MoveLeft';
-import './MoveRight';
-import './MoveForward';
-import './MoveBackward';
+function importAll(req) {
+  req.keys().forEach(req);
+}
+
+// $FlowDoNotDisturb is a webpack function
+importAll(require.context('./', true, /\.js$/));
