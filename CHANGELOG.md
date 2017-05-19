@@ -1,5 +1,7 @@
 ## HEAD
 
+- 🚀 [2017-05-19] `blockly/components/BlocklyApp`: update to v3.1.0.
+  - 🚀 Add internal state for button manipulation.
 - 🚀 [2017-05-19] `components/Button`: update to v2.0.0.
   - 🚀 Add stories.
   - 🚀 Add style.

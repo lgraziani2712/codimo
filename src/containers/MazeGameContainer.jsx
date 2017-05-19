@@ -79,9 +79,9 @@ export default class MazeGameContainer extends React.Component {
     this.app.stop();
     this.app.destroy(true);
   }
-  handleSetOfInstructions = (instructions: Instructions) => {
-    this.engine.excecuteSetOfInstructions(instructions);
-  }
+  handleSetOfInstructions = (instructions: Instructions) => (
+    this.engine.excecuteSetOfInstructions(instructions)
+  )
   render() {
     return (
       <TwoColumns>

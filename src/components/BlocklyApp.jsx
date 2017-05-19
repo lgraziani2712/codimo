@@ -39,12 +39,17 @@ type BlockDefinition = {|
 |};
 type Props = {|
   blocklyData: BlocklyData,
-  handleSetOfInstructions(instructions: Instructions): void;
+  handleSetOfInstructions(instructions: Instructions): Promise<void>;
   handleResetGame(): void;
+|};
+type State = {|
+  isExecuting: boolean,
+  isStopped: boolean,
 |};
 
 export default class BlocklyApp extends React.Component {
   props: Props;
+  state: State;
 
   handleWorkspaceCreation: (toolbox: HTMLElement) => void;
   handleClick: () => void;
@@ -55,6 +60,10 @@ export default class BlocklyApp extends React.Component {
     super(props);
 
     this.executor = executorGenerator();
+    this.state = {
+      isExecuting: false,
+      isStopped: true,
+    };
 
     props.blocklyData.blockDefinitions.forEach(({ name }) => {
       this.executor.addBlockExecutor(name);
@@ -94,13 +103,31 @@ export default class BlocklyApp extends React.Component {
       this.workspace,
     );
   }
+  handleResetGame = () => {
+    this.setState(() => ({ isStopped: true }));
+
+    this.props.handleResetGame();
+  }
   handleStartGame = () => {
     const rawInstructions = Blockly.JavaScript.workspaceToCode(this.workspace);
 
-    this.props.handleSetOfInstructions(this.executor.parseInstructions(rawInstructions));
+    this.setState(() => ({
+      isExecuting: true,
+      isStopped: false,
+    }));
+
+    this.props.handleSetOfInstructions(this.executor.parseInstructions(rawInstructions))
+      .then(() => {
+        this.setState(() => ({ isExecuting: false }));
+      })
+      .catch((err) => {
+        this.setState(() => ({ isExecuting: false }));
+        throw err;
+      });
   }
   render() {
     const { blocklyData } = this.props;
+    const { isExecuting, isStopped } = this.state;
 
     return (
       <div>
@@ -111,8 +138,19 @@ export default class BlocklyApp extends React.Component {
           />
         </BlocklyWorkspace>
         {/* FIXME hardcoded title */}
-        <Button handleClick={this.handleStartGame} title="Dale play!" />
-        <Button handleClick={this.props.handleResetGame} title="Reseteá!" />
+        {isStopped ?
+          <Button
+            title="Dale play!"
+            type="green"
+            handleClick={this.handleStartGame}
+          /> :
+          <Button
+            disabled={isExecuting}
+            title="Reseteá!"
+            type="yellow"
+            handleClick={this.handleResetGame}
+          />
+        }
       </div>
     );
   }
