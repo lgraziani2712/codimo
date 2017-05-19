@@ -31,9 +31,9 @@
 
       ["5,0", { "left": true, "top": true }]
     ],
-    "accesses": ["3,3"],
+    "access": "3,3",
     "exits": ["1,0", "3,0", "5,0"],
-    "actorsPositions": [[0, 1]]
+    "actorExitIdx": 1
   },
   "numericLineData": {
     "statics": [null, 3, null, 7, null, 9],

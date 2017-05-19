@@ -23,7 +23,7 @@ mazeData.path = new Map(mazeData.path);
 
 const basicMaze = mazeGenerator(mazeData);
 const simpleNumberMaze = mazeGenerator(mazeData);
-const number = numberGenerator(-TEN, mazeData.accesses[0], mazeData.exits[0], mazeData.size, mazeData.margin);
+const number = numberGenerator(-TEN, mazeData.access, mazeData.exits[0], mazeData.size, mazeData.margin);
 
 storiesOf('engine.components.Maze', module)
   .add('basic Maze', () => (
@@ -34,8 +34,8 @@ storiesOf('engine.components.Maze', module)
 
     (async () => {
       await wait(1000); // eslint-disable-line no-magic-numbers
-      for (let i = 1; i < mazeData.path.length; i++) {
-        await number.updatePosition(mazeData.path[i]);
+      for (const path of mazeData.path.keys()) {
+        await number.updatePosition(path);
       }
       await wait(2000); // eslint-disable-line no-magic-numbers
       number.resetPosition();

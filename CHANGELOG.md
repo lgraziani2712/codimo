@@ -1,5 +1,9 @@
 ## HEAD
 
+- 🚀 [2017-05-18] `gameMetadata`: update to v5.0.0.
+  - 🔥 Remove arrays for actors. Now everything will be defined for just one.
+  - `mazeData.accesses` -> `mazeData.access`. `Array<string>` -> `string`.
+  - `mazeData.actorsPositions` -> `mazeData.actorExitIdx`. `Array<[number, number]>` -> `number`.
 - 🐛 [2017-05-18] `engine/containers/mazeEngineGenerator`: update to v3.4.2.
   - Fix #12. Definitely! But with a better approach: it requires the new `leave_maze` action to be called for the number to leave.
 - 🚀 [2017-05-18] `engine/errors`: update to v1.1.0.
