@@ -1,5 +1,7 @@
 ## HEAD
 
+- 🔥 [2017-05-18] `engine/containers/mazeEngineGenerator`: update to v4.0.0.
+  - 🔥 Remove everything multiple-actors related.
 - 🔥 [2017-05-18] `engine/errors`: update to v1.2.0.
   - 🔥 Remove actor parameter and prop.
 - 🚀 [2017-05-18] `blockly/executorGenerator`: update to v3.0.0.

@@ -4,13 +4,14 @@
  *
  * @flow
  */
+/* eslint-disable no-magic-numbers, */
 import React from 'react';
 import wait from 'speculation/wait';
 
 import { storiesOf } from 'test/storybook-facades';
 import PixiWrapper from 'test/PixiWrapper';
 import gameMetadataDataWithoutBlocks from 'test/gameMetadataDataWithoutBlocks.json';
-import * as actionNames from 'constants/actions';
+import * as actionNames from 'constants/instructions';
 
 import mazeEngineGenerator from './mazeEngineGenerator';
 
@@ -23,10 +24,7 @@ mazeData.path = new Map(mazeData.path);
 storiesOf('engine.containers.mazeEngineGenerator', module)
   .add('simple mazeEngine', () => {
     const mazeEngine = mazeEngineGenerator(mazeData, numericLineData, difficulty);
-    const actions = new Map();
-    const ACTOR = 0;
-
-    actions.set(ACTOR, [
+    const instructions = [
       actionNames.MOVE_FORWARD,
       actionNames.MOVE_FORWARD,
       actionNames.MOVE_RIGHT,
@@ -51,11 +49,12 @@ storiesOf('engine.containers.mazeEngineGenerator', module)
       actionNames.MOVE_LEFT,
       actionNames.MOVE_FORWARD,
       actionNames.MOVE_FORWARD,
-    ]);
+      actionNames.LEAVE_MAZE,
+    ];
 
     (async () => {
-      await wait(1000); // eslint-disable-line no-magic-numbers
-      await mazeEngine.excecuteSetOfInstructions(actions);
+      await wait(1000);
+      await mazeEngine.excecuteSetOfInstructions(instructions);
     })();
 
     mazeEngine.view.x += 32;
