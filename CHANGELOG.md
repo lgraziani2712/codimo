@@ -1,5 +1,7 @@
 ## HEAD
 
+- 🔥 [2017-05-18] `engine/errors`: update to v1.2.0.
+  - 🔥 Remove actor parameter and prop.
 - 🚀 [2017-05-18] `blockly/executorGenerator`: update to v3.0.0.
   - 🚀 Adapt to one and only one actor. Everything related to hardcoded values for specific actor, or arrays or maps related to multiple actors have been replaced for structures specifically defined for one and only one actor.
   - `ActorsToActions` -> `Instructions`. `Map<number, Array<string>>` -> `Array<string>`.
