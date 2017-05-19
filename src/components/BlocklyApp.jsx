@@ -13,8 +13,8 @@ import 'blockly/javascript_compressed';
 import 'blockly/localize/es';
 import 'blockly/components';
 
-import { ACTION_CONTAINER } from 'constants/actions';
-import executorGenerator, { type ActorsToActions, type Executor } from 'blockly/executorGenerator';
+import { ACTION_CONTAINER } from 'constants/instructions';
+import executorGenerator, { type Instructions, type Executor } from 'blockly/executorGenerator';
 
 import BlocklyToolbox, { type BlocklyToolboxElement } from './BlocklyToolbox';
 import Button from './Button';
@@ -39,7 +39,7 @@ type BlockDefinition = {|
 |};
 type Props = {|
   blocklyData: BlocklyData,
-  handleSetOfInstructions(instructions: ActorsToActions): void;
+  handleSetOfInstructions(instructions: Instructions): void;
   handleResetGame(): void;
 |};
 

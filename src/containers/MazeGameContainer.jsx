@@ -8,7 +8,7 @@ import React from 'react';
 import { Application } from 'pixi.js';
 import styled from 'styled-components';
 
-import { type ActorsToActions } from 'blockly/executorGenerator';
+import { type Instructions } from 'blockly/executorGenerator';
 import BlocklyApp, { type BlocklyData } from 'components/BlocklyApp';
 import { HALF } from 'constants/numbers';
 import mazeEngineGenerator, {
@@ -79,7 +79,7 @@ export default class MazeGameContainer extends React.Component {
     this.app.stop();
     this.app.destroy(true);
   }
-  handleSetOfInstructions = (instructions: ActorsToActions) => {
+  handleSetOfInstructions = (instructions: Instructions) => {
     this.engine.excecuteSetOfInstructions(instructions);
   }
   render() {

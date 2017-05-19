@@ -9,7 +9,7 @@
 /* eslint-disable no-magic-numbers */
 import 'test/BlocklyMock';
 
-import { MOVE_BACKWARD } from 'constants/actions';
+import { MOVE_BACKWARD } from 'constants/instructions';
 
 import executorGenerator from './executorGenerator';
 
@@ -28,15 +28,12 @@ describe('blockly > executorGenerator', () => {
     expect(Blockly.JavaScript[MOVE_BACKWARD]).toBeInstanceOf(Function);
 
     const instructions = executor.parseInstructions(code + code);
-    const actions = instructions.get(blockData.number);
 
-    expect(instructions).toBeInstanceOf(Map);
-    expect(instructions.size).toBe(1);
-    expect(actions).toBeInstanceOf(Array);
-    expect(actions).toHaveLength(2);
-    // $FlowDoNotDisturb is NOT undefined
-    actions.forEach(action => {
-      expect(action).toBe(MOVE_BACKWARD);
+    expect(instructions).toBeInstanceOf(Array);
+    expect(instructions).toHaveLength(2);
+
+    instructions.forEach(instruction => {
+      expect(instruction).toBe(MOVE_BACKWARD);
     });
   });
 });

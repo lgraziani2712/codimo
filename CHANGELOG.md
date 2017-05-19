@@ -1,5 +1,8 @@
 ## HEAD
 
+- 🚀 [2017-05-18] `blockly/executorGenerator`: update to v3.0.0.
+  - 🚀 Adapt to one and only one actor. Everything related to hardcoded values for specific actor, or arrays or maps related to multiple actors have been replaced for structures specifically defined for one and only one actor.
+  - `ActorsToActions` -> `Instructions`. `Map<number, Array<string>>` -> `Array<string>`.
 - 🚀 [2017-05-18] `gameMetadata`: update to v5.0.0.
   - 🔥 Remove arrays for actors. Now everything will be defined for just one.
   - `mazeData.accesses` -> `mazeData.access`. `Array<string>` -> `string`.
