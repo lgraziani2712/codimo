@@ -1,0 +1,70 @@
+/**
+ * @author Luciano Graziani @lgraziani2712
+ * @license {@link http://www.opensource.org/licenses/mit-license.php|MIT License}
+ *
+ * @flow
+ */
+import React from 'react';
+import styled from 'styled-components';
+
+import { storiesOf, action } from 'test/storybook-facades';
+
+import Button from './Button';
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 50px 0 0;
+
+  & a {
+    margin: 20px 20px;
+  }
+`;
+const clickedAction = action('Clicked!');
+
+storiesOf('components.Button', module)
+  .add('activable animated buttons for the game', () => (
+    <Container>
+      <div><Button handleClick={clickedAction} title="Click me 😃" type="blue" /></div>
+      <div><Button handleClick={clickedAction} title="Click me 😃" type="green" /></div>
+      <div><Button handleClick={clickedAction} title="Click me 😃" type="red" /></div>
+      <div><Button handleClick={clickedAction} title="Click me 😃" type="yellow" /></div>
+    </Container>
+  ))
+  .add('disabled buttons for the game', () => (
+    <Container>
+      <div>
+        <Button
+          disabled={true}
+          title="Click me 😃"
+          type="blue"
+          handleClick={clickedAction}
+        />
+      </div>
+      <div>
+        <Button
+          disabled={true}
+          title="Click me 😃"
+          type="green"
+          handleClick={clickedAction}
+        />
+      </div>
+      <div>
+        <Button
+          disabled={true}
+          title="Click me 😃"
+          type="red"
+          handleClick={clickedAction}
+        />
+      </div>
+      <div>
+        <Button
+          disabled={true}
+          title="Click me 😃"
+          type="yellow"
+          handleClick={clickedAction}
+        />
+      </div>
+    </Container>
+  ));

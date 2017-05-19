@@ -1,5 +1,9 @@
 ## HEAD
 
+- 🚀 [2017-05-19] `components/Button`: update to v2.0.0.
+  - 🚀 Add stories.
+  - 🚀 Add style.
+  - 🚀 Add types and states.
 - 🔥 [2017-05-18] `engine/containers/mazeEngineGenerator`: update to v4.0.0.
   - 🔥 Remove everything multiple-actors related.
 - 🔥 [2017-05-18] `engine/errors`: update to v1.2.0.
