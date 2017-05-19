@@ -6,102 +6,51 @@
  */
 /* eslint-disable no-magic-numbers */
 import gameMetadataDataWithoutBlocks from 'test/gameMetadataDataWithoutBlocks.json';
-import * as actionNames from 'constants/actions';
+import * as actionNames from 'constants/instructions';
 
 import mazeEngineGenerator from './mazeEngineGenerator';
 
-const ACTOR = 0;
-const ONE = 1;
-const TWO = 2;
 const { mazeData, numericLineData, difficulty } = gameMetadataDataWithoutBlocks;
 
 mazeData.path = new Map(mazeData.path);
 
 describe('engine > containers > mazeEngineGenerator', () => {
-  it('should parse an array of correct actions and return a response', async () => {
+  it('should parse an array of correct `instructions` and return a response', async () => {
     const mazeEngine = mazeEngineGenerator(mazeData, numericLineData, difficulty);
-    const actions = new Map();
-
-    actions.set(ACTOR, [
+    const instructions = [
       actionNames.MOVE_FORWARD,
       actionNames.MOVE_FORWARD,
-    ]);
+      actionNames.LEAVE_MAZE,
+    ];
 
     try {
-      await mazeEngine.excecuteSetOfInstructions(actions);
-    } catch (errors) {
-      const error = errors[0];
-
-      expect(errors.length).toBe(ONE);
-      expect(error.actor).toBe(ACTOR);
+      await mazeEngine.excecuteSetOfInstructions(instructions);
+    } catch (error) {
       expect(error.name).toBe('MazeExitError');
       expect(error.message).toMatchSnapshot();
     }
   });
-  it('should throw a path Error for ACTOR 1 but exit error for ACTOR 2', async () => {
-    const ACTOR2 = ONE;
-    const newMazeData = {
-      ...mazeData,
-      accesses: [mazeData.accesses[0], mazeData.accesses[0]],
-      exits: [mazeData.exits[0], mazeData.exits[0]],
-      actorsPositions: [
-        [0, 0],
-        [1, 1],
-      ],
-    };
-    const newNumericLineData = {
-      statics: [1, null, 5, null, 9],
-      accesses: [1, 3],
-    };
-    const mazeEngine = mazeEngineGenerator(newMazeData, newNumericLineData, difficulty);
-    const actions = new Map();
-
-    actions.set(ACTOR, [
-      actionNames.MOVE_LEFT,
-    ]);
-    actions.set(ACTOR2, [
-      actionNames.MOVE_FORWARD,
-      actionNames.MOVE_FORWARD,
-    ]);
-
-    try {
-      await mazeEngine.excecuteSetOfInstructions(actions);
-    } catch (errors) {
-      expect(errors).toBeInstanceOf(Array);
-      expect(errors.length).toBe(TWO);
-      expect(errors[0].name).toBe('MazePathError');
-      expect(errors[1].name).toBe('MazeExitError');
-    }
-  });
   it('should throw a MazePathError if a wall is between valid paths', async () => {
     const newMazeData = {
-      canvas: { height: 500, width: 450 },
-      width: 5,
-      height: 5,
-      margin: 10,
-      size: 64,
+      ...mazeData,
       path: new Map([['0,0', {}], ['1,0', {}]]),
-      accesses: ['0,0'],
+      access: '0,0',
       exits: ['1,0'],
-      actorsPositions: [[0, 0]],
+      actorExitIdx: 0,
     };
     const newNumericLineData = {
       statics: [null, 6, 9],
       accesses: [0],
     };
     const mazeEngine = mazeEngineGenerator(newMazeData, newNumericLineData, difficulty);
-    const actions = new Map();
-
-    actions.set(ACTOR, [
+    const instructions = [
       actionNames.MOVE_RIGHT,
-    ]);
+    ];
 
     try {
-      await mazeEngine.excecuteSetOfInstructions(actions);
-    } catch (errors) {
-      expect(errors).toBeInstanceOf(Array);
-      expect(errors.length).toBe(ONE);
-      expect(errors[0].name).toBe('MazePathError');
+      await mazeEngine.excecuteSetOfInstructions(instructions);
+    } catch (error) {
+      expect(error.name).toBe('MazePathError');
 
       return;
     }
@@ -109,15 +58,11 @@ describe('engine > containers > mazeEngineGenerator', () => {
   });
   it('should be possible to create a maze with 1-actor:n-exits', async () => {
     const newMazeData = {
-      canvas: { height: 500, width: 450 },
-      width: 5,
-      height: 5,
-      margin: 10,
-      size: 64,
+      ...mazeData,
       path: new Map([['0,0', {}], ['1,0', {}]]),
-      accesses: ['0,0'],
+      access: '0,0',
       exits: ['1,0'],
-      actorsPositions: [[0, 0]],
+      actorExitIdx: 0,
     };
     const newNumericLineData = {
       statics: [null, 6, null],
@@ -129,38 +74,58 @@ describe('engine > containers > mazeEngineGenerator', () => {
   });
   it('should throw a MazeWrongExitError if the actor leaves at the wrong exit', async () => {
     const newMazeData = {
-      canvas: { height: 500, width: 450 },
-      width: 5,
-      height: 5,
-      margin: 10,
-      size: 64,
+      ...mazeData,
       path: new Map([
         ['0,0', { right: true }],
         ['1,0', { left: true }],
       ]),
-      accesses: ['0,0'],
+      access: '0,0',
       exits: ['1,0', '1,1'],
-      actorsPositions: [
-        [0, 1],
-      ],
+      actorExitIdx: 1,
     };
     const newNumericLineData = {
       statics: [null, 6, null],
       accesses: [0, 1],
     };
     const mazeEngine = mazeEngineGenerator(newMazeData, newNumericLineData, difficulty);
-    const actions = new Map();
-
-    actions.set(ACTOR, [
+    const instructions = [
       actionNames.MOVE_RIGHT,
-    ]);
+      actionNames.LEAVE_MAZE,
+    ];
 
     try {
-      await mazeEngine.excecuteSetOfInstructions(actions);
-    } catch (errors) {
-      expect(errors).toBeInstanceOf(Array);
-      expect(errors.length).toBe(ONE);
-      expect(errors[0].name).toBe('MazeWrongExitError');
+      await mazeEngine.excecuteSetOfInstructions(instructions);
+    } catch (error) {
+      expect(error.name).toBe('MazeWrongExitError');
+
+      return;
+    }
+    expect('true').toBe('not evaluated');
+  });
+  it('should throw a MazeStarvationError if the actor doesn\'t leaves', async () => {
+    const newMazeData = {
+      ...mazeData,
+      path: new Map([
+        ['0,0', { right: true }],
+        ['1,0', { left: true }],
+      ]),
+      access: '0,0',
+      exits: ['1,0', '1,1'],
+      actorExitIdx: 1,
+    };
+    const newNumericLineData = {
+      statics: [null, 6, null],
+      accesses: [0, 1],
+    };
+    const mazeEngine = mazeEngineGenerator(newMazeData, newNumericLineData, difficulty);
+    const instructions = [
+      actionNames.MOVE_RIGHT,
+    ];
+
+    try {
+      await mazeEngine.excecuteSetOfInstructions(instructions);
+    } catch (error) {
+      expect(error.name).toBe('MazeStarvationError');
 
       return;
     }

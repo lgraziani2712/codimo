@@ -5,7 +5,7 @@
  * @flow
  */
 import * as colors from 'constants/colors';
-import { LEAVE_MAZE } from 'constants/actions';
+import { LEAVE_MAZE } from 'constants/instructions';
 
 Blockly.Blocks[LEAVE_MAZE] = {
   init: function init() {

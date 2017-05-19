@@ -26,17 +26,9 @@ export type MazeData = {|
    * The second will define wich borders are wall.
    */
   path: Map<string, ActivePathBorders>,
-  accesses: Array<string>,
+  access: string,
   exits: Array<string>,
-  /**
-  * Each pair represents start and end positions for one actor.
-  *
-  * - The first element points to an `accesses` position.
-  * - The second element points to an `exits` position.
-  *
-  * @type {Array<[number, number]>}
-  */
-  actorsPositions: Array<[number, number]>,
+  actorExitIdx: number,
 |};
 export type Maze = {|
   view: Container,

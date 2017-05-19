@@ -65,5 +65,4 @@ describe('engine > components > numberGenerator', () => {
       }
     },
   );
-  xit('should stop the animation if the promise was canceled. It should reset its position');
 });

@@ -5,7 +5,7 @@
  * @flow
  */
 import * as colors from 'constants/colors';
-import { MOVE_LEFT } from 'constants/actions';
+import { MOVE_LEFT } from 'constants/instructions';
 
 Blockly.Blocks[MOVE_LEFT] = {
   init: function init() {

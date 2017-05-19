@@ -5,7 +5,7 @@
  * @flow
  */
 import * as colors from 'constants/colors';
-import { ACTION_CONTAINER } from 'constants/actions';
+import { ACTION_CONTAINER } from 'constants/instructions';
 
 const mainInput = 'program';
 

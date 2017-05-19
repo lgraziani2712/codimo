@@ -5,7 +5,7 @@
  * @flow
  */
 import * as colors from 'constants/colors';
-import { MOVE_BACKWARD } from 'constants/actions';
+import { MOVE_BACKWARD } from 'constants/instructions';
 
 Blockly.Blocks[MOVE_BACKWARD] = {
   init: function init() {
