@@ -20,8 +20,20 @@ import BlocklyToolbox, { type BlocklyToolboxElement } from './BlocklyToolbox';
 import Button from './Button';
 
 const ID = 'blockly-app';
+const ActionBar = styled.div`
+  align-items: center;
+  background-color: #e3e3e3;
+  border: 1px solid #ddd;
+  border-bottom: 0;
+  display: flex;
+  height: 68px;
+  width: 628px;
+  & * {
+    margin: 0 0 0 10px;
+  }
+`;
 const BlocklyWorkspace = styled.div`
-  height: 520px;
+  height: 500px;
   width: 630px;
 `;
 
@@ -46,7 +58,6 @@ type State = {|
   isExecuting: boolean,
   isStopped: boolean,
 |};
-
 export default class BlocklyApp extends React.Component {
   props: Props;
   state: State;
@@ -58,6 +69,8 @@ export default class BlocklyApp extends React.Component {
 
   constructor(props: Props) {
     super(props);
+
+    Blockly.Events.recordUndo = false;
 
     this.executor = executorGenerator();
     this.state = {
@@ -131,26 +144,28 @@ export default class BlocklyApp extends React.Component {
 
     return (
       <div>
+        <ActionBar>
+          {/* FIXME hardcoded title */}
+          {isStopped ?
+            <Button
+              title="▶ Dale play!"
+              type="green"
+              handleClick={this.handleStartGame}
+            /> :
+            <Button
+              disabled={isExecuting}
+              title="⏹ Reseteá!"
+              type="orange"
+              handleClick={this.handleResetGame}
+            />
+          }
+        </ActionBar>
         <BlocklyWorkspace id={ID}>
           <BlocklyToolbox
             elements={blocklyData.elements}
             handleWorkspaceCreation={this.handleWorkspaceCreation}
           />
         </BlocklyWorkspace>
-        {/* FIXME hardcoded title */}
-        {isStopped ?
-          <Button
-            title="Dale play!"
-            type="green"
-            handleClick={this.handleStartGame}
-          /> :
-          <Button
-            disabled={isExecuting}
-            title="Reseteá!"
-            type="yellow"
-            handleClick={this.handleResetGame}
-          />
-        }
       </div>
     );
   }

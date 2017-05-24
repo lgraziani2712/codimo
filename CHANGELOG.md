@@ -1,5 +1,7 @@
 ## HEAD
 
+- 🚀 [2017-05-24] `blockly/components/BlocklyApp`: update to v3.1.1.
+  - 🚀 Add `<ActionBar />`.
 - 🔥 [2017-05-24] `components/Button`: update to v2.0.1.
   - 🔥 Extract constant object to `constants/colors`.
   - 👕 Fix stylelint warnings.
