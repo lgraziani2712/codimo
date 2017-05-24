@@ -1,5 +1,8 @@
 ## HEAD
 
+- 🔥 [2017-05-24] `components/Button`: update to v2.0.1.
+  - 🔥 Extract constant object to `constants/colors`.
+  - 👕 Fix stylelint warnings.
 - 🐛 [2017-05-24] `blockly/components`: update to v1.2.0.
   - 🐛 Fix unnecessary context menu.
 - 🚀 [2017-05-19] `blockly/components/BlocklyApp`: update to v3.1.0.

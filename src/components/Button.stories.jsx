@@ -16,9 +16,8 @@ const Container = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   padding: 50px 0 0;
-
   & a {
-    margin: 20px 20px;
+    margin: 20px;
   }
 `;
 const clickedAction = action('Clicked!');
@@ -29,7 +28,7 @@ storiesOf('components.Button', module)
       <div><Button handleClick={clickedAction} title="Click me 😃" type="blue" /></div>
       <div><Button handleClick={clickedAction} title="Click me 😃" type="green" /></div>
       <div><Button handleClick={clickedAction} title="Click me 😃" type="red" /></div>
-      <div><Button handleClick={clickedAction} title="Click me 😃" type="yellow" /></div>
+      <div><Button handleClick={clickedAction} title="Click me 😃" type="orange" /></div>
     </Container>
   ))
   .add('disabled buttons for the game', () => (
@@ -62,7 +61,7 @@ storiesOf('components.Button', module)
         <Button
           disabled={true}
           title="Click me 😃"
-          type="yellow"
+          type="orange"
           handleClick={clickedAction}
         />
       </div>
