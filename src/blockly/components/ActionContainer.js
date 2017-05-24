@@ -14,6 +14,7 @@ Blockly.Blocks[ACTION_CONTAINER] = {
     this.appendDummyInput()
         .appendField(Blockly.Msg.ACTION_CONTAINER_TITLE);
     this.appendStatementInput(mainInput);
+    this.contextMenu = false;
     this.setDeletable(false);
     this.setEditable(false);
     this.setMovable(false);
