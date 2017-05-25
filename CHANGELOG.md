@@ -1,5 +1,7 @@
 ## HEAD
 
+- 🎨 [2017-05-24] `engine/containers/numberGenerator`: update to v3.2.1.
+  - 🎨 Improve styles.
 - 🚀 [2017-05-24] `containers/MazeGameContainer`: update v1.1.1.
   - 🎨 Add some styles.
   - 🚀 Add the new `<GameContainer />`.

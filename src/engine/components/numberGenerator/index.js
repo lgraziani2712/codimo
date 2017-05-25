@@ -12,7 +12,7 @@ import { UnableToLeaveTheNumericLine } from 'engine/helpers/errors';
 import { EASE_BE_HAPPY, EASE_BE_SAD } from 'engine/helpers/customEases';
 import { getRandomFloat } from 'helpers/randomizers';
 
-const EIGHT = 8;
+const SIX = 6;
 const SHAKE_DISTANCE = 2.3;
 
 export const START_STATE = 'start';
@@ -21,15 +21,12 @@ export const STOP_STATE = 'stop';
 const styleRaw = {
   fontFamily: 'Helvetica',
   fontWeight: 'bold',
-  fill: ['#ffffff', '#00ff99'], // gradient
-  stroke: '#4a1850',
-  strokeThickness: 5,
+  fill: ['#ffffff', '#cccccc'],
   dropShadow: true,
   dropShadowColor: '#000000',
   dropShadowBlur: 4,
-  // eslint-disable-next-line no-magic-numbers
-  dropShadowAngle: Math.PI / 6,
-  dropShadowDistance: 2,
+  dropShadowAngle: Math.PI / SIX,
+  dropShadowDistance: 3,
 };
 
 export type NumberActor = {|
@@ -89,7 +86,7 @@ const emotionConfig = (
 export const staticNumberGenerator = (number: number, size: number): StaticNumberActor => {
   const style = new TextStyle({
     ...styleRaw,
-    fontSize: size / HALF + size / EIGHT,
+    fontSize: size / HALF + size / SIX,
   });
   const view = new Text(number.toString(), style);
 
@@ -191,7 +188,7 @@ const numberGenerator = (
 ): NumberActor => {
   const style = new TextStyle({
     ...styleRaw,
-    fontSize: size / HALF + size / EIGHT,
+    fontSize: size / HALF + size / SIX,
   });
   const view = new Text(number.toString(), style);
   const initialPosition = position.split(',').map((string: string): number => (parseInt(string)));
