@@ -7,8 +7,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { getRandomInt } from 'helpers/randomizers';
-
 const blurImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+' +
                   'AAAAG0lEQVQIW2NkYGD4z8DAwMgABXAGNgGwSgwVAFbmAgXxvZSoAAAAAElFTkSuQmCC';
 const CenterGame = styled.div`
@@ -38,11 +36,10 @@ const CenterGame = styled.div`
 
 type Props = {|
   children?: any,
-  images: Array<string>,
+  image: string,
 |};
-const GameContainer = ({ children, images }: Props) => (
-  // eslint-disable-next-line no-magic-numbers
-  <CenterGame image={images[getRandomInt(0, images.length - 1)]}>
+const GameContainer = ({ children, image }: Props) => (
+  <CenterGame image={image}>
     {children}
   </CenterGame>
 );

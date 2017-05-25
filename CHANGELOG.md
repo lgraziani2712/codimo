@@ -1,5 +1,8 @@
 ## HEAD
 
+- 🔥 [2017-05-25] `components/GameContainer`: update to v1.1.0.
+  - 🔥 Extract randomizer operation for the image.
+  - ⚙ Update prop `images -> image`: instead of receiving an array of URIs, now will receive only one.
 - 🎨 [2017-05-24] `engine/containers/numberGenerator`: update to v3.2.1.
   - 🎨 Improve styles.
 - 🚀 [2017-05-24] `containers/MazeGameContainer`: update v1.1.1.
