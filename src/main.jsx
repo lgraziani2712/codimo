@@ -10,7 +10,7 @@ import ReactDOM from 'react-dom';
 import Viewer from './Viewer';
 import Routes from './Routes';
 
-const rootElement = document.getElementById('app');
+const rootElement = document.getElementById('root');
 
 ReactDOM.render(
   <Viewer routes={Routes} />,

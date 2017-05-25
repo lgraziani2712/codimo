@@ -11,7 +11,7 @@ import styled from 'styled-components';
 import { type Instructions } from 'blockly/executorGenerator';
 import BlocklyApp, { type BlocklyData } from 'components/BlocklyApp';
 import GameContainer from 'components/GameContainer';
-import { HALF } from 'constants/numbers';
+import { HALF, ZERO, ONE } from 'constants/numbers';
 import mazeEngineGenerator, {
   type Engine,
   type GameDifficulty,
@@ -19,6 +19,7 @@ import mazeEngineGenerator, {
 import { type MazeData } from 'engine/components/mazeGenerator';
 import { type ActivePathBorders } from 'engine/components/blockGeneratorConfig';
 import { type NumericLineData } from 'engine/components/numericLineGenerator';
+import { getRandomInt } from 'helpers/randomizers';
 
 const TwoColumns = styled.div`
   align-items: flex-end;
@@ -26,11 +27,11 @@ const TwoColumns = styled.div`
   filter: drop-shadow(2px 2px 8px black);
 `;
 const images = [
-  'images/numbers-wp1.jpg',
-  'images/numbers-wp2.jpg',
-  'images/numbers-wp3.jpg',
-  'images/numbers-wp4.jpg',
-  'images/numbers-wp5.jpg',
+  '/images/numbers-wp1.jpg',
+  '/images/numbers-wp2.jpg',
+  '/images/numbers-wp3.jpg',
+  '/images/numbers-wp4.jpg',
+  '/images/numbers-wp5.jpg',
 ];
 
 type RawMazeData = {|
@@ -50,6 +51,7 @@ export default class MazeGameContainer extends React.Component {
 
   app: Application;
   engine: Engine;
+  image: string;
   view: HTMLCanvasElement;
 
   constructor(props: Props) {
@@ -63,6 +65,7 @@ export default class MazeGameContainer extends React.Component {
     const { numericLineData, difficulty } = props.gameMetadata;
 
     this.engine = mazeEngineGenerator(mazeData, numericLineData, difficulty);
+    this.image = images[getRandomInt(ZERO, images.length - ONE)];
   }
 
   componentDidMount() {
@@ -89,7 +92,7 @@ export default class MazeGameContainer extends React.Component {
   )
   render() {
     return (
-      <GameContainer images={images}>
+      <GameContainer image={this.image}>
         <TwoColumns>
           <canvas ref={(view) => this.view = view} />
           <BlocklyApp
