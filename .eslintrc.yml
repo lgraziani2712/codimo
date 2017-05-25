@@ -178,7 +178,6 @@ rules:
   react/no-did-update-set-state: 2
   react/no-direct-mutation-state: 2
   react/no-multi-comp: 2
-  react/no-set-state: 2
   react/no-string-refs: 2
   react/no-unknown-property: 1
   react/prefer-es6-class: 2

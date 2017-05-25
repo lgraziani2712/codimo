@@ -6,6 +6,7 @@
  */
 import { ONE } from 'constants/numbers';
 import { type GameDifficulty } from 'engine/containers/mazeEngineGenerator';
+import { getRandomInt } from 'helpers/randomizers';
 
 /* eslint-disable no-magic-numbers */
 const RANGES = {
@@ -15,13 +16,7 @@ const RANGES = {
 };
 /* eslint-enable */
 
-function getRandomInt(rawMin: number, max: number) {
-  const min = rawMin + ONE;
-
-  return Math.floor(Math.random() * (max - min)) + min;
-}
-
-export const randomizeActorsConfig = (
+const randomizeActorsConfig = (
   statics: Array<number | null>,
   accesses: Array<number>,
   difficulty: GameDifficulty,
@@ -37,10 +32,8 @@ export const randomizeActorsConfig = (
 
   return () => (
     // $FlowDoNotDisturb they ARE numbers!
-    definedRanges.map(({ min, max }) => (getRandomInt(min, max)))
+    definedRanges.map(({ min, max }) => (getRandomInt(min + ONE, max)))
   );
 };
 
-export function getRandomFloat(min: number, max: number) {
-  return Math.random() * (max - min) + min;
-}
+export default randomizeActorsConfig;

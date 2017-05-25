@@ -12,9 +12,10 @@ Blockly.Blocks[MOVE_BACKWARD] = {
     this.appendDummyInput()
         .setAlign(Blockly.ALIGN_CENTRE)
         .appendField(Blockly.Msg.MOVE_BACKWARD_TITLE);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
+    this.contextMenu = false;
     this.setColour(colors.ACTION);
+    this.setNextStatement(true, null);
+    this.setPreviousStatement(true, null);
     this.setTooltip(Blockly.Msg.MOVE_BACKWARD_TOOLTIP);
   },
 };

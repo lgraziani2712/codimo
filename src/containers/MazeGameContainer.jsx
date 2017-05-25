@@ -10,6 +10,7 @@ import styled from 'styled-components';
 
 import { type Instructions } from 'blockly/executorGenerator';
 import BlocklyApp, { type BlocklyData } from 'components/BlocklyApp';
+import GameContainer from 'components/GameContainer';
 import { HALF } from 'constants/numbers';
 import mazeEngineGenerator, {
   type Engine,
@@ -20,13 +21,17 @@ import { type ActivePathBorders } from 'engine/components/blockGeneratorConfig';
 import { type NumericLineData } from 'engine/components/numericLineGenerator';
 
 const TwoColumns = styled.div`
-  align-items: center;
+  align-items: flex-end;
   display: flex;
-  justify-content: flex-end;
-  & * {
-    margin-left: 3px;
-  }
+  filter: drop-shadow(2px 2px 8px black);
 `;
+const images = [
+  'images/numbers-wp1.jpg',
+  'images/numbers-wp2.jpg',
+  'images/numbers-wp3.jpg',
+  'images/numbers-wp4.jpg',
+  'images/numbers-wp5.jpg',
+];
 
 type RawMazeData = {|
   ...MazeData,
@@ -79,19 +84,21 @@ export default class MazeGameContainer extends React.Component {
     this.app.stop();
     this.app.destroy(true);
   }
-  handleSetOfInstructions = (instructions: Instructions) => {
-    this.engine.excecuteSetOfInstructions(instructions);
-  }
+  handleSetOfInstructions = (instructions: Instructions) => (
+    this.engine.excecuteSetOfInstructions(instructions)
+  )
   render() {
     return (
-      <TwoColumns>
-        <canvas ref={(view) => this.view = view} />
-        <BlocklyApp
-          blocklyData={this.props.blocklyData}
-          handleSetOfInstructions={this.handleSetOfInstructions}
-          handleResetGame={this.engine.handleResetGame}
-        />
-      </TwoColumns>
+      <GameContainer images={images}>
+        <TwoColumns>
+          <canvas ref={(view) => this.view = view} />
+          <BlocklyApp
+            blocklyData={this.props.blocklyData}
+            handleResetGame={this.engine.handleResetGame}
+            handleSetOfInstructions={this.handleSetOfInstructions}
+          />
+        </TwoColumns>
+      </GameContainer>
     );
   }
 }

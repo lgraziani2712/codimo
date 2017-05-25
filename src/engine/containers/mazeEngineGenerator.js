@@ -26,7 +26,7 @@ import {
   MazeStarvationError,
   MazeWrongExitError,
 } from 'engine/helpers/errors';
-import { randomizeActorsConfig } from 'engine/helpers/randomConfigurations';
+import randomizeActorsConfig from 'engine/helpers/randomizeActorsConfig';
 
 const numberHasLeftMazeConfig = (
   mazeData: MazeData,
