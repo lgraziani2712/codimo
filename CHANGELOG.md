@@ -1,5 +1,40 @@
 ## HEAD
 
+- 🎨 [2017-05-24] `engine/containers/numberGenerator`: update to v3.2.1.
+  - 🎨 Improve styles.
+- 🚀 [2017-05-24] `containers/MazeGameContainer`: update v1.1.1.
+  - 🎨 Add some styles.
+  - 🚀 Add the new `<GameContainer />`.
+- 🚀 [2017-05-24] `components/GameContainer`: add v1.0.0.
+  - It defines the position of the game.
+  - It sets a random background image.
+- 🚀 [2017-05-24] `helpers/randomizers`: add v1.0.0.
+- 🔥 [2017-05-24] `engine/helpers/randomConfigurations -> randomizeActorsConfig`: update to v2.0.0.
+  - 🔥 Extract the rest of the exports to the new module: `helpers/randomizers`.
+- 🚀 [2017-05-24] `blockly/components/BlocklyApp`: update to v3.1.1.
+  - 🚀 Add `<ActionBar />`.
+- 🔥 [2017-05-24] `components/Button`: update to v2.0.1.
+  - 🔥 Extract constant object to `constants/colors`.
+  - 👕 Fix stylelint warnings.
+- 🐛 [2017-05-24] `blockly/components`: update to v1.2.0.
+  - 🐛 Fix unnecessary context menu.
+- 🚀 [2017-05-19] `blockly/components/BlocklyApp`: update to v3.1.0.
+  - 🚀 Add internal state for button manipulation.
+- 🚀 [2017-05-19] `components/Button`: update to v2.0.0.
+  - 🚀 Add stories.
+  - 🚀 Add style.
+  - 🚀 Add types and states.
+- 🔥 [2017-05-18] `engine/containers/mazeEngineGenerator`: update to v4.0.0.
+  - 🔥 Remove everything multiple-actors related.
+- 🔥 [2017-05-18] `engine/errors`: update to v1.2.0.
+  - 🔥 Remove actor parameter and prop.
+- 🚀 [2017-05-18] `blockly/executorGenerator`: update to v3.0.0.
+  - 🚀 Adapt to one and only one actor. Everything related to hardcoded values for specific actor, or arrays or maps related to multiple actors have been replaced for structures specifically defined for one and only one actor.
+  - `ActorsToActions` -> `Instructions`. `Map<number, Array<string>>` -> `Array<string>`.
+- 🚀 [2017-05-18] `gameMetadata`: update to v5.0.0.
+  - 🔥 Remove arrays for actors. Now everything will be defined for just one.
+  - `mazeData.accesses` -> `mazeData.access`. `Array<string>` -> `string`.
+  - `mazeData.actorsPositions` -> `mazeData.actorExitIdx`. `Array<[number, number]>` -> `number`.
 - 🐛 [2017-05-18] `engine/containers/mazeEngineGenerator`: update to v3.4.2.
   - Fix #12. Definitely! But with a better approach: it requires the new `leave_maze` action to be called for the number to leave.
 - 🚀 [2017-05-18] `engine/errors`: update to v1.1.0.

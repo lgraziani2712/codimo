@@ -5,16 +5,17 @@
  * @flow
  */
 import * as colors from 'constants/colors';
-import { MOVE_FORWARD } from 'constants/actions';
+import { MOVE_FORWARD } from 'constants/instructions';
 
 Blockly.Blocks[MOVE_FORWARD] = {
   init: function init() {
     this.appendDummyInput()
         .setAlign(Blockly.ALIGN_CENTRE)
         .appendField(Blockly.Msg.MOVE_FORWARD_TITLE);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
+    this.contextMenu = false;
     this.setColour(colors.ACTION);
+    this.setNextStatement(true, null);
+    this.setPreviousStatement(true, null);
     this.setTooltip(Blockly.Msg.MOVE_FORWARD_TOOLTIP);
   },
 };

@@ -16,9 +16,9 @@
       ["2,1", { "top": true, "bottom": true }],
       ["2,0", { "top": true, "bottom": true }]
     ],
-    "accesses": ["2,4"],
+    "access": "2,4",
     "exits": ["2,0"],
-    "actorsPositions": [[0, 0]]
+    "actorExitIdx": 0
   },
   "numericLineData": {
     "statics": [1, null, 5],

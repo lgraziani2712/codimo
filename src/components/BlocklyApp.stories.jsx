@@ -29,8 +29,17 @@ const newBlocklyData = {
     </block>
   `,
 };
+const promiseMe = () => (
+  new Promise((resolve) => {
+    resolve();
+  })
+);
 
 storiesOf('components.BlocklyApp', module)
   .add('simple Blockly app', () => (
-    <BlocklyApp blocklyData={newBlocklyData} handleSetOfInstructions={() => {}} handleResetGame={() => {}} />
+    <BlocklyApp
+      blocklyData={newBlocklyData}
+      handleSetOfInstructions={promiseMe}
+      handleResetGame={() => {}}
+    />
   ));

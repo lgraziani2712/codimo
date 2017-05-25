@@ -13,15 +13,27 @@ import 'blockly/javascript_compressed';
 import 'blockly/localize/es';
 import 'blockly/components';
 
-import { ACTION_CONTAINER } from 'constants/actions';
-import executorGenerator, { type ActorsToActions, type Executor } from 'blockly/executorGenerator';
+import { ACTION_CONTAINER } from 'constants/instructions';
+import executorGenerator, { type Instructions, type Executor } from 'blockly/executorGenerator';
 
 import BlocklyToolbox, { type BlocklyToolboxElement } from './BlocklyToolbox';
 import Button from './Button';
 
 const ID = 'blockly-app';
+const ActionBar = styled.div`
+  align-items: center;
+  background-color: #e3e3e3;
+  border: 1px solid #ddd;
+  border-bottom: 0;
+  display: flex;
+  height: 68px;
+  width: 628px;
+  & * {
+    margin: 0 0 0 10px;
+  }
+`;
 const BlocklyWorkspace = styled.div`
-  height: 520px;
+  height: 500px;
   width: 630px;
 `;
 
@@ -39,12 +51,16 @@ type BlockDefinition = {|
 |};
 type Props = {|
   blocklyData: BlocklyData,
-  handleSetOfInstructions(instructions: ActorsToActions): void;
+  handleSetOfInstructions(instructions: Instructions): Promise<void>;
   handleResetGame(): void;
 |};
-
+type State = {|
+  isExecuting: boolean,
+  isStopped: boolean,
+|};
 export default class BlocklyApp extends React.Component {
   props: Props;
+  state: State;
 
   handleWorkspaceCreation: (toolbox: HTMLElement) => void;
   handleClick: () => void;
@@ -54,7 +70,13 @@ export default class BlocklyApp extends React.Component {
   constructor(props: Props) {
     super(props);
 
+    Blockly.Events.recordUndo = false;
+
     this.executor = executorGenerator();
+    this.state = {
+      isExecuting: false,
+      isStopped: true,
+    };
 
     props.blocklyData.blockDefinitions.forEach(({ name }) => {
       this.executor.addBlockExecutor(name);
@@ -94,25 +116,56 @@ export default class BlocklyApp extends React.Component {
       this.workspace,
     );
   }
+  handleResetGame = () => {
+    this.setState(() => ({ isStopped: true }));
+
+    this.props.handleResetGame();
+  }
   handleStartGame = () => {
     const rawInstructions = Blockly.JavaScript.workspaceToCode(this.workspace);
 
-    this.props.handleSetOfInstructions(this.executor.parseInstructions(rawInstructions));
+    this.setState(() => ({
+      isExecuting: true,
+      isStopped: false,
+    }));
+
+    this.props.handleSetOfInstructions(this.executor.parseInstructions(rawInstructions))
+      .then(() => {
+        this.setState(() => ({ isExecuting: false }));
+      })
+      .catch((err) => {
+        this.setState(() => ({ isExecuting: false }));
+        throw err;
+      });
   }
   render() {
     const { blocklyData } = this.props;
+    const { isExecuting, isStopped } = this.state;
 
     return (
       <div>
+        <ActionBar>
+          {/* FIXME hardcoded title */}
+          {isStopped ?
+            <Button
+              title="▶ Dale play!"
+              type="green"
+              handleClick={this.handleStartGame}
+            /> :
+            <Button
+              disabled={isExecuting}
+              title="⏹ Reseteá!"
+              type="orange"
+              handleClick={this.handleResetGame}
+            />
+          }
+        </ActionBar>
         <BlocklyWorkspace id={ID}>
           <BlocklyToolbox
             elements={blocklyData.elements}
             handleWorkspaceCreation={this.handleWorkspaceCreation}
           />
         </BlocklyWorkspace>
-        {/* FIXME hardcoded title */}
-        <Button handleClick={this.handleStartGame} title="Dale play!" />
-        <Button handleClick={this.props.handleResetGame} title="Reseteá!" />
       </div>
     );
   }

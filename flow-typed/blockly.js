@@ -35,6 +35,7 @@ declare var Blockly: {
   },
   Events: {
     disableOrphans(event: Event): void,
+    recordUndo: boolean,
   },
   Xml: {
     textToDom(text: string): HTMLElement;
