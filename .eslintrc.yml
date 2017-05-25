@@ -134,8 +134,9 @@ rules:
   #######################
   import/extensions: [1, { js: never, json: always }]
   import/imports-first: 1
-  import/no-mutable-exports: 1
+  import/no-anonymous-default-export: [2, { allowObject: true }]
   import/no-duplicates: 2
+  import/no-mutable-exports: 1
   import/prefer-default-export: 2
   import/order: [2, {
     newlines-between: always,
