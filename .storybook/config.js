@@ -4,7 +4,7 @@
  */
 import 'babel-polyfill';
 
-import { configure } from '@kadira/storybook';
+import { configure } from '@storybook/react';
 
 const req = require.context('../src', true, /\.stories\.jsx$/);
 

@@ -38,7 +38,7 @@ type Props = {|
   disabled?: boolean,
   title: string,
   type: $Keys<typeof BUTTON_COLORS>,
-  handleClick: () => void | (event: SyntheticEvent) => void,
+  handleClick: (event: SyntheticEvent) => void,
 |};
 export default function ExecuteButton({ handleClick, title, type, disabled }: Props) {
   return (
