@@ -1,5 +1,11 @@
 ## HEAD
 
+- 🚀 [2017-05-24] `containers/MazeGameContainer`: update v1.1.1.
+  - 🎨 Add some styles.
+  - 🚀 Add the new `<GameContainer />`.
+- 🚀 [2017-05-24] `components/GameContainer`: add v1.0.0.
+  - It defines the position of the game.
+  - It sets a random background image.
 - 🚀 [2017-05-24] `helpers/randomizers`: add v1.0.0.
 - 🔥 [2017-05-24] `engine/helpers/randomConfigurations -> randomizeActorsConfig`: update to v2.0.0.
   - 🔥 Extract the rest of the exports to the new module: `helpers/randomizers`.
