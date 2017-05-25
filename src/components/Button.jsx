@@ -27,7 +27,7 @@ const AnimatedButton = styled.a`
     transform: translate(0, 5px);
   }
 `;
-const ColoredAnimatedButton = styled(AnimatedButton)`
+const ColoredAnimatedButton = AnimatedButton.extend`
   background-color: ${({ type }) => BUTTON_COLORS[type].bgColor};
   border-bottom: 5px solid ${({ type }) => BUTTON_COLORS[type].border};
   color: ${({ type }) => BUTTON_COLORS[type].color};
