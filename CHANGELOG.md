@@ -1,11 +1,14 @@
 ## HEAD
 
+- 🚀 [2017-05-25] `containers/MazeGameContainer`: update to v1.2.0.
+  - 🚀 Add background image generation at instanciation phase instead of passing the array to `<GameContainer />`.
+  - 🐛 Fix URIs from relative path to absolute.
 - 🔥 [2017-05-25] `components/GameContainer`: update to v1.1.0.
   - 🔥 Extract randomizer operation for the image.
   - ⚙ Update prop `images -> image`: instead of receiving an array of URIs, now will receive only one.
 - 🎨 [2017-05-24] `engine/containers/numberGenerator`: update to v3.2.1.
   - 🎨 Improve styles.
-- 🚀 [2017-05-24] `containers/MazeGameContainer`: update v1.1.1.
+- 🚀 [2017-05-24] `containers/MazeGameContainer`: update to v1.1.1.
   - 🎨 Add some styles.
   - 🚀 Add the new `<GameContainer />`.
 - 🚀 [2017-05-24] `components/GameContainer`: add v1.0.0.
