@@ -5,7 +5,7 @@
  * @flow
  */
 /* eslint-disable no-magic-numbers, */
-import { randomizeActorsConfig } from './randomConfigurations';
+import randomizeActorsConfig from './randomizeActorsConfig';
 
 const EASY = 'easy';
 

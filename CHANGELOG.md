@@ -1,5 +1,8 @@
 ## HEAD
 
+- 🚀 [2017-05-24] `helpers/randomizers`: add v1.0.0.
+- 🔥 [2017-05-24] `engine/helpers/randomConfigurations -> randomizeActorsConfig`: update to v2.0.0.
+  - 🔥 Extract the rest of the exports to the new module: `helpers/randomizers`.
 - 🚀 [2017-05-24] `blockly/components/BlocklyApp`: update to v3.1.1.
   - 🚀 Add `<ActionBar />`.
 - 🔥 [2017-05-24] `components/Button`: update to v2.0.1.

@@ -10,7 +10,7 @@ import { TweenLite, TimelineLite, Linear } from 'gsap';
 import { HALF, ONE, ZERO, TWO, ANCHOR_CENTER, ACTOR_MOVEMENT_DURATION } from 'constants/numbers';
 import { UnableToLeaveTheNumericLine } from 'engine/helpers/errors';
 import { EASE_BE_HAPPY, EASE_BE_SAD } from 'engine/helpers/customEases';
-import { getRandomFloat } from 'engine/helpers/randomConfigurations';
+import { getRandomFloat } from 'helpers/randomizers';
 
 const EIGHT = 8;
 const SHAKE_DISTANCE = 2.3;
@@ -19,7 +19,7 @@ export const START_STATE = 'start';
 export const STOP_STATE = 'stop';
 
 const styleRaw = {
-  fontFamily: 'Arial',
+  fontFamily: 'Helvetica',
   fontWeight: 'bold',
   fill: ['#ffffff', '#00ff99'], // gradient
   stroke: '#4a1850',
