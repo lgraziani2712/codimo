@@ -15,16 +15,7 @@ But instead of coding and learning a particular programming language, we want to
 
 Right now there isn't an installation process for users, only for devs.
 
-### Without the web page
-
 1. `git clone git@github.com:lgraziani2712/codimo.git`
-2. `cd codimo`
-3. `yarn`
-4. `yarn run storybook`
-
-### With the web page
-
-1. `git clone -b web-page --single-branch git@github.com:lgraziani2712/codimo.git`
 2. `cd codimo`
 3. `yarn`
 4. `yarn run storybook` if you want to see the project's stories.
