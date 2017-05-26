@@ -21,6 +21,7 @@ const CenterGame = styled.div`
     filter: contrast(65%) brightness(110%) saturate(75%) sepia(22%) grayscale(20%);
     height: 100%;
     position: absolute;
+    top: 0;
     width: 100%;
     z-index: -1;
   }
@@ -29,13 +30,14 @@ const CenterGame = styled.div`
     content: '';
     height: 100%;
     position: absolute;
+    top: 0;
     width: 100%;
     z-index: -1;
   }
 `;
 
 type Props = {|
-  children?: any,
+  children?: React.Element<*>,
   image: string,
 |};
 const GameContainer = ({ children, image }: Props) => (
