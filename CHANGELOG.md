@@ -1,5 +1,7 @@
 ## HEAD
 
+- 🚀 [2017-05-24] `blockly/components/BlocklyApp`: update to v3.1.2.
+  - 🚀 Add trashcan for easier place to delete blocks.
 - 🚀 [2017-05-25] `containers/MazeGameContainer`: update to v1.2.0.
   - 🚀 Add background image generation at instanciation phase instead of passing the array to `<GameContainer />`.
   - 🐛 Fix URIs from relative path to absolute.

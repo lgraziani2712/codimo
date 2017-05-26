@@ -93,6 +93,7 @@ export default class BlocklyApp extends React.Component {
     this.workspace = Blockly.inject(ID, {
       scrollbars: true,
       toolbox,
+      trashcan: true,
       zoom: {
         startScale: 1.25,
       },
