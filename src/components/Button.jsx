@@ -21,7 +21,6 @@ const AnimatedButton = styled.a`
   pointer-events: ${({ disabled }) => (disabled ? 'none' : 'auto')};
   text-decoration: none;
   transition: all 0.1s;
-  user-select: none;
   &:active {
     border-bottom: 1px solid;
     transform: translate(0, 5px);

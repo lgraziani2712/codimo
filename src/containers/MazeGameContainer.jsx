@@ -24,7 +24,7 @@ import { getRandomInt } from 'helpers/randomizers';
 const TwoColumns = styled.div`
   align-items: flex-end;
   display: flex;
-  filter: drop-shadow(2px 2px 8px black);
+  filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.8));
 `;
 const images = [
   '/images/numbers-wp1.jpg',
@@ -65,7 +65,7 @@ export default class MazeGameContainer extends React.Component {
     const { numericLineData, difficulty } = props.gameMetadata;
 
     this.engine = mazeEngineGenerator(mazeData, numericLineData, difficulty);
-    this.image = images[getRandomInt(ZERO, images.length - ONE)];
+    this.image = images[getRandomInt(ZERO, images.length)];
   }
 
   componentDidMount() {

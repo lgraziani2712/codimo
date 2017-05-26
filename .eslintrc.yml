@@ -134,7 +134,7 @@ rules:
   #######################
   import/extensions: [1, { js: never, json: always }]
   import/imports-first: 1
-  import/no-anonymous-default-export: [2, { allowObject: true }]
+  import/no-anonymous-default-export: [2, { allowObject: true, allowArray: true }]
   import/no-duplicates: 2
   import/no-mutable-exports: 1
   import/prefer-default-export: 2
@@ -183,7 +183,7 @@ rules:
   react/no-unknown-property: 1
   react/prefer-es6-class: 2
   react/prefer-stateless-function: 2
-  # react/prop-types: 2
+  react/prop-types: 2
   react/react-in-jsx-scope: 2
   react/self-closing-comp: 1
   react/sort-comp: [1,

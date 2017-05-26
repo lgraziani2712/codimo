@@ -7,9 +7,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import Routes from 'routes/Routes';
+import GameViewer from 'containers/GameViewer';
+
 const rootElement = document.getElementById('root');
 
 ReactDOM.render(
-  <div>{'CÓDIMO is coming soon... >:D'}</div>,
+  <GameViewer routes={Routes} />,
   rootElement,
 );

@@ -2,6 +2,10 @@
  * @author Luciano Graziani @lgraziani2712
  * @license {@link http://www.opensource.org/licenses/mit-license.php|MIT License}
  *
+ * NOTE:  Since this errors are extremely specific, and we know the only place
+ *        where they are thrown, there is no need on having the stack error.
+ *
+ * TODO: messages must be in a localize file.
  * @flow
  */
 
