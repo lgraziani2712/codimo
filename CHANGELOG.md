@@ -1,5 +1,8 @@
 ## HEAD
 
+- 🚀 [2017-05-25] `containers/GameViewer`: add v1.0.0!
+  - 🚀 Uses `react-router-dom` for render every route.
+- 🚀 [2017-05-25] `routes/Routes`: add v1.0.0!
 - 🚀 [2017-05-25] `components/MenuBar`: add v1.0.0!
 - 🚀 [2017-05-25] `components/logos/ExternalLinkHoc`: add v1.0.0!
 - 🚀 [2017-05-25] `components/logos/CodimoLink`: add v1.0.0!

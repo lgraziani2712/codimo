@@ -11,43 +11,36 @@ import {
 } from 'react-router-dom';
 import styled from 'styled-components';
 
-import Sidebar from './Sidebar';
+import MenuBar from 'components/MenuBar';
+import { type RouteDescription } from 'routes/Routes';
 
 const MainWrapper = styled.div`
-  display: flex;
-`;
-const ContentViewer = styled.div`
-  flex: 1;
-  padding: 10px;
+  display: grid;
+  grid-template-rows: 52px auto;
+  height: 100%;
 `;
 
-export type RouteDescription = {|
-  exact?: boolean,
-  id: number,
-  main: ReactClass<*>,
-  path: string,
-  title: string,
-|};
 type Props = {|
   routes: Array<RouteDescription>,
 |};
-const Viewer = ({ routes }: Props) => (
+const GameViewer = ({ routes }: Props) => (
   <Router>
     <MainWrapper>
-      <Sidebar routes={routes} />
+      <MenuBar routes={routes} />
 
-      <ContentViewer>
-        {routes.map((route) => (
+      <div>
+        {routes.map((route, key) => (
           <Route
-            key={route.id}
+            // eslint-disable-next-line react/no-array-index-key
+            key={key}
             path={route.path}
             exact={route.exact}
             component={route.main}
           />
         ))}
-      </ContentViewer>
+      </div>
     </MainWrapper>
   </Router>
 );
 
-export default Viewer;
+export default GameViewer;
