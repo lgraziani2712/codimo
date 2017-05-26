@@ -18,4 +18,3 @@ suppress_comment=\\(.\\|\n\\)*\\$FlowFixMe
 suppress_comment=\\(.\\|\n\\)*\\$FlowDoNotDisturb
 
 esproposal.export_star_as=enable
-experimental.strict_call_arity=true
