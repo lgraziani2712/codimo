@@ -1,6 +1,10 @@
 ## HEAD
 
-- 🚀 [2017-05-24] `blockly/components/BlocklyApp`: update to v3.1.2.
+- 🚀 [2017-05-25] `components/MenuBar`: add v1.0.0!
+- 🚀 [2017-05-25] `components/logos/ExternalLinkHoc`: add v1.0.0!
+- 🚀 [2017-05-25] `components/logos/CodimoLink`: add v1.0.0!
+- 🚀 [2017-05-25] `components/logos/GithubLink`: add v1.0.0!
+- 🚀 [2017-05-25] `blockly/components/BlocklyApp`: update to v3.1.2.
   - 🚀 Add trashcan for easier place to delete blocks.
 - 🚀 [2017-05-25] `containers/MazeGameContainer`: update to v1.2.0.
   - 🚀 Add background image generation at instanciation phase instead of passing the array to `<GameContainer />`.
