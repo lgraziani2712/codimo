@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BlocklyToolbox Generators blockGenerator renders correctly without children 1`] = `
+<block
+  type="test_block"
+/>
+`;
+
+exports[`BlocklyToolbox categoryGenerator renders correctly without children 1`] = `
+<category
+  color="#deedee"
+  expanded={false}
+  name="test_category"
+/>
+`;
+
+exports[`BlocklyToolbox renders correctly an empty toolbox 1`] = `
+<xml
+  style={
+    Object {
+      "display": "none",
+    }
+  }
+/>
+`;
+
+exports[`BlocklyToolbox sepGenerator renders correctly 1`] = `
+<sep
+  gap={24}
+/>
+`;

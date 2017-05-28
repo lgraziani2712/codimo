@@ -13,7 +13,6 @@ import Button from './Button';
 
 const Container = styled.div`
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   padding: 50px 0 0;
   & a {
@@ -22,7 +21,7 @@ const Container = styled.div`
 `;
 const clickedAction = action('Clicked!');
 
-storiesOf('components.Button', module)
+storiesOf('components.blockly.Button', module)
   .add('activable animated buttons for the game', () => (
     <Container>
       <div><Button handleClick={clickedAction} title="Click me 😃" type="blue" /></div>

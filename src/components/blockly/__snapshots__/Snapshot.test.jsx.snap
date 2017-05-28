@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components snapshots renders the ActionBar correctly 1`] = `
+<div
+  className="ActionBar__Bar-fFHfuW eSZxqI"
+>
+  <a
+    className="Button__ColoredAnimatedButton-fylGiI fZVUpp Button__AnimatedButton-jOrBhv dTlQly"
+    disabled={undefined}
+    onClick={[Function]}
+    type="green"
+  >
+    ▶ Dale play!
+  </a>
+</div>
+`;
+
+exports[`Components snapshots renders the Button correctly 1`] = `
+<a
+  className="Button__ColoredAnimatedButton-fylGiI fAibEq Button__AnimatedButton-jOrBhv dTlQly"
+  disabled={undefined}
+  onClick={[Function]}
+  type="red"
+>
+  I'm a button
+</a>
+`;

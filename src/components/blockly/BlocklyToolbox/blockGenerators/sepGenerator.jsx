@@ -15,10 +15,10 @@ export type BlocklySep = {|
    *
    * @see https://developers.google.com/blockly/guides/configure/web/toolbox#separators
    */
-  gap?: number,
+  gaap?: number,
 |};
 const sepGenerator = (element: BlocklySep, idx: number) => (
-  <sep key={idx} gap={element.gap} />
+  <sep key={idx} gap={element.gaap} />
 );
 
 export default sepGenerator;

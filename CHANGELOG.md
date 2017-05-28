@@ -1,5 +1,11 @@
 ## HEAD
 
+- ⚙ [2017-05-28] Reorganize components:
+  - Every component now has a snapshot!
+  - Every visual component related to blockly is now under `components/blockly` folder.
+  - Every visual page component is now under `components/pages` folder.
+  - 🚀 Add `components/blockly/ActionBar` v1.0.0! Extracted from `BlocklyApp`.
+  - 🚀 Add `components/blockly/BlocklyWorkspace` v1.0.0! Extracted from `BlocklyApp`.
 - 🔥 [2017-05-28] `blockly/components`: update to v1.2.1.
   - 🔥 Simplify code.
   - 🔥 Remove webpack specific sintax sugar.

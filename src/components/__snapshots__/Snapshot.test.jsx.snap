@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components snapshots renders the FrontPage correctly 1`] = `
+<div
+  className="PageContainer__Wrapper-kCvKOC bJokCq"
+>
+  <div>
+    <div
+      className="FrontPage__RedRow-fdKJyF fSWtWc FrontPage__ColoredRow-caaRcg irQZrC FrontPage__Row-rAXoT hqUUdn"
+    >
+      <div
+        className="FrontPage__Container-gOtpWX jlpDS RawContentContainer__RawContentContainer-cpAunS liMkSd"
+      >
+        <h1
+          className="FrontPage__Title-gGObMR hzCjdl"
+        >
+          ¡Aprender el Pensamiento Computacional nunca fue tan fácil!
+        </h1>
+      </div>
+    </div>
+    <div
+      className="FrontPage__WhiteRow-eTzKRE kFpmBq FrontPage__Row-rAXoT hqUUdn"
+    />
+    <div
+      className="FrontPage__GreenRow-fcHLBb dotyRb FrontPage__ColoredRow-caaRcg irQZrC FrontPage__Row-rAXoT hqUUdn"
+    />
+    <div
+      className="FrontPage__WhiteRow-eTzKRE kFpmBq FrontPage__Row-rAXoT hqUUdn"
+    />
+  </div>
+  <div
+    className="PageContainer__Footer-gzRtKy hEPong"
+  >
+    <div
+      className="PageContainer__ContentContainer-cRjYKL dCzalx RawContentContainer__RawContentContainer-cpAunS liMkSd"
+    >
+      <span>
+        Copyright © 2017 Luciano Graziani. Todos los derechos reservados.
+      </span>
+      <span>
+        Distribuído bajo licencia 
+        <a
+          className="FooterLink__Link-eeoshK kcEwZw"
+          href="https://github.com/lgraziani2712/codimo/blob/master/LICENSE"
+          target="_blank"
+        >
+          MIT
+        </a>
+        .
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components snapshots renders the GameContainer correctly 1`] = `
+<div
+  className="GameContainer__CenterGame-bhsxOq dsmXr"
+/>
+`;
