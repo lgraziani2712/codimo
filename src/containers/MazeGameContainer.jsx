@@ -10,7 +10,7 @@ import styled from 'styled-components';
 
 import { type Instructions } from 'blockly/executorGenerator';
 import GameContainer from 'components/GameContainer';
-import { HALF, ZERO, ONE } from 'constants/numbers';
+import { HALF, ZERO } from 'constants/numbers';
 import mazeEngineGenerator, {
   type Engine,
   type GameDifficulty,

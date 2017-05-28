@@ -18,9 +18,9 @@ module.exports = (resolve, rootDir) => {
       '^.+\\.(p?css|less|scss)$': resolve('config/jest/cssTransform.js'),
       '^.+\\.(gif|ttf|eot|svg)$': resolve('config/jest/fileTransform.js'),
       // FIXME @see https://github.com/facebook/jest/issues/553
-      'blockly/blocks_compressed': paths.devElements + '/test/__mocks__/blockly/blocks_compressed.js',
-      'blockly/javascript_compressed': paths.devElements + '/test/__mocks__/blockly/javascript_compressed.js',
-      'blockly/msg/js/es': paths.devElements + '/test/__mocks__/blockly/es.js',
+      'blockly/blocks_compressed': `${paths.devElements}/test/__mocks__/blockly/blocks_compressed.js`,
+      'blockly/javascript_compressed': `${paths.devElements}/test/__mocks__/blockly/javascript_compressed.js`,
+      'blockly/msg/js/es': `${paths.devElements}/test/__mocks__/blockly/es.js`,
     },
     // setupFiles: [],
     testPathIgnorePatterns: [
