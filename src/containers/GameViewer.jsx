@@ -9,20 +9,28 @@ import {
   BrowserRouter as Router,
   Route,
 } from 'react-router-dom';
+import styled from 'styled-components';
 
 import MenuBar from 'components/pages/MenuBar';
 import FrontPage from 'components/FrontPage';
 import { type RouteDescription } from 'routes/Routes';
+
+const GameSection = styled.div`
+  height: calc(100% - 55px);
+`;
+const AllHeightBritannia = styled.div`
+  height: 100%;
+`;
 
 type Props = {|
   routes: Array<RouteDescription>,
 |};
 const GameViewer = ({ routes }: Props) => (
   <Router>
-    <div>
+    <AllHeightBritannia>
       <MenuBar routes={routes} />
 
-      <div>
+      <GameSection>
         <Route
           path="/"
           exact={true}
@@ -37,8 +45,8 @@ const GameViewer = ({ routes }: Props) => (
             component={route.main}
           />
         ))}
-      </div>
-    </div>
+      </GameSection>
+    </AllHeightBritannia>
   </Router>
 );
 

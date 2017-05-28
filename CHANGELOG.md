@@ -1,5 +1,7 @@
 ## HEAD
 
+- 🐛 [2017-05-28] `containers/GameViewer`: update to v1.0.2.
+  - 🐛 Fix style for game section.
 - 🚀 [2017-05-28] `components/FrontPage`: add v1.0.0!
 - 🔥 [2017-05-28] `containers/GameViewer`: update to v1.0.1.
   - 🔥 Remove styles.
