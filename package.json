@@ -65,6 +65,8 @@
     "eslint-watch": "3.1.0",
     "flow-bin": "0.47.0",
     "jest": "20.0.4",
+    "jest-styled-components": "2.2.0",
+    "react-test-renderer": "15.5.4",
     "stylelint": "7.10.1",
     "stylelint-config-standard": "16.0.0",
     "stylelint-order": "0.4.4",
