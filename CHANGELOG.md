@@ -1,5 +1,7 @@
 ## HEAD
 
+- ⚙ [2017-05-28] `constants/colors`: update to v1.1.0.
+  - Improve `COLOR_PALETTE` values and keys.
 - ⚙ [2017-05-28] Reorganize components:
   - Every component now has a snapshot!
   - Every visual component related to blockly is now under `components/blockly` folder.

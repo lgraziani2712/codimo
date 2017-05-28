@@ -10,25 +10,27 @@ const WHITE = '#fff';
 export const ACTION = '#b63668';
 export const CONTAINER = '#369836';
 
-export const BUTTON_COLORS = {
+export const COLOR_PALETTE = {
   blue: {
-    bgColor: '#428bca',
-    border: '#0a5a9c',
+    normal: '#428bca',
+    dark: '#0a5a9c',
     color: WHITE,
   },
   green: {
-    bgColor: '#5cb85c',
-    border: '#1b7c1b',
+    normal: '#5cb85c',
+    dark: '#1b7c1b',
     color: WHITE,
   },
   red: {
-    bgColor: '#d9534f',
-    border: '#be2f2b',
+    normal: '#d9534f',
+    dark: '#be2f2b',
     color: WHITE,
   },
   orange: {
-    bgColor: '#D3823F',
-    border: '#B36320',
+    clear: '#ffc697',
+    light: '#f1a667',
+    normal: '#d3823f',
+    dark: '#b36320',
     color: WHITE,
   },
 };
