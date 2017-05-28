@@ -1,5 +1,11 @@
 ## HEAD
 
+- 🚀 [2017-05-28] `components/pages/RawContentContainer`: add v1.0.0!
+- 🚀 [2017-05-28] `components/pages/PageContainer`: add v1.0.0!
+- 🚀 [2017-05-28] `components/pages/links/HeaderLink`: add v1.0.0!
+- 🔥 [2017-05-28] `components/pages/MenuBar`: update to v1.1.0:
+  - 🔥 Extract local links to its own component.
+  - 🐛 Improve styles.
 - 🔥 [2017-05-28] `blockly/components/BlocklyApp -> containers/BlocklyApp`: update to v3.2.0.
   - 🐛 Fix a blockly bug with a monkeypatch.
   - 🔥 Remove the widget. Right clicks won't fire anything.

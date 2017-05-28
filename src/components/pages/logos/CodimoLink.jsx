@@ -21,13 +21,12 @@ const HomeLink = styled(Link)`
   display: flex;
   text-decoration: none;
   &:active img {
-    animation: ${rotate360} 0.25s linear infinite;
+    animation: ${rotate360} 0.245s linear infinite;
   }
 `;
 const Title = styled.span`
   color: #f9524e;
-  font-family: 'Allerta', sans-serif;
-  font-size: 25px;
+  font-size: 1.5rem;
   font-weight: bold;
   margin-left: 3px;
   text-shadow: 0 1px 2px rgba(85, 95, 110, 0.4);

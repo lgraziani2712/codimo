@@ -5,55 +5,46 @@
  * @flow
  */
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import GithubLink from 'components/logos/GithubLink';
-import CodimoLink from 'components/logos/CodimoLink';
 import { type RouteDescription } from 'routes/Routes';
 
+import CodimoLink from './logos/CodimoLink';
+import GithubLink from './logos/GithubLink';
+import HeaderLink from './links/HeaderLink';
+import RawContentContainer from './RawContentContainer';
+
 const Background = styled.div`
-  align-items: center;
   background: rgba(240, 240, 240, 0.9);
-  box-shadow: 0 2px 2px 0 rgba(85, 95, 110, 0.4);
-  display: flex;
+  box-shadow: 0 0 4px 4px rgba(85, 95, 110, 0.4);
+  height: 55px;
+  position: relative;
   width: 100%;
+  z-index: 1;
 `;
-const Container = styled.div`
+const ContentContainer = styled(RawContentContainer)`
   display: flex;
-  flex-direction: row;
-  margin: 0 auto;
-  width: 980px;
+  height: 100%;
+  justify-content: space-between;
 `;
 const LinksContainer = styled.div`
   display: flex;
-  flex-direction: row;
   flex-grow: 1;
   justify-content: space-between;
 `;
 const LocalLinksContainer = styled.ul`
   display: flex;
-  flex-direction: row;
-  font-family: 'Allerta', sans-serif;
   list-style-type: none;
-  padding: 0 0 0 1rem;
-  & li {
-    padding: 0 0.5rem 0 0;
-    & a {
-      color: rgba(0, 0, 0, 0.6);
-      font-size: 18px;
-      text-decoration: none;
-    }
-  }
+  margin: 0;
+  padding: 0 0 0 1.5rem;
 `;
 const ExternalLinksContainer = styled.div`
   align-items: center;
   display: flex;
-  flex-direction: row;
   flex-grow: 1;
   justify-content: flex-end;
-  & * {
-    padding: 0 0 0 0.5rem;
+  & > * {
+    padding-left: 0.5rem;
   }
 `;
 
@@ -62,16 +53,14 @@ type Props = {|
 |};
 const MenuBar = ({ routes }: Props) => (
   <Background>
-    <Container>
+    <ContentContainer>
       <CodimoLink />
 
       <LinksContainer>
         <LocalLinksContainer>
           {routes.map((route, key) => (
             // eslint-disable-next-line react/no-array-index-key
-            <li key={key}>
-              <Link to={route.path}>{route.title}</Link>
-            </li>
+            <HeaderLink key={key} to={route.path} title={route.title} />
           ))}
         </LocalLinksContainer>
 
@@ -79,7 +68,7 @@ const MenuBar = ({ routes }: Props) => (
           <GithubLink />
         </ExternalLinksContainer>
       </LinksContainer>
-    </Container>
+    </ContentContainer>
   </Background>
 );
 
