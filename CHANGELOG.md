@@ -1,5 +1,6 @@
 ## HEAD
 
+- 🚀 [2017-05-28] `components/FrontPage`: add v1.0.0!
 - 🔥 [2017-05-28] `containers/GameViewer`: update to v1.0.1.
   - 🔥 Remove styles.
 - 🚀 [2017-05-28] `components/pages/RawContentContainer`: add v1.0.0!
