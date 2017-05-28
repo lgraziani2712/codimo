@@ -1,5 +1,9 @@
 ## HEAD
 
+- 🔥 [2017-05-28] `blockly/components/BlocklyApp -> containers/BlocklyApp`: update to v3.2.0.
+  - 🐛 Fix a blockly bug with a monkeypatch.
+  - 🔥 Remove the widget. Right clicks won't fire anything.
+  - 🔥 Remove styled components in favor of making this module a container.
 - ⚙ [2017-05-28] `constants/colors`: update to v1.1.0.
   - Improve `COLOR_PALETTE` values and keys.
 - ⚙ [2017-05-28] Reorganize components:

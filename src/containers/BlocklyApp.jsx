@@ -5,7 +5,6 @@
  * @flow
  */
 import React from 'react';
-import styled from 'styled-components';
 
 import 'blockly/blocks_compressed';
 import 'blockly/javascript_compressed';
@@ -15,27 +14,16 @@ import 'blockly/components';
 
 import { ACTION_CONTAINER } from 'constants/instructions';
 import executorGenerator, { type Instructions, type Executor } from 'blockly/executorGenerator';
+import { type BlocklyToolboxElement } from 'components/blockly/BlocklyToolbox';
+import ActionBar from 'components/blockly/ActionBar';
+import BlocklyWorkspace from 'components/blockly/BlocklyWorkspace';
 
-import BlocklyToolbox, { type BlocklyToolboxElement } from './BlocklyToolbox';
-import Button from './Button';
+// FIXME MonkeyPatch https://github.com/google/blockly/issues/299
+// $FlowDoNotDisturb is a monkeypatch
+// eslint-disable-next-line no-underscore-dangle
+Blockly.WorkspaceSvg.prototype.preloadAudio_ = () => {};
 
 const ID = 'blockly-app';
-const ActionBar = styled.div`
-  align-items: center;
-  background-color: #e3e3e3;
-  border: 1px solid #ddd;
-  border-bottom: 0;
-  display: flex;
-  height: 68px;
-  width: 628px;
-  & * {
-    margin: 0 0 0 10px;
-  }
-`;
-const BlocklyWorkspace = styled.div`
-  height: 500px;
-  width: 630px;
-`;
 
 type BlocklyDataShape = {
   blockDefinitions: Array<BlockDefinition>,
@@ -99,6 +87,13 @@ export default class BlocklyApp extends React.Component {
       },
     });
 
+    const widgetDiv = Blockly.WidgetDiv.DIV;
+
+    // This is in charge of deleting the useless widget!!
+    if (widgetDiv.parentNode) {
+      widgetDiv.parentNode.removeChild(widgetDiv);
+    }
+
     // 1. Will make orphans a little transparent and they won't be
     //    executed even when Blockly ask to parse workspaceToCode
     this.workspace.addChangeListener(Blockly.Events.disableOrphans);
@@ -134,7 +129,7 @@ export default class BlocklyApp extends React.Component {
       .then(() => {
         this.setState(() => ({ isExecuting: false }));
       })
-      .catch((err) => {
+      .catch((err: Error) => {
         this.setState(() => ({ isExecuting: false }));
         throw err;
       });
@@ -145,28 +140,17 @@ export default class BlocklyApp extends React.Component {
 
     return (
       <div>
-        <ActionBar>
-          {/* FIXME hardcoded title */}
-          {isStopped ?
-            <Button
-              title="▶ Dale play!"
-              type="green"
-              handleClick={this.handleStartGame}
-            /> :
-            <Button
-              disabled={isExecuting}
-              title="⏹ Reseteá!"
-              type="orange"
-              handleClick={this.handleResetGame}
-            />
-          }
-        </ActionBar>
-        <BlocklyWorkspace id={ID}>
-          <BlocklyToolbox
-            elements={blocklyData.elements}
-            handleWorkspaceCreation={this.handleWorkspaceCreation}
-          />
-        </BlocklyWorkspace>
+        <ActionBar
+          isExecuting={isExecuting}
+          isStopped={isStopped}
+          handleResetGame={this.handleResetGame}
+          handleStartGame={this.handleStartGame}
+        />
+        <BlocklyWorkspace
+          id={ID}
+          elements={blocklyData.elements}
+          handleWorkspaceCreation={this.handleWorkspaceCreation}
+        />
       </div>
     );
   }

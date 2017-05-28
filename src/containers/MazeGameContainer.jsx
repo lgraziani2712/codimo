@@ -9,7 +9,6 @@ import { Application } from 'pixi.js';
 import styled from 'styled-components';
 
 import { type Instructions } from 'blockly/executorGenerator';
-import BlocklyApp, { type BlocklyData } from 'components/BlocklyApp';
 import GameContainer from 'components/GameContainer';
 import { HALF, ZERO, ONE } from 'constants/numbers';
 import mazeEngineGenerator, {
@@ -20,6 +19,8 @@ import { type MazeData } from 'engine/components/mazeGenerator';
 import { type ActivePathBorders } from 'engine/components/blockGeneratorConfig';
 import { type NumericLineData } from 'engine/components/numericLineGenerator';
 import { getRandomInt } from 'helpers/randomizers';
+
+import BlocklyApp, { type BlocklyData } from './BlocklyApp';
 
 const TwoColumns = styled.div`
   align-items: flex-end;
