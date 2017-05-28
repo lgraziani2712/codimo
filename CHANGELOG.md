@@ -1,5 +1,8 @@
 ## HEAD
 
+- 🔥 [2017-05-28] `blockly/components`: update to v1.2.1.
+  - 🔥 Simplify code.
+  - 🔥 Remove webpack specific sintax sugar.
 - 🚀 [2017-05-25] `containers/GameViewer`: add v1.0.0!
   - 🚀 Uses `react-router-dom` for render every route.
 - 🚀 [2017-05-25] `routes/Routes`: add v1.0.0!
