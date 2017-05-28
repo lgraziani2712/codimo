@@ -7,6 +7,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
+type Props = {|
+  children?: React.Element<*>,
+  image: string,
+|};
 const blurImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+' +
                   'AAAAG0lEQVQIW2NkYGD4z8DAwMgABXAGNgGwSgwVAFbmAgXxvZSoAAAAAElFTkSuQmCC';
 const CenterGame = styled.div`
@@ -16,7 +20,7 @@ const CenterGame = styled.div`
   justify-content: center;
   width: 100%;
   &::before {
-    background: url(${({ image }) => image}) repeat;
+    background: url(${({ image }: Props) => image}) repeat;
     content: '';
     filter: contrast(65%) brightness(110%) saturate(75%) sepia(22%) grayscale(20%);
     height: 100%;
@@ -36,10 +40,6 @@ const CenterGame = styled.div`
   }
 `;
 
-type Props = {|
-  children?: React.Element<*>,
-  image: string,
-|};
 const GameContainer = ({ children, image }: Props) => (
   <CenterGame image={image}>
     {children}

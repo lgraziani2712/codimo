@@ -1,5 +1,29 @@
 ## HEAD
 
+- 🚀 [2017-05-28] `components/FrontPage`: add v1.0.0!
+- 🔥 [2017-05-28] `containers/GameViewer`: update to v1.0.1.
+  - 🔥 Remove styles.
+- 🚀 [2017-05-28] `components/pages/RawContentContainer`: add v1.0.0!
+- 🚀 [2017-05-28] `components/pages/PageContainer`: add v1.0.0!
+- 🚀 [2017-05-28] `components/pages/links/HeaderLink`: add v1.0.0!
+- 🔥 [2017-05-28] `components/pages/MenuBar`: update to v1.1.0:
+  - 🔥 Extract local links to its own component.
+  - 🐛 Improve styles.
+- 🔥 [2017-05-28] `blockly/components/BlocklyApp -> containers/BlocklyApp`: update to v3.2.0.
+  - 🐛 Fix a blockly bug with a monkeypatch.
+  - 🔥 Remove the widget. Right clicks won't fire anything.
+  - 🔥 Remove styled components in favor of making this module a container.
+- ⚙ [2017-05-28] `constants/colors`: update to v1.1.0.
+  - Improve `COLOR_PALETTE` values and keys.
+- ⚙ [2017-05-28] Reorganize components:
+  - Every component now has a snapshot!
+  - Every visual component related to blockly is now under `components/blockly` folder.
+  - Every visual page component is now under `components/pages` folder.
+  - 🚀 Add `components/blockly/ActionBar` v1.0.0! Extracted from `BlocklyApp`.
+  - 🚀 Add `components/blockly/BlocklyWorkspace` v1.0.0! Extracted from `BlocklyApp`.
+- 🔥 [2017-05-28] `blockly/components`: update to v1.2.1.
+  - 🔥 Simplify code.
+  - 🔥 Remove webpack specific sintax sugar.
 - 🚀 [2017-05-25] `containers/GameViewer`: add v1.0.0!
   - 🚀 Uses `react-router-dom` for render every route.
 - 🚀 [2017-05-25] `routes/Routes`: add v1.0.0!

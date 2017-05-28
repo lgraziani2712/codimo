@@ -8,4 +8,6 @@
 global.Blockly = {
   Blocks: {},
   JavaScript: {},
+  Msg: {},
+  WorkspaceSvg() {},
 };

@@ -9,26 +9,25 @@ import {
   BrowserRouter as Router,
   Route,
 } from 'react-router-dom';
-import styled from 'styled-components';
 
-import MenuBar from 'components/MenuBar';
+import MenuBar from 'components/pages/MenuBar';
+import FrontPage from 'components/FrontPage';
 import { type RouteDescription } from 'routes/Routes';
-
-const MainWrapper = styled.div`
-  display: grid;
-  grid-template-rows: 52px auto;
-  height: 100%;
-`;
 
 type Props = {|
   routes: Array<RouteDescription>,
 |};
 const GameViewer = ({ routes }: Props) => (
   <Router>
-    <MainWrapper>
+    <div>
       <MenuBar routes={routes} />
 
       <div>
+        <Route
+          path="/"
+          exact={true}
+          component={FrontPage}
+        />
         {routes.map((route, key) => (
           <Route
             // eslint-disable-next-line react/no-array-index-key
@@ -39,7 +38,7 @@ const GameViewer = ({ routes }: Props) => (
           />
         ))}
       </div>
-    </MainWrapper>
+    </div>
   </Router>
 );
 

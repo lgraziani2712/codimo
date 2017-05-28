@@ -4,11 +4,5 @@
  *
  * @flow
  */
-import './ActionContainer';
 
-import './LeaveMaze';
-
-import './MoveBackward';
-import './MoveForward';
-import './MoveLeft';
-import './MoveRight';
+export default {};

@@ -12,7 +12,6 @@ Blockly.Blocks[MOVE_BACKWARD] = {
     this.appendDummyInput()
         .setAlign(Blockly.ALIGN_CENTRE)
         .appendField(Blockly.Msg.MOVE_BACKWARD_TITLE);
-    this.contextMenu = false;
     this.setColour(colors.ACTION);
     this.setNextStatement(true, null);
     this.setPreviousStatement(true, null);

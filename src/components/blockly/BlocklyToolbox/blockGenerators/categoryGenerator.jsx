@@ -10,14 +10,15 @@ import { type BlocklyBlock } from './blockGenerator';
 import { type BlocklySep } from './sepGenerator';
 
 export type BlocklyCategory = {|
-  blocks: Array<BlocklyBlock | BlocklySep>,
+  // FIXME this must be mandatory
+  blocks?: Array<BlocklyBlock | BlocklySep>,
   define: 'category',
   name: string,
-  colour?: number,
+  color?: number | string,
   expanded?: boolean,
 |};
 const categoryGenerator = (element: BlocklyCategory, idx: number) => (
-  <category key={idx} name={element.name} colour={element.colour} expanded={element.expanded} />
+  <category key={idx} name={element.name} color={element.color} expanded={element.expanded} />
 );
 
 export default categoryGenerator;

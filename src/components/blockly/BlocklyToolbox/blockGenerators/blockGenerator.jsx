@@ -12,11 +12,10 @@ import { type BlocklyBlockField } from './fieldGenerator';
 export type BlocklyBlock = {|
   define: 'block',
   type: string,
-  disabled?: boolean,
   props?: Array<BlocklyBlockValue | BlocklyBlockField>,
 |};
 const blockGenerator = (element: BlocklyBlock, idx: number) => (
-  <block key={idx} type={element.type} disabled={element.disabled} />
+  <block key={idx} type={element.type} />
 );
 
 export default blockGenerator;

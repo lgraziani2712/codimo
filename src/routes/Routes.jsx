@@ -16,9 +16,9 @@ import MazeGameContainer from 'containers/MazeGameContainer';
 
 export type RouteDescription = {|
   exact?: boolean,
-  main: ReactClass<*>,
   path: string,
   title: string,
+  main: ReactClass<*>,
 |};
 
 export default [{
