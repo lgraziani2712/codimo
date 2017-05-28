@@ -12,19 +12,22 @@ module.exports = (resolve, rootDir) => {
   const config = {
     collectCoverageFrom: ['src/**/*.{js,jsx}'],
     coverageDirectory: paths.coverageDirectory,
-    testPathIgnorePatterns: [
-      '<rootDir>[/\\\\](build|docs|node_modules|scripts|.dev-tools)[/\\\\]',
-    ],
-    testURL: 'http://localhost',
-    testRegex: 'src/.*\\.test\\.jsx?$',
+    globals,
     moduleDirectories,
     moduleNameMapper: {
       '^.+\\.(p?css|less|scss)$': resolve('config/jest/cssTransform.js'),
       '^.+\\.(gif|ttf|eot|svg)$': resolve('config/jest/fileTransform.js'),
+      // FIXME @see https://github.com/facebook/jest/issues/553
+      'blockly/blocks_compressed': paths.devElements + '/test/__mocks__/blockly/blocks_compressed.js',
+      'blockly/javascript_compressed': paths.devElements + '/test/__mocks__/blockly/javascript_compressed.js',
+      'blockly/msg/js/es': paths.devElements + '/test/__mocks__/blockly/es.js',
     },
-    // to match Webpack aliases
-    // moduleNameMapper: {},
-    globals,
+    // setupFiles: [],
+    testPathIgnorePatterns: [
+      '<rootDir>[/\\\\](build|docs|node_modules|scripts|.dev-tools)[/\\\\]',
+    ],
+    testRegex: 'src/.*\\.test\\.jsx?$',
+    testURL: 'http://localhost',
   };
 
   if (rootDir) {

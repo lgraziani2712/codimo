@@ -1,1 +1,1 @@
-dev-elements/vendors/**/*.js
+dist/vendors/**/*.js

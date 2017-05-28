@@ -16,10 +16,15 @@ class FieldTextInput {
   }
 }
 declare var Blockly: {
+  ALIGN_CENTRE: string,
   Blocks: {
     [key: string]: {|
       init(): void,
     |},
+  },
+  Events: {
+    disableOrphans(event: Event): void,
+    recordUndo: boolean,
   },
   FieldTextInput: typeof FieldTextInput,
   inject(elementId: string | HTMLElement, options: Object): Object,
@@ -33,14 +38,12 @@ declare var Blockly: {
     // Block excecutors
     [key: string]: (block: Object) => string,
   },
-  Events: {
-    disableOrphans(event: Event): void,
-    recordUndo: boolean,
+  Msg: Object,
+  WidgetDiv: {
+    DIV: HTMLElement,
   },
   Xml: {
     textToDom(text: string): HTMLElement;
     domToWorkspace(workspace: Object, block: HTMLElement): void;
   },
-  Msg: Object,
-  ALIGN_CENTRE: string,
 }

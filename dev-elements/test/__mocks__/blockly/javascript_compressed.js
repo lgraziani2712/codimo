@@ -5,9 +5,4 @@
  * @flow
  */
 
-global.Blockly = {
-  Blocks: {},
-  JavaScript: {},
-  Msg: {},
-  WorkspaceSvg() {},
-};
+export default {};
