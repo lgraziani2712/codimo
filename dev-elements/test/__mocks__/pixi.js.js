@@ -8,6 +8,7 @@
 
 export class DisplayObject {
   setParent = (f: Container) => f;
+  toLocal = (point: Point) => point;
 }
 export class Point {
   x: number;
@@ -34,7 +35,7 @@ export class Container extends DisplayObject {
     this.width = 200;
   }
   addChild = (f: Container) => f;
-  getChildAt = (f: Container) => f;
+  getChildAt = () => this;
 }
 
 function returnThis() {

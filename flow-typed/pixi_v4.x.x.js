@@ -389,6 +389,8 @@ declare module 'pixi.js' {
 
     setParent(container: Container): Container;
     getChildAt(index: number): Container;
+    toGlobal(position: Point, point?: Point, skipUpdate?: boolean): Point;
+    toLocal(position: Point, from?: DisplayObject, point?: Point, skipUpdate?: boolean): Point;
   }
   declare class Ellipse {
     height: number;
