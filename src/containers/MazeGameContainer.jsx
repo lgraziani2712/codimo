@@ -39,13 +39,14 @@ type RawMazeData = {|
   ...MazeData,
   path: Array<[string, ActivePathBorders]>,
 |};
+export type GameMetadata = {|
+  difficulty: GameDifficulty,
+  mazeData: RawMazeData,
+  numericLineData: NumericLineData,
+|};
 type Props = {|
   blocklyData: BlocklyData,
-  gameMetadata: {|
-    difficulty: GameDifficulty,
-    mazeData: RawMazeData,
-    numericLineData: NumericLineData,
-  |},
+  gameMetadata: GameMetadata,
 |};
 export default class MazeGameContainer extends React.Component {
   props: Props;
@@ -95,7 +96,7 @@ export default class MazeGameContainer extends React.Component {
     return (
       <GameContainer image={this.image}>
         <TwoColumns>
-          <canvas ref={(view) => this.view = view} />
+          <canvas ref={(view: HTMLCanvasElement) => this.view = view} />
           <BlocklyApp
             blocklyData={this.props.blocklyData}
             handleResetGame={this.engine.handleResetGame}
