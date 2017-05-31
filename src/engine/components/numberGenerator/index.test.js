@@ -4,6 +4,8 @@
  *
  * @flow
  */
+import { Container } from 'pixi.js';
+
 import numberGenerator from './';
 
 describe('engine > components > numberGenerator', () => {
@@ -30,24 +32,22 @@ describe('engine > components > numberGenerator', () => {
     expect(number.view.y).toBe(initY);
   });
   it('should update its position to undefined when enter to numeric line', async () => {
+    const parent = new Container();
     const rawNumber = 3;
     const initPosition = '1,1';
     const finalPosition = '1,1';
     const size = 64;
     const margin = 10;
     const number = numberGenerator(rawNumber, initPosition, finalPosition, size, margin);
-    const initX = number.view.x;
-    const initY = number.view.y;
 
-    await number.hasEnteredToNumericLine();
+    await number.hasEnteredToNumericLine(parent);
 
     expect(number.position).toBeUndefined();
-    expect(number.view.x).not.toBe(initX);
-    expect(number.view.y).not.toBe(initY);
   });
   it(
-    'should throw an `UnableToLeaveTheNumericLine` if tries to call updatePosition when is in the numeric line',
+    'should throw an `UnableToLeaveTheNumericLine` if tries to call `updatePosition` when is in the numeric line',
     async () => {
+      const parent = new Container();
       const rawNumber = 3;
       const initPosition = '1,1';
       const finalPosition = '1,1';
@@ -55,7 +55,7 @@ describe('engine > components > numberGenerator', () => {
       const margin = 10;
       const number = numberGenerator(rawNumber, initPosition, finalPosition, size, margin);
 
-      await number.hasEnteredToNumericLine();
+      await number.hasEnteredToNumericLine(parent);
 
       try {
         number.updatePosition('1,2');

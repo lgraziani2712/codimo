@@ -4,7 +4,10 @@
  *
  * @flow
  */
+/* eslint-disable no-magic-numbers */
 import React from 'react';
+import wait from 'speculation/wait';
+import { Container } from 'pixi.js';
 
 import { storiesOf } from 'test/storybook-facades';
 import PixiWrapper from 'test/PixiWrapper';
@@ -18,12 +21,14 @@ const SIZES = {
   ten: 128,
   negativeOne: 256,
   negativeTen: 512,
+  elCaido: 128,
 };
 const MARGINS = {
   one: 10,
   ten: 20,
   negativeOne: 30,
   negativeTen: 40,
+  elCaido: 20,
 };
 const one = numberGenerator(ONE, POSITION, POSITION, SIZES.one, MARGINS.one).view;
 const ten = numberGenerator(TEN, POSITION, POSITION, SIZES.ten, MARGINS.ten).view;
@@ -70,6 +75,29 @@ storiesOf('engine.components.Number', module)
         isContainer={false}
         height={SIZES.negativeTen + MARGINS.negativeTen + MARGINS.negativeTen}
         width={SIZES.negativeTen + MARGINS.negativeTen + MARGINS.negativeTen}
+      />
+    );
+  })
+  .add('El Caído, the _fallen one_', () => {
+    const negativeTen = numberGenerator(-TEN, POSITION, POSITION, SIZES.elCaido, MARGINS.elCaido);
+    const container = new Container();
+
+    container.addChild(negativeTen.view);
+
+    container.x = SIZES.elCaido / 1.25;
+    container.y = SIZES.elCaido;
+
+    (async () => {
+      await wait(2000);
+      await negativeTen.beTheFallenOne();
+    })();
+
+    return (
+      <PixiWrapper
+        component={container}
+        isContainer={false}
+        height={SIZES.elCaido * 3}
+        width={SIZES.elCaido * 3}
       />
     );
   });

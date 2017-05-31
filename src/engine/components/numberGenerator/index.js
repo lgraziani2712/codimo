@@ -4,8 +4,8 @@
  *
  * @flow
  */
-import { Text, TextStyle } from 'pixi.js';
-import { TweenLite, TimelineLite, Linear } from 'gsap';
+import { type Container, Point, Text, TextStyle } from 'pixi.js';
+import { TweenLite, TimelineLite, Linear, Power1 } from 'gsap';
 
 import { HALF, ONE, ZERO, TWO, ANCHOR_CENTER, ACTOR_MOVEMENT_DURATION } from 'constants/numbers';
 import { UnableToLeaveTheNumericLine } from 'engine/helpers/errors';
@@ -14,6 +14,9 @@ import { getRandomFloat } from 'helpers/randomizers';
 
 const SIX = 6;
 const SHAKE_DISTANCE = 2.3;
+const FALL_DISTANCE_MULTIPLIER = 0.75;
+const FALL_SPIN_DURATION = 3;
+const SQUISH_DURATION = 2.5;
 
 export const START_STATE = 'start';
 export const STOP_STATE = 'stop';
@@ -35,8 +38,9 @@ export type NumberActor = {|
   finalPosition: string,
   beHappy(state: ActorEmotionState): void,
   beSad(state: ActorEmotionState): void,
+  beTheFallenOne(): Promise<void>,
   changeActor(number: number): void,
-  hasEnteredToNumericLine(): Promise<void>,
+  hasEnteredToNumericLine(emptyBlock: Container): Promise<void>,
   resetPosition(): void,
   updatePosition(newPosition: string): Promise<void>,
 |};
@@ -47,6 +51,34 @@ export type StaticNumberActor = {|
 |};
 export type ActorEmotionState = 'start' | 'stop';
 
+const beTheFallenOneConfig = (
+  view: Text,
+  size: number,
+) => (function beTheFallenOne(): Promise<void> {
+  /**
+   * Has fell into oblivion
+   */
+  this.position = undefined;
+
+  return new Promise((onComplete) => {
+    const timeline = new TimelineLite({ onComplete });
+
+    timeline
+      .to(view, ACTOR_MOVEMENT_DURATION, {
+        y: view.y - size * FALL_DISTANCE_MULTIPLIER,
+        ease: Linear.easeNone,
+      })
+      .to(view, FALL_SPIN_DURATION, {
+        rotation: 50,
+        ease: Power1.easeIn,
+      }, ZERO)
+      .to(view, SQUISH_DURATION, {
+        height: 0,
+        width: 0,
+        ease: Power1.easeIn,
+      }, ACTOR_MOVEMENT_DURATION);
+  });
+});
 const emotionConfig = (
   view: Text,
   size: number,
@@ -100,20 +132,22 @@ export const staticNumberGenerator = (number: number, size: number): StaticNumbe
   };
 };
 
+const GLOBAL_POINT = new Point();
 const hasEnteredToNumericLineConfig = (
   view: Text,
   size: number,
-  margin: number,
   /**
    * This function needs the number's scope. That's why is a named function.
    *
-   * @return {Promise<void>} animation promise
+   * @param {Container} emptyBlock  who is going to be the new parent
+   * @return {Promise<void>}        animation promise
    */
-) => (function hasEnteredToNumericLine(): Promise<void> {
+) => (function hasEnteredToNumericLine(emptyBlock: Container): Promise<void> {
   this.position = undefined;
+  const localPosition = emptyBlock.toLocal(GLOBAL_POINT, view);
 
-  view.x = size / HALF;
-  view.y = size + view.x + margin + margin;
+  view.setParent(emptyBlock);
+  view.position = localPosition;
 
   return new Promise((onComplete) => {
     TweenLite.to(view, ACTOR_MOVEMENT_DURATION, {
@@ -204,8 +238,9 @@ const numberGenerator = (
     finalPosition,
     beHappy: emotionConfig(view, size, true),
     beSad: emotionConfig(view, size, false),
+    beTheFallenOne: beTheFallenOneConfig(view, size),
     changeActor: changeActorConfig(view),
-    hasEnteredToNumericLine: hasEnteredToNumericLineConfig(view, size, margin),
+    hasEnteredToNumericLine: hasEnteredToNumericLineConfig(view, size),
     resetPosition: resetPositionConfig(view, initialPosition, size, margin),
     updatePosition: updatePositionConfig(view, size, margin),
   };
