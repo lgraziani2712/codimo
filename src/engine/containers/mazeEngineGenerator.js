@@ -6,7 +6,7 @@
  */
 import { Container } from 'pixi.js';
 
-import { ZERO, ONE } from 'constants/numbers';
+import { ZERO, ONE, HALF } from 'constants/numbers';
 import { type Instructions } from 'blockly/executorGenerator';
 import { MOVE_FORWARD, MOVE_RIGHT, MOVE_BACKWARD, MOVE_LEFT, LEAVE_MAZE } from 'constants/instructions';
 import mazeGenerator, { type MazeData, type Maze } from 'engine/components/mazeGenerator';
@@ -89,11 +89,11 @@ const excecuteSetOfInstructionsConfig = (
     }
     const direction = instructions[i];
     const oldPosition = number.position;
+    const path = mazeData.path.get(oldPosition);
     const newPosition = oldPosition
                           .split(',')
                           .map((pos, idx) => (parseInt(pos) + directions[direction][idx]))
                           .join(',');
-    const path = mazeData.path.get(oldPosition);
 
     if (!path || !path[directionsToWalls[direction]]) {
       throw new MazePathError();
@@ -168,10 +168,11 @@ export default function mazeEngineGenerator(
     mazeData.size,
     mazeData.margin,
   );
+  const MARGIN_NUMERIC_LINE_MAZE = mazeData.margin + mazeData.size / HALF;
 
   maze.view.addChild(number.view);
 
-  maze.view.y = numericLine.view.height - mazeData.margin;
+  maze.view.y = numericLine.view.height + MARGIN_NUMERIC_LINE_MAZE;
 
   view.addChild(maze.view, numericLine.view);
 

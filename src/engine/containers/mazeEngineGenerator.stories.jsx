@@ -16,7 +16,7 @@ import * as actionNames from 'constants/instructions';
 import mazeEngineGenerator from './mazeEngineGenerator';
 
 const WIDTH = 1300;
-const HEIGHT = 660;
+const HEIGHT = 690;
 const { mazeData, numericLineData, difficulty } = gameMetadataDataWithoutBlocks;
 
 mazeData.path = new Map(mazeData.path);
