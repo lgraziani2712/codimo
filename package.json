@@ -42,7 +42,7 @@
     "styled-components": "2.0.0"
   },
   "devDependencies": {
-    "@storybook/react": "3.0.0-rc.2",
+    "@storybook/react": "3.0.0",
     "babel-cli": "6.24.1",
     "babel-eslint": "7.2.3",
     "babel-loader": "7.0.0",
@@ -59,7 +59,7 @@
     "dependency-comparator": "2.0.0",
     "eslint": "3.19.0",
     "eslint-import-resolver-webpack": "0.8.1",
-    "eslint-plugin-flowtype": "2.33.0",
+    "eslint-plugin-flowtype": "2.34.0",
     "eslint-plugin-import": "2.3.0",
     "eslint-plugin-react": "7.0.1",
     "eslint-watch": "3.1.0",
