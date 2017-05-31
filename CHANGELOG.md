@@ -1,5 +1,7 @@
 ## HEAD
 
+- ⚙ [2017-05-31] `engine/components/numericLineGenerator`: update to v3.2.1.
+  - ⚙ Update `receiveNumberAtPositionConfig` to match the new `numberGenerator` API.
 - 🚀 [2017-05-31] `engine/containers/numberGenerator`: update to v4.0.0.
   - 🚀 Add `beTheFallenOne` method. It's going to be used for the final-step-error.
   - 🐛 Fix `hasEnteredToNumericLine`. Since the numeric line is going to be break apart from the maze, the way how is calculated the position it breaks. The refactor adds a new parameter (the new parent) and it will use it for the calculation of the new local position.
