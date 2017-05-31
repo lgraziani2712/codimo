@@ -4,6 +4,7 @@
  *
  * @flow
  */
+/* eslint-disable no-magic-numbers */
 import { Container } from 'pixi.js';
 
 import numberGenerator from './';
@@ -30,6 +31,9 @@ describe('engine > components > numberGenerator', () => {
     expect(number.position).toBe(initPosition);
     expect(number.view.x).toBe(initX);
     expect(number.view.y).toBe(initY);
+    expect(number.view.rotation).toBe(0);
+    expect(number.view.scale.x).toBe(0.5);
+    expect(number.view.scale.y).toBe(0.5);
   });
   it('should update its position to undefined when enter to numeric line', async () => {
     const parent = new Container();
@@ -65,4 +69,18 @@ describe('engine > components > numberGenerator', () => {
       }
     },
   );
+  it('should disappear on `beTheFallenOne`', async () => {
+    const rawNumber = 3;
+    const initPosition = '1,1';
+    const finalPosition = '1,1';
+    const size = 64;
+    const margin = 10;
+    const number = numberGenerator(rawNumber, initPosition, finalPosition, size, margin);
+
+    await number.beTheFallenOne();
+
+    expect(number.position).toBeUndefined();
+    expect(number.view.scale.x).toBe(0);
+    expect(number.view.scale.y).toBe(0);
+  });
 });

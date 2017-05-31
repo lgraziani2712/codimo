@@ -5,17 +5,19 @@
  * @flow
  */
 import { type Container, Point, Text, TextStyle } from 'pixi.js';
-import { TweenLite, TimelineLite, Linear, Power1 } from 'gsap';
+import { TweenLite, TimelineLite, Linear, Power1, SlowMo } from 'gsap';
 
 import { HALF, ONE, ZERO, TWO, ANCHOR_CENTER, ACTOR_MOVEMENT_DURATION } from 'constants/numbers';
 import { UnableToLeaveTheNumericLine } from 'engine/helpers/errors';
 import { EASE_BE_HAPPY, EASE_BE_SAD } from 'engine/helpers/customEases';
 import { getRandomFloat } from 'helpers/randomizers';
 
+const THREE = 3;
 const SIX = 6;
 const SHAKE_DISTANCE = 2.3;
-const FALL_DISTANCE_MULTIPLIER = 0.75;
+const FALL_DISTANCE_MULTIPLIER = 0.95;
 const FALL_SPIN_DURATION = 3;
+const JUMP_DURATION = 0.4;
 const SQUISH_DURATION = 2.5;
 
 export const START_STATE = 'start';
@@ -72,9 +74,9 @@ const beTheFallenOneConfig = (
         rotation: 50,
         ease: Power1.easeIn,
       }, ZERO)
-      .to(view, SQUISH_DURATION, {
-        height: 0,
-        width: 0,
+      .to(view.scale, SQUISH_DURATION, {
+        x: 0,
+        y: 0,
         ease: Power1.easeIn,
       }, ACTOR_MOVEMENT_DURATION);
   });
@@ -118,12 +120,17 @@ const emotionConfig = (
 export const staticNumberGenerator = (number: number, size: number): StaticNumberActor => {
   const style = new TextStyle({
     ...styleRaw,
-    fontSize: size / HALF + size / SIX,
+    fontSize: size + size / THREE,
   });
   const view = new Text(number.toString(), style);
 
   view.anchor.set(ANCHOR_CENTER);
   view.x = view.y = size / HALF;
+  /**
+   * PixiJS recomendation for better text resolution
+   * @see https://github.com/pixijs/pixi.js/wiki/Performance-Tips#text
+   */
+  view.scale.x = view.scale.y = ANCHOR_CENTER;
 
   return {
     view,
@@ -150,11 +157,18 @@ const hasEnteredToNumericLineConfig = (
   view.position = localPosition;
 
   return new Promise((onComplete) => {
-    TweenLite.to(view, ACTOR_MOVEMENT_DURATION, {
-      y: size / HALF,
-      ease: Linear.easeNone,
-      onComplete,
-    });
+    const timeline = new TimelineLite({ onComplete });
+
+    timeline
+      .to(view, ACTOR_MOVEMENT_DURATION, {
+        y: size / HALF,
+        ease: Linear.easeNone,
+      })
+      .to(view.scale, ACTOR_MOVEMENT_DURATION, {
+        x: view.scale.x * TWO,
+        y: view.scale.y * TWO,
+        ease: SlowMo.ease.config(JUMP_DURATION, ZERO, true),
+      }, ZERO);
   });
 });
 
@@ -194,6 +208,12 @@ const resetPositionConfig = (
 
   view.x = initialPosition[0] * (size + margin) + size / HALF + margin;
   view.y = initialPosition[1] * (size + margin) + size / HALF + margin;
+  /**
+   * PixiJS recomendation for better text resolution
+   * @see https://github.com/pixijs/pixi.js/wiki/Performance-Tips#text
+   */
+  view.scale.x = view.scale.y = ANCHOR_CENTER;
+  view.rotation = 0;
 });
 const changeActorConfig = (
   view: Text,
@@ -222,7 +242,7 @@ const numberGenerator = (
 ): NumberActor => {
   const style = new TextStyle({
     ...styleRaw,
-    fontSize: size / HALF + size / SIX,
+    fontSize: size + size / THREE,
   });
   const view = new Text(number.toString(), style);
   const initialPosition = position.split(',').map((string: string): number => (parseInt(string)));
@@ -231,6 +251,11 @@ const numberGenerator = (
 
   view.x = initialPosition[0] * (size + margin) + size / HALF + margin;
   view.y = initialPosition[1] * (size + margin) + size / HALF + margin;
+  /**
+   * PixiJS recomendation for better text resolution
+   * @see https://github.com/pixijs/pixi.js/wiki/Performance-Tips#text
+   */
+  view.scale.x = view.scale.y = ANCHOR_CENTER;
 
   return {
     view,

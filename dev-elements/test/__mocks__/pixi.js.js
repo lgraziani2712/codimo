@@ -25,12 +25,16 @@ export class Point {
 export class Container extends DisplayObject {
   height: number;
   pivot: Point;
+  rotation: number;
+  scale: Point;
   width: number;
 
   constructor() {
     super();
 
     this.pivot = new Point();
+    this.rotation = 0;
+    this.scale = new Point;
     this.height = 200;
     this.width = 200;
   }
