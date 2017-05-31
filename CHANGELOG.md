@@ -1,6 +1,7 @@
 ## HEAD
 
-- ⚙ [2017-05-31] `engine/containers/mazeEngineGenerator`: update to v4.0.1.
+- ⚙ [2017-05-31] `engine/containers/mazeEngineGenerator`: update to v4.1.0.
+  - ⚙ Animate the number on `MazePathOverflow` error.
   - ⚙ Update maze position to match new space-in-between the numeric line requirement.
 - ⚙ [2017-05-31] `engine/components/numericLineGenerator`: update to v3.2.1.
   - ⚙ Update `receiveNumberAtPositionConfig` to match the new `numberGenerator` API.

@@ -105,6 +105,8 @@ const excecuteSetOfInstructionsConfig = (
      * And we don't want that.
      */
     if (mazeData.exits.indexOf(oldPosition) !== -ONE && direction === MOVE_FORWARD) {
+      await number.beTheFallenOne();
+
       throw new MazePathOverflow();
     }
     await number.updatePosition(newPosition);
