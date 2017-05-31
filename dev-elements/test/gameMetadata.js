@@ -49,7 +49,7 @@ export default {
   difficulty: 'easy',
   mazeData: {
     canvas: {
-      height: 500,
+      height: 569,
       width: 450,
     },
     width: 5,

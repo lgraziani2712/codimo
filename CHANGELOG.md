@@ -1,5 +1,15 @@
 ## HEAD
 
+- ⚙ [2017-05-31] `engine/containers/numberGenerator`: update to v4.1.0.
+  - ⚙ Update `hasEnteredToNumericLine` to add jump effect.
+- ⚙ [2017-05-31] `engine/containers/mazeEngineGenerator`: update to v4.1.0.
+  - ⚙ Animate the number on `MazePathOverflow` error.
+  - ⚙ Update maze position to match new space-in-between the numeric line requirement.
+- ⚙ [2017-05-31] `engine/components/numericLineGenerator`: update to v3.2.1.
+  - ⚙ Update `receiveNumberAtPositionConfig` to match the new `numberGenerator` API.
+- 🚀 [2017-05-31] `engine/containers/numberGenerator`: update to v4.0.0.
+  - 🚀 Add `beTheFallenOne` method. It's going to be used for the final-step-error.
+  - 🐛 Fix `hasEnteredToNumericLine`. Since the numeric line is going to be break apart from the maze, the way how is calculated the position it breaks. The refactor adds a new parameter (the new parent) and it will use it for the calculation of the new local position.
 - 🐛 [2017-05-28] `containers/GameViewer`: update to v1.0.2.
   - 🐛 Fix style for game section.
 - 🚀 [2017-05-28] `components/FrontPage`: add v1.0.0!

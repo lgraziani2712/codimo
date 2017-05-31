@@ -7,6 +7,7 @@
 /* eslint-disable no-magic-numbers */
 import React from 'react';
 import wait from 'speculation/wait';
+import { Point } from 'pixi.js';
 
 import { storiesOf } from 'test/storybook-facades';
 import PixiWrapper from 'test/PixiWrapper';
@@ -19,13 +20,13 @@ import lineGenerator from './lineGenerator';
 import numericLineGenerator from './index';
 
 const POSITION = '0,0';
+const GLOBAL_POSITION = new Point(0, 0);
 const SIZE = 64;
 const WIDTH_NUMERIC_LINE = 960;
 const HEIGHT_NUMERIC_LINE = 300;
 const WIDTH_ARROW = 104;
 const HEIGHT_ARROW = 204;
 const QUARTER = 4;
-const NINE = 9;
 
 storiesOf('engine.components.numericLine', module)
   //////////////////////////////////
@@ -83,13 +84,18 @@ storiesOf('engine.components.numericLine', module)
   .add('line with an animated number', () => {
     const line = lineGenerator([null, null, null, null, null, null, null, null], SIZE, TEN);
     const ten = numberGenerator(TEN, POSITION, POSITION, SIZE, TEN);
+    const CHILD = ZERO;
 
     line.view.x = 32;
     line.view.y = 28;
+    const globalPos = line.view.getChildAt(CHILD).toGlobal(GLOBAL_POSITION);
+
+    ten.view.x = globalPos.x + SIZE / HALF;
+    ten.view.y = globalPos.y + SIZE * 2;
 
     (async () => {
       await wait(500);
-      await line.receiveNumberAtPosition(ten, ZERO);
+      await line.receiveNumberAtPosition(ten, CHILD);
     })();
 
     return (
@@ -104,13 +110,18 @@ storiesOf('engine.components.numericLine', module)
   .add('a happy number line', () => {
     const line = lineGenerator([-99, -45, 0, null, 12, 45, 78, 99], SIZE, TEN);
     const ten = numberGenerator(TEN, POSITION, POSITION, SIZE, TEN);
+    const CHILD = 3;
 
     line.view.x = 32;
     line.view.y = 28;
+    const globalPos = line.view.getChildAt(CHILD).toGlobal(GLOBAL_POSITION);
+
+    ten.view.x = globalPos.x + SIZE / HALF;
+    ten.view.y = globalPos.y + SIZE * 2;
 
     (async () => {
       await wait(500);
-      await line.receiveNumberAtPosition(ten, 3);
+      await line.receiveNumberAtPosition(ten, CHILD);
       ten.beHappy('start');
       line.beHappy('start');
     })();
@@ -127,13 +138,18 @@ storiesOf('engine.components.numericLine', module)
   .add('a sad number line', () => {
     const line = lineGenerator([-99, -45, null, 0, 12, 45, 78, 99], SIZE, TEN);
     const ten = numberGenerator(TEN, POSITION, POSITION, SIZE, TEN);
+    const CHILD = 2;
 
     line.view.x = 32;
     line.view.y = 28;
+    const globalPos = line.view.getChildAt(CHILD).toGlobal(GLOBAL_POSITION);
+
+    ten.view.x = globalPos.x + SIZE / HALF;
+    ten.view.y = globalPos.y + SIZE * 2;
 
     (async () => {
       await wait(500);
-      await line.receiveNumberAtPosition(ten, 2);
+      await line.receiveNumberAtPosition(ten, CHILD);
       line.beSad('start');
       ten.beSad('start');
     })();
@@ -171,13 +187,18 @@ storiesOf('engine.components.numericLine', module)
   .add('numeric line with animated and static numbers', () => {
     const numericLine = numericLineGenerator([1, 2, 3, 4, 5, 6, 7, 8, 9, null], SIZE, TEN);
     const ten = numberGenerator(TEN, POSITION, POSITION, SIZE, TEN);
+    const CHILD = 9;
+
+    numericLine.view.y = (HEIGHT_NUMERIC_LINE - numericLine.view.height) / HALF;
+    const globalPos = numericLine.view.getChildAt(1).getChildAt(CHILD).toGlobal(GLOBAL_POSITION);
+
+    ten.view.x = globalPos.x + SIZE;
+    ten.view.y = globalPos.y + SIZE * 2;
 
     (async () => {
       await wait(500);
-      await numericLine.receiveNumberAtPosition(ten, NINE);
+      await numericLine.receiveNumberAtPosition(ten, CHILD);
     })();
-
-    numericLine.view.y = (HEIGHT_NUMERIC_LINE - numericLine.view.height) / HALF;
 
     return (
       <PixiWrapper
@@ -191,15 +212,20 @@ storiesOf('engine.components.numericLine', module)
   .add('a happy numeric line', () => {
     const numericLine = numericLineGenerator([1, 2, 3, 4, 5, 6, 7, 8, 9, null], SIZE, TEN);
     const ten = numberGenerator(TEN, POSITION, POSITION, SIZE, TEN);
+    const CHILD = 9;
+
+    numericLine.view.y = (HEIGHT_NUMERIC_LINE - numericLine.view.height) / HALF;
+    const globalPos = numericLine.view.getChildAt(1).getChildAt(CHILD).toGlobal(GLOBAL_POSITION);
+
+    ten.view.x = globalPos.x + SIZE;
+    ten.view.y = globalPos.y + SIZE * 2;
 
     (async () => {
       await wait(500);
-      await numericLine.receiveNumberAtPosition(ten, NINE);
+      await numericLine.receiveNumberAtPosition(ten, CHILD);
       ten.beHappy('start');
       numericLine.beHappy('start');
     })();
-
-    numericLine.view.y = (HEIGHT_NUMERIC_LINE - numericLine.view.height) / HALF;
 
     return (
       <PixiWrapper
@@ -213,15 +239,20 @@ storiesOf('engine.components.numericLine', module)
   .add('a sad numeric line', () => {
     const numericLine = numericLineGenerator([1, 2, 3, 4, 5, 6, 7, 8, 11, null], SIZE, TEN);
     const ten = numberGenerator(TEN, POSITION, POSITION, SIZE, TEN);
+    const CHILD = 9;
+
+    numericLine.view.y = (HEIGHT_NUMERIC_LINE - numericLine.view.height) / HALF;
+    const globalPos = numericLine.view.getChildAt(1).getChildAt(CHILD).toGlobal(GLOBAL_POSITION);
+
+    ten.view.x = globalPos.x + SIZE;
+    ten.view.y = globalPos.y + SIZE * 2;
 
     (async () => {
       await wait(500);
-      await numericLine.receiveNumberAtPosition(ten, NINE);
+      await numericLine.receiveNumberAtPosition(ten, CHILD);
       ten.beSad('start');
       numericLine.beSad('start');
     })();
-
-    numericLine.view.y = (HEIGHT_NUMERIC_LINE - numericLine.view.height) / HALF;
 
     return (
       <PixiWrapper

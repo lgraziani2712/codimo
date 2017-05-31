@@ -21,11 +21,9 @@ import {
 
 const receiveNumberAtPositionConfig = (
   view: Graphics,
-) => (number: NumberActor, position: number): Promise<void> => {
-  number.view.setParent(view.getChildAt(position));
-
-  return number.hasEnteredToNumericLine();
-};
+) => (number: NumberActor, position: number): Promise<void> => (
+  number.hasEnteredToNumericLine(view.getChildAt(position))
+);
 const emotionConfig = (
   staticNumbers: Array<StaticNumberActor>,
   beHappy: boolean,
