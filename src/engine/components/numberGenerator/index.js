@@ -12,7 +12,6 @@ import { UnableToLeaveTheNumericLine } from 'engine/helpers/errors';
 import { EASE_BE_HAPPY, EASE_BE_SAD } from 'engine/helpers/customEases';
 import { getRandomFloat } from 'helpers/randomizers';
 
-const THREE = 3;
 const SIX = 6;
 const SHAKE_DISTANCE = 2.3;
 const FALL_DISTANCE_MULTIPLIER = 0.95;
@@ -34,6 +33,7 @@ const styleRaw = {
   dropShadowDistance: 3,
 };
 
+type Direction = 'top' | 'right' | 'bottom' | 'left';
 export type NumberActor = {|
   view: Text,
   position: string,
@@ -43,6 +43,7 @@ export type NumberActor = {|
   beTheFallenOne(): Promise<void>,
   changeActor(number: number): void,
   hasEnteredToNumericLine(emptyBlock: Container): Promise<void>,
+  hitTheWall(direction: Direction): Promise<void>,
   resetPosition(): void,
   updatePosition(newPosition: string): Promise<void>,
 |};
@@ -53,6 +54,56 @@ export type StaticNumberActor = {|
 |};
 export type ActorEmotionState = 'start' | 'stop';
 
+const hitTheWallConfig = (
+  view: Text,
+  size: number,
+  margin: number,
+) => ((direction: Direction) => (new Promise((onComplete) => {
+  let movement;
+  const distance = size / HALF - margin;
+  const timeline = new TimelineLite({ onComplete });
+
+  switch (direction) {
+  case 'top':
+    movement = {
+      x: view.x,
+      y: view.y - distance,
+    };
+    break;
+  case 'right':
+    movement = {
+      x: view.x + distance,
+      y: view.y,
+    };
+    break;
+  case 'bottom':
+    movement = {
+      x: view.x,
+      y: view.y + distance,
+    };
+    break;
+  case 'left':
+    movement = {
+      x: view.x - distance,
+      y: view.y,
+    };
+    break;
+  }
+
+  timeline
+    .to(view, ACTOR_MOVEMENT_DURATION, {
+      ...movement,
+      ease: SlowMo.ease.config(JUMP_DURATION, ZERO, true),
+    })
+    .to(view, ACTOR_MOVEMENT_DURATION, {
+      ...movement,
+      ease: SlowMo.ease.config(JUMP_DURATION, ZERO, true),
+    })
+    .to(view, ACTOR_MOVEMENT_DURATION, {
+      ...movement,
+      ease: SlowMo.ease.config(JUMP_DURATION, ZERO, true),
+    });
+})));
 const beTheFallenOneConfig = (
   view: Text,
   size: number,
@@ -120,7 +171,7 @@ const emotionConfig = (
 export const staticNumberGenerator = (number: number, size: number): StaticNumberActor => {
   const style = new TextStyle({
     ...styleRaw,
-    fontSize: size + size / THREE,
+    fontSize: size + size / SIX,
   });
   const view = new Text(number.toString(), style);
 
@@ -242,7 +293,7 @@ const numberGenerator = (
 ): NumberActor => {
   const style = new TextStyle({
     ...styleRaw,
-    fontSize: size + size / THREE,
+    fontSize: size + size / SIX,
   });
   const view = new Text(number.toString(), style);
   const initialPosition = position.split(',').map((string: string): number => (parseInt(string)));
@@ -266,6 +317,7 @@ const numberGenerator = (
     beTheFallenOne: beTheFallenOneConfig(view, size),
     changeActor: changeActorConfig(view),
     hasEnteredToNumericLine: hasEnteredToNumericLineConfig(view, size),
+    hitTheWall: hitTheWallConfig(view, size, margin),
     resetPosition: resetPositionConfig(view, initialPosition, size, margin),
     updatePosition: updatePositionConfig(view, size, margin),
   };

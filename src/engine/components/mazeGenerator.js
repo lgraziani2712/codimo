@@ -57,13 +57,12 @@ const mazeGenerator = (mazeData: MazeData): Maze => {
         block = BLOCKS.pathCreator(
           positionX,
           positionY,
-          // $FlowDoNotDisturb https://github.com/facebook/flow/issues/3456
           mazeData.path.get(position),
         );
       } else {
         block = x === BLOCK_FIRST || x === BLOCKS_LAST.X || y === BLOCK_FIRST || y === BLOCKS_LAST.Y
-              ? BLOCKS.borderCreator(positionX, positionY, {})
-              : BLOCKS.wallCreator(positionX, positionY, {});
+              ? BLOCKS.borderCreator(positionX, positionY)
+              : BLOCKS.wallCreator(positionX, positionY);
       }
 
       view.addChild(block.view);

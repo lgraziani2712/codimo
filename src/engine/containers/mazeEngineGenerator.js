@@ -96,6 +96,8 @@ const excecuteSetOfInstructionsConfig = (
                           .join(',');
 
     if (!path || !path[directionsToWalls[direction]]) {
+      await number.hitTheWall(directionsToWalls[direction]);
+
       throw new MazePathError();
     }
     /**
