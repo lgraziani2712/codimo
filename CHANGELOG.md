@@ -1,5 +1,7 @@
 ## HEAD
 
+- 🎨 [2017-05-31] `engine/components/blockGeneratorConfig`: update to v2.0.1.
+  - 🎨 Change `activePathBorders` param to optative. Add empty object as default value.
 - 🚀 [2017-05-31] `engine/containers/numberGenerator`: update to v4.2.0.
   - 🚀 Add `hitTheWall` animation function.
 - ⚙ [2017-05-31] `engine/containers/numberGenerator`: update to v4.1.0.

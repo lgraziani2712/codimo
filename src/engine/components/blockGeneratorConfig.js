@@ -26,7 +26,8 @@ const blockGeneratorConfig = (
   type: number,
   size: number,
   margin: number,
-) => (x: number, y: number, activePathBorders: ActivePathBorders): Block => {
+  // $FlowDoNotDisturb @see https://github.com/facebook/flow/issues/2386
+) => (x: number, y: number, activePathBorders?: ActivePathBorders = {}): Block => {
   const view = new Container();
   const block = new Sprite(Texture.WHITE);
   //////////////////////////////
