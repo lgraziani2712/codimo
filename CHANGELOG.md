@@ -1,5 +1,7 @@
 ## HEAD
 
+- 🚀 [2017-05-31] `engine/containers/numberGenerator`: update to v4.2.0.
+  - 🚀 Add `hitTheWall` animation function.
 - ⚙ [2017-05-31] `engine/containers/numberGenerator`: update to v4.1.0.
   - ⚙ Update `hasEnteredToNumericLine` to add jump effect.
 - ⚙ [2017-05-31] `engine/containers/mazeEngineGenerator`: update to v4.1.0.
