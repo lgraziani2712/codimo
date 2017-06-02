@@ -1,5 +1,7 @@
 ## HEAD
 
+- ⚙ [2017-06-02] `engine/containers/mazeEngineGenerator`: update to v4.2.1.
+  - ⚙ Update how errors are thrown to match new `engine/errors` version.
 - 🚀 [2017-06-02] `engine/errors`: update to v2.0.0.
   - ⚙ Complete refactor. Instead of constructors, each error is a constant object. Now, instead of `throw new MazeXError()`, is `throw MazeXError`.
   - 🔥 Remove unused error.

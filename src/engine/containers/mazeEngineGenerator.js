@@ -22,7 +22,7 @@ import numericLineGenerator, {
 import {
   MazeExitError,
   MazePathError,
-  MazePathOverflow,
+  MazePathOverflowError,
   MazeStarvationError,
   MazeWrongExitError,
 } from 'engine/helpers/errors';
@@ -37,7 +37,7 @@ const numberHasLeftMazeConfig = (
   const exitIdx = mazeData.exits.indexOf(number.position);
 
   if (exitIdx === -ONE) {
-    throw new MazeExitError();
+    throw MazeExitError;
   }
 
   const exit = mazeData.exits[exitIdx];
@@ -48,7 +48,7 @@ const numberHasLeftMazeConfig = (
     number.beSad(START_STATE);
     numericLine.beSad(START_STATE);
 
-    throw new MazeWrongExitError();
+    throw MazeWrongExitError;
   }
 
   number.beHappy(START_STATE);
@@ -98,7 +98,7 @@ const excecuteSetOfInstructionsConfig = (
     if (!path || !path[directionsToWalls[direction]]) {
       await number.hitTheWall(directionsToWalls[direction]);
 
-      throw new MazePathError();
+      throw MazePathError;
     }
     /**
      * What happend if the number is over an exit and it tries to go forward?
@@ -109,7 +109,7 @@ const excecuteSetOfInstructionsConfig = (
     if (mazeData.exits.indexOf(oldPosition) !== -ONE && direction === MOVE_FORWARD) {
       await number.beTheFallenOne();
 
-      throw new MazePathOverflow();
+      throw MazePathOverflowError;
     }
     await number.updatePosition(newPosition);
   }
@@ -118,7 +118,7 @@ const excecuteSetOfInstructionsConfig = (
    * it never left the maze.
    */
   if (number.position) {
-    throw new MazeStarvationError();
+    throw MazeStarvationError;
   }
 };
 const handleResetGameConfig = (
