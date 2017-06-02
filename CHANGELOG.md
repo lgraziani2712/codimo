@@ -1,5 +1,7 @@
 ## HEAD
 
+- 🚀 [2017-06-02] `constants/localize/es`: add v1.0.0!
+  - 🚀 Add `engine/errors` object.
 - ⚙ [2017-05-31] `engine/containers/mazeEngineGenerator`: update to v4.2.0.
   - ⚙ Animate the number on `MazePathError` error.
 - 🎨 [2017-05-31] `engine/components/blockGeneratorConfig`: update to v2.0.1.
