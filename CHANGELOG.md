@@ -1,5 +1,8 @@
 ## HEAD
 
+- 🚀 [2017-06-02] `engine/errors`: update to v2.0.0.
+  - ⚙ Complete refactor. Instead of constructors, each error is a constant object. Now, instead of `throw new MazeXError()`, is `throw MazeXError`.
+  - 🔥 Remove unused error.
 - 🔥 [2017-06-02] `engine/containers/numberGenerator`: update to v4.1.1.
   - 🔥 Remove inaccessible error.
 - 🚀 [2017-06-02] `constants/localize/es`: add v1.0.0!
