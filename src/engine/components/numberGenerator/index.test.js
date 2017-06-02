@@ -48,27 +48,6 @@ describe('engine > components > numberGenerator', () => {
 
     expect(number.position).toBeUndefined();
   });
-  it(
-    'should throw an `UnableToLeaveTheNumericLine` if tries to call `updatePosition` when is in the numeric line',
-    async () => {
-      const parent = new Container();
-      const rawNumber = 3;
-      const initPosition = '1,1';
-      const finalPosition = '1,1';
-      const size = 64;
-      const margin = 10;
-      const number = numberGenerator(rawNumber, initPosition, finalPosition, size, margin);
-
-      await number.hasEnteredToNumericLine(parent);
-
-      try {
-        number.updatePosition('1,2');
-      } catch (err) {
-        expect(err.name).toBe('UnableToLeaveTheNumericLine');
-        expect(err.message).toMatchSnapshot();
-      }
-    },
-  );
   it('should disappear on `beTheFallenOne`', async () => {
     const rawNumber = 3;
     const initPosition = '1,1';

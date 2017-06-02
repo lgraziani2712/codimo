@@ -8,7 +8,6 @@ import { type Container, Point, Text, TextStyle } from 'pixi.js';
 import { TweenLite, TimelineLite, Linear, Power1, SlowMo } from 'gsap';
 
 import { HALF, ONE, ZERO, TWO, ANCHOR_CENTER, ACTOR_MOVEMENT_DURATION } from 'constants/numbers';
-import { UnableToLeaveTheNumericLine } from 'engine/helpers/errors';
 import { EASE_BE_HAPPY, EASE_BE_SAD } from 'engine/helpers/customEases';
 import { getRandomFloat } from 'helpers/randomizers';
 
@@ -234,9 +233,6 @@ const updatePositionConfig = (
    * @return {Promise<void>}       animation promise
    */
 ) => (function updatePosition(newPosition: string): Promise<void> {
-  if (!this.position) {
-    throw new UnableToLeaveTheNumericLine();
-  }
   this.position = newPosition;
   const positionNumbers = this.position.split(',').map((string: string): number => (parseInt(string)));
 
