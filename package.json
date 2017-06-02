@@ -39,7 +39,8 @@
     "react-dom": "15.5.4",
     "react-router-dom": "4.1.1",
     "speculation": "1.0.5",
-    "styled-components": "2.0.0"
+    "styled-components": "2.0.0",
+    "sweetalert2": "6.6.4"
   },
   "devDependencies": {
     "@storybook/react": "3.0.0",
