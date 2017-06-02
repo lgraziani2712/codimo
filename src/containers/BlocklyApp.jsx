@@ -128,10 +128,6 @@ export default class BlocklyApp extends React.Component {
     this.props.handleSetOfInstructions(this.executor.parseInstructions(rawInstructions))
       .then(() => {
         this.setState(() => ({ isExecuting: false }));
-      })
-      .catch((err: Error) => {
-        this.setState(() => ({ isExecuting: false }));
-        throw err;
       });
   }
   render() {
