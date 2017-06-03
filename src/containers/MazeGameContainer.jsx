@@ -7,6 +7,7 @@
 import React from 'react';
 import { Application } from 'pixi.js';
 import styled from 'styled-components';
+import swal from 'sweetalert2';
 
 import { type Instructions } from 'blockly/executorGenerator';
 import GameContainer from 'components/GameContainer';
@@ -18,7 +19,9 @@ import mazeEngineGenerator, {
 import { type MazeData } from 'engine/components/mazeGenerator';
 import { type ActivePathBorders } from 'engine/components/blockGeneratorConfig';
 import { type NumericLineData } from 'engine/components/numericLineGenerator';
+import { type MazeError } from 'engine/helpers/errors';
 import { getRandomInt } from 'helpers/randomizers';
+import { game } from 'constants/localize/es';
 
 import BlocklyApp, { type BlocklyData } from './BlocklyApp';
 
@@ -89,8 +92,10 @@ export default class MazeGameContainer extends React.Component {
     this.app.stop();
     this.app.destroy(true);
   }
-  handleSetOfInstructions = (instructions: Instructions) => (
+  handleSetOfInstructions = (instructions: Instructions): Promise<void> => (
     this.engine.excecuteSetOfInstructions(instructions)
+      .then(() => (swal(game.success).catch(swal.noop)))
+      .catch((error: MazeError) => (swal(error).catch(swal.noop)))
   )
   render() {
     return (

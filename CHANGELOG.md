@@ -1,5 +1,19 @@
 ## HEAD
 
+- 🚀 [2017-06-02] `constants/localize/es`: update to v1.1.0.
+  - 🚀 Add success messages.
+  - ⚙ Update object structure to match sweetalert2 object parameter. This simplifies how MazeGameContainer need to pass the parameter.
+- 🚀 [2017-06-02] `containers/MazeGameContainer`: update to v1.1.0.
+  - 🚀 Add `sweetalert2` popups on `excecuteSetOfInstructions` invocation.
+- ⚙ [2017-06-02] `engine/containers/mazeEngineGenerator`: update to v4.2.1.
+  - ⚙ Update how errors are thrown to match new `engine/errors` version.
+- 🚀 [2017-06-02] `engine/errors`: update to v2.0.0.
+  - ⚙ Complete refactor. Instead of constructors, each error is a constant object. Now, instead of `throw new MazeXError()`, is `throw MazeXError`.
+  - 🔥 Remove unused error.
+- 🔥 [2017-06-02] `engine/containers/numberGenerator`: update to v4.1.1.
+  - 🔥 Remove inaccessible error.
+- 🚀 [2017-06-02] `constants/localize/es`: add v1.0.0!
+  - 🚀 Add `engine/errors` object.
 - ⚙ [2017-05-31] `engine/containers/mazeEngineGenerator`: update to v4.2.0.
   - ⚙ Animate the number on `MazePathError` error.
 - 🎨 [2017-05-31] `engine/components/blockGeneratorConfig`: update to v2.0.1.
