@@ -1,5 +1,7 @@
 ## HEAD
 
+- 🚀 [2017-06-02] `containers/MazeGameContainer`: update to v1.1.0.
+  - 🚀 Add `sweetalert2` popups on `excecuteSetOfInstructions` invocation.
 - ⚙ [2017-06-02] `engine/containers/mazeEngineGenerator`: update to v4.2.1.
   - ⚙ Update how errors are thrown to match new `engine/errors` version.
 - 🚀 [2017-06-02] `engine/errors`: update to v2.0.0.
