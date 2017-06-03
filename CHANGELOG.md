@@ -1,5 +1,8 @@
 ## HEAD
 
+- 🚀 [2017-06-02] `constants/localize/es`: update to v1.1.0.
+  - 🚀 Add success messages.
+  - ⚙ Update object structure to match sweetalert2 object parameter. This simplifies how MazeGameContainer need to pass the parameter.
 - 🚀 [2017-06-02] `containers/MazeGameContainer`: update to v1.1.0.
   - 🚀 Add `sweetalert2` popups on `excecuteSetOfInstructions` invocation.
 - ⚙ [2017-06-02] `engine/containers/mazeEngineGenerator`: update to v4.2.1.

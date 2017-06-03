@@ -10,8 +10,8 @@
 import { engine } from 'constants/localize/es';
 
 export type MazeError = {|
-  image?: string,
-  message: string,
+  imageUrl?: string,
+  text: string,
   name: string,
   title: string,
 |};
