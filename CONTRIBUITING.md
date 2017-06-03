@@ -11,17 +11,17 @@ TODO this section
 - Limit the first line to 72 characters or less
 - Reference issues and pull requests liberally
 - Consider starting the commit message with an applicable emoji:
-  - 🎨 `:art:` when improving the format/structure of the code
-  - 🏇 `:racehorse:` when improving performance
-  - 📝 `:memo:` when writing docs
-  - 🚀 `:rocket:` when adding new feature
-  - 🐛 `:bug:` when fixing a bug
-  - 🔥 `:fire:` when removing code or files
-  - ⚙ `⚙` when refactoring code
-  - 💚 `:green_heart:` when fixing the CI build
-  - ✅ `:white_check_mark:` when adding tests
-  - 🆕 `:new:` when added new dependencies
-  - ⬆ `:arrow_up:` when upgrading dependencies
-  - ⬇ `:arrow_down:` when downgrading dependencies
-  - 🗑 `🗑` when removing dependencies
-  - 👕 `:shirt:` when removing linter warnings
+  - 🎨 when improving the format/structure of the code
+  - 🏇 when improving performance
+  - 📝 when writing docs
+  - 🚀 when adding new feature
+  - 🐛 when fixing a bug
+  - 🔥 when removing code or files
+  - ⚙ when refactoring code
+  - 💚 when fixing the CI build
+  - ✅ when adding tests
+  - 🆕 when added new dependencies
+  - ⬆ when upgrading dependencies
+  - ⬇ when downgrading dependencies
+  - 🗑 when removing dependencies
+  - 👕 when removing linter warnings
