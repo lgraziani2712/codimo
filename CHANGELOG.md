@@ -1,5 +1,9 @@
 ## HEAD
 
+- 🚀 [2017-06-04] `containers/gameLoader`: add v1.0.0!
+  - It uses the `<Bundle />` container for loading the game assets.
+- 🚀 [2017-06-04] `containers/Bundle`: add v1.0.0!
+  - Is in charge of loading async modules and showing the loading screen in the meantime.
 - 🚀 [2017-06-03] `components/pages/links/HeaderLink`: update to v1.1.0.
   - 🚀 Add dropdown menu requirement.
   - 🎨 Clean styles.
