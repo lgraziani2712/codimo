@@ -1,5 +1,7 @@
 ## HEAD
 
+- 🚀 [2017-06-04] `helpers/strings`: add v1.0.0!
+  - 🚀 Add `upperFirst`.
 - 🚀 [2017-06-04] `components/pages/Loading`: add v1.0.0!
   - 🚀 Add loading page with funny random phrases.
 - 🚀 [2017-06-04] `components/pages/links/HeaderLink`: update to v1.2.0.
