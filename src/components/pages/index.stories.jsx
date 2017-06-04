@@ -12,6 +12,7 @@ import { storiesOf } from 'test/storybook-facades';
 
 import PageContainer from './PageContainer';
 import MenuBar from './MenuBar';
+import Loading from './Loading';
 
 const PageContent = styled.div`
   background-color: green;
@@ -23,13 +24,21 @@ const MenuContainer = styled.div`
   width: 80%;
 `;
 const routes = [{
-  path: '#first',
-  title: 'First link',
-  main: () => {},
+  exact: true,
+  game: '#maze',
+  title: 'Easy',
+  children: [{
+    path: 'first',
+    title: 'First game',
+  }],
 }, {
-  path: '#second',
-  title: 'Second link',
-  main: () => {},
+  exact: true,
+  game: '#maze',
+  title: 'Intermidiate',
+  children: [{
+    path: 'second',
+    title: 'Second game',
+  }],
 }];
 
 storiesOf('components.pages', module)
@@ -39,5 +48,10 @@ storiesOf('components.pages', module)
     </PageContainer>
   ))
   .add('MenuBar render', () => (
-    <MenuContainer><Router><MenuBar routes={routes} /></Router></MenuContainer>
-  ));
+    <MenuContainer>
+      <Router>
+        <MenuBar routes={routes} />
+      </Router>
+    </MenuContainer>
+  ))
+  .add('Loading render', () => (<Loading />));

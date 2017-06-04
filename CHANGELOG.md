@@ -1,5 +1,29 @@
 ## HEAD
 
+- 🚀 [2017-06-04] `containers/GameViewer`: update to v1.1.0.
+  - 🚀 To match new `routes` version.
+- 🚀 [2017-06-04] `components/pages/MenuBar`: update to v1.2.0.
+  - 🚀 To match new `routes` version.
+- 🚀 [2017-06-04] `{routes/Routes} -> {routes}`: update to v2.0.0.
+  - 🚀 Complete refactor. It is an array of specific shaped objects. Every one of them contains the necesary information for rendering routes and links.
+- 🚀 [2017-06-04] `constants/localize/es`: update to v1.1.0.
+  - 🚀 Add more game texts.
+- 🚀 [2017-06-04] `helpers/strings`: add v1.0.0!
+  - 🚀 Add `upperFirst`.
+- 🚀 [2017-06-04] `components/pages/Loading`: add v1.0.0!
+  - 🚀 Add loading page with funny random phrases.
+- 🚀 [2017-06-04] `components/pages/links/HeaderLink`: update to v1.2.0.
+  - 🚀 Add behavior for dropdown links.
+- 🚀 [2017-06-04] `containers/gameLoader`: add v1.0.0!
+  - It uses the `<Bundle />` container for loading the game assets.
+- 🚀 [2017-06-04] `containers/Bundle`: add v1.0.0!
+  - Is in charge of loading async modules and showing the loading screen in the meantime.
+- 🚀 [2017-06-03] `components/pages/links/HeaderLink`: update to v1.1.0.
+  - 🚀 Add dropdown menu requirement.
+  - 🎨 Clean styles.
+  - 🚀 Add stories.
+- 🚀 [2017-06-03] `constants/colors`: update to v1.2.0.
+  - 🚀 Add new orange color.
 - 🚀 [2017-06-02] `constants/localize/es`: update to v1.1.0.
   - 🚀 Add success messages.
   - ⚙ Update object structure to match sweetalert2 object parameter. This simplifies how MazeGameContainer need to pass the parameter.
@@ -38,7 +62,7 @@
 - 🚀 [2017-05-28] `components/pages/RawContentContainer`: add v1.0.0!
 - 🚀 [2017-05-28] `components/pages/PageContainer`: add v1.0.0!
 - 🚀 [2017-05-28] `components/pages/links/HeaderLink`: add v1.0.0!
-- 🔥 [2017-05-28] `components/pages/MenuBar`: update to v1.1.0:
+- 🔥 [2017-05-28] `components/pages/MenuBar`: update to v1.1.0.
   - 🔥 Extract local links to its own component.
   - 🐛 Improve styles.
 - 🔥 [2017-05-28] `blockly/components/BlocklyApp -> containers/BlocklyApp`: update to v3.2.0.

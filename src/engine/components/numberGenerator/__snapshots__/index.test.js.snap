@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`engine > components > numberGenerator should throw an \`UnableToLeaveTheNumericLine\` if tries to call \`updatePosition\` when is in the numeric line 1`] = `"Is not possible to leave the numeric line"`;

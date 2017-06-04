@@ -32,5 +32,8 @@ export const COLOR_PALETTE = {
     normal: '#d3823f',
     dark: '#b36320',
     color: WHITE,
+    transparent: {
+      clear: 'rgba(255, 198, 151, 0.4)',
+    },
   },
 };

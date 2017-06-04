@@ -10,24 +10,11 @@ import styled from 'styled-components';
 
 import { COLOR_PALETTE } from 'constants/colors';
 
-const Link = styled(RouterLink)`
-  align-items: center;
-  color: rgba(0, 0, 0, 0.6);
-  display: flex;
-  font-size: 1.25rem;
-  height: 100%;
-  padding: 0 0.5rem;
-  text-decoration: none;
-`;
-const Li = styled.li`
+const LinkContainer = styled.li`
+  list-style-type: none;
   position: relative;
-  transition: 0.5s;
-  &:hover {
-    font-weight: bold;
-  }
   &::before {
     content: '';
-    display: block;
     height: 100%;
     left: 50%;
     position: absolute;
@@ -43,8 +30,7 @@ const Li = styled.li`
   &::after {
     bottom: 0;
     content: '';
-    display: block;
-    height: 3px;
+    height: 5%;
     left: 50%;
     position: absolute;
     transition: 0.5s;
@@ -56,13 +42,66 @@ const Li = styled.li`
     width: 100%;
   }
 `;
+const Link = styled(RouterLink)`
+  align-items: center;
+  color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  font-size: 1.25em;
+  height: 100%;
+  padding: 0 0.5em;
+  cursor: pointer;
+  text-decoration: none;
+  ${LinkContainer}:hover > a {
+    font-weight: bold;
+  }
+`;
+const EmptyLink = Link.withComponent('span');
+const BackgroundColor = styled.div`
+  background: ${COLOR_PALETTE.orange.transparent.clear};
+  height: 100%;
+  width: 100%;
+`;
+const ChildrenContainer = styled.ul`
+  background: white;
+  box-shadow: 0 0 1px 1px rgba(85, 95, 110, 0.4);
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  min-width: 15em;
+  opacity: 0;
+  padding: 0;
+  position: absolute;
+  transform: translateY(-2em);
+  transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.1s;
+  visibility: hidden;
+  width: 100%;
+  z-index: -1;
+  ${LinkContainer}:hover > & {
+    opacity: 1;
+    transform: translateY(0%);
+    transition-delay: 0s, 0s, 0.3s;
+    visibility: visible;
+    z-index: 0;
+  }
+`;
 
 type Props = {|
-  to: string,
   title: string,
+  children?: React.Element<HeaderLink>,
+  to?: string,
 |};
-const FooterLink = ({ to, title }: Props) => (
-  <Li><Link to={to}>{title}</Link></Li>
+const HeaderLink = ({ children, to, title }: Props) => (
+  <LinkContainer>
+    {!to
+      ? <EmptyLink>{title}</EmptyLink>
+      : <Link to={to}>{title}</Link>
+    }
+    {!children ? undefined : (
+      <ChildrenContainer>
+        <BackgroundColor>{children}</BackgroundColor>
+      </ChildrenContainer>
+    )}
+  </LinkContainer>
 );
 
-export default FooterLink;
+export default HeaderLink;

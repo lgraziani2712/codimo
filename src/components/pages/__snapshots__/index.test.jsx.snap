@@ -1,5 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Components snapshots renders the Loading correctly 1`] = `
+<div
+  className="Loading__LoadingAnimal-eGmvca kiqOHi"
+>
+  <img
+    src="/images/loading-animal.gif"
+  />
+  <div
+    className="Loading__RandomText-cHlNfX fobzAW"
+  >
+    Dibujando los bloques
+  </div>
+</div>
+`;
+
 exports[`Components snapshots renders the MenuBar correctly 1`] = `
 <div
   className="MenuBar__Background-fWfgRq kBhrvE"
@@ -26,7 +41,7 @@ exports[`Components snapshots renders the MenuBar correctly 1`] = `
       className="MenuBar__LinksContainer-jAqpOR fwMiVN"
     >
       <ul
-        className="MenuBar__LocalLinksContainer-jhZUMN hyPPl"
+        className="MenuBar__LocalLinksContainer-jhZUMN cXTvmf"
       />
       <div
         className="MenuBar__ExternalLinksContainer-JhLoa czunCm"

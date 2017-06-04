@@ -44,6 +44,25 @@ export const engine = {
 };
 
 export const game = {
+  loading: [
+    'Armando la línea numérica',
+    'Cazando números salvajes',
+    'Levantando los muros del laberinto',
+    'Pintando las paredes',
+    'Dibujando los bloques',
+  ],
+  exercise: 'Ejercicio',
+  levels: [
+    'Primer',
+    'Segundo',
+    'Tercer',
+    'Cuarto',
+  ],
+  difficulty: {
+    easy: 'Nivel inicial',
+    medium: 'Nivel intermedio',
+    hard: 'Nivel avanzado',
+  },
   success: {
     confirmButtonText: 'Ir al siguiente nivel',
     text: '¡Nivel completado!',
@@ -51,5 +70,3 @@ export const game = {
     type: 'success',
   },
 };
-
-export const menu = {};

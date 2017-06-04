@@ -7,12 +7,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Routes from 'routes/Routes';
 import GameViewer from 'containers/GameViewer';
+
+import routes from './routes';
 
 const rootElement = document.getElementById('root');
 
 ReactDOM.render(
-  <GameViewer routes={Routes} />,
+  <GameViewer routes={routes} />,
   rootElement,
 );

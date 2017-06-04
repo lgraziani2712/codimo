@@ -7,7 +7,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { type RouteDescription } from 'routes/Routes';
+import { type RouteDescription } from 'routes';
 
 import CodimoLink from './logos/CodimoLink';
 import GithubLink from './logos/GithubLink';
@@ -34,7 +34,6 @@ const LinksContainer = styled.div`
 `;
 const LocalLinksContainer = styled.ul`
   display: flex;
-  list-style-type: none;
   margin: 0;
   padding: 0 0 0 1.5rem;
 `;
@@ -60,7 +59,12 @@ const MenuBar = ({ routes }: Props) => (
         <LocalLinksContainer>
           {routes.map((route, key) => (
             // eslint-disable-next-line react/no-array-index-key
-            <HeaderLink key={key} to={route.path} title={route.title} />
+            <HeaderLink key={key} title={route.title}>
+              {route.children.map((child, key2) => (
+                // eslint-disable-next-line react/no-array-index-key
+                <HeaderLink key={key2} to={`/${route.game}/${child.path}`} title={child.title} />
+              ))}
+            </HeaderLink>
           ))}
         </LocalLinksContainer>
 
