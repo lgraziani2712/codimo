@@ -1,5 +1,7 @@
 ## HEAD
 
+- 🚀 [2017-06-04] `components/pages/Loading`: add v1.0.0!
+  - 🚀 Add loading page with funny random phrases.
 - 🚀 [2017-06-04] `components/pages/links/HeaderLink`: update to v1.2.0.
   - 🚀 Add behavior for dropdown links.
 - 🚀 [2017-06-04] `containers/gameLoader`: add v1.0.0!
