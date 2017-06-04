@@ -1,5 +1,9 @@
 ## HEAD
 
+- 🚀 [2017-06-04] `containers/GameViewer`: update to v1.1.0.
+  - 🚀 To match new `routes` version.
+- 🚀 [2017-06-04] `components/pages/MenuBar`: update to v1.2.0.
+  - 🚀 To match new `routes` version.
 - 🚀 [2017-06-04] `{routes/Routes} -> {routes}`: update to v2.0.0.
   - 🚀 Complete refactor. It is an array of specific shaped objects. Every one of them contains the necesary information for rendering routes and links.
 - 🚀 [2017-06-04] `constants/localize/es`: update to v1.1.0.
@@ -58,7 +62,7 @@
 - 🚀 [2017-05-28] `components/pages/RawContentContainer`: add v1.0.0!
 - 🚀 [2017-05-28] `components/pages/PageContainer`: add v1.0.0!
 - 🚀 [2017-05-28] `components/pages/links/HeaderLink`: add v1.0.0!
-- 🔥 [2017-05-28] `components/pages/MenuBar`: update to v1.1.0:
+- 🔥 [2017-05-28] `components/pages/MenuBar`: update to v1.1.0.
   - 🔥 Extract local links to its own component.
   - 🐛 Improve styles.
 - 🔥 [2017-05-28] `blockly/components/BlocklyApp -> containers/BlocklyApp`: update to v3.2.0.
