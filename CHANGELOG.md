@@ -1,5 +1,9 @@
 ## HEAD
 
+- 🚀 [2017-06-04] `{routes/Routes} -> {routes}`: update to v2.0.0.
+  - 🚀 Complete refactor. It is an array of specific shaped objects. Every one of them contains the necesary information for rendering routes and links.
+- 🚀 [2017-06-04] `constants/localize/es`: update to v1.1.0.
+  - 🚀 Add more game texts.
 - 🚀 [2017-06-04] `helpers/strings`: add v1.0.0!
   - 🚀 Add `upperFirst`.
 - 🚀 [2017-06-04] `components/pages/Loading`: add v1.0.0!
