@@ -34,7 +34,6 @@ const LinksContainer = styled.div`
 `;
 const LocalLinksContainer = styled.ul`
   display: flex;
-  list-style-type: none;
   margin: 0;
   padding: 0 0 0 1.5rem;
 `;

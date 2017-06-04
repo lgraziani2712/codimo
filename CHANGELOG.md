@@ -1,5 +1,11 @@
 ## HEAD
 
+- 🚀 [2017-06-03] `components/pages/links/HeaderLink`: update to v1.1.0.
+  - 🚀 Add dropdown menu requirement.
+  - 🎨 Clean styles.
+  - 🚀 Add stories.
+- 🚀 [2017-06-03] `constants/colors`: update to v1.2.0.
+  - 🚀 Add new orange color.
 - 🚀 [2017-06-02] `constants/localize/es`: update to v1.1.0.
   - 🚀 Add success messages.
   - ⚙ Update object structure to match sweetalert2 object parameter. This simplifies how MazeGameContainer need to pass the parameter.

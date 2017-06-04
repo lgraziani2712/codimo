@@ -39,5 +39,9 @@ storiesOf('components.pages', module)
     </PageContainer>
   ))
   .add('MenuBar render', () => (
-    <MenuContainer><Router><MenuBar routes={routes} /></Router></MenuContainer>
+    <MenuContainer>
+      <Router>
+        <MenuBar routes={routes} />
+      </Router>
+    </MenuContainer>
   ));
