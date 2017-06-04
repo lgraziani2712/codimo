@@ -49,11 +49,13 @@ const Link = styled(RouterLink)`
   font-size: 1.25em;
   height: 100%;
   padding: 0 0.5em;
+  cursor: pointer;
   text-decoration: none;
   ${LinkContainer}:hover > a {
     font-weight: bold;
   }
 `;
+const EmptyLink = Link.withComponent('span');
 const BackgroundColor = styled.div`
   background: ${COLOR_PALETTE.orange.transparent.clear};
   height: 100%;
@@ -65,7 +67,7 @@ const ChildrenContainer = styled.ul`
   display: flex;
   flex-direction: column;
   margin: 0;
-  min-width: 10em;
+  min-width: 15em;
   opacity: 0;
   padding: 0;
   position: absolute;
@@ -84,13 +86,16 @@ const ChildrenContainer = styled.ul`
 `;
 
 type Props = {|
-  children?: React.Element<HeaderLink>,
-  to: string,
   title: string,
+  children?: React.Element<HeaderLink>,
+  to?: string,
 |};
 const HeaderLink = ({ children, to, title }: Props) => (
   <LinkContainer>
-    <Link to={to}>{title}</Link>
+    {!to
+      ? <EmptyLink>{title}</EmptyLink>
+      : <Link to={to}>{title}</Link>
+    }
     {!children ? undefined : (
       <ChildrenContainer>
         <BackgroundColor>{children}</BackgroundColor>
