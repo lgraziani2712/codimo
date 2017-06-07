@@ -32,7 +32,7 @@ class Bundle extends React.Component {
     props.load().then((mod) => {
       this.setState(() => ({
         // handle both es imports and cjs
-        mod: mod.default ? mod.default : mod,
+        mod: mod.default || mod,
       }));
     });
   }

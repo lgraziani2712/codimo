@@ -56,13 +56,8 @@ const Link = styled(RouterLink)`
   }
 `;
 const EmptyLink = Link.withComponent('span');
-const BackgroundColor = styled.div`
-  background: ${COLOR_PALETTE.orange.transparent.clear};
-  height: 100%;
-  width: 100%;
-`;
 const ChildrenContainer = styled.ul`
-  background: white;
+  background: rgba(240, 240, 240, 0.9);
   box-shadow: 0 0 1px 1px rgba(85, 95, 110, 0.4);
   display: flex;
   flex-direction: column;
@@ -96,11 +91,7 @@ const HeaderLink = ({ children, to, title }: Props) => (
       ? <EmptyLink>{title}</EmptyLink>
       : <Link to={to}>{title}</Link>
     }
-    {!children ? undefined : (
-      <ChildrenContainer>
-        <BackgroundColor>{children}</BackgroundColor>
-      </ChildrenContainer>
-    )}
+    {!children || (<ChildrenContainer>{children}</ChildrenContainer>)}
   </LinkContainer>
 );
 

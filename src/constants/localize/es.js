@@ -60,7 +60,7 @@ export const game = {
   ],
   difficulty: {
     easy: 'Nivel inicial',
-    medium: 'Nivel intermedio',
+    normal: 'Nivel intermedio',
     hard: 'Nivel avanzado',
   },
   success: {

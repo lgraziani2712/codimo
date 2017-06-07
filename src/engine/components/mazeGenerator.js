@@ -68,6 +68,7 @@ const mazeGenerator = (mazeData: MazeData): Maze => {
       view.addChild(block.view);
     }
   }
+  view.x = mazeData.size - mazeData.margin;
 
   return {
     view,

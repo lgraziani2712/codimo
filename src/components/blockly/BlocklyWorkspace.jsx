@@ -11,7 +11,7 @@ import BlocklyToolbox, { type BlocklyToolboxElement } from './BlocklyToolbox';
 
 const Workspace = styled.div`
   height: 500px;
-  width: 630px;
+  width: 500px;
 `;
 
 type Props = {|

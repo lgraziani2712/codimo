@@ -32,6 +32,20 @@ const routes: Array<RouteDescription> = [{
     title: `${game.levels[3]} ${game.exercise}`,
     path: 'easy/004',
   }],
+}, {
+  exact: true,
+  game: 'maze',
+  title: game.difficulty.normal,
+  children: [{
+    title: `${game.levels[0]} ${game.exercise}`,
+    path: 'normal/001',
+  }, {
+    title: `${game.levels[1]} ${game.exercise}`,
+    path: 'normal/002',
+  }, {
+    title: `${game.levels[2]} ${game.exercise}`,
+    path: 'normal/003',
+  }],
 }];
 
 export default routes;

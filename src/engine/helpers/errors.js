@@ -15,12 +15,8 @@ export type MazeError = {|
   name: string,
   title: string,
 |};
-function mazeErrorGenerator(name: string): MazeError {
-  return {
-    name,
-    ...engine.errors[name],
-  };
-}
+const mazeErrorGenerator = (name: string): MazeError => (engine.errors[name]);
+
 export const MazeExitError = mazeErrorGenerator('MazeExitError');
 export const MazePathError = mazeErrorGenerator('MazePathError');
 export const MazePathOverflowError = mazeErrorGenerator('MazePathOverflowError');

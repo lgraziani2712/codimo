@@ -27,6 +27,7 @@ import {
   MazeWrongExitError,
 } from 'engine/helpers/errors';
 import randomizeActorsConfig from 'engine/helpers/randomizeActorsConfig';
+import { getRandomInt } from 'helpers/randomizers';
 
 const numberHasLeftMazeConfig = (
   mazeData: MazeData,
@@ -165,10 +166,11 @@ export default function mazeEngineGenerator(
     difficulty,
   );
   const randomActor = randomizeActor();
+  const actorExitIdx = mazeData.actorExitIdx || getRandomInt(ZERO, randomActor.length);
   const number = numberGenerator(
-    randomActor[mazeData.actorExitIdx],
+    randomActor[actorExitIdx],
     mazeData.access,
-    mazeData.exits[mazeData.actorExitIdx],
+    mazeData.exits[actorExitIdx],
     mazeData.size,
     mazeData.margin,
   );
@@ -186,7 +188,7 @@ export default function mazeEngineGenerator(
       mazeData, number, numberHasLeftMazeConfig(mazeData, numericLineData, numericLine, number),
     ),
     handleResetGame: handleResetGameConfig(
-      randomizeActor, number, maze, mazeData.actorExitIdx, numericLine,
+      randomizeActor, number, maze, actorExitIdx, numericLine,
     ),
   };
 }
