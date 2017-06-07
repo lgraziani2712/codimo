@@ -212,6 +212,7 @@ const hasEnteredToNumericLineConfig = (
     timeline
       .to(view, ACTOR_MOVEMENT_DURATION, {
         y: size / HALF,
+        x: size / HALF,
         ease: Linear.easeNone,
       })
       .to(view.scale, ACTOR_MOVEMENT_DURATION, {

@@ -82,9 +82,6 @@ export default class BlocklyApp extends React.Component {
       scrollbars: true,
       toolbox,
       trashcan: true,
-      zoom: {
-        startScale: 1.25,
-      },
     });
 
     const widgetDiv = Blockly.WidgetDiv.DIV;

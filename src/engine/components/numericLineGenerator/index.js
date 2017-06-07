@@ -40,8 +40,6 @@ const numericLineGenerator = (numbers: Array<number | null>, size: number, margi
 
   view.addChild(leftArrow, line.view, rightArrow);
 
-  view.x = size + margin - leftArrow.width;
-
   return {
     view,
     receiveNumberAtPosition: receiveNumberAtPositionConfig(line),

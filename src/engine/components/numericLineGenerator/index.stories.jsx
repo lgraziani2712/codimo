@@ -22,6 +22,7 @@ import numericLineGenerator from './index';
 const POSITION = '0,0';
 const GLOBAL_POSITION = new Point(0, 0);
 const SIZE = 64;
+const MARGIN = TEN;
 const WIDTH_NUMERIC_LINE = 960;
 const HEIGHT_NUMERIC_LINE = 300;
 const WIDTH_ARROW = 104;
@@ -192,7 +193,7 @@ storiesOf('engine.components.numericLine', module)
     numericLine.view.y = (HEIGHT_NUMERIC_LINE - numericLine.view.height) / HALF;
     const globalPos = numericLine.view.getChildAt(1).getChildAt(CHILD).toGlobal(GLOBAL_POSITION);
 
-    ten.view.x = globalPos.x + SIZE;
+    ten.view.x = globalPos.x + SIZE + MARGIN * 2;
     ten.view.y = globalPos.y + SIZE * 2;
 
     (async () => {
@@ -217,7 +218,7 @@ storiesOf('engine.components.numericLine', module)
     numericLine.view.y = (HEIGHT_NUMERIC_LINE - numericLine.view.height) / HALF;
     const globalPos = numericLine.view.getChildAt(1).getChildAt(CHILD).toGlobal(GLOBAL_POSITION);
 
-    ten.view.x = globalPos.x + SIZE;
+    ten.view.x = globalPos.x + SIZE + MARGIN * 2;
     ten.view.y = globalPos.y + SIZE * 2;
 
     (async () => {
@@ -244,7 +245,7 @@ storiesOf('engine.components.numericLine', module)
     numericLine.view.y = (HEIGHT_NUMERIC_LINE - numericLine.view.height) / HALF;
     const globalPos = numericLine.view.getChildAt(1).getChildAt(CHILD).toGlobal(GLOBAL_POSITION);
 
-    ten.view.x = globalPos.x + SIZE;
+    ten.view.x = globalPos.x + SIZE + MARGIN * 2;
     ten.view.y = globalPos.y + SIZE * 2;
 
     (async () => {
