@@ -1,5 +1,7 @@
 ## HEAD
 
+- 🚀 [2017-06-07] `engine/containers/mazeEngineGenerator`: update to v4.3.0.
+  - 🚀 Add extra difficulty to `normal` and `hard` modes: every time the engine is instanciated, it will randomly select the correct exit within the possibles.
 - 🚀 [2017-06-04] `containers/GameViewer`: update to v1.1.0.
   - 🚀 To match new `routes` version.
 - 🚀 [2017-06-04] `components/pages/MenuBar`: update to v1.2.0.
