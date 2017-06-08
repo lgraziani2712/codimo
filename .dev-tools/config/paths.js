@@ -1,3 +1,8 @@
+/**
+ * @author Luciano Graziani @lgraziani2712
+ * @license {@link http://www.opensource.org/licenses/mit-license.php|MIT License}
+ *
+ */
 'use strict';
 
 const path = require('path');
@@ -11,7 +16,7 @@ function resolveApp(relativePath) {
 
 module.exports = {
   appDist: resolveApp('dist'),
-  appHtml: resolveApp('public/index.html'),
+  appHtml: resolveApp('dev-elements/index.html'),
   appMainJs: resolveApp('src/main'),
   appPackageJson: resolveApp('package.json'),
   appPublic: resolveApp('public'),
