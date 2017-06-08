@@ -5,7 +5,11 @@
  */
 'use strict';
 
+process.env.NODE_ENV = 'production';
+
 const webpack = require('webpack');
+const BabiliPlugin = require('babili-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const { version, moduleRoots } = require('../../package');
@@ -14,31 +18,31 @@ const paths = require('./paths');
 
 const modules = ['node_modules'].concat(moduleRoots);
 const GLOBALS = {
-  'process.env.NODE_ENV': JSON.stringify('development'),
+  'process.env.NODE_ENV': JSON.stringify('production'),
   __VERSION__: JSON.stringify(version),
 };
+const foldersToClean = [
+  `${paths.appDist}/*.js`,
+  `${paths.appDist}/*.js.map`,
+  `${paths.appDist}/*.html`,
+];
 
 module.exports = {
   // more info: https://webpack.js.org/configuration/devtool/
-  // see https://github.com/webpack/webpack/issues/2145
   devtool: 'cheap-module-source-map',
   entry: [
+    // Used for async/await to work
     'babel-polyfill',
     paths.appMainJs,
   ],
   target: 'web', // necessary for https://webpack.github.io/docs/testing.html#compile-and-test
   context: paths.appSrc,
   output: {
-    // This does not produce a real file. It's just the virtual path that is
-    // served by WebpackDevServer in development. This is the JS bundle
-    // containing code from all our entry points, and the Webpack runtime.
-    filename: 'bundle.js',
+    filename: '[name].[chunkhash].js',
+    chunkFilename: '[name].[chunkhash].js',
 
     // Note: Physical files are only output by the production build task `npm run build`.
     path: paths.appDist,
-
-    // Add /* filename */ comments to generated require()s in the output.
-    pathinfo: true,
 
     // necessary for HMR to know where to load the hot update chunks
     publicPath: '/',
@@ -50,19 +54,32 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-
     // match the output path
     contentBase: paths.appDist,
-
     // hot: true,
   },
   plugins: [
+    new CleanWebpackPlugin(foldersToClean, {
+      root: paths.appDist,
+    }),
     new webpack.DefinePlugin(GLOBALS),
+    new webpack.NoEmitOnErrorsPlugin(),
+    new BabiliPlugin({}, {
+      comments: false,
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: (module) => (
+        // this assumes your vendor imports exist in the node_modules directory
+        module.context && module.context.indexOf('node_modules') !== -1
+      ),
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'manifest',
+    }),
     new HtmlWebpackPlugin({
       template: paths.appHtml,
     }),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
   ],
   module: {
     rules: [{
