@@ -5,7 +5,7 @@
   "description": "CÓDIMO",
   "main": "src/main.jsx",
   "scripts": {
-    "build": "webpack --progress --config ./.dev-tools/config/webpack.config.prod.js -p",
+    "build": "webpack -p --config ./.dev-tools/config/webpack.config.prod.js",
     "build:start": "webpack-dev-server --progress --config ./.dev-tools/config/webpack.config.prod.js",
     "build-storybook": "build-storybook",
     "check-deps": "dep-tool compare . -a",
@@ -13,7 +13,7 @@
     "flow:stop": "flow stop",
     "lint": "eslint src dev-elements .dev-tools --ext .js --ext .jsx --fix",
     "lint:css": "stylelint src/**/*.jsx src/**/*.js",
-    "start": "webpack-dev-server --config ./.dev-tools/config/webpack.config.dev.js",
+    "start": "webpack-dev-server --progress --config ./.dev-tools/config/webpack.config.dev.js",
     "stats": "webpack --config ./.dev-tools/config/webpack.config.dev.js --profile --json > stats.json",
     "storybook": "start-storybook -s ./dist -p 6006",
     "test": "babel-node .dev-tools/scripts/test.js",
