@@ -17,6 +17,7 @@ function resolveApp(relativePath) {
 module.exports = {
   appDist: resolveApp('dist'),
   appHtml: resolveApp('dev-elements/index.html'),
+  fourOhFour: resolveApp('dev-elements/404.html'),
   appMainJs: resolveApp('src/main'),
   appPackageJson: resolveApp('package.json'),
   appPublic: resolveApp('public'),
