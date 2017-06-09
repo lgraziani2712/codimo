@@ -21,6 +21,7 @@ const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production'),
   __VERSION__: JSON.stringify(version),
 };
+const NOT_EXIST = -1;
 const foldersToClean = [
   `${paths.appDist}/*.js`,
   `${paths.appDist}/*.js.map`,
@@ -71,7 +72,7 @@ module.exports = {
       name: 'vendor',
       minChunks: (module) => (
         // this assumes your vendor imports exist in the node_modules directory
-        module.context && module.context.indexOf('node_modules') !== -1
+        module.context && module.context.indexOf('node_modules') !== NOT_EXIST
       ),
     }),
     new webpack.optimize.CommonsChunkPlugin({
@@ -79,6 +80,11 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: paths.appHtml,
+    }),
+    new HtmlWebpackPlugin({
+      inject: false,
+      filename: '404.html',
+      template: paths.fourOhFour,
     }),
   ],
   module: {
