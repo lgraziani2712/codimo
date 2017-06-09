@@ -7,6 +7,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { blocklyLocals } from 'constants/localize/es';
+
 import Button from './Button';
 
 const Bar = styled.div`
@@ -28,18 +30,17 @@ type Props = {|
   handleStartGame(): void,
   handleResetGame(): void,
 |};
-// FIXME hardcoded title
 const ActionBar = ({ isExecuting, isStopped, handleStartGame, handleResetGame }: Props) => (
   <Bar>
     {isStopped ?
       <Button
-        title="▶ Dale play!"
+        title={blocklyLocals.actions.play}
         type="green"
         handleClick={handleStartGame}
       /> :
       <Button
         disabled={isExecuting}
-        title="⏹ Reseteá!"
+        title={blocklyLocals.actions.reset}
         type="orange"
         handleClick={handleResetGame}
       />

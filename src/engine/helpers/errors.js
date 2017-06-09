@@ -10,10 +10,10 @@
 import { engine } from 'constants/localize/es';
 
 export type MazeError = {|
-  imageUrl?: string,
-  text: string,
-  name: string,
   title: string,
+  html?: string,
+  imageUrl?: string,
+  text?: string,
 |};
 const mazeErrorGenerator = (name: string): MazeError => (engine.errors[name]);
 
