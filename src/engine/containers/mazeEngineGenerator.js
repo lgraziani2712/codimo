@@ -166,7 +166,9 @@ export default function mazeEngineGenerator(
     difficulty,
   );
   const randomActor = randomizeActor();
-  const actorExitIdx = mazeData.actorExitIdx || getRandomInt(ZERO, randomActor.length);
+  const actorExitIdx = mazeData.actorExitIdx !== undefined
+                      ? mazeData.actorExitIdx
+                      : getRandomInt(ZERO, randomActor.length);
   const number = numberGenerator(
     randomActor[actorExitIdx],
     mazeData.access,
