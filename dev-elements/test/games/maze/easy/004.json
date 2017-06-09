@@ -34,7 +34,7 @@
       ["5,0", { "top": true, "right": true }]
     ],
     "access": "3,1",
-    "exits": ["1,0"],
+    "exits": ["1,0", "5,0"],
     "actorExitIdx": 0
   },
   "numericLineData": {

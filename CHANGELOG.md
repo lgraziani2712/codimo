@@ -1,5 +1,7 @@
 ## HEAD
 
+- 🐛 [2017-06-08] `engine/containers/mazeEngineGenerator`: update to v4.3.1.
+  - 🐛 Fix falsy `actorExitIdx` error.
 - 🐛 [2017-06-07] `engine/errors`: update to v2.0.1.
   - 🐛 Remove an `unidentified` property being passed to `sweetalert2`.
 - 🚀 [2017-06-07] `engine/containers/mazeEngineGenerator`: update to v4.3.0.
