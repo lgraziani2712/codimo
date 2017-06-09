@@ -41,8 +41,8 @@ const ColoredAnimatedButton = styled(AnimatedButton)`
 export default function ExecuteButton({ handleClick, title, type, disabled }: Props) {
   return (
     <ColoredAnimatedButton
-      type={type}
       disabled={disabled}
+      type={type}
       onClick={handleClick}
     >{title}</ColoredAnimatedButton>
   );
