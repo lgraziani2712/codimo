@@ -1,5 +1,6 @@
 ## HEAD
 
+- 🚀 [2017-06-14] `components/pages/ImageGallery`: add v1.0.0!
 - 🚀 [2017-06-08] `helpers/general`: add v1.0.0!
   - 🚀 Add `parseEmoji` method.
 - 🐛 [2017-06-08] `engine/containers/mazeEngineGenerator`: update to v4.3.1.

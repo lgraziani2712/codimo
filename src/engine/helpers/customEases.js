@@ -1,3 +1,9 @@
+/**
+ * @author Luciano Graziani @lgraziani2712
+ * @license {@link http://www.opensource.org/licenses/mit-license.php|MIT License}
+ *
+ * @flow
+ */
 import CustomEase from 'vendors/CustomEase';
 
 export const EASE_BE_HAPPY = 'EASE_BE_HAPPY';

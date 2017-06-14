@@ -46,7 +46,11 @@ const PageContainer = ({ children }: Props) => (
     </div>
     <Footer>
       <ContentContainer>
-        <span>{'Copyright © 2017 Luciano Graziani. Todos los derechos reservados.'}</span>
+        <span>
+          {'Equipo de desarrollo de Códimo. '}
+          <FooterLink href="https://www.unrn.edu.ar/" text="UNRN" />
+          {'.'}
+        </span>
         <span>
           {'Distribuído bajo licencia '}
           <FooterLink href="https://github.com/lgraziani2712/codimo/blob/master/LICENSE" text="MIT" />
