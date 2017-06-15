@@ -27,7 +27,7 @@ Right now there isn't an installation process for users, only for devs.
 
 Contributions are always welcome, no matter how large or small. Before contributing, please read the [code of conduct](CODE_OF_CONDUCT.md).
 
-See [Contributing](CONTRIBUITING.md).
+See [Contributing](CONTRIBUTING.md).
 
 ---
 
