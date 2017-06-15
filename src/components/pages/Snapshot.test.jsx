@@ -22,6 +22,8 @@ import MenuBar from './MenuBar';
 import PageContainer from './PageContainer';
 import Loading from './Loading';
 
+jest.mock('helpers/randomizers');
+
 describe('Components snapshots', () => {
   it('renders the links correctly', () => {
     const footerLinkTree = renderer.create(

@@ -35,7 +35,7 @@ exports[`Components snapshots renders the Loading correctly 1`] = `
   <div
     className="Loading__RandomText-cHlNfX fobzAW"
   >
-    Levantando los muros del laberinto
+    Armando la línea numérica
   </div>
 </div>
 `;
