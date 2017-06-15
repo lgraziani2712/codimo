@@ -23,6 +23,7 @@ module.exports = (resolve, rootDir) => {
       'blockly/msg/js/es': `${paths.devElements}/test/__mocks__/blockly/es.js`,
     },
     // setupFiles: [],
+    testEnvironment: 'node',
     testPathIgnorePatterns: [
       '<rootDir>[/\\\\](build|docs|node_modules|scripts|.dev-tools)[/\\\\]',
     ],
