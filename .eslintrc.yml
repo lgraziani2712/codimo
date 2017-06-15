@@ -101,7 +101,7 @@ rules:
   no-trailing-spaces: 1
   no-underscore-dangle: [2, { allow: [_id, _rev] }]
   no-unneeded-ternary: [1, { defaultAssignment: false }]
-  no-unused-vars: [2, { args: all }]
+  no-unused-vars: [2, { args: all, ignoreRestSiblings: true }]
   no-useless-concat: 1
   no-useless-constructor: 1
   no-useless-escape: 1

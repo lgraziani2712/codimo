@@ -10,12 +10,16 @@
 import { engine } from 'constants/localize/es';
 
 export type MazeError = {|
+  name: string,
   title: string,
   html?: string,
   imageUrl?: string,
   text?: string,
 |};
-const mazeErrorGenerator = (name: string): MazeError => (engine.errors[name]);
+const mazeErrorGenerator = (name: string): MazeError => ({
+  ...engine.errors[name],
+  name,
+});
 
 export const MazeExitError = mazeErrorGenerator('MazeExitError');
 export const MazePathError = mazeErrorGenerator('MazePathError');
