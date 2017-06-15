@@ -41,7 +41,7 @@
     "react-dom": "15.6.1",
     "react-router-dom": "4.1.1",
     "speculation": "1.0.5",
-    "styled-components": "2.0.1",
+    "styled-components": "2.1.0",
     "sweetalert2": "6.6.5",
     "twemoji": "2.3.0"
   },
