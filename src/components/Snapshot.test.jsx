@@ -8,6 +8,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
+import 'jest-styled-components';
+
 import FrontPage from './FrontPage';
 import GameContainer from './GameContainer';
 
@@ -15,11 +17,11 @@ describe('Components snapshots', () => {
   it('renders the FrontPage correctly', () => {
     const tree = renderer.create(<FrontPage />).toJSON();
 
-    expect(tree).toMatchSnapshot();
+    expect(tree).toMatchStyledComponentsSnapshot();
   });
   it('renders the GameContainer correctly', () => {
     const tree = renderer.create(<GameContainer image="/images/test-url.jpg" />).toJSON();
 
-    expect(tree).toMatchSnapshot();
+    expect(tree).toMatchStyledComponentsSnapshot();
   });
 });

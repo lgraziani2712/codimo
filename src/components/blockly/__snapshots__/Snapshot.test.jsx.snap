@@ -1,8 +1,58 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Components snapshots renders the ActionBar correctly 1`] = `
+.dTlQly {
+  border-radius: 10px;
+  cursor: pointer;
+  float: left;
+  font-size: 25px;
+  font-weight: bold;
+  opacity: auto;
+  padding: 10px 40px;
+  pointer-events: auto;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+}
+
+.dTlQly:active {
+  border-bottom: 1px solid;
+  -webkit-transform: translate(0, 5px);
+  -ms-transform: translate(0, 5px);
+  transform: translate(0, 5px);
+}
+
+.fZVUpp {
+  background-color: #5cb85c;
+  border-bottom: 5px solid #1b7c1b;
+  color: #fff;
+  -webkit-text-shadow: 0 -2px #1b7c1b;
+  text-shadow: 0 -2px #1b7c1b;
+}
+
+.booIsN {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #e3e3e3;
+  border: 1px solid #ddd;
+  border-bottom: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 68px;
+  width: calc(100% - 2px);
+}
+
+.booIsN * {
+  margin: 0 0 0 10px;
+}
+
 <div
-  className="ActionBar__Bar-fFHfuW eSZxqI"
+  className="ActionBar__Bar-fFHfuW booIsN"
 >
   <a
     className="Button__ColoredAnimatedButton-fylGiI fZVUpp Button__AnimatedButton-jOrBhv dTlQly"
@@ -10,12 +60,42 @@ exports[`Components snapshots renders the ActionBar correctly 1`] = `
     onClick={[Function]}
     type="green"
   >
-    ▶ Dale play!
+    ▶ Ejecutá!
   </a>
 </div>
 `;
 
 exports[`Components snapshots renders the Button correctly 1`] = `
+.dTlQly {
+  border-radius: 10px;
+  cursor: pointer;
+  float: left;
+  font-size: 25px;
+  font-weight: bold;
+  opacity: auto;
+  padding: 10px 40px;
+  pointer-events: auto;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+}
+
+.dTlQly:active {
+  border-bottom: 1px solid;
+  -webkit-transform: translate(0, 5px);
+  -ms-transform: translate(0, 5px);
+  transform: translate(0, 5px);
+}
+
+.fAibEq {
+  background-color: #d9534f;
+  border-bottom: 5px solid #be2f2b;
+  color: #fff;
+  -webkit-text-shadow: 0 -2px #be2f2b;
+  text-shadow: 0 -2px #be2f2b;
+}
+
 <a
   className="Button__ColoredAnimatedButton-fylGiI fAibEq Button__AnimatedButton-jOrBhv dTlQly"
   disabled={undefined}

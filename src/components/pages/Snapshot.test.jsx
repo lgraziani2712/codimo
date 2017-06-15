@@ -12,6 +12,7 @@ import {
 import renderer from 'react-test-renderer';
 
 import 'test/BlocklyMock';
+import 'jest-styled-components';
 
 import CodimoLink from './logos/CodimoLink';
 import FooterLink from './links/FooterLink';
@@ -29,28 +30,28 @@ describe('Components snapshots', () => {
     const codimoLinkTree = renderer.create(<Router><CodimoLink /></Router>).toJSON();
     const githubLinkTree = renderer.create(<GithubLink />).toJSON();
 
-    expect(footerLinkTree).toMatchSnapshot();
-    expect(codimoLinkTree).toMatchSnapshot();
-    expect(githubLinkTree).toMatchSnapshot();
+    expect(footerLinkTree).toMatchStyledComponentsSnapshot();
+    expect(codimoLinkTree).toMatchStyledComponentsSnapshot();
+    expect(githubLinkTree).toMatchStyledComponentsSnapshot();
   });
   it('renders the raw components correctly', () => {
     const rawContentContainerTree = renderer.create(<RawContentContainer />).toJSON();
 
-    expect(rawContentContainerTree).toMatchSnapshot();
+    expect(rawContentContainerTree).toMatchStyledComponentsSnapshot();
   });
   it('renders the Loading correctly', () => {
     const tree = renderer.create(<Loading />).toJSON();
 
-    expect(tree).toMatchSnapshot();
+    expect(tree).toMatchStyledComponentsSnapshot();
   });
   it('renders the MenuBar correctly', () => {
     const tree = renderer.create(<Router><MenuBar routes={[]} /></Router>).toJSON();
 
-    expect(tree).toMatchSnapshot();
+    expect(tree).toMatchStyledComponentsSnapshot();
   });
   it('renders the PageContainer correctly', () => {
     const tree = renderer.create(<PageContainer />).toJSON();
 
-    expect(tree).toMatchSnapshot();
+    expect(tree).toMatchStyledComponentsSnapshot();
   });
 });

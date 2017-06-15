@@ -1,32 +1,106 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Components snapshots renders the FrontPage correctly 1`] = `
+.liMkSd {
+  margin: 0 auto;
+  width: 980px;
+}
+
+.bJokCq {
+  margin-bottom: 10rem;
+  -webkit-user-select: initial;
+  -moz-user-select: initial;
+  -ms-user-select: initial;
+  user-select: initial;
+}
+
+.dCzalx {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
+}
+
+.hEPong {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: #428bca;
+  color: white;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  bottom: 0;
+  height: 10rem;
+  margin: 0;
+  position: fixed;
+  width: 100%;
+  z-index: -1;
+}
+
 <div
   className="PageContainer__Wrapper-kCvKOC bJokCq"
 >
   <div>
     <div
-      className="FrontPage__RedRow-fdKJyF fSWtWc FrontPage__ColoredRow-caaRcg irQZrC FrontPage__Row-rAXoT hqUUdn"
+      className="FrontPage__RedRow-fdKJyF khnjin FrontPage__ColoredRow-caaRcg fBfXEG FrontPage__Row-rAXoT hJuKAB"
     >
       <div
-        className="FrontPage__Container-gOtpWX jlpDS RawContentContainer__RawContentContainer-cpAunS liMkSd"
+        className="FrontPage__Container-gOtpWX hoXuO RawContentContainer__RawContentContainer-cpAunS liMkSd"
       >
         <h1
           className="FrontPage__Title-gGObMR hzCjdl"
         >
-          ¡Aprender el Pensamiento Computacional nunca fue tan fácil!
+          ¡Donde el código, la imaginación y la motivación se encuentran!
         </h1>
       </div>
     </div>
     <div
-      className="FrontPage__WhiteRow-eTzKRE kFpmBq FrontPage__Row-rAXoT hqUUdn"
-    />
+      className="FrontPage__WhiteRow-eTzKRE hvMUct FrontPage__Row-rAXoT hJuKAB"
+    >
+      <img
+        src="/images/logo.png"
+      />
+      <div
+        className="FrontPage__Text-bliCWi jPjldc"
+      >
+        Es una plataforma que presenta actividades escolares diseñadas para que sean divertidas y ayuden a afianzar los conocimientos de las distintas asignaturas a través de resolverlas de una manera diferente a como se aprenden en clase.
+      </div>
+    </div>
     <div
-      className="FrontPage__GreenRow-fcHLBb dotyRb FrontPage__ColoredRow-caaRcg irQZrC FrontPage__Row-rAXoT hqUUdn"
-    />
+      className="FrontPage__GreenRow-fcHLBb dotyRb FrontPage__ColoredRow-caaRcg fBfXEG FrontPage__Row-rAXoT hJuKAB"
+    >
+      <div
+        className="FrontPage__Text-bliCWi jPjldc"
+      >
+        Cada actividad está estructurada en niveles. Cada nivel representa un desafío y a medida que se avanza de nivel, más aumenta la dificultad.
+      </div>
+      <img
+        src="/images/game-ss0.png"
+      />
+    </div>
     <div
-      className="FrontPage__WhiteRow-eTzKRE kFpmBq FrontPage__Row-rAXoT hqUUdn"
-    />
+      className="FrontPage__WhiteRow-eTzKRE hvMUct FrontPage__Row-rAXoT hJuKAB"
+    >
+      <img
+        src="/images/computer-thinking.png"
+      />
+      <div
+        className="FrontPage__Text-bliCWi jPjldc"
+      >
+        ¿Qué es el 
+        <b>
+          Pensamiento Computacional
+        </b>
+        ? Es un conjunto de habilidades que le permite a una persona poder resolver problemas aplicando los conceptos fundamentales de la ciencia de la computación.
+      </div>
+    </div>
   </div>
   <div
     className="PageContainer__Footer-gzRtKy hEPong"
@@ -35,7 +109,15 @@ exports[`Components snapshots renders the FrontPage correctly 1`] = `
       className="PageContainer__ContentContainer-cRjYKL dCzalx RawContentContainer__RawContentContainer-cpAunS liMkSd"
     >
       <span>
-        Copyright © 2017 Luciano Graziani. Todos los derechos reservados.
+        Equipo de desarrollo de Códimo. 
+        <a
+          className="FooterLink__Link-eeoshK kcEwZw"
+          href="https://www.unrn.edu.ar/"
+          target="_blank"
+        >
+          UNRN
+        </a>
+        .
       </span>
       <span>
         Distribuído bajo licencia 
@@ -54,6 +136,44 @@ exports[`Components snapshots renders the FrontPage correctly 1`] = `
 `;
 
 exports[`Components snapshots renders the GameContainer correctly 1`] = `
+.dsmXr {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.dsmXr::before {
+  background: url(/images/test-url.jpg) repeat;
+  content: '';
+  filter: contrast(65%) brightness(110%) saturate(75%) sepia(22%) grayscale(20%);
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.dsmXr::after {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAG0lEQVQIW2NkYGD4z8DAwMgABXAGNgGwSgwVAFbmAgXxvZSoAAAAAElFTkSuQmCC) repeat;
+  content: '';
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+
 <div
   className="GameContainer__CenterGame-bhsxOq dsmXr"
 />
