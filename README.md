@@ -2,6 +2,8 @@
 
 # CÓDIMO
 
+[![CircleCI](https://circleci.com/gh/lgraziani2712/codimo.svg?style=svg)](https://circleci.com/gh/lgraziani2712/codimo)
+
 It's an acronym formed by the words **CODe**, **IMagination** and **MOtivation**, and it represents the design concept for this platform. We want CÓDIMO to be able to motivate students to do some of their common activities using a little extra of imagination.
 
 But instead of coding and learning a particular programming language, we want to improve the Computational Thinking skills of each student by presenting challenges where they will need to resolve known activities in a new and entertaining way.
