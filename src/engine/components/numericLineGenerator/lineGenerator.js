@@ -60,9 +60,9 @@ const lineGenerator = (numbers: Array<number | null>, size: number, margin: numb
   const staticNumbers: Array<StaticNumberActor> = [];
 
   view
-    .beginFill(NUMERIC_LINE_BG_COLOR)
-    .drawRect(ZERO, ZERO, width, height)
-    .endFill();
+      .beginFill(NUMERIC_LINE_BG_COLOR)
+      .drawRect(ZERO, ZERO, width, height)
+      .endFill();
 
   view.x = ZERO;
   view.y = margin;
@@ -71,9 +71,9 @@ const lineGenerator = (numbers: Array<number | null>, size: number, margin: numb
     const square = new Graphics();
 
     square
-      .beginFill(NUMERIC_LINE_NUMBER_BG_COLOR)
-      .drawRect(ZERO, ZERO, size, size)
-      .endFill();
+        .beginFill(NUMERIC_LINE_NUMBER_BG_COLOR)
+        .drawRect(ZERO, ZERO, size, size)
+        .endFill();
 
     square.x = i * size + (margin + i * margin);
     square.y = margin;

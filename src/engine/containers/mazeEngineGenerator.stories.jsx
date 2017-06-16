@@ -22,43 +22,43 @@ const { mazeData, numericLineData, difficulty } = gameMetadataDataWithoutBlocks;
 mazeData.path = new Map(mazeData.path);
 
 storiesOf('engine.containers.mazeEngineGenerator', module)
-  .add('simple mazeEngine', () => {
-    const mazeEngine = mazeEngineGenerator(mazeData, numericLineData, difficulty);
-    const instructions = [
-      actionNames.MOVE_FORWARD,
-      actionNames.MOVE_FORWARD,
-      actionNames.MOVE_RIGHT,
-      actionNames.MOVE_RIGHT,
-      actionNames.MOVE_RIGHT,
-      actionNames.MOVE_RIGHT,
-      actionNames.MOVE_RIGHT,
-      actionNames.MOVE_BACKWARD,
-      actionNames.MOVE_RIGHT,
-      actionNames.MOVE_RIGHT,
-      actionNames.MOVE_FORWARD,
-      actionNames.MOVE_FORWARD,
-      actionNames.MOVE_FORWARD,
-      actionNames.MOVE_LEFT,
-      actionNames.MOVE_LEFT,
-      actionNames.MOVE_LEFT,
-      actionNames.MOVE_LEFT,
-      actionNames.MOVE_LEFT,
-      actionNames.MOVE_LEFT,
-      actionNames.MOVE_LEFT,
-      actionNames.MOVE_LEFT,
-      actionNames.MOVE_LEFT,
-      actionNames.MOVE_FORWARD,
-      actionNames.MOVE_FORWARD,
-      actionNames.LEAVE_MAZE,
-    ];
+    .add('simple mazeEngine', () => {
+      const mazeEngine = mazeEngineGenerator(mazeData, numericLineData, difficulty);
+      const instructions = [
+        actionNames.MOVE_FORWARD,
+        actionNames.MOVE_FORWARD,
+        actionNames.MOVE_RIGHT,
+        actionNames.MOVE_RIGHT,
+        actionNames.MOVE_RIGHT,
+        actionNames.MOVE_RIGHT,
+        actionNames.MOVE_RIGHT,
+        actionNames.MOVE_BACKWARD,
+        actionNames.MOVE_RIGHT,
+        actionNames.MOVE_RIGHT,
+        actionNames.MOVE_FORWARD,
+        actionNames.MOVE_FORWARD,
+        actionNames.MOVE_FORWARD,
+        actionNames.MOVE_LEFT,
+        actionNames.MOVE_LEFT,
+        actionNames.MOVE_LEFT,
+        actionNames.MOVE_LEFT,
+        actionNames.MOVE_LEFT,
+        actionNames.MOVE_LEFT,
+        actionNames.MOVE_LEFT,
+        actionNames.MOVE_LEFT,
+        actionNames.MOVE_LEFT,
+        actionNames.MOVE_FORWARD,
+        actionNames.MOVE_FORWARD,
+        actionNames.LEAVE_MAZE,
+      ];
 
-    (async () => {
-      await wait(1000);
-      await mazeEngine.excecuteSetOfInstructions(instructions);
-    })();
+      (async () => {
+        await wait(1000);
+        await mazeEngine.excecuteSetOfInstructions(instructions);
+      })();
 
-    mazeEngine.view.x += 32;
-    mazeEngine.view.y += 16;
+      mazeEngine.view.x += 32;
+      mazeEngine.view.y += 16;
 
-    return <PixiWrapper component={mazeEngine.view} isContainer={true} height={HEIGHT} width={WIDTH} />;
-  });
+      return <PixiWrapper component={mazeEngine.view} isContainer={true} height={HEIGHT} width={WIDTH} />;
+    });

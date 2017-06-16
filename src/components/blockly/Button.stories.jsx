@@ -22,47 +22,47 @@ const Container = styled.div`
 const clickedAction = action('Clicked!');
 
 storiesOf('components.blockly.Button', module)
-  .add('activable animated buttons for the game', () => (
-    <Container>
-      <div><Button handleClick={clickedAction} title="Click me 😃" type="blue" /></div>
-      <div><Button handleClick={clickedAction} title="Click me 😃" type="green" /></div>
-      <div><Button handleClick={clickedAction} title="Click me 😃" type="red" /></div>
-      <div><Button handleClick={clickedAction} title="Click me 😃" type="orange" /></div>
-    </Container>
-  ))
-  .add('disabled buttons for the game', () => (
-    <Container>
-      <div>
-        <Button
-          disabled={true}
-          title="Click me 😃"
-          type="blue"
-          handleClick={clickedAction}
-        />
-      </div>
-      <div>
-        <Button
-          disabled={true}
-          title="Click me 😃"
-          type="green"
-          handleClick={clickedAction}
-        />
-      </div>
-      <div>
-        <Button
-          disabled={true}
-          title="Click me 😃"
-          type="red"
-          handleClick={clickedAction}
-        />
-      </div>
-      <div>
-        <Button
-          disabled={true}
-          title="Click me 😃"
-          type="orange"
-          handleClick={clickedAction}
-        />
-      </div>
-    </Container>
-  ));
+    .add('activable animated buttons for the game', () => (
+      <Container>
+        <div><Button handleClick={clickedAction} title="Click me 😃" type="blue" /></div>
+        <div><Button handleClick={clickedAction} title="Click me 😃" type="green" /></div>
+        <div><Button handleClick={clickedAction} title="Click me 😃" type="red" /></div>
+        <div><Button handleClick={clickedAction} title="Click me 😃" type="orange" /></div>
+      </Container>
+    ))
+    .add('disabled buttons for the game', () => (
+      <Container>
+        <div>
+          <Button
+            disabled={true}
+            title="Click me 😃"
+            type="blue"
+            handleClick={clickedAction}
+          />
+        </div>
+        <div>
+          <Button
+            disabled={true}
+            title="Click me 😃"
+            type="green"
+            handleClick={clickedAction}
+          />
+        </div>
+        <div>
+          <Button
+            disabled={true}
+            title="Click me 😃"
+            type="red"
+            handleClick={clickedAction}
+          />
+        </div>
+        <div>
+          <Button
+            disabled={true}
+            title="Click me 😃"
+            type="orange"
+            handleClick={clickedAction}
+          />
+        </div>
+      </Container>
+    ));

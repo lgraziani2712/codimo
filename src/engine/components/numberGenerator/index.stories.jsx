@@ -37,97 +37,97 @@ const one = numberGenerator(ONE, POSITION, POSITION, SIZES.one, MARGINS.one).vie
 const ten = numberGenerator(TEN, POSITION, POSITION, SIZES.ten, MARGINS.ten).view;
 
 storiesOf('engine.components.Number', module)
-  .add('one digit', () => (
-    <PixiWrapper
-      component={one}
-      isContainer={false}
-      height={SIZES.one + MARGINS.one + MARGINS.one}
-      width={SIZES.one + MARGINS.one + MARGINS.one}
-    />
-  ))
-  .add('two digits', () => (
-    <PixiWrapper
-      component={ten}
-      isContainer={false}
-      height={SIZES.ten + MARGINS.ten + MARGINS.ten}
-      width={SIZES.ten + MARGINS.ten + MARGINS.ten}
-    />
-  ))
-  .add('happy negative one digit', () => {
-    const number = numberGenerator(-ONE, POSITION, POSITION, SIZES.negativeOne, MARGINS.negativeOne);
-
-    number.beHappy('start');
-
-    return (
+    .add('one digit', () => (
       <PixiWrapper
-        component={number.view}
+        component={one}
         isContainer={false}
-        height={SIZES.negativeOne + MARGINS.negativeOne + MARGINS.negativeOne}
-        width={SIZES.negativeOne + MARGINS.negativeOne + MARGINS.negativeOne}
+        height={SIZES.one + MARGINS.one + MARGINS.one}
+        width={SIZES.one + MARGINS.one + MARGINS.one}
       />
-    );
-  })
-  .add('sad negative two digits', () => {
-    const number = numberGenerator(-TEN, POSITION, POSITION, SIZES.negativeTen, MARGINS.negativeTen);
-
-    number.beSad('start');
-
-    return (
+    ))
+    .add('two digits', () => (
       <PixiWrapper
-        component={number.view}
+        component={ten}
         isContainer={false}
-        height={SIZES.negativeTen + MARGINS.negativeTen + MARGINS.negativeTen}
-        width={SIZES.negativeTen + MARGINS.negativeTen + MARGINS.negativeTen}
+        height={SIZES.ten + MARGINS.ten + MARGINS.ten}
+        width={SIZES.ten + MARGINS.ten + MARGINS.ten}
       />
-    );
-  })
-  .add('El Caído, the _fallen one_', () => {
-    const number = numberGenerator(-TEN, POSITION, POSITION, SIZES.elCaido, MARGINS.elCaido);
-    const container = new Container();
+    ))
+    .add('happy negative one digit', () => {
+      const number = numberGenerator(-ONE, POSITION, POSITION, SIZES.negativeOne, MARGINS.negativeOne);
 
-    container.addChild(number.view);
+      number.beHappy('start');
 
-    container.x = SIZES.elCaido / 1.25;
-    container.y = SIZES.elCaido;
+      return (
+        <PixiWrapper
+          component={number.view}
+          isContainer={false}
+          height={SIZES.negativeOne + MARGINS.negativeOne + MARGINS.negativeOne}
+          width={SIZES.negativeOne + MARGINS.negativeOne + MARGINS.negativeOne}
+        />
+      );
+    })
+    .add('sad negative two digits', () => {
+      const number = numberGenerator(-TEN, POSITION, POSITION, SIZES.negativeTen, MARGINS.negativeTen);
 
-    (async () => {
-      await wait(1000);
-      await number.beTheFallenOne();
-    })();
+      number.beSad('start');
 
-    return (
-      <PixiWrapper
-        component={container}
-        isContainer={false}
-        height={SIZES.elCaido * 3}
-        width={SIZES.elCaido * 3}
-      />
-    );
-  })
-  .add('Hitting the Wall', () => {
-    const number = numberGenerator(-99, POSITION, POSITION, SIZES.hitting, MARGINS.hitting);
-    const block = blockGeneratorConfig(
-      BLOCK_DEFINITIONS.PATH,
-      SIZES.hitting,
-      MARGINS.hitting,
-    )(SIZES.hitting / 1.25, SIZES.hitting);
+      return (
+        <PixiWrapper
+          component={number.view}
+          isContainer={false}
+          height={SIZES.negativeTen + MARGINS.negativeTen + MARGINS.negativeTen}
+          width={SIZES.negativeTen + MARGINS.negativeTen + MARGINS.negativeTen}
+        />
+      );
+    })
+    .add('El Caído, the _fallen one_', () => {
+      const number = numberGenerator(-TEN, POSITION, POSITION, SIZES.elCaido, MARGINS.elCaido);
+      const container = new Container();
 
-    block.view.addChild(number.view);
+      container.addChild(number.view);
 
-    (async () => {
-      await wait(1000);
-      await number.hitTheWall('top');
-      await number.hitTheWall('right');
-      await number.hitTheWall('bottom');
-      await number.hitTheWall('left');
-    })();
+      container.x = SIZES.elCaido / 1.25;
+      container.y = SIZES.elCaido;
 
-    return (
-      <PixiWrapper
-        component={block.view}
-        isContainer={false}
-        height={SIZES.hitting * 3}
-        width={SIZES.hitting * 3}
-      />
-    );
-  });
+      (async () => {
+        await wait(1000);
+        await number.beTheFallenOne();
+      })();
+
+      return (
+        <PixiWrapper
+          component={container}
+          isContainer={false}
+          height={SIZES.elCaido * 3}
+          width={SIZES.elCaido * 3}
+        />
+      );
+    })
+    .add('Hitting the Wall', () => {
+      const number = numberGenerator(-99, POSITION, POSITION, SIZES.hitting, MARGINS.hitting);
+      const block = blockGeneratorConfig(
+        BLOCK_DEFINITIONS.PATH,
+        SIZES.hitting,
+        MARGINS.hitting,
+      )(SIZES.hitting / 1.25, SIZES.hitting);
+
+      block.view.addChild(number.view);
+
+      (async () => {
+        await wait(1000);
+        await number.hitTheWall('top');
+        await number.hitTheWall('right');
+        await number.hitTheWall('bottom');
+        await number.hitTheWall('left');
+      })();
+
+      return (
+        <PixiWrapper
+          component={block.view}
+          isContainer={false}
+          height={SIZES.hitting * 3}
+          width={SIZES.hitting * 3}
+        />
+      );
+    });

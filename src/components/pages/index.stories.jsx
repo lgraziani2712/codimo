@@ -42,16 +42,16 @@ const routes = [{
 }];
 
 storiesOf('components.pages', module)
-  .add('PageContainer render', () => (
-    <PageContainer>
-      <PageContent />
-    </PageContainer>
-  ))
-  .add('MenuBar render', () => (
-    <MenuContainer>
-      <Router>
-        <MenuBar routes={routes} />
-      </Router>
-    </MenuContainer>
-  ))
-  .add('Loading render', () => (<Loading />));
+    .add('PageContainer render', () => (
+      <PageContainer>
+        <PageContent />
+      </PageContainer>
+    ))
+    .add('MenuBar render', () => (
+      <MenuContainer>
+        <Router>
+          <MenuBar routes={routes} />
+        </Router>
+      </MenuContainer>
+    ))
+    .add('Loading render', () => (<Loading />));

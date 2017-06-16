@@ -91,10 +91,11 @@ const excecuteSetOfInstructionsConfig = (
     const direction = instructions[i];
     const oldPosition = number.position;
     const path = mazeData.path.get(oldPosition);
-    const newPosition = oldPosition
-                          .split(',')
-                          .map((pos, idx) => (parseInt(pos) + directions[direction][idx]))
-                          .join(',');
+    const newPosition =
+      oldPosition
+          .split(',')
+          .map((pos, idx) => (parseInt(pos) + directions[direction][idx]))
+          .join(',');
 
     if (!path || !path[directionsToWalls[direction]]) {
       await number.hitTheWall(directionsToWalls[direction]);
@@ -166,9 +167,10 @@ export default function mazeEngineGenerator(
     difficulty,
   );
   const randomActor = randomizeActor();
-  const actorExitIdx = mazeData.actorExitIdx !== undefined
-                      ? mazeData.actorExitIdx
-                      : getRandomInt(ZERO, randomActor.length);
+  const actorExitIdx =
+    mazeData.actorExitIdx !== undefined
+      ? mazeData.actorExitIdx
+      : getRandomInt(ZERO, randomActor.length);
   const number = numberGenerator(
     randomActor[actorExitIdx],
     mazeData.access,

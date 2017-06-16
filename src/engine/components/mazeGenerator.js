@@ -60,9 +60,10 @@ const mazeGenerator = (mazeData: MazeData): Maze => {
           mazeData.path.get(position),
         );
       } else {
-        block = x === BLOCK_FIRST || x === BLOCKS_LAST.X || y === BLOCK_FIRST || y === BLOCKS_LAST.Y
-              ? BLOCKS.borderCreator(positionX, positionY)
-              : BLOCKS.wallCreator(positionX, positionY);
+        block =
+          x === BLOCK_FIRST || x === BLOCKS_LAST.X || y === BLOCK_FIRST || y === BLOCKS_LAST.Y
+            ? BLOCKS.borderCreator(positionX, positionY)
+            : BLOCKS.wallCreator(positionX, positionY);
       }
 
       view.addChild(block.view);
