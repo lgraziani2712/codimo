@@ -1,5 +1,11 @@
 # Contribute to CÓDIMO
 
+## CI Configuration
+
+### Skip CI
+
+When is not necessary to execute the CI in a commit it needs be added `[ci skip]` to the commit description or title.
+
 ## Add a CHANGELOG entry for every PR
 
 TODO this section

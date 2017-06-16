@@ -15,6 +15,15 @@ class FieldTextInput {
     this.spellcheck = spellcheck;
   }
 }
+declare class FieldNumber {
+  constructor(
+    value: number,
+    min?: number,
+    max?: number,
+    precision?: number,
+    validator?: (value: number) => string | null,
+  ): FieldNumber;
+}
 declare var Blockly: {
   ALIGN_CENTRE: string,
   Blocks: {
@@ -26,6 +35,7 @@ declare var Blockly: {
     disableOrphans(event: Event): void,
     recordUndo: boolean,
   },
+  FieldNumber: typeof FieldNumber,
   FieldTextInput: typeof FieldTextInput,
   inject(elementId: string | HTMLElement, options: Object): Object,
   JavaScript: {
