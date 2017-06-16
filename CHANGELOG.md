@@ -1,5 +1,7 @@
 ## HEAD
 
+- 🚀 [2017-06-16] `routes`: update to v3.0.0.
+  - 🚀 Add `difficulty` property.
 - 🐛 [2017-06-15] `containers/BlocklyApp`: update to v3.2.1.
   - 🐛 Fix monkeypatch (about not having a `WidgetDiv`) by removing it. Now is possible to edit block's variables.
   - ✅ Add story for the new `simple_loop` block.

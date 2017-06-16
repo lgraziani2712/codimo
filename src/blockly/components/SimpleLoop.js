@@ -5,7 +5,7 @@
  * @flow
  */
 import { SIMPLE_LOOP } from 'constants/instructions';
-import { ONE } from 'constants/numbers';
+import { TWO } from 'constants/numbers';
 import { CONTROL } from 'constants/colors';
 
 const CANT_VAR = 'CANT';
@@ -15,7 +15,7 @@ Blockly.Blocks[SIMPLE_LOOP] = {
   init() {
     this.appendDummyInput()
         .appendField(Blockly.Msg.SIMPLE_LOOP_TITLE_1)
-        .appendField(new Blockly.FieldNumber(ONE, ONE), CANT_VAR)
+        .appendField(new Blockly.FieldNumber(TWO, TWO), CANT_VAR)
         .appendField(Blockly.Msg.SIMPLE_LOOP_TITLE_2);
     this.appendStatementInput(LOOP_STATEMENT)
         .setCheck(null);
