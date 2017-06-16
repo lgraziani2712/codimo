@@ -5,8 +5,9 @@
  * @flow
  */
 import React from 'react';
+import styled from 'styled-components';
 
-import { storiesOf } from 'test/storybook-facades';
+import { storiesOf, action } from 'test/storybook-facades';
 import { blocklyData } from 'test/gameMetadata';
 
 import BlocklyApp from './BlocklyApp';
@@ -29,17 +30,51 @@ const newBlocklyData = {
     </block>
   `,
 };
-const promiseMe = () => (
+const handleClick = action('On play');
+const handleSetOfInstructions = (rawInstructions) => (
   new Promise((resolve) => {
+    handleClick(rawInstructions);
     resolve();
   })
 );
+const Container = styled.div`
+  width: 500px;
+`;
 
 storiesOf('components.BlocklyApp', module)
-  .add('simple Blockly app', () => (
-    <BlocklyApp
-      blocklyData={newBlocklyData}
-      handleSetOfInstructions={promiseMe}
-      handleResetGame={() => {}}
-    />
-  ));
+    .add('simple Blockly app', () => (
+      <Container>
+        <BlocklyApp
+          blocklyData={newBlocklyData}
+          handleSetOfInstructions={handleSetOfInstructions}
+          handleResetGame={() => {}}
+        />
+      </Container>
+    ))
+    .add('complex Blockly app', () => {
+      const newestBlocklyData = {
+        ...blocklyData,
+        elements: [{
+          define: 'category',
+          name: 'Actions',
+          blocks: blocklyData.elements,
+        }, {
+          define: 'category',
+          name: 'Loops',
+          blocks: [{
+            define: 'block',
+            type: 'simple_loop',
+          }],
+        }],
+      };
+
+      return (
+        <Container>
+          <BlocklyApp
+            blocklyData={newestBlocklyData}
+            handleSetOfInstructions={handleSetOfInstructions}
+            handleResetGame={() => {}}
+          />
+        </Container>
+      );
+    });

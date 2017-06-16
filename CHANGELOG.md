@@ -1,5 +1,8 @@
 ## HEAD
 
+- 🐛 [2017-06-15] `containers/BlocklyApp`: update to v3.2.1.
+  - 🐛 Fix monkeypatch (about not having a `WidgetDiv`) by removing it. Now is possible to edit block's variables.
+  - ✅ Add story for the new `simple_loop` block.
 - 🚀 [2017-06-15] `blockly/components/BlocklyToolbox`: update to v1.2.0.
   - 🚀 Update `categoryGenerator` to make it useful.
 - 🚀 [2017-06-15] `blockly/components`: update to v1.3.0.
