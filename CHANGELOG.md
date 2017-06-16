@@ -1,5 +1,11 @@
 ## HEAD
 
+- 🚀 [2017-06-16] `containers/GameViewer`: update to v1.2.0.
+  - 🚀 To match new `routes` version.
+- 🚀 [2017-06-16] `containers/gameLoader`: update v1.1.0.
+  - 🚀 To match new `routes` version.
+- 🚀 [2017-06-16] `components/pages/MenuBar`: update to v1.3.0.
+  - 🚀 To match new `routes` version.
 - 🚀 [2017-06-16] `routes`: update to v3.0.0.
   - 🚀 Add `difficulty` property.
 - 🐛 [2017-06-15] `containers/BlocklyApp`: update to v3.2.1.

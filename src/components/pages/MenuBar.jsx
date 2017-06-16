@@ -62,7 +62,7 @@ const MenuBar = ({ routes }: Props) => (
             <HeaderLink key={key} title={route.title}>
               {route.children.map((child, key2) => (
                 // eslint-disable-next-line react/no-array-index-key
-                <HeaderLink key={key2} to={`/${route.game}/${child.path}`} title={child.title} />
+                <HeaderLink key={key2} to={`/${route.game}/${route.difficulty}/${child.path}`} title={child.title} />
               ))}
             </HeaderLink>
           ))}

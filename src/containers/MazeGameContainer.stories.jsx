@@ -40,4 +40,25 @@ storiesOf('containers.MazeGameContainer', module)
       return (
         <MazeGameContainer blocklyData={blocklyData} gameMetadata={newGameMetadata} />
       );
+    })
+    .add('complex game', () => {
+      const complexBlocklyData = {
+        ...blocklyData,
+        elements: [{
+          define: 'category',
+          name: 'Actions',
+          blocks: blocklyData.elements,
+        }, {
+          define: 'category',
+          name: 'Loops',
+          blocks: [{
+            define: 'block',
+            type: 'simple_loop',
+          }],
+        }],
+      };
+
+      return (
+        <MazeGameContainer blocklyData={complexBlocklyData} gameMetadata={gameMetadata} />
+      );
     });

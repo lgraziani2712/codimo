@@ -10,13 +10,13 @@ import Loading from 'components/pages/Loading';
 import Bundle from 'containers/Bundle';
 import { upperFirst } from 'helpers/strings';
 
-const gameLoader = (game: string, level: string) => {
+const gameLoader = (game: string, difficulty: string, level: string) => {
   const GameBundle = () => (
     <Bundle
       load={() => Promise.all([
         import(/* webpackChunkName: "GameContainer" */`containers/${upperFirst(game)}GameContainer`),
-        import(/* webpackChunkName: "blocklyData" */`test/games/${game}/blocklyData.json`),
-        import(/* webpackChunkName: "gameMetadata" */`test/games/${game}/${level}.json`),
+        import(/* webpackChunkName: "blocklyData" */`test/games/${game}/${difficulty}/blocklyData.json`),
+        import(/* webpackChunkName: "gameMetadata" */`test/games/${game}/${difficulty}/${level}.json`),
       ])}
     >
       {(data?: Array<mixed>) => {

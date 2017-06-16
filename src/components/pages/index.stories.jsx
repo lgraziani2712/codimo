@@ -24,6 +24,7 @@ const MenuContainer = styled.div`
   width: 80%;
 `;
 const routes = [{
+  difficulty: 'easy',
   exact: true,
   game: '#maze',
   title: 'Easy',
@@ -32,6 +33,7 @@ const routes = [{
     title: 'First game',
   }],
 }, {
+  difficulty: 'normal',
   exact: true,
   game: '#maze',
   title: 'Intermidiate',
