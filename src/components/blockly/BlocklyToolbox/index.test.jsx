@@ -45,7 +45,25 @@ describe('BlocklyToolbox', () => {
         define: 'category',
         name: 'test_category',
         color: '#deedee',
-        expanded: false,
+        blocks: [],
+      };
+      const tree = renderer.create(
+        categoryGenerator(description, 2),
+      ).toJSON();
+
+      expect(tree).toMatchSnapshot();
+    });
+    it('renders correctly with children', () => {
+      const description = {
+        define: 'category',
+        name: 'test_category',
+        color: '#deedee',
+        blocks: [{
+          define: 'block',
+          type: 'test_block',
+        }, {
+          define: 'sep',
+        }],
       };
       const tree = renderer.create(
         categoryGenerator(description, 2),
@@ -58,7 +76,7 @@ describe('BlocklyToolbox', () => {
     it('renders correctly', () => {
       const description = {
         define: 'sep',
-        gaap: 24,
+        gaap: 32,
       };
       const tree = renderer.create(
         sepGenerator(description, 3),

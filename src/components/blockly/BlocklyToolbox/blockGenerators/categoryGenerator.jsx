@@ -6,19 +6,25 @@
  */
 import React from 'react';
 
-import { type BlocklyBlock } from './blockGenerator';
-import { type BlocklySep } from './sepGenerator';
+import blockGenerator, { type BlocklyBlock } from './blockGenerator';
+import sepGenerator, { type BlocklySep } from './sepGenerator';
 
 export type BlocklyCategory = {|
-  // FIXME this must be mandatory
-  blocks?: Array<BlocklyBlock | BlocklySep>,
+  blocks: Array<BlocklyBlock | BlocklySep>,
   define: 'category',
   name: string,
   color?: number | string,
-  expanded?: boolean,
 |};
 const categoryGenerator = (element: BlocklyCategory, idx: number) => (
-  <category key={idx} name={element.name} color={element.color} expanded={element.expanded} />
+  <category key={idx} name={element.name} color={element.color}>
+    {element.blocks.map((block, idx) => {
+      if (block.define === 'block') {
+        return blockGenerator(block, idx);
+      } else {
+        return sepGenerator(block, idx);
+      }
+    })}
+  </category>
 );
 
 export default categoryGenerator;

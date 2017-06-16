@@ -12,3 +12,5 @@ import './MoveBackward';
 import './MoveForward';
 import './MoveLeft';
 import './MoveRight';
+
+import './SimpleLoop';

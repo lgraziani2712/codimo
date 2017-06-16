@@ -38,6 +38,6 @@ container.addChild(
 );
 
 storiesOf('engine.components.blockGenerator', module)
-  .add('wall block at 0,0', () => (
-    <PixiWrapper isContainer={true} component={container} height={HEIGHT} width={WIDTH} />
-  ));
+    .add('wall block at 0,0', () => (
+      <PixiWrapper isContainer={true} component={container} height={HEIGHT} width={WIDTH} />
+    ));

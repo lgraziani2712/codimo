@@ -42,9 +42,9 @@ const GameViewer = ({ routes }: Props) => (
           <Route
             // eslint-disable-next-line react/no-array-index-key
             key={key}
-            path={`/${route.game}/${child.path}`}
+            path={`/${route.game}/${route.difficulty}/${child.path}`}
             exact={route.exact}
-            component={gameLoader(route.game, child.path)}
+            component={gameLoader(route.game, route.difficulty, child.path)}
           />
         ))))}
       </GameSection>

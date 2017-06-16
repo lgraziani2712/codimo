@@ -21,10 +21,10 @@ const arrowCreator = (size: number, margin: number, toTheRight?: boolean): Graph
 
   if (toTheRight) {
     arrow.moveTo(ZERO, ZERO)
-      .lineTo(ZERO, height).lineTo(width, width).closePath();
+        .lineTo(ZERO, height).lineTo(width, width).closePath();
   } else {
     arrow.moveTo(ZERO, width)
-      .lineTo(width, ZERO).lineTo(width, height).closePath();
+        .lineTo(width, ZERO).lineTo(width, height).closePath();
   }
 
   arrow.endFill();

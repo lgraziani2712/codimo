@@ -1,0 +1,29 @@
+{
+  "elements": [{
+    "define": "block",
+    "type": "move_forward"
+  }, {
+    "define": "block",
+    "type": "move_backward"
+  }, {
+    "define": "block",
+    "type": "move_right"
+  }, {
+    "define": "block",
+    "type": "move_left"
+  }, {
+    "define": "block",
+    "type": "leave_maze"
+  }],
+  "blockDefinitions": [{
+    "name": "move_forward"
+  }, {
+    "name": "move_backward"
+  }, {
+    "name": "move_right"
+  }, {
+    "name": "move_left"
+  }, {
+    "name": "leave_maze"
+  }]
+}

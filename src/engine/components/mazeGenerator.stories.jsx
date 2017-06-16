@@ -26,22 +26,22 @@ const simpleNumberMaze = mazeGenerator(mazeData);
 const number = numberGenerator(-TEN, mazeData.access, mazeData.exits[0], mazeData.size, mazeData.margin);
 
 storiesOf('engine.components.Maze', module)
-  .add('basic Maze', () => (
-    <PixiWrapper component={basicMaze.view} isContainer={true} height={HEIGHT} width={WIDTH} />
-  ))
-  .add('one moving number Maze', () => {
-    simpleNumberMaze.view.addChild(number.view);
+    .add('basic Maze', () => (
+      <PixiWrapper component={basicMaze.view} isContainer={true} height={HEIGHT} width={WIDTH} />
+    ))
+    .add('one moving number Maze', () => {
+      simpleNumberMaze.view.addChild(number.view);
 
-    (async () => {
-      await wait(1000); // eslint-disable-line no-magic-numbers
-      for (const path of mazeData.path.keys()) {
-        await number.updatePosition(path);
-      }
-      await wait(2000); // eslint-disable-line no-magic-numbers
-      number.resetPosition();
-    })();
+      (async () => {
+        await wait(1000); // eslint-disable-line no-magic-numbers
+        for (const path of mazeData.path.keys()) {
+          await number.updatePosition(path);
+        }
+        await wait(2000); // eslint-disable-line no-magic-numbers
+        number.resetPosition();
+      })();
 
-    return (
-      <PixiWrapper component={simpleNumberMaze.view} isContainer={true} height={HEIGHT} width={WIDTH} />
-    );
-  });
+      return (
+        <PixiWrapper component={simpleNumberMaze.view} isContainer={true} height={HEIGHT} width={WIDTH} />
+      );
+    });

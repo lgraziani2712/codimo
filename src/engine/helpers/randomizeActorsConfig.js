@@ -23,11 +23,11 @@ const randomizeActorsConfig = (
 ) => {
   const definedRanges = accesses.map((actorPosition) => ({
     min: typeof statics[actorPosition - ONE] === 'number'
-        ? statics[actorPosition - ONE]
-        : RANGES[difficulty][0] - ONE,
+      ? statics[actorPosition - ONE]
+      : RANGES[difficulty][0] - ONE,
     max: typeof statics[actorPosition + ONE] === 'number'
-        ? statics[actorPosition + ONE]
-        : RANGES[difficulty][1] + ONE,
+      ? statics[actorPosition + ONE]
+      : RANGES[difficulty][1] + ONE,
   }));
 
   return () => (

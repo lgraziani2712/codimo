@@ -90,18 +90,18 @@ const hitTheWallConfig = (
   }
 
   timeline
-    .to(view, ACTOR_MOVEMENT_DURATION, {
-      ...movement,
-      ease: SlowMo.ease.config(JUMP_DURATION, ZERO, true),
-    })
-    .to(view, ACTOR_MOVEMENT_DURATION, {
-      ...movement,
-      ease: SlowMo.ease.config(JUMP_DURATION, ZERO, true),
-    })
-    .to(view, ACTOR_MOVEMENT_DURATION, {
-      ...movement,
-      ease: SlowMo.ease.config(JUMP_DURATION, ZERO, true),
-    });
+      .to(view, ACTOR_MOVEMENT_DURATION, {
+        ...movement,
+        ease: SlowMo.ease.config(JUMP_DURATION, ZERO, true),
+      })
+      .to(view, ACTOR_MOVEMENT_DURATION, {
+        ...movement,
+        ease: SlowMo.ease.config(JUMP_DURATION, ZERO, true),
+      })
+      .to(view, ACTOR_MOVEMENT_DURATION, {
+        ...movement,
+        ease: SlowMo.ease.config(JUMP_DURATION, ZERO, true),
+      });
 })));
 const beTheFallenOneConfig = (
   view: Text,
@@ -116,19 +116,19 @@ const beTheFallenOneConfig = (
     const timeline = new TimelineLite({ onComplete });
 
     timeline
-      .to(view, ACTOR_MOVEMENT_DURATION, {
-        y: view.y - size * FALL_DISTANCE_MULTIPLIER,
-        ease: Linear.easeNone,
-      })
-      .to(view, FALL_SPIN_DURATION, {
-        rotation: 50,
-        ease: Power1.easeIn,
-      }, ZERO)
-      .to(view.scale, SQUISH_DURATION, {
-        x: 0,
-        y: 0,
-        ease: Power1.easeIn,
-      }, ACTOR_MOVEMENT_DURATION);
+        .to(view, ACTOR_MOVEMENT_DURATION, {
+          y: view.y - size * FALL_DISTANCE_MULTIPLIER,
+          ease: Linear.easeNone,
+        })
+        .to(view, FALL_SPIN_DURATION, {
+          rotation: 50,
+          ease: Power1.easeIn,
+        }, ZERO)
+        .to(view.scale, SQUISH_DURATION, {
+          x: 0,
+          y: 0,
+          ease: Power1.easeIn,
+        }, ACTOR_MOVEMENT_DURATION);
   });
 });
 const emotionConfig = (
@@ -210,16 +210,16 @@ const hasEnteredToNumericLineConfig = (
     const timeline = new TimelineLite({ onComplete });
 
     timeline
-      .to(view, ACTOR_MOVEMENT_DURATION, {
-        y: size / HALF,
-        x: size / HALF,
-        ease: Linear.easeNone,
-      })
-      .to(view.scale, ACTOR_MOVEMENT_DURATION, {
-        x: view.scale.x * TWO,
-        y: view.scale.y * TWO,
-        ease: SlowMo.ease.config(JUMP_DURATION, ZERO, true),
-      }, ZERO);
+        .to(view, ACTOR_MOVEMENT_DURATION, {
+          y: size / HALF,
+          x: size / HALF,
+          ease: Linear.easeNone,
+        })
+        .to(view.scale, ACTOR_MOVEMENT_DURATION, {
+          x: view.scale.x * TWO,
+          y: view.scale.y * TWO,
+          ease: SlowMo.ease.config(JUMP_DURATION, ZERO, true),
+        }, ZERO);
   });
 });
 

@@ -6,6 +6,8 @@
  */
 import React from 'react';
 
+const DEFAULT_GAAP = 24;
+
 export type BlocklySep = {|
   define: 'sep',
   /**
@@ -18,7 +20,7 @@ export type BlocklySep = {|
   gaap?: number,
 |};
 const sepGenerator = (element: BlocklySep, idx: number) => (
-  <sep key={idx} gap={element.gaap} />
+  <sep key={idx} gap={element.gaap === undefined ? DEFAULT_GAAP : element.gaap} />
 );
 
 export default sepGenerator;

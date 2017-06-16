@@ -94,8 +94,8 @@ export default class MazeGameContainer extends React.Component {
   }
   handleSetOfInstructions = (instructions: Instructions): Promise<void> => (
     this.engine.excecuteSetOfInstructions(instructions)
-      .then(() => (swal(game.success).catch(swal.noop)))
-      .catch(({ name, ...error }: MazeError) => (swal(error).catch(swal.noop)))
+        .then(() => (swal(game.success).catch(swal.noop)))
+        .catch(({ name, ...error }: MazeError) => (swal(error).catch(swal.noop)))
   )
   render() {
     return (

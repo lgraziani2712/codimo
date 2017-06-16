@@ -69,7 +69,9 @@ rules:
   eol-last: 0
   eqeqeq: 1
   generator-star-spacing: [1, { before: false, after: true }]
-  indent: [1, 2]
+  indent: [1, 2, {
+    MemberExpression: 2
+  }]
   key-spacing: 1
   keyword-spacing: 1
   linebreak-style: 1

@@ -20,3 +20,7 @@ Blockly.Msg.MOVE_BACKWARD_TOOLTIP = 'Mueve el número un paso atrás';
 
 Blockly.Msg.LEAVE_MAZE_TITLE = '🕳🏃💨 Saltar';
 Blockly.Msg.LEAVE_MAZE_TOOLTIP = 'Si el número está sobre una salida, salta hacia la línea numérica';
+
+Blockly.Msg.SIMPLE_LOOP_TITLE_1 = 'Repetir';
+Blockly.Msg.SIMPLE_LOOP_TITLE_2 = 'veces';
+Blockly.Msg.SIMPLE_LOOP_TOOLTIP = 'Repite una cierta cantidad de veces los bloques que estén adentro';

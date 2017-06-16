@@ -84,13 +84,6 @@ export default class BlocklyApp extends React.Component {
       trashcan: true,
     });
 
-    const widgetDiv = Blockly.WidgetDiv.DIV;
-
-    // This is in charge of deleting the useless widget!!
-    if (widgetDiv.parentNode) {
-      widgetDiv.parentNode.removeChild(widgetDiv);
-    }
-
     // 1. Will make orphans a little transparent and they won't be
     //    executed even when Blockly ask to parse workspaceToCode
     this.workspace.addChangeListener(Blockly.Events.disableOrphans);
@@ -123,9 +116,9 @@ export default class BlocklyApp extends React.Component {
     }));
 
     this.props.handleSetOfInstructions(this.executor.parseInstructions(rawInstructions))
-      .then(() => {
-        this.setState(() => ({ isExecuting: false }));
-      });
+        .then(() => {
+          this.setState(() => ({ isExecuting: false }));
+        });
   }
   render() {
     const { blocklyData } = this.props;

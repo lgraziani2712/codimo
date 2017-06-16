@@ -6,7 +6,7 @@
 
 declare module '@storybook/addon-actions' {
   declare module.exports: {
-    action(description: string): (event: SyntheticEvent) => void;
+    action(description: string): (event: mixed) => void;
   };
 }
 
