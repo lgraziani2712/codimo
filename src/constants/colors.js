@@ -8,6 +8,7 @@
 const WHITE = '#fff';
 
 export const ACTION = '#b63668';
+export const CONTROL = '#5b67a5';
 export const CONTAINER = '#369836';
 
 export const COLOR_PALETTE = {
