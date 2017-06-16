@@ -1,5 +1,7 @@
 ## HEAD
 
+- 🚀 [2017-06-15] `blockly/components/BlocklyToolbox`: update to v1.2.0.
+  - 🚀 Update `categoryGenerator` to make it useful.
 - 🚀 [2017-06-15] `blockly/components`: update to v1.3.0.
   - 🚀 Add `SimpleLoop` v1.0.0!
 - 🚀 [2017-06-14] `components/pages/ImageGallery`: add v1.0.0!
