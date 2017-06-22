@@ -22,6 +22,7 @@ import { type NumericLineData } from 'engine/components/numericLineGenerator';
 import { type MazeError } from 'engine/helpers/errors';
 import { getRandomInt } from 'helpers/randomizers';
 import { game } from 'constants/localize/es';
+import Loading from 'components/pages/Loading';
 
 import BlocklyApp, { type BlocklyData } from './BlocklyApp';
 
@@ -50,9 +51,14 @@ export type GameMetadata = {|
 type Props = {|
   blocklyData: BlocklyData,
   gameMetadata: GameMetadata,
+  shadowBlocklyButtons?: boolean,
+|};
+type State = {|
+  finishLoading: boolean,
 |};
 export default class MazeGameContainer extends React.Component {
   props: Props;
+  state: State;
 
   app: Application;
   engine: Engine;
@@ -61,6 +67,10 @@ export default class MazeGameContainer extends React.Component {
 
   constructor(props: Props) {
     super(props);
+
+    this.state = {
+      finishLoading: false,
+    };
 
     // $FlowDoNotDisturb @see https://github.com/facebook/flow/issues/2405
     const mazeData: MazeData = {
@@ -72,8 +82,29 @@ export default class MazeGameContainer extends React.Component {
     this.engine = mazeEngineGenerator(mazeData, numericLineData, difficulty);
     this.image = images[getRandomInt(ZERO, images.length)];
   }
-
-  componentDidMount() {
+  componentWillMount() {
+    fetch(this.image)
+        .then(this.handleImageLoad)
+        .then(this.handleFinishLoading)
+        .catch(this.handleImageLoad)
+        .then(this.handleFinishLoading);
+  }
+  // TODO destroy app? reset on new props
+  componentWillUnmount() {
+    this.app.stop();
+    this.app.destroy(true);
+  }
+  handleSetOfInstructions = (instructions: Instructions): Promise<void> => (
+    this.engine.excecuteSetOfInstructions(instructions)
+        .then(() => (swal(game.success).catch(swal.noop)))
+        .catch(({ name, ...error }: MazeError) => (swal(error).catch(swal.noop)))
+  )
+  handleImageLoad = () => {
+    this.setState(() => ({
+      finishLoading: true,
+    }));
+  }
+  handleFinishLoading = () => {
     const { canvas } = this.props.gameMetadata.mazeData;
 
     this.app = new Application(canvas.width, canvas.height, {
@@ -87,28 +118,21 @@ export default class MazeGameContainer extends React.Component {
     this.engine.view.x = canvas.width / HALF;
     this.engine.view.y = canvas.height / HALF;
   }
-  // TODO destroy app? reset on new props
-  componentWillUnmount() {
-    this.app.stop();
-    this.app.destroy(true);
-  }
-  handleSetOfInstructions = (instructions: Instructions): Promise<void> => (
-    this.engine.excecuteSetOfInstructions(instructions)
-        .then(() => (swal(game.success).catch(swal.noop)))
-        .catch(({ name, ...error }: MazeError) => (swal(error).catch(swal.noop)))
-  )
   render() {
-    return (
-      <GameContainer image={this.image}>
-        <TwoColumns>
-          <canvas ref={(view: HTMLCanvasElement) => this.view = view} />
-          <BlocklyApp
-            blocklyData={this.props.blocklyData}
-            handleResetGame={this.engine.handleResetGame}
-            handleSetOfInstructions={this.handleSetOfInstructions}
-          />
-        </TwoColumns>
-      </GameContainer>
-    );
+    return !this.state.finishLoading
+      ? <Loading />
+      : (
+        <GameContainer image={this.image}>
+          <TwoColumns>
+            <canvas ref={(view: HTMLCanvasElement) => this.view = view} />
+            <BlocklyApp
+              blocklyData={this.props.blocklyData}
+              shadowActionBarButtons={this.props.shadowBlocklyButtons}
+              handleResetGame={this.engine.handleResetGame}
+              handleSetOfInstructions={this.handleSetOfInstructions}
+            />
+          </TwoColumns>
+        </GameContainer>
+      );
   }
 }

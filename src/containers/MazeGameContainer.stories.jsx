@@ -13,8 +13,15 @@ import gameMetadata, { blocklyData } from 'test/gameMetadata';
 import MazeGameContainer from './MazeGameContainer';
 
 storiesOf('containers.MazeGameContainer', module)
-    .add('first game', () => (
+    .add('simple game', () => (
       <MazeGameContainer blocklyData={blocklyData} gameMetadata={gameMetadata} />
+    ))
+    .add('game with shadowed buttons', () => (
+      <MazeGameContainer
+        blocklyData={blocklyData}
+        gameMetadata={gameMetadata}
+        shadowBlocklyButtons={true}
+      />
     ))
     .add('multiple exits game', () => {
       const newGameMetadata = {
