@@ -39,7 +39,14 @@ storiesOf('engine.components.numericLine', module)
       arrow.x = WIDTH_ARROW / QUARTER;
       arrow.y = HEIGHT_ARROW / QUARTER;
 
-      return <PixiWrapper component={arrow} isContainer={true} height={HEIGHT_ARROW} width={WIDTH_ARROW} />;
+      return (
+        <PixiWrapper
+          component={arrow}
+          isContainer={true}
+          height={HEIGHT_ARROW}
+          width={WIDTH_ARROW}
+        />
+      );
     })
     .add('simple right arrow', () => {
       const arrow = arrowGenerator(SIZE, TEN, true);
@@ -47,7 +54,14 @@ storiesOf('engine.components.numericLine', module)
       arrow.x = WIDTH_ARROW / QUARTER;
       arrow.y = HEIGHT_ARROW / QUARTER;
 
-      return <PixiWrapper component={arrow} isContainer={true} height={HEIGHT_ARROW} width={WIDTH_ARROW} />;
+      return (
+        <PixiWrapper
+          component={arrow}
+          isContainer={true}
+          height={HEIGHT_ARROW}
+          width={WIDTH_ARROW}
+        />
+      );
     })
 //////////////////////////////////
 // Line

@@ -54,7 +54,13 @@ storiesOf('engine.components.Number', module)
       />
     ))
     .add('happy negative one digit', () => {
-      const number = numberGenerator(-ONE, POSITION, POSITION, SIZES.negativeOne, MARGINS.negativeOne);
+      const number = numberGenerator(
+        -ONE,
+        POSITION,
+        POSITION,
+        SIZES.negativeOne,
+        MARGINS.negativeOne,
+      );
 
       number.beHappy('start');
 
@@ -68,7 +74,13 @@ storiesOf('engine.components.Number', module)
       );
     })
     .add('sad negative two digits', () => {
-      const number = numberGenerator(-TEN, POSITION, POSITION, SIZES.negativeTen, MARGINS.negativeTen);
+      const number = numberGenerator(
+        -TEN,
+        POSITION,
+        POSITION,
+        SIZES.negativeTen,
+        MARGINS.negativeTen,
+      );
 
       number.beSad('start');
 

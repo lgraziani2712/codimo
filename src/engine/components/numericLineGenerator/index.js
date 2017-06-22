@@ -11,8 +11,11 @@ import { type NumberActor, type ActorEmotionState } from 'engine/components/numb
 import arrowGenerator from './arrowGenerator';
 import lineGenerator, { type Line } from './lineGenerator';
 
-const receiveNumberAtPositionConfig = (line: Line) =>
-  (number: NumberActor, position: number): Promise<void> => line.receiveNumberAtPosition(number, position);
+const receiveNumberAtPositionConfig = (line: Line) => (
+  number: NumberActor,
+  position: number,
+): Promise<void> => line.receiveNumberAtPosition(number, position);
+
 const emotionConfig = (line: Line, beHappy: boolean) => (
   beHappy
     ? (state: ActorEmotionState): void => line.beHappy(state)
@@ -29,7 +32,11 @@ export type NumericLine = {|
   beHappy(state: ActorEmotionState): void,
   beSad(state: ActorEmotionState): void,
 |};
-const numericLineGenerator = (numbers: Array<number | null>, size: number, margin: number): NumericLine => {
+const numericLineGenerator = (
+  numbers: Array<number | null>,
+  size: number,
+  margin: number,
+): NumericLine => {
   const view = new Container();
   const leftArrow = arrowGenerator(size, margin);
   const rightArrow = arrowGenerator(size, margin, true);

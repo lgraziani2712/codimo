@@ -8,7 +8,13 @@ import { Container } from 'pixi.js';
 
 import { ZERO, ONE, HALF } from 'constants/numbers';
 import { type Instructions } from 'blockly/executorGenerator';
-import { MOVE_FORWARD, MOVE_RIGHT, MOVE_BACKWARD, MOVE_LEFT, LEAVE_MAZE } from 'constants/instructions';
+import {
+  MOVE_FORWARD,
+  MOVE_RIGHT,
+  MOVE_BACKWARD,
+  MOVE_LEFT,
+  LEAVE_MAZE,
+} from 'constants/instructions';
 import mazeGenerator, { type MazeData, type Maze } from 'engine/components/mazeGenerator';
 import numberGenerator, {
   START_STATE,

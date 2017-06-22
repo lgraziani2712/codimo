@@ -8,7 +8,10 @@ import { Container } from 'pixi.js';
 
 import { ONE } from 'constants/numbers';
 
-import blockGeneratorConfig, { BLOCK_DEFINITIONS, type ActivePathBorders } from './blockGeneratorConfig';
+import blockGeneratorConfig, {
+  BLOCK_DEFINITIONS,
+  type ActivePathBorders,
+} from './blockGeneratorConfig';
 
 const BLOCK_FIRST = 0;
 

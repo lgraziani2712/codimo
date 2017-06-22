@@ -235,7 +235,10 @@ const updatePositionConfig = (
    */
 ) => (function updatePosition(newPosition: string): Promise<void> {
   this.position = newPosition;
-  const positionNumbers = this.position.split(',').map((string: string): number => (parseInt(string)));
+  const positionNumbers =
+    this.position
+        .split(',')
+        .map((string: string): number => (parseInt(string)));
 
   return new Promise((onComplete) => {
     TweenLite.to(view, ACTOR_MOVEMENT_DURATION, {

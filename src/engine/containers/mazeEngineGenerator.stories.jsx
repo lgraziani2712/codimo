@@ -60,5 +60,12 @@ storiesOf('engine.containers.mazeEngineGenerator', module)
       mazeEngine.view.x += 32;
       mazeEngine.view.y += 16;
 
-      return <PixiWrapper component={mazeEngine.view} isContainer={true} height={HEIGHT} width={WIDTH} />;
+      return (
+        <PixiWrapper
+          component={mazeEngine.view}
+          isContainer={true}
+          height={HEIGHT}
+          width={WIDTH}
+        />
+      );
     });

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 'use strict';
 
 const paths = require('../config/paths');

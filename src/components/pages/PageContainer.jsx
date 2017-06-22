@@ -53,7 +53,10 @@ const PageContainer = ({ children }: Props) => (
         </span>
         <span>
           {'Distribuído bajo licencia '}
-          <FooterLink href="https://github.com/lgraziani2712/codimo/blob/master/LICENSE" text="MIT" />
+          <FooterLink
+            href="https://github.com/lgraziani2712/codimo/blob/master/LICENSE"
+            text="MIT"
+          />
           {'.'}
         </span>
       </ContentContainer>

@@ -18,8 +18,16 @@ const WIDTH = 256;
 const HEIGHT = 256;
 const { mazeData } = gameMetadataDataWithoutBlocks;
 const container = new Container();
-const wallBlockGenerator = blockGeneratorConfig(BLOCK_DEFINITIONS.WALL, mazeData.size, mazeData.margin);
-const borderBlockGenerator = blockGeneratorConfig(BLOCK_DEFINITIONS.BORDER, mazeData.size, mazeData.margin);
+const wallBlockGenerator = blockGeneratorConfig(
+  BLOCK_DEFINITIONS.WALL,
+  mazeData.size,
+  mazeData.margin,
+);
+const borderBlockGenerator = blockGeneratorConfig(
+  BLOCK_DEFINITIONS.BORDER,
+  mazeData.size,
+  mazeData.margin,
+);
 const borderTopLeft = wallBlockGenerator(ZERO, ZERO, {});
 const borderTop = borderBlockGenerator(mazeData.size + mazeData.margin, ZERO, {});
 const borderLeft = borderBlockGenerator(ZERO, mazeData.size + mazeData.margin, {});

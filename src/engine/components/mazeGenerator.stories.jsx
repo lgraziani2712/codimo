@@ -23,7 +23,13 @@ mazeData.path = new Map(mazeData.path);
 
 const basicMaze = mazeGenerator(mazeData);
 const simpleNumberMaze = mazeGenerator(mazeData);
-const number = numberGenerator(-TEN, mazeData.access, mazeData.exits[0], mazeData.size, mazeData.margin);
+const number = numberGenerator(
+  -TEN,
+  mazeData.access,
+  mazeData.exits[0],
+  mazeData.size,
+  mazeData.margin,
+);
 
 storiesOf('engine.components.Maze', module)
     .add('basic Maze', () => (
@@ -42,6 +48,11 @@ storiesOf('engine.components.Maze', module)
       })();
 
       return (
-        <PixiWrapper component={simpleNumberMaze.view} isContainer={true} height={HEIGHT} width={WIDTH} />
+        <PixiWrapper
+          component={simpleNumberMaze.view}
+          isContainer={true}
+          height={HEIGHT}
+          width={WIDTH}
+        />
       );
     });
