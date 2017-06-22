@@ -1,6 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Components snapshots renders the FrontPage correctly 1`] = `
+.kcEwZw {
+  color: snow;
+  font-weight: bold;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.kcEwZw:hover {
+  color: #dadada;
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
 .liMkSd {
   margin: 0 auto;
   width: 980px;
@@ -42,6 +55,71 @@ exports[`Components snapshots renders the FrontPage correctly 1`] = `
   position: fixed;
   width: 100%;
   z-index: -1;
+}
+
+.hJuKAB {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 300px;
+  padding: 5rem;
+}
+
+.fBfXEG {
+  color: white;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  margin: 0;
+}
+
+.fBfXEG > img {
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+}
+
+.khnjin {
+  background: #d9534f;
+}
+
+.dotyRb {
+  background: #5cb85c;
+}
+
+.hvMUct {
+  background: white;
+  box-shadow: 0 0 4px 4px rgba(85, 95, 110, 0.4);
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  position: relative;
+  z-index: 1;
+}
+
+.hvMUct > img {
+  filter: drop-shadow(-2px 2px 2px rgba(0, 0, 0, 0.5));
+}
+
+.hzCjdl {
+  font-size: 4.5em;
+  font-weight: 200;
+  margin: 0;
+  -webkit-text-shadow: 5px 5px #be2f2b;
+  text-shadow: 5px 5px #be2f2b;
+}
+
+.jPjldc {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 2em;
+  font-weight: lighter;
+  padding: 0 0.5em;
+  width: 42%;
 }
 
 <div
