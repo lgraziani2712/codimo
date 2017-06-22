@@ -2,7 +2,7 @@
   "name": "codimo",
   "version": "1.0.0",
   "private": true,
-  "description": "CÓDIMO",
+  "description": "A simple platform for learning Computational Thinking",
   "main": "src/main.jsx",
   "scripts": {
     "build": "webpack -p --config ./.dev-tools/config/webpack.config.prod.js",
@@ -24,9 +24,12 @@
   "keywords": [
     "codimo",
     "pixijs",
-    "webgl",
-    "canvas",
-    "education"
+    "learning-to-code",
+    "react",
+    "storybooks",
+    "flowtype",
+    "educational-game",
+    "computational-thinking"
   ],
   "moduleRoots": [
     "src",
@@ -52,13 +55,11 @@
     "babel-loader": "7.0.0",
     "babel-plugin-dynamic-import-node": "1.0.2",
     "babel-plugin-dynamic-import-webpack": "1.0.1",
-    "babel-plugin-minify-constant-folding": "0.1.1",
     "babel-plugin-styled-components": "1.1.4",
     "babel-plugin-transform-class-properties": "6.24.1",
     "babel-plugin-transform-es2015-modules-commonjs": "6.24.1",
     "babel-plugin-transform-export-extensions": "6.22.0",
     "babel-plugin-transform-flow-strip-types": "6.22.0",
-    "babel-preset-babili": "0.1.2",
     "babel-preset-env": "1.5.2",
     "babel-preset-react": "6.24.1",
     "babel-preset-stage-2": "6.24.1",

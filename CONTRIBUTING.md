@@ -1,4 +1,4 @@
-# Contribute to CÓDIMO
+# Contribute to Códimo
 
 ## CI Configuration
 
