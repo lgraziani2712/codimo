@@ -10,7 +10,6 @@ exports[`Components snapshots renders the ActionBar correctly 1`] = `
   opacity: auto;
   padding: 10px 40px;
   pointer-events: auto;
-  -webkit-text-decoration: none;
   text-decoration: none;
   -webkit-transition: all 0.1s;
   transition: all 0.1s;
@@ -27,7 +26,6 @@ exports[`Components snapshots renders the ActionBar correctly 1`] = `
   background-color: #5cb85c;
   border-bottom: 5px solid #1b7c1b;
   color: #fff;
-  -webkit-text-shadow: 0 -2px #1b7c1b;
   text-shadow: 0 -2px #1b7c1b;
 }
 
@@ -75,7 +73,6 @@ exports[`Components snapshots renders the Button correctly 1`] = `
   opacity: auto;
   padding: 10px 40px;
   pointer-events: auto;
-  -webkit-text-decoration: none;
   text-decoration: none;
   -webkit-transition: all 0.1s;
   transition: all 0.1s;
@@ -92,7 +89,6 @@ exports[`Components snapshots renders the Button correctly 1`] = `
   background-color: #d9534f;
   border-bottom: 5px solid #be2f2b;
   color: #fff;
-  -webkit-text-shadow: 0 -2px #be2f2b;
   text-shadow: 0 -2px #be2f2b;
 }
 

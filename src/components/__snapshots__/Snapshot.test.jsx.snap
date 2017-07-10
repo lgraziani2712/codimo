@@ -4,13 +4,11 @@ exports[`Components snapshots renders the FrontPage correctly 1`] = `
 .kcEwZw {
   color: snow;
   font-weight: bold;
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
 .kcEwZw:hover {
   color: #dadada;
-  -webkit-text-decoration: underline;
   text-decoration: underline;
 }
 
@@ -110,7 +108,6 @@ exports[`Components snapshots renders the FrontPage correctly 1`] = `
   font-size: 4.5em;
   font-weight: 200;
   margin: 0;
-  -webkit-text-shadow: 5px 5px #be2f2b;
   text-shadow: 5px 5px #be2f2b;
 }
 
