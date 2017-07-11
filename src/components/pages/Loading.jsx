@@ -21,8 +21,8 @@ const LoadingAnimal = styled.div`
   width: 100%;
 `;
 const RandomText = styled.div`
-  font-size: 2em;
   color: ${COLOR_PALETTE.orange.normal};
+  font-size: 2em;
 `;
 const THREE_SECONDS = 3000;
 

@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import { COLOR_PALETTE } from 'constants/colors';
 
 import PageContainer from './pages/PageContainer';
-import RawContentContainer from './pages/RawContentContainer';
+import Container from './pages/RawContentContainer';
 import ImageGallery from './pages/ImageGallery';
 
 const Row = styled.div`
@@ -42,9 +42,6 @@ const WhiteRow = styled(Row)`
   & > img {
     filter: drop-shadow(-2px 2px 2px rgba(0, 0, 0, 0.5));
   }
-`;
-const Container = styled(RawContentContainer)`
-
 `;
 const Title = styled.h1`
   font-size: 4.5em;

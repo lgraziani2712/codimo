@@ -127,7 +127,7 @@ exports[`Components snapshots renders the FrontPage correctly 1`] = `
       className="FrontPage__RedRow-fdKJyF khnjin FrontPage__ColoredRow-caaRcg fBfXEG FrontPage__Row-rAXoT hJuKAB"
     >
       <div
-        className="FrontPage__Container-gOtpWX hoXuO RawContentContainer__RawContentContainer-cpAunS liMkSd"
+        className="RawContentContainer__RawContentContainer-cpAunS liMkSd"
       >
         <h1
           className="FrontPage__Title-gGObMR hzCjdl"

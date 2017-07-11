@@ -45,11 +45,11 @@ const LinkContainer = styled.li`
 const Link = styled(RouterLink)`
   align-items: center;
   color: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
   display: flex;
   font-size: 1.25em;
   height: 100%;
   padding: 0 0.5em;
-  cursor: pointer;
   text-decoration: none;
   ${LinkContainer}:hover > a {
     font-weight: bold;

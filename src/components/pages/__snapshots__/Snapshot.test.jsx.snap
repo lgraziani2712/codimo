@@ -21,9 +21,9 @@ exports[`Components snapshots renders the Loading correctly 1`] = `
   width: 100%;
 }
 
-.fobzAW {
-  font-size: 2em;
+.iacFuA {
   color: #d3823f;
+  font-size: 2em;
 }
 
 <div
@@ -33,7 +33,7 @@ exports[`Components snapshots renders the Loading correctly 1`] = `
     src="/images/loading-animal.gif"
   />
   <div
-    className="Loading__RandomText-cHlNfX fobzAW"
+    className="Loading__RandomText-cHlNfX iacFuA"
   >
     Armando la línea numérica
   </div>
