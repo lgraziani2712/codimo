@@ -18,6 +18,9 @@
     },
     "test": {
       "plugins": [
+        ["styled-components", {
+          "minify": false
+        }],
         "dynamic-import-node",
         "transform-es2015-modules-commonjs"
       ]
