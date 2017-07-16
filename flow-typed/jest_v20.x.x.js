@@ -232,7 +232,7 @@ type JestExpectType = {
   /**
    * StyledComponent specific matcher for snapshots
    */
-  toMatchStyledComponentsSnapshot(name?: string): void,
+  toMatchSnapshot(name?: string): void,
   /**
    * StyledComponent specific matcher for validation
    */

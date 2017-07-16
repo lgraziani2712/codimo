@@ -1,23 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Components snapshots renders the FrontPage correctly 1`] = `
-.kcEwZw {
+.c19 {
   color: snow;
   font-weight: bold;
   text-decoration: none;
 }
 
-.kcEwZw:hover {
+.c19:hover {
   color: #dadada;
   text-decoration: underline;
 }
 
-.liMkSd {
+.c4 {
   margin: 0 auto;
   width: 980px;
 }
 
-.bJokCq {
+.c0 {
   margin-bottom: 10rem;
   -webkit-user-select: initial;
   -moz-user-select: initial;
@@ -25,7 +25,7 @@ exports[`Components snapshots renders the FrontPage correctly 1`] = `
   user-select: initial;
 }
 
-.dCzalx {
+.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -36,7 +36,7 @@ exports[`Components snapshots renders the FrontPage correctly 1`] = `
   justify-content: space-between;
 }
 
-.hEPong {
+.c16 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -55,7 +55,7 @@ exports[`Components snapshots renders the FrontPage correctly 1`] = `
   z-index: -1;
 }
 
-.hJuKAB {
+.c3 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -68,7 +68,7 @@ exports[`Components snapshots renders the FrontPage correctly 1`] = `
   padding: 5rem;
 }
 
-.fBfXEG {
+.c2 {
   color: white;
   -webkit-box-pack: end;
   -webkit-justify-content: flex-end;
@@ -77,19 +77,19 @@ exports[`Components snapshots renders the FrontPage correctly 1`] = `
   margin: 0;
 }
 
-.fBfXEG > img {
+.c2 > img {
   filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
 }
 
-.khnjin {
+.c1 {
   background: #d9534f;
 }
 
-.dotyRb {
+.c9 {
   background: #5cb85c;
 }
 
-.hvMUct {
+.c6 {
   background: white;
   box-shadow: 0 0 4px 4px rgba(85, 95, 110, 0.4);
   -webkit-box-pack: start;
@@ -100,18 +100,18 @@ exports[`Components snapshots renders the FrontPage correctly 1`] = `
   z-index: 1;
 }
 
-.hvMUct > img {
+.c6 > img {
   filter: drop-shadow(-2px 2px 2px rgba(0, 0, 0, 0.5));
 }
 
-.hzCjdl {
+.c5 {
   font-size: 4.5em;
   font-weight: 200;
   margin: 0;
   text-shadow: 5px 5px #be2f2b;
 }
 
-.jPjldc {
+.c8 {
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 2em;
   font-weight: lighter;
@@ -120,39 +120,39 @@ exports[`Components snapshots renders the FrontPage correctly 1`] = `
 }
 
 <div
-  className="PageContainer__Wrapper-kCvKOC bJokCq"
+  className="c0"
 >
   <div>
     <div
-      className="FrontPage__RedRow-fdKJyF khnjin FrontPage__ColoredRow-caaRcg fBfXEG FrontPage__Row-rAXoT hJuKAB"
+      className="c1 c2 c3"
     >
       <div
-        className="RawContentContainer__RawContentContainer-cpAunS liMkSd"
+        className="c4"
       >
         <h1
-          className="FrontPage__Title-gGObMR hzCjdl"
+          className="c5"
         >
           ¡Donde el código, la imaginación y la motivación se encuentran!
         </h1>
       </div>
     </div>
     <div
-      className="FrontPage__WhiteRow-eTzKRE hvMUct FrontPage__Row-rAXoT hJuKAB"
+      className="c6 c3"
     >
       <img
         src="/images/logo.png"
       />
       <div
-        className="FrontPage__Text-bliCWi jPjldc"
+        className="c8"
       >
         Es una plataforma que presenta actividades escolares diseñadas para que sean divertidas y ayuden a afianzar los conocimientos de las distintas asignaturas a través de resolverlas de una manera diferente a como se aprenden en clase.
       </div>
     </div>
     <div
-      className="FrontPage__GreenRow-fcHLBb dotyRb FrontPage__ColoredRow-caaRcg fBfXEG FrontPage__Row-rAXoT hJuKAB"
+      className="c9 c2 c3"
     >
       <div
-        className="FrontPage__Text-bliCWi jPjldc"
+        className="c8"
       >
         Cada actividad está estructurada en niveles. Cada nivel representa un desafío y a medida que se avanza de nivel, más aumenta la dificultad.
       </div>
@@ -161,13 +161,13 @@ exports[`Components snapshots renders the FrontPage correctly 1`] = `
       />
     </div>
     <div
-      className="FrontPage__WhiteRow-eTzKRE hvMUct FrontPage__Row-rAXoT hJuKAB"
+      className="c6 c3"
     >
       <img
         src="/images/computer-thinking.png"
       />
       <div
-        className="FrontPage__Text-bliCWi jPjldc"
+        className="c8"
       >
         ¿Qué es el 
         <b>
@@ -178,15 +178,15 @@ exports[`Components snapshots renders the FrontPage correctly 1`] = `
     </div>
   </div>
   <div
-    className="PageContainer__Footer-gzRtKy hEPong"
+    className="c16"
   >
     <div
-      className="PageContainer__ContentContainer-cRjYKL dCzalx RawContentContainer__RawContentContainer-cpAunS liMkSd"
+      className="c17 c4"
     >
       <span>
         Equipo de desarrollo de Códimo. 
         <a
-          className="FooterLink__Link-eeoshK kcEwZw"
+          className="c19"
           href="https://www.unrn.edu.ar/"
           target="_blank"
         >
@@ -197,7 +197,7 @@ exports[`Components snapshots renders the FrontPage correctly 1`] = `
       <span>
         Distribuído bajo licencia 
         <a
-          className="FooterLink__Link-eeoshK kcEwZw"
+          className="c19"
           href="https://github.com/lgraziani2712/codimo/blob/master/LICENSE"
           target="_blank"
         >
@@ -211,7 +211,7 @@ exports[`Components snapshots renders the FrontPage correctly 1`] = `
 `;
 
 exports[`Components snapshots renders the GameContainer correctly 1`] = `
-.dsmXr {
+.c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -228,7 +228,7 @@ exports[`Components snapshots renders the GameContainer correctly 1`] = `
   width: 100%;
 }
 
-.dsmXr::before {
+.c0::before {
   background: url(/images/test-url.jpg) repeat;
   content: '';
   filter: contrast(65%) brightness(110%) saturate(75%) sepia(22%) grayscale(20%);
@@ -239,7 +239,7 @@ exports[`Components snapshots renders the GameContainer correctly 1`] = `
   z-index: -1;
 }
 
-.dsmXr::after {
+.c0::after {
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAG0lEQVQIW2NkYGD4z8DAwMgABXAGNgGwSgwVAFbmAgXxvZSoAAAAAElFTkSuQmCC) repeat;
   content: '';
   height: 100%;
@@ -250,6 +250,6 @@ exports[`Components snapshots renders the GameContainer correctly 1`] = `
 }
 
 <div
-  className="GameContainer__CenterGame-bhsxOq dsmXr"
+  className="c0"
 />
 `;

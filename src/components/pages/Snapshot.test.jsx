@@ -32,28 +32,28 @@ describe('Components snapshots', () => {
     const codimoLinkTree = renderer.create(<Router><CodimoLink /></Router>).toJSON();
     const githubLinkTree = renderer.create(<GithubLink />).toJSON();
 
-    expect(footerLinkTree).toMatchStyledComponentsSnapshot();
-    expect(codimoLinkTree).toMatchStyledComponentsSnapshot();
-    expect(githubLinkTree).toMatchStyledComponentsSnapshot();
+    expect(footerLinkTree).toMatchSnapshot();
+    expect(codimoLinkTree).toMatchSnapshot();
+    expect(githubLinkTree).toMatchSnapshot();
   });
   it('renders the raw components correctly', () => {
     const rawContentContainerTree = renderer.create(<RawContentContainer />).toJSON();
 
-    expect(rawContentContainerTree).toMatchStyledComponentsSnapshot();
+    expect(rawContentContainerTree).toMatchSnapshot();
   });
   it('renders the Loading correctly', () => {
     const tree = renderer.create(<Loading />).toJSON();
 
-    expect(tree).toMatchStyledComponentsSnapshot();
+    expect(tree).toMatchSnapshot();
   });
   it('renders the MenuBar correctly', () => {
     const tree = renderer.create(<Router><MenuBar routes={[]} /></Router>).toJSON();
 
-    expect(tree).toMatchStyledComponentsSnapshot();
+    expect(tree).toMatchSnapshot();
   });
   it('renders the PageContainer correctly', () => {
     const tree = renderer.create(<PageContainer />).toJSON();
 
-    expect(tree).toMatchStyledComponentsSnapshot();
+    expect(tree).toMatchSnapshot();
   });
 });

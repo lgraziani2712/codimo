@@ -18,7 +18,7 @@ describe('Components snapshots', () => {
       <Button handleClick={() => {}} title="I'm a button" type="red" />,
     ).toJSON();
 
-    expect(buttonTree).toMatchStyledComponentsSnapshot();
+    expect(buttonTree).toMatchSnapshot();
   });
   it('renders the ActionBar correctly', () => {
     const tree = renderer.create(
@@ -30,6 +30,6 @@ describe('Components snapshots', () => {
       />,
     ).toJSON();
 
-    expect(tree).toMatchStyledComponentsSnapshot();
+    expect(tree).toMatchSnapshot();
   });
 });

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Components snapshots renders the Loading correctly 1`] = `
-.kiqOHi {
+.c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -21,19 +21,19 @@ exports[`Components snapshots renders the Loading correctly 1`] = `
   width: 100%;
 }
 
-.iacFuA {
+.c1 {
   color: #d3823f;
   font-size: 2em;
 }
 
 <div
-  className="Loading__LoadingAnimal-eGmvca kiqOHi"
+  className="c0"
 >
   <img
     src="/images/loading-animal.gif"
   />
   <div
-    className="Loading__RandomText-cHlNfX iacFuA"
+    className="c1"
   >
     Armando la línea numérica
   </div>
@@ -41,7 +41,7 @@ exports[`Components snapshots renders the Loading correctly 1`] = `
 `;
 
 exports[`Components snapshots renders the MenuBar correctly 1`] = `
-.cjTxT {
+.c3 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -53,12 +53,12 @@ exports[`Components snapshots renders the MenuBar correctly 1`] = `
   text-decoration: none;
 }
 
-.cjTxT:active img {
+.c3:active img {
   -webkit-animation: iVXCSc 0.245s linear infinite;
   animation: iVXCSc 0.245s linear infinite;
 }
 
-.dALwAk {
+.c5 {
   color: #f9524e;
   font-size: 1.5rem;
   font-weight: bold;
@@ -66,26 +66,30 @@ exports[`Components snapshots renders the MenuBar correctly 1`] = `
   text-shadow: 0 1px 2px rgba(85, 95, 110, 0.4);
 }
 
-.tlHEY {
+.c4 {
   filter: drop-shadow(0 1px 2px rgba(85, 95, 110, 0.4));
 }
 
-.htBNpY {
+.c9 {
   height: 22px;
   position: relative;
   vertical-align: middle;
 }
 
-.htBNpY path {
+.c9 path {
   fill: rgba(0, 0, 0, 0.6);
 }
 
-.liMkSd {
+a:hover > .c9 path {
+  fill: rgba(0, 0, 0, 0.7);
+}
+
+.c2 {
   margin: 0 auto;
   width: 980px;
 }
 
-.kBhrvE {
+.c0 {
   background: rgba(240, 240, 240, 0.9);
   box-shadow: 0 0 4px 4px rgba(85, 95, 110, 0.4);
   height: 55px;
@@ -94,7 +98,7 @@ exports[`Components snapshots renders the MenuBar correctly 1`] = `
   z-index: 1;
 }
 
-.eWnVBG {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -106,7 +110,7 @@ exports[`Components snapshots renders the MenuBar correctly 1`] = `
   justify-content: space-between;
 }
 
-.fwMiVN {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -120,7 +124,7 @@ exports[`Components snapshots renders the MenuBar correctly 1`] = `
   justify-content: space-between;
 }
 
-.cXTvmf {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -129,7 +133,7 @@ exports[`Components snapshots renders the MenuBar correctly 1`] = `
   padding: 0 0 0 1.5rem;
 }
 
-.czunCm {
+.c8 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -147,39 +151,39 @@ exports[`Components snapshots renders the MenuBar correctly 1`] = `
   justify-content: flex-end;
 }
 
-.czunCm > * {
+.c8 > * {
   padding-left: 0.5rem;
 }
 
 <div
-  className="MenuBar__Background-fWfgRq kBhrvE"
+  className="c0"
 >
   <div
-    className="MenuBar__ContentContainer-hKhuIW eWnVBG RawContentContainer__RawContentContainer-cpAunS liMkSd"
+    className="c1 c2"
   >
     <a
-      className="CodimoLink__HomeLink-jiMSkB cjTxT"
+      className="c3"
       href="/"
       onClick={[Function]}
     >
       <img
-        className="CodimoLink__ShadowedImg-GmRrH tlHEY"
+        className="c4"
         src="/images/logo-title.png"
       />
       <span
-        className="CodimoLink__Title-hhtJeH dALwAk"
+        className="c5"
       >
         Códimo
       </span>
     </a>
     <div
-      className="MenuBar__LinksContainer-jAqpOR fwMiVN"
+      className="c6"
     >
       <ul
-        className="MenuBar__LocalLinksContainer-jhZUMN cXTvmf"
+        className="c7"
       />
       <div
-        className="MenuBar__ExternalLinksContainer-JhLoa czunCm"
+        className="c8"
       >
         <a
           href="https://github.com/lgraziani2712/codimo"
@@ -187,7 +191,7 @@ exports[`Components snapshots renders the MenuBar correctly 1`] = `
         >
           <svg
             aria-labelledby="github-svg"
-            className="ExternalLinkHoc__SvgIcon-cfbobQ htBNpY"
+            className="c9"
             role="img"
             viewBox="0 0 32.6 31.8"
             xmlns="http://www.w3.org/2000/svg"
@@ -209,23 +213,23 @@ exports[`Components snapshots renders the MenuBar correctly 1`] = `
 `;
 
 exports[`Components snapshots renders the PageContainer correctly 1`] = `
-.kcEwZw {
+.c4 {
   color: snow;
   font-weight: bold;
   text-decoration: none;
 }
 
-.kcEwZw:hover {
+.c4:hover {
   color: #dadada;
   text-decoration: underline;
 }
 
-.liMkSd {
+.c3 {
   margin: 0 auto;
   width: 980px;
 }
 
-.bJokCq {
+.c0 {
   margin-bottom: 10rem;
   -webkit-user-select: initial;
   -moz-user-select: initial;
@@ -233,7 +237,7 @@ exports[`Components snapshots renders the PageContainer correctly 1`] = `
   user-select: initial;
 }
 
-.dCzalx {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -244,7 +248,7 @@ exports[`Components snapshots renders the PageContainer correctly 1`] = `
   justify-content: space-between;
 }
 
-.hEPong {
+.c1 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -264,19 +268,19 @@ exports[`Components snapshots renders the PageContainer correctly 1`] = `
 }
 
 <div
-  className="PageContainer__Wrapper-kCvKOC bJokCq"
+  className="c0"
 >
   <div />
   <div
-    className="PageContainer__Footer-gzRtKy hEPong"
+    className="c1"
   >
     <div
-      className="PageContainer__ContentContainer-cRjYKL dCzalx RawContentContainer__RawContentContainer-cpAunS liMkSd"
+      className="c2 c3"
     >
       <span>
         Equipo de desarrollo de Códimo. 
         <a
-          className="FooterLink__Link-eeoshK kcEwZw"
+          className="c4"
           href="https://www.unrn.edu.ar/"
           target="_blank"
         >
@@ -287,7 +291,7 @@ exports[`Components snapshots renders the PageContainer correctly 1`] = `
       <span>
         Distribuído bajo licencia 
         <a
-          className="FooterLink__Link-eeoshK kcEwZw"
+          className="c4"
           href="https://github.com/lgraziani2712/codimo/blob/master/LICENSE"
           target="_blank"
         >
@@ -301,19 +305,19 @@ exports[`Components snapshots renders the PageContainer correctly 1`] = `
 `;
 
 exports[`Components snapshots renders the links correctly 1`] = `
-.kcEwZw {
+.c0 {
   color: snow;
   font-weight: bold;
   text-decoration: none;
 }
 
-.kcEwZw:hover {
+.c0:hover {
   color: #dadada;
   text-decoration: underline;
 }
 
 <a
-  className="FooterLink__Link-eeoshK kcEwZw"
+  className="c0"
   href="http://helloworld.test"
   target="_blank"
 >
@@ -322,7 +326,7 @@ exports[`Components snapshots renders the links correctly 1`] = `
 `;
 
 exports[`Components snapshots renders the links correctly 2`] = `
-.cjTxT {
+.c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -334,12 +338,12 @@ exports[`Components snapshots renders the links correctly 2`] = `
   text-decoration: none;
 }
 
-.cjTxT:active img {
+.c0:active img {
   -webkit-animation: iVXCSc 0.245s linear infinite;
   animation: iVXCSc 0.245s linear infinite;
 }
 
-.dALwAk {
+.c2 {
   color: #f9524e;
   font-size: 1.5rem;
   font-weight: bold;
@@ -347,21 +351,21 @@ exports[`Components snapshots renders the links correctly 2`] = `
   text-shadow: 0 1px 2px rgba(85, 95, 110, 0.4);
 }
 
-.tlHEY {
+.c1 {
   filter: drop-shadow(0 1px 2px rgba(85, 95, 110, 0.4));
 }
 
 <a
-  className="CodimoLink__HomeLink-jiMSkB cjTxT"
+  className="c0"
   href="/"
   onClick={[Function]}
 >
   <img
-    className="CodimoLink__ShadowedImg-GmRrH tlHEY"
+    className="c1"
     src="/images/logo-title.png"
   />
   <span
-    className="CodimoLink__Title-hhtJeH dALwAk"
+    className="c2"
   >
     Códimo
   </span>
@@ -369,14 +373,18 @@ exports[`Components snapshots renders the links correctly 2`] = `
 `;
 
 exports[`Components snapshots renders the links correctly 3`] = `
-.htBNpY {
+.c0 {
   height: 22px;
   position: relative;
   vertical-align: middle;
 }
 
-.htBNpY path {
+.c0 path {
   fill: rgba(0, 0, 0, 0.6);
+}
+
+a:hover > .c0 path {
+  fill: rgba(0, 0, 0, 0.7);
 }
 
 <a
@@ -385,7 +393,7 @@ exports[`Components snapshots renders the links correctly 3`] = `
 >
   <svg
     aria-labelledby="github-svg"
-    className="ExternalLinkHoc__SvgIcon-cfbobQ htBNpY"
+    className="c0"
     role="img"
     viewBox="0 0 32.6 31.8"
     xmlns="http://www.w3.org/2000/svg"
@@ -403,12 +411,12 @@ exports[`Components snapshots renders the links correctly 3`] = `
 `;
 
 exports[`Components snapshots renders the raw components correctly 1`] = `
-.liMkSd {
+.c0 {
   margin: 0 auto;
   width: 980px;
 }
 
 <div
-  className="RawContentContainer__RawContentContainer-cpAunS liMkSd"
+  className="c0"
 />
 `;

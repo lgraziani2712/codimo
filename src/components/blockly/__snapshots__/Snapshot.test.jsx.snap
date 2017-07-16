@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Components snapshots renders the ActionBar correctly 1`] = `
-.dTlQly {
+.c2 {
   border-radius: 10px;
   cursor: pointer;
   float: left;
@@ -15,21 +15,21 @@ exports[`Components snapshots renders the ActionBar correctly 1`] = `
   transition: all 0.1s;
 }
 
-.dTlQly:active {
+.c2:active {
   border-bottom: 1px solid;
   -webkit-transform: translate(0, 5px);
   -ms-transform: translate(0, 5px);
   transform: translate(0, 5px);
 }
 
-.fZVUpp {
+.c1 {
   background-color: #5cb85c;
   border-bottom: 5px solid #1b7c1b;
   color: #fff;
   text-shadow: 0 -2px #1b7c1b;
 }
 
-.booIsN {
+.c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -45,15 +45,15 @@ exports[`Components snapshots renders the ActionBar correctly 1`] = `
   width: calc(100% - 2px);
 }
 
-.booIsN * {
+.c0 * {
   margin: 0 0 0 10px;
 }
 
 <div
-  className="ActionBar__Bar-fFHfuW booIsN"
+  className="c0"
 >
   <a
-    className="Button__ColoredAnimatedButton-fylGiI fZVUpp Button__AnimatedButton-jOrBhv dTlQly"
+    className="c1 c2"
     disabled={undefined}
     onClick={[Function]}
     type="green"
@@ -64,7 +64,7 @@ exports[`Components snapshots renders the ActionBar correctly 1`] = `
 `;
 
 exports[`Components snapshots renders the Button correctly 1`] = `
-.dTlQly {
+.c1 {
   border-radius: 10px;
   cursor: pointer;
   float: left;
@@ -78,14 +78,14 @@ exports[`Components snapshots renders the Button correctly 1`] = `
   transition: all 0.1s;
 }
 
-.dTlQly:active {
+.c1:active {
   border-bottom: 1px solid;
   -webkit-transform: translate(0, 5px);
   -ms-transform: translate(0, 5px);
   transform: translate(0, 5px);
 }
 
-.fAibEq {
+.c0 {
   background-color: #d9534f;
   border-bottom: 5px solid #be2f2b;
   color: #fff;
@@ -93,7 +93,7 @@ exports[`Components snapshots renders the Button correctly 1`] = `
 }
 
 <a
-  className="Button__ColoredAnimatedButton-fylGiI fAibEq Button__AnimatedButton-jOrBhv dTlQly"
+  className="c0 c1"
   disabled={undefined}
   onClick={[Function]}
   type="red"
