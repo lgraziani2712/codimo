@@ -26,7 +26,7 @@ export const engine = {
     },
     MazePathError: {
       confirmButtonText: general.confirmButton,
-      imageUrl: '/images/errors/MazePathError.png',
+      imageUrl: '/core/images/errors/HasHitAWall.png',
       text: 'La dirección que intenta ir el número es incorrecta',
       title: parseEmoji('🙅 Camino no válido 🙅‍♂️'),
     },

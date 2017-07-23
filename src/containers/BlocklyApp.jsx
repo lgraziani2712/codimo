@@ -20,8 +20,7 @@ import BlocklyWorkspace from 'components/blockly/BlocklyWorkspace';
 
 // FIXME MonkeyPatch https://github.com/google/blockly/issues/299
 // $FlowDoNotDisturb is a monkeypatch
-// eslint-disable-next-line no-underscore-dangle
-Blockly.WorkspaceSvg.prototype.preloadAudio_ = () => {};
+Blockly.WorkspaceSvg.prototype.preloadAudio_ = () => {}; // eslint-disable-line no-underscore-dangle
 
 const ID = 'blockly-app';
 

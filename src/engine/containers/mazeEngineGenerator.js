@@ -61,7 +61,6 @@ const numberHasLeftMazeConfig = (
   number.beHappy(START_STATE);
   numericLine.beHappy(START_STATE);
 };
-/* eslint-disable camelcase */
 const directions = {
   [MOVE_FORWARD]: [ZERO, -ONE],
   [MOVE_RIGHT]: [ONE, ZERO],
@@ -74,7 +73,6 @@ const directionsToWalls = {
   [MOVE_BACKWARD]: 'bottom',
   [MOVE_LEFT]: 'left',
 };
-/* eslint-enable */
 
 const excecuteSetOfInstructionsConfig = (
   mazeData: MazeData,

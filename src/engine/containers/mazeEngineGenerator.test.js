@@ -27,8 +27,11 @@ describe('engine > containers > mazeEngineGenerator', () => {
       await mazeEngine.excecuteSetOfInstructions(instructions);
     } catch (error) {
       expect(error.name).toBe('MazeExitError');
-      expect(error.message).toMatchSnapshot();
+      expect(error.text).toMatchSnapshot();
+
+      return;
     }
+    expect('true').toBe('not evaluated');
   });
   it('should throw a MazePathError if a wall is between valid paths', async () => {
     const newMazeData = {
@@ -51,6 +54,7 @@ describe('engine > containers > mazeEngineGenerator', () => {
       await mazeEngine.excecuteSetOfInstructions(instructions);
     } catch (error) {
       expect(error.name).toBe('MazePathError');
+      expect(error.text).toMatchSnapshot();
 
       return;
     }
@@ -97,6 +101,7 @@ describe('engine > containers > mazeEngineGenerator', () => {
       await mazeEngine.excecuteSetOfInstructions(instructions);
     } catch (error) {
       expect(error.name).toBe('MazeWrongExitError');
+      expect(error.text).toMatchSnapshot();
 
       return;
     }
@@ -126,6 +131,7 @@ describe('engine > containers > mazeEngineGenerator', () => {
       await mazeEngine.excecuteSetOfInstructions(instructions);
     } catch (error) {
       expect(error.name).toBe('MazeStarvationError');
+      expect(error.text).toMatchSnapshot();
 
       return;
     }

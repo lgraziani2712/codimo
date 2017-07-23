@@ -1,3 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`engine > containers > mazeEngineGenerator should parse an array of correct \`instructions\` and return a response 1`] = `undefined`;
+exports[`engine > containers > mazeEngineGenerator should parse an array of correct \`instructions\` and return a response 1`] = `"El número solo tiene fuerzas para saltar cuando llega a una salida"`;
+
+exports[`engine > containers > mazeEngineGenerator should throw a MazePathError if a wall is between valid paths 1`] = `"La dirección que intenta ir el número es incorrecta"`;
+
+exports[`engine > containers > mazeEngineGenerator should throw a MazeStarvationError if the actor doesn't leaves 1`] = `undefined`;
+
+exports[`engine > containers > mazeEngineGenerator should throw a MazeWrongExitError if the actor leaves at the wrong exit 1`] = `"¿El número es más grande que el de su izquierda y más chico que el de su derecha?"`;
