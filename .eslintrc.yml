@@ -24,14 +24,8 @@ settings:
     - \.eot(\?v=\d+.\d+.\d+)?$              # can't parse fonts
     - \.(woff|woff2|ttf(\?v=\d+.\d+.\d+)?)$ # can't parse fonts
   import/resolver:
-    node:
-      extensions:
-        - .js
-        - .jsx
-      moduleDirectory:
-        - node_modules
-        - src
-        - dev-elements
+    webpack:
+      config: '.dev-tools/config/webpack.config.dev.js'
 
 parserOptions:
   ecmaVersion: 6
@@ -75,7 +69,7 @@ rules:
   key-spacing: 1
   keyword-spacing: 1
   linebreak-style: 1
-  max-len: [2, { code: 100, comments: 100 }]
+  max-len: [2, { code: 100, comments: 100, ignoreStrings: true }]
   new-cap: 1
   newline-after-var: 1
   newline-before-return: 1

@@ -106,7 +106,7 @@ declare class ResourceLoader {
 
 // TODO all props and methods
 // https://nodejs.org/api/events.html#events_class_eventemitter
-declare class EventEmitter {
+declare class EventEmitter extends Callable {
   constructor(): EventEmitter;
   on(eventName: string, listener: Function): void;
 }
@@ -117,7 +117,8 @@ declare class EventEmitter {
  */
 declare class InteractiveTarget {
   /**
-   * If enabled, the mouse cursor use the pointer behavior when hovered over the displayObject if it is interactive
+   * When enabled, the mouse cursor use the pointer behavior when
+   * hovered over the displayObject if it is interactive
    * Setting this changes the 'cursor' property to `'pointer'`.
    *
    * @member {boolean}
@@ -446,7 +447,14 @@ declare module 'pixi.js' {
     ): Graphics;
     arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): Graphics;
     beginFill(color?: number, alpha?: number): Graphics;
-    bezierCurveTo(cpX: number, cpY: number, cpX2: number, cpY2: number, toX: number, toY: number): Graphics;
+    bezierCurveTo(
+      cpX: number,
+      cpY: number,
+      cpX2: number,
+      cpY2: number,
+      toX: number,
+      toY: number,
+    ): Graphics;
     clear(): Graphics;
     clone(): Graphics;
     closePath(): Graphics;
@@ -590,7 +598,13 @@ declare module 'pixi.js' {
     x: number;
     y: number;
 
-    constructor(x?: number, y?: number, width?: number, height?: number, radius?: number): RoundedRectangle;
+    constructor(
+      x?: number,
+      y?: number,
+      width?: number,
+      height?: number,
+      radius?: number,
+    ): RoundedRectangle;
     clone(): RoundedRectangle;
     contains(x: number, y: number): boolean;
   }
@@ -691,6 +705,7 @@ declare module 'pixi.js' {
     static WHITE: Texture;
     static addTextureToCache(texture: Texture, id: string): void;
     static from(
+      // eslint-disable-next-line max-len,
       source: number | string | HTMLImageElement | HTMLCanvasElement | HTMLVideoElement | BaseTexture,
     ): Texture;
     static fromCanvas(
@@ -710,7 +725,11 @@ declare module 'pixi.js' {
       scaleMode?: number,
       sourceScale?: number,
     ): Texture;
-    static fromLoader(source: HTMLImageElement | HTMLCanvasElement, imageUrl: string, name?: string): Texture;
+    static fromLoader(
+      source: HTMLImageElement | HTMLCanvasElement,
+      imageUrl: string,
+      name?: string,
+    ): Texture;
     static fromVideo(
       video: HTMLVideoElement | string,
       /**

@@ -15,15 +15,17 @@ function resolveApp(relativePath) {
 }
 
 module.exports = {
+  activities: resolveApp('activities'),
   appDist: resolveApp('dist'),
   appHtml: resolveApp('dev-elements/index.html'),
-  fourOhFour: resolveApp('dev-elements/404.html'),
   appMainJs: resolveApp('src/main'),
   appPackageJson: resolveApp('package.json'),
   appPublic: resolveApp('public'),
   appSrc: resolveApp('src'),
   appNodeModules: resolveApp('node_modules'),
+  core: resolveApp('core'),
   devElements: resolveApp('dev-elements'),
+  fourOhFour: resolveApp('dev-elements/404.html'),
   testsSetup: resolveApp('src/setupTests.js'),
   yarnLockFile: resolveApp('yarn.lock'),
 };

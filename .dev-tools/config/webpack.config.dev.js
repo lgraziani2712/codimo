@@ -47,6 +47,10 @@ module.exports = {
     // This option let us to use "absolute path" for modules
     modules,
     extensions: ['.js', '.jsx'],
+    alias: {
+      core: paths.core,
+      activities: paths.activities,
+    },
   },
   devServer: {
     historyApiFallback: true,

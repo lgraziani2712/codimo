@@ -28,7 +28,7 @@ module.exports = (resolve, rootDir) => {
     testPathIgnorePatterns: [
       '<rootDir>[/\\\\](build|docs|node_modules|scripts|.dev-tools)[/\\\\]',
     ],
-    testRegex: 'src/.*\\.test\\.jsx?$',
+    testRegex: '(src|core|activities)/.*\\.test\\.jsx?$',
     testURL: 'http://localhost',
   };
 
