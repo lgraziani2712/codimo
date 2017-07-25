@@ -32,6 +32,17 @@ type ProcessorGenerator = {|
   build(): ExecutionProcessor | ResetProcessor,
 |};
 
+/**
+ * It helps to generate a new processor.
+ * The processor is associated to a specific component.
+ *
+ * @todo Add example
+ * @version 1.0.0
+ * @param  {Metadata}         metadata         Required by the ProcessorBuilder.
+ * @param  {CodimoComponent}  actor            Required by the ProcessorBuilder.
+ * @param  {ProcessorBuilder} processorBuilder The ProcessorBuilder itself.
+ * @return {ProcessorGenerator}                The generator object.
+ */
 export default function processorGenerator(
   metadata: Metadata,
   actor: CodimoComponent,
@@ -40,11 +51,23 @@ export default function processorGenerator(
   const checkers = new Map();
 
   return {
+    /**
+     * Adds or replace a Checker for the Processor
+     *
+     * @param {string}         key     The checker ID.
+     * @param {CheckerBuilder} checker The builder function.
+     * @return {ProcessorGenerator}    For chaining purpose.
+     */
     addChecker(key: string, checker: CheckerBuilder) {
       checkers.set(key, checker(actor));
 
       return this;
     },
+    /**
+     * The builder function. Returns a new Processor instance.
+     *
+     * @return {ExecutionProcessor | ResetProcessor} The processor object.
+     */
     build() {
       return processorBuilder(metadata, actor, checkers);
     },

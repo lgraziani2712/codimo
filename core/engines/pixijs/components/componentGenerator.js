@@ -27,6 +27,8 @@ export type Generator = {|
 /**
  * This generator creates components with functionalities.
  *
+ * @todo Add example
+ * @version 1.0.0
  * @param  {Container} view   A PixiJS Container.
  * @param  {number}    size   Códimo's block size.
  * @param  {number}    margin Códimo's block margin.

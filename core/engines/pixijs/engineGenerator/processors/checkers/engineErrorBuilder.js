@@ -12,13 +12,23 @@ export type ClientError = {
   text: string,
   title: string,
 };
-type Props = {|
+type ClientErrorProps = {|
   imageUrl: string,
   text: string,
   title: string,
   confirmButtonText?: string,
 |};
-const engineErrorBuilder = (name: string, props: Props): ClientError => ({
+
+/**
+ * It generates a new object that will be used for push Information
+ * to the user.
+ *
+ * @version 1.0.0
+ * @param  {string}           name  Error's name.
+ * @param  {ClientErrorProps} props Error data.
+ * @return {ClientError}            Error instance.
+ */
+const engineErrorBuilder = (name: string, props: ClientErrorProps): ClientError => ({
   confirmButtonText: 'Aceptar',
   name,
   ...props,

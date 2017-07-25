@@ -13,6 +13,7 @@ import { type CodimoComponent, type FunctionalityBuilder } from '../componentGen
 /**
  * A builder with two prerequired params.
  *
+ * @version 1.0.0
  * @param  {string} position               CodimoComponent's starting point.
  * @param  {number} [movementDuration=0.5] Main animation time
  * @return {FunctionalityBuilder}          This new function returns an object with

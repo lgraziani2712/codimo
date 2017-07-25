@@ -39,6 +39,16 @@ type EngineGenerator = {|
   build(): Engine,
 |};
 
+/**
+ * Returns an EngineGenerator object for generating a specific
+ * engine
+ *
+ * @todo Add example
+ * @version v1.0.0
+ * @param  {EngineViewBuilder} viewBuilder This function returns
+ *                                         a consistent view.
+ * @return {EngineGenerator}               The generator object.
+ */
 export default function engineGenerator(
   viewBuilder: EngineViewBuilder,
 ): EngineGenerator {
@@ -49,6 +59,13 @@ export default function engineGenerator(
   const resetProcessors = new Map();
 
   return {
+    /**
+     * Adds or replace an ExecutionProcessor
+     *
+     * @param {string}             key       The processor ID.
+     * @param {ExecutionProcessor} processor The processor object.
+     * @return {EngineGenerator}             For chaining purpose.
+     */
     addExecutionProcessor(key: string, processor: ExecutionProcessor) {
       if (processor.willStartExecutingProcessor) {
         willStartExecutingProcessors.set(key, processor.willStartExecutingProcessor);
@@ -60,16 +77,34 @@ export default function engineGenerator(
 
       return this;
     },
+    /**
+     * Adds or replace an ResetProcessor
+     *
+     * @param {string}         key       The processor ID.
+     * @param {ResetProcessor} processor The processor object.
+     * @return {EngineGenerator}         For chaining purpose.
+     */
     addResetProcessor(key: string, processor: ResetProcessor) {
       resetProcessors.set(key, processor);
 
       return this;
     },
+    /**
+     * The builder function. Returns a new Engine instance.
+     *
+     * @return {Engine} The engine object.
+     */
     build() {
       const view = viewBuilder();
 
       return {
         view,
+        /**
+         * Invokes each of the processors in the corresponding order.
+         *
+         * @param  {Instructions}  instructions An array of instructions.
+         * @return {Promise<void>}              The animation Promise.
+         */
         async excecuteSetOfInstructions(instructions: Instructions) {
           const willStartExecutingProcessorsPromises = [];
           const willStopExecutingProcessorsPromises = [];
@@ -95,6 +130,11 @@ export default function engineGenerator(
 
           await Promise.all(willStopExecutingProcessorsPromises);
         },
+        /**
+         * It resets the game.
+         *
+         * @return {Promise<void>} The animation Promise.
+         */
         async handleResetGame() {
           const resetProcessorsPromises = [];
 

@@ -22,6 +22,7 @@ const EASE_STRENG_AT_EACH_END = ZERO;
 /**
  * A builder with two prerequired params.
  *
+ * @version 1.0.0
  * @param  {number} [movementDuration=0.5] Main animation time
  * @param  {number} [hitDuration=0.4]      Hit effect time
  * @return {FunctionalityBuilder}          This new function returns an object with

@@ -33,13 +33,23 @@ const directionsToWalls = {
 };
 const defaultError = hasHitAWallErrorGenerator();
 
+/**
+ * It validates the next position.
+ * If there is a wall, it throws a new exection
+ * and stop the execution of the animation.
+ *
+ * @version 1.0.0
+ * @param  {CodimoComponent}  component        The component to check.
+ * @param  {ClientError}      hasHitaWallError The kind of error to throw.
+ * @return {Checker}                           The new instance.
+ */
 export default function hasHitAWallBuilder(
-  actor: CodimoComponent,
+  component: CodimoComponent,
   hasHitaWallError?: ClientError = defaultError,
 ): Checker {
-  if (typeof actor.hitTheWall !== 'function') {
+  if (typeof component.hitTheWall !== 'function') {
     throw new Error(
-      'The `hasHitAWall` checker requires the actor to have the `hitTheWall` functionality',
+      'The `hasHitAWall` checker requires the component to have the `hitTheWall` functionality',
     );
   }
 
@@ -48,7 +58,7 @@ export default function hasHitAWallBuilder(
     const path: ActivePathBorders = metadata.path.get(oldPosition);
 
     if (!path[directionsToWalls[instruction]]) {
-      await actor.hitTheWall(directionsToWalls[instruction]);
+      await component.hitTheWall(directionsToWalls[instruction]);
 
       throw hasHitaWallError;
     }
