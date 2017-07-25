@@ -16,12 +16,13 @@ import executorGenerator from './executorGenerator';
 describe('blockly > executorGenerator', () => {
   it('should generate a Map of actions', () => {
     const blockData = {
-      number: 0,
+      type: 'block_data',
     };
     const executor = executorGenerator();
 
     executor.addBlockExecutor(MOVE_BACKWARD);
 
+    // $FlowDoNotDisturb it's a mock
     const code = Blockly.JavaScript[MOVE_BACKWARD](blockData);
 
     expect(code).toMatchSnapshot();
