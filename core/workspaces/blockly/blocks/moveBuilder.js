@@ -6,7 +6,10 @@
  */
 import * as colors from 'core/constants/colors';
 import { REPEAT_PARAM } from 'core/constants/instructions';
-import { type BlockDefinition, type GameDifficulty } from 'core/blockly/instanciateEveryBlock';
+import {
+  type BlockDefinition,
+  type GameDifficulty,
+} from 'core/workspaces/blockly/instanciateEveryBlock';
 
 /**
  * It builds a move block.

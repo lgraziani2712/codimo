@@ -8,7 +8,7 @@ import 'test/BlocklyMock';
 
 import instanciateEveryBlock from './instanciateEveryBlock';
 
-describe('blockly/blocks/instanciateEveryBlock', () => {
+describe('workspaces/blockly/blocks/instanciateEveryBlock', () => {
   it('should load and instanciate a required block with default parser', async () => {
     const blockTest = 'move_forward';
 

@@ -4,7 +4,7 @@
  *
  * @flow
  */
-import { type Instruction } from 'core/blockly/parseInstructions';
+import { type Instruction } from 'core/workspaces/blockly/parseInstructions';
 import { type CodimoComponent } from 'core/engines/pixijs/components/componentGenerator';
 
 type Metadata = Object;

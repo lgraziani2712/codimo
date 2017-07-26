@@ -4,7 +4,7 @@
  *
  * @flow
  */
-import { type Instruction } from 'core/blockly/parseInstructions';
+import { type Instruction } from 'core/workspaces/blockly/parseInstructions';
 import {
   MOVE_FORWARD,
   MOVE_RIGHT,

@@ -7,7 +7,7 @@
 /* eslint-disable no-magic-numbers */
 import parseInstructions from './parseInstructions';
 
-describe('core/blockly/parseInstructions', () => {
+describe('workspaces/core/blockly/parseInstructions', () => {
   it('should parse correctly a set of instructions-as-string', () => {
     const rawInstructions = 'instruction1,param1,param2;instruction2,param1;';
     const instructions = parseInstructions(rawInstructions);
