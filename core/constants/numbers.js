@@ -13,5 +13,8 @@ export const TEN = 10;
 
 export const HALF = TWO;
 
+////////////////////////////////////////////////
+// Component constants
+////////////////////////////////////////////////
 export const DEFAULT_MOVEMENT_DURATION = 0.5;
 export const ANCHOR_CENTER = 0.5;
