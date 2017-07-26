@@ -54,7 +54,10 @@ describe('engines/pixijs/engineGenerator/processors/positioningProcessorBuilder'
       beforeUpdateStateCheckers,
     );
 
-    await positioning.instructionProcessor('doNothing');
+    await positioning.instructionProcessor({
+      key: 'doNothing',
+      params: [],
+    });
 
     expect(actor.position).toBe(initialPosition);
   });
@@ -70,7 +73,10 @@ describe('engines/pixijs/engineGenerator/processors/positioningProcessorBuilder'
       beforeUpdateStateCheckers,
     );
 
-    await positioning.instructionProcessor(MOVE_FORWARD);
+    await positioning.instructionProcessor({
+      key: MOVE_FORWARD,
+      params: ['1'],
+    });
 
     expect(actor.position).toBe('1,3');
   });
@@ -88,7 +94,10 @@ describe('engines/pixijs/engineGenerator/processors/positioningProcessorBuilder'
     );
 
     try {
-      await positioning.instructionProcessor(MOVE_LEFT);
+      await positioning.instructionProcessor({
+        key: MOVE_LEFT,
+        params: ['1'],
+      });
     } catch (error) {
       expect(error.name).toBe('HasHitAWallError');
       expect(error.text).toMatchSnapshot();

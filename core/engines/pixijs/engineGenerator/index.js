@@ -6,7 +6,7 @@
  */
 import { type Container } from 'pixi.js';
 
-import { type Instructions } from '../executorGenerator';
+import { type Instructions } from 'core/blockly/parseInstructions';
 
 import { type ExecutionProcessor, type ResetProcessor } from './processors/processorGenerator';
 

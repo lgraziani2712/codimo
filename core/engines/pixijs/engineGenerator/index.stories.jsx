@@ -39,6 +39,22 @@ const metadata = {
   margin: 0,
   size: 256,
 };
+const MOVE_FORWARD_MOCK = {
+  key: MOVE_FORWARD,
+  params: ['1'],
+};
+const MOVE_RIGHT_MOCK = {
+  key: MOVE_RIGHT,
+  params: ['1'],
+};
+const MOVE_BACKWARD_MOCK = {
+  key: MOVE_BACKWARD,
+  params: ['1'],
+};
+const MOVE_LEFT_MOCK = {
+  key: MOVE_LEFT,
+  params: ['1'],
+};
 const basicActorGenerator = (size: number, margin: number) =>
   (view: Container, position: string) => (
     componentGenerator(view, size, margin)
@@ -66,16 +82,16 @@ storiesOf('engines.pixijs.engineGenerator', module)
       const engine = engineGen.addExecutionProcessor('positioning', positioningProcessor).build();
 
       const instructions = [
-        MOVE_FORWARD,
-        MOVE_LEFT,
-        MOVE_BACKWARD,
-        MOVE_BACKWARD,
-        MOVE_RIGHT,
-        MOVE_RIGHT,
-        MOVE_FORWARD,
-        MOVE_FORWARD,
-        MOVE_LEFT,
-        MOVE_BACKWARD,
+        MOVE_FORWARD_MOCK,
+        MOVE_LEFT_MOCK,
+        MOVE_BACKWARD_MOCK,
+        MOVE_BACKWARD_MOCK,
+        MOVE_RIGHT_MOCK,
+        MOVE_RIGHT_MOCK,
+        MOVE_FORWARD_MOCK,
+        MOVE_FORWARD_MOCK,
+        MOVE_LEFT_MOCK,
+        MOVE_BACKWARD_MOCK,
       ];
 
       (async () => {

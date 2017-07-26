@@ -4,6 +4,7 @@
  *
  * @flow
  */
+import { type Instruction } from 'core/blockly/parseInstructions';
 import {
   MOVE_FORWARD,
   MOVE_RIGHT,
@@ -25,9 +26,8 @@ export type PositioningState = {|
   metadata: Metadata,
 |};
 
-// TODO Flow Type
 type BeforeUpdateStateChecker = (state: PositioningState) => Promise<void | Error>;
-type BeforeUpdateStateCheckerStorage = Map<string, BeforeUpdateStateChecker>;
+type CheckersCollection = Map<string, BeforeUpdateStateChecker>;
 
 /* eslint-disable no-magic-numbers */
 const directions = {
@@ -38,40 +38,59 @@ const directions = {
 };
 /* eslint-enable */
 
+/**
+ * This ExecutionProcessor updates the component's position
+ * while animating it.
+ *
+ * @todo Add example
+ * @version 1.0.0
+ * @param  {Metadata}           metadata  Information from a specific activity level.
+ * @param  {CodimoComponent}    component The component that will have attached the processor.
+ * @param  {CheckersCollection} checkers  A collection of Checker objects.
+ * @return {ExecutionProcessor}           The new instance.
+ */
 const positioningExecutionProcessorBuilder = (
   metadata: Metadata,
-  actor: CodimoComponent,
-  beforeUpdateStateCheckers: BeforeUpdateStateCheckerStorage,
+  component: CodimoComponent,
+  checkers: CheckersCollection,
 ): ExecutionProcessor => {
-  if (typeof actor.position !== 'string' || typeof actor.updatePosition !== 'function') {
+  if (
+    typeof component.position !== 'string' ||
+    typeof component.updatePosition !== 'function'
+  ) {
     throw new Error(
       // eslint-disable-next-line max-len
-      'The `positioning` engine\'s processor requires the actor to have the `positioning` functionality',
+      'The `positioning` engine\'s processor requires the component to have the `positioning` functionality',
     );
   }
 
   return {
-    async instructionProcessor(instruction: string) {
-      if (!directions.hasOwnProperty(instruction)) {
+    async instructionProcessor(instruction: Instruction) {
+      const direction = instruction.key;
+      const times = parseInt(instruction.params[0]);
+
+      if (!directions.hasOwnProperty(direction)) {
         return;
       }
-      const oldPosition = actor.position;
-      const newPosition =
-        oldPosition
-            .split(',')
-            .map((pos, idx) => (parseInt(pos) + directions[instruction][idx]))
-            .join(',');
+      for (let i = 0; i < times; i++) {
+        const oldPosition = component.position;
+        const newPosition =
+          oldPosition
+              .split(',')
+              .map((pos, idx) => (parseInt(pos) + directions[direction][idx]))
+              .join(',');
 
-      for (const checker of beforeUpdateStateCheckers.values()) {
-        await checker({
-          instruction,
-          oldPosition,
-          newPosition,
-          metadata,
-        });
+        for (const checker of checkers.values()) {
+          await checker({
+            instruction: direction,
+            oldPosition,
+            newPosition,
+            metadata,
+          });
+        }
+
+        await component.updatePosition(newPosition);
       }
-
-      await actor.updatePosition(newPosition);
     },
   };
 };

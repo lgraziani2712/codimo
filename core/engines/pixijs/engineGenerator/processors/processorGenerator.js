@@ -4,6 +4,7 @@
  *
  * @flow
  */
+import { type Instruction } from 'core/blockly/parseInstructions';
 import { type CodimoComponent } from 'core/engines/pixijs/components/componentGenerator';
 
 type Metadata = Object;
@@ -14,7 +15,7 @@ type CheckerBuilder = (actor: CodimoComponent) => Checker;
 export type ResetProcessor = () => Promise<void>;
 export type ExecutionProcessor = {|
   willStartExecutingProcessor?: () => Promise<void>,
-  instructionProcessor(instruction: string): Promise<void>,
+  instructionProcessor(instruction: Instruction): Promise<void>,
   willStopExecutingProcessor?: () => Promise<void>,
 |};
 
