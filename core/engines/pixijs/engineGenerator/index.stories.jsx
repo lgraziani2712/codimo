@@ -61,7 +61,7 @@ const basicActorGenerator = (size: number, margin: number) =>
         .addFunctionality('positioning', positioningFunctionalityBuilder(position))
   );
 
-storiesOf('engines.pixijs.engineGenerator', module)
+storiesOf('engines/pixijs/engineGenerator', module)
     .add('simple engine with positioning', () => {
       const actor = basicActorGenerator(
         metadata.size,

@@ -5,6 +5,7 @@
  * @flow
  */
 
+export const ACTION_CONTAINER = 'action_container';
 export const SIMPLE_LOOP = 'simple_loop';
 export const REPEAT_PARAM = 'repeat_param';
 

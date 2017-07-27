@@ -8,10 +8,10 @@ import * as colors from 'core/constants/colors';
 import {
   ACTION_CONTAINER_TITLE,
   ACTION_CONTAINER_TOOLTIP,
-} from 'core/constants/localize/es';
+} from 'core/constants/localize/es/blocklyTextsBlocks';
+import { ACTION_CONTAINER } from 'core/constants/instructions';
 
 const mainInput = 'program';
-const ACTION_CONTAINER = 'action_container';
 
 /**
  * This special block is eagerly imported.

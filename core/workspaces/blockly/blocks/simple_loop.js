@@ -10,7 +10,7 @@ import {
   SIMPLE_LOOP_TITLE_1,
   SIMPLE_LOOP_TITLE_2,
   SIMPLE_LOOP_TOOLTIP,
-} from 'core/constants/localize/es';
+} from 'core/constants/localize/es/blocklyTextsBlocks';
 
 const CANT_VAR = 'CANT';
 const LOOP_STATEMENT = 'LOOP';

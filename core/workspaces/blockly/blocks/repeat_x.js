@@ -8,7 +8,7 @@ import { ZERO, TWO } from 'core/constants/numbers';
 import {
   REPEAT_X_TITLE,
   REPEAT_X_TOOLTIP,
-} from 'core/constants/localize/es';
+} from 'core/constants/localize/es/blocklyTextsBlocks';
 
 const PURPLE = 230;
 const CANT_VAR = 'CANT';

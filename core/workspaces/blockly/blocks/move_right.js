@@ -7,7 +7,7 @@
 import {
   MOVE_RIGHT_TITLE,
   MOVE_RIGHT_TOOLTIP,
-} from 'core/constants/localize/es';
+} from 'core/constants/localize/es/blocklyTextsBlocks';
 
 import moveBuilder from './moveBuilder';
 
