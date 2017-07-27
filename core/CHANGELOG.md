@@ -35,3 +35,4 @@
 - 🆕 [v1.0.0] `BlocklyApp`.
 - 🆕 [v1.0.0] `BlocklyApp/components/BlocklyToolbox`.
 - 🆕 [v1.0.0] `PixiApp`.
+- 🆕 [v1.0.0] `AppLoader`.
