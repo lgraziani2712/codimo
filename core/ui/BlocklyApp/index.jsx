@@ -37,8 +37,8 @@ type BlocklyData = {|
 type BlocklyApp$Props = {|
   difficulty: GameDifficulty,
   blocklyData: BlocklyData,
-  handleSetOfInstructions(instructions: Instructions): Promise<void>;
-  handleResetGame(): void;
+  handleSetOfInstructions(instructions: Instructions): Promise<void>,
+  handleResetGame(): void,
 |};
 type BlocklyApp$State = {|
   isExecuting: boolean,

@@ -8,8 +8,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { storiesOf, action } from 'test/storybook-facades';
-
-import { blocklyData } from './__mocks__/gameMetadata';
+import { blocklyData } from 'core/__mocks__/gameMetadata';
 
 import BlocklyApp from './';
 
@@ -43,7 +42,7 @@ const Container = styled.div`
 `;
 
 storiesOf('ui/BlocklyApp', module)
-    .add('simple Blockly app', () => (
+    .add('Simple Blockly app', () => (
       <Container>
         <BlocklyApp
           difficulty="easy"
@@ -53,7 +52,7 @@ storiesOf('ui/BlocklyApp', module)
         />
       </Container>
     ))
-    .add('complex Blockly app', () => {
+    .add('Complex Blockly app', () => {
       const newestBlocklyData = {
         ...blocklyData,
         elements: [{

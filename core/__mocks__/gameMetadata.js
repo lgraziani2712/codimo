@@ -39,14 +39,14 @@ export const blocklyData = {
 
 export default {
   difficulty: 'easy',
-  metadataData: {
+  engineData: {
     canvas: {
       height: 569,
-      width: 450,
+      width: 700,
     },
     width: 3,
     height: 5,
-    margin: 10,
-    size: 64,
+    margin: 0,
+    size: 128,
   },
 };

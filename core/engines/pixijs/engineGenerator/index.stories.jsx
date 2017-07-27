@@ -16,11 +16,12 @@ import { Container, Sprite } from 'pixi.js';
 import { storiesOf } from 'test/storybook-facades';
 import PixiWrapper from 'test/PixiWrapper';
 import {
-  MOVE_FORWARD,
-  MOVE_RIGHT,
-  MOVE_BACKWARD,
-  MOVE_LEFT,
-} from 'core/constants/instructions';
+  MOVE_FORWARD_MOCK,
+  MOVE_RIGHT_MOCK,
+  MOVE_BACKWARD_MOCK,
+  MOVE_LEFT_MOCK,
+} from 'core/__mocks__/InstructionsMock';
+import gameMetadata from 'core/__mocks__/gameMetadata';
 import componentGenerator from 'core/engines/pixijs/components/componentGenerator';
 import positioningFunctionalityBuilder
   from 'core/engines/pixijs/components/functionalities/positioningFunctionalityBuilder';
@@ -29,32 +30,6 @@ import positioningProcessorBuilder from './processors/positioningProcessorBuilde
 
 import engineGenerator from '.';
 
-const metadata = {
-  canvas: {
-    height: 550,
-    width: 700,
-  },
-  width: 10,
-  height: 5,
-  margin: 0,
-  size: 256,
-};
-const MOVE_FORWARD_MOCK = {
-  key: MOVE_FORWARD,
-  params: ['1'],
-};
-const MOVE_RIGHT_MOCK = {
-  key: MOVE_RIGHT,
-  params: ['1'],
-};
-const MOVE_BACKWARD_MOCK = {
-  key: MOVE_BACKWARD,
-  params: ['1'],
-};
-const MOVE_LEFT_MOCK = {
-  key: MOVE_LEFT,
-  params: ['1'],
-};
 const basicActorGenerator = (size: number, margin: number) =>
   (view: Container, position: string) => (
     componentGenerator(view, size, margin)
@@ -62,10 +37,10 @@ const basicActorGenerator = (size: number, margin: number) =>
   );
 
 storiesOf('engines/pixijs/engineGenerator', module)
-    .add('simple engine with positioning', () => {
+    .add('Simple engine with positioning', () => {
       const actor = basicActorGenerator(
-        metadata.size,
-        metadata.margin,
+        gameMetadata.engineData.size,
+        gameMetadata.engineData.margin,
       )(Sprite.fromImage('/images/logo.png'), '0,0').build();
       const engineGen = engineGenerator(() => {
         const view = new Container();
@@ -75,7 +50,7 @@ storiesOf('engines/pixijs/engineGenerator', module)
         return view;
       });
       const positioningProcessor = positioningProcessorBuilder(
-        metadata,
+        gameMetadata.engineData,
         actor,
         new Map(),
       );
@@ -103,8 +78,8 @@ storiesOf('engines/pixijs/engineGenerator', module)
         <PixiWrapper
           component={engine.view}
           isContainer={true}
-          height={metadata.canvas.height}
-          width={metadata.canvas.width}
+          height={gameMetadata.engineData.canvas.height}
+          width={gameMetadata.engineData.canvas.width}
         />
       );
     });

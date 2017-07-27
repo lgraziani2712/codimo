@@ -15,7 +15,7 @@ import {
   type CodimoComponent,
 } from 'core/engines/pixijs/components/componentGenerator';
 
-import { type Metadata } from '../';
+import { type EngineData } from '../';
 
 import { type ExecutionProcessor } from './processorGenerator';
 
@@ -23,7 +23,7 @@ export type PositioningState = {|
   instruction: string,
   oldPosition: string,
   newPosition: string,
-  metadata: Metadata,
+  metadata: EngineData,
 |};
 
 type BeforeUpdateStateChecker = (state: PositioningState) => Promise<void | Error>;
@@ -44,13 +44,13 @@ const directions = {
  *
  * @todo Add example
  * @version 1.0.0
- * @param  {Metadata}           metadata  Information from a specific activity level.
+ * @param  {EngineData}       metadata  Information from a specific activity level.
  * @param  {CodimoComponent}    component The component that will have attached the processor.
  * @param  {CheckersCollection} checkers  A collection of Checker objects.
  * @return {ExecutionProcessor}           The new instance.
  */
 const positioningExecutionProcessorBuilder = (
-  metadata: Metadata,
+  metadata: EngineData,
   component: CodimoComponent,
   checkers: CheckersCollection,
 ): ExecutionProcessor => {

@@ -10,7 +10,7 @@ import { type Instructions } from 'core/workspaces/blockly/parseInstructions';
 
 import { type ExecutionProcessor, type ResetProcessor } from './processors/processorGenerator';
 
-export type Metadata = {
+export type EngineData = {
   canvas: {|
     height: number,
     width: number,
