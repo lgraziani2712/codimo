@@ -192,6 +192,7 @@ rules:
   react/sort-comp: [1,
     order: [
       type-annotations,
+      defaultProps,
       static-methods,
       lifecycle,
       everything-else,
