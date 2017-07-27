@@ -17,9 +17,9 @@ exports[`Components snapshots renders the ActionBar correctly 1`] = `
 
 .c2:active {
   border-bottom: 1px solid;
-  -webkit-transform: translate(0, 5px);
-  -ms-transform: translate(0, 5px);
-  transform: translate(0, 5px);
+  -webkit-transform: translate(0,5px);
+  -ms-transform: translate(0,5px);
+  transform: translate(0,5px);
 }
 
 .c1 {
@@ -80,9 +80,9 @@ exports[`Components snapshots renders the Button correctly 1`] = `
 
 .c1:active {
   border-bottom: 1px solid;
-  -webkit-transform: translate(0, 5px);
-  -ms-transform: translate(0, 5px);
-  transform: translate(0, 5px);
+  -webkit-transform: translate(0,5px);
+  -ms-transform: translate(0,5px);
+  transform: translate(0,5px);
 }
 
 .c0 {

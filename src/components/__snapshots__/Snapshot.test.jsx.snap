@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Components snapshots renders the FrontPage correctly 1`] = `
-.c19 {
+.c11 {
   color: snow;
   font-weight: bold;
   text-decoration: none;
 }
 
-.c19:hover {
+.c11:hover {
   color: #dadada;
   text-decoration: underline;
 }
@@ -25,7 +25,7 @@ exports[`Components snapshots renders the FrontPage correctly 1`] = `
   user-select: initial;
 }
 
-.c17 {
+.c10 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -36,7 +36,7 @@ exports[`Components snapshots renders the FrontPage correctly 1`] = `
   justify-content: space-between;
 }
 
-.c16 {
+.c9 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -78,20 +78,20 @@ exports[`Components snapshots renders the FrontPage correctly 1`] = `
 }
 
 .c2 > img {
-  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.5));
 }
 
 .c1 {
   background: #d9534f;
 }
 
-.c9 {
+.c8 {
   background: #5cb85c;
 }
 
 .c6 {
   background: white;
-  box-shadow: 0 0 4px 4px rgba(85, 95, 110, 0.4);
+  box-shadow: 0 0 4px 4px rgba(85,95,110,0.4);
   -webkit-box-pack: start;
   -webkit-justify-content: flex-start;
   -ms-flex-pack: start;
@@ -101,7 +101,7 @@ exports[`Components snapshots renders the FrontPage correctly 1`] = `
 }
 
 .c6 > img {
-  filter: drop-shadow(-2px 2px 2px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(-2px 2px 2px rgba(0,0,0,0.5));
 }
 
 .c5 {
@@ -111,8 +111,8 @@ exports[`Components snapshots renders the FrontPage correctly 1`] = `
   text-shadow: 5px 5px #be2f2b;
 }
 
-.c8 {
-  font-family: 'Open Sans Condensed', sans-serif;
+.c7 {
+  font-family: 'Open Sans Condensed',sans-serif;
   font-size: 2em;
   font-weight: lighter;
   padding: 0 0.5em;
@@ -143,16 +143,16 @@ exports[`Components snapshots renders the FrontPage correctly 1`] = `
         src="/images/logo.png"
       />
       <div
-        className="c8"
+        className="c7"
       >
         Es una plataforma que presenta actividades escolares diseñadas para que sean divertidas y ayuden a afianzar los conocimientos de las distintas asignaturas a través de resolverlas de una manera diferente a como se aprenden en clase.
       </div>
     </div>
     <div
-      className="c9 c2 c3"
+      className="c8 c2 c3"
     >
       <div
-        className="c8"
+        className="c7"
       >
         Cada actividad está estructurada en niveles. Cada nivel representa un desafío y a medida que se avanza de nivel, más aumenta la dificultad.
       </div>
@@ -167,7 +167,7 @@ exports[`Components snapshots renders the FrontPage correctly 1`] = `
         src="/images/computer-thinking.png"
       />
       <div
-        className="c8"
+        className="c7"
       >
         ¿Qué es el 
         <b>
@@ -178,15 +178,15 @@ exports[`Components snapshots renders the FrontPage correctly 1`] = `
     </div>
   </div>
   <div
-    className="c16"
+    className="c9"
   >
     <div
-      className="c17 c4"
+      className="c10 c4"
     >
       <span>
         Equipo de desarrollo de Códimo. 
         <a
-          className="c19"
+          className="c11"
           href="https://www.unrn.edu.ar/"
           target="_blank"
         >
@@ -197,7 +197,7 @@ exports[`Components snapshots renders the FrontPage correctly 1`] = `
       <span>
         Distribuído bajo licencia 
         <a
-          className="c19"
+          className="c11"
           href="https://github.com/lgraziani2712/codimo/blob/master/LICENSE"
           target="_blank"
         >
