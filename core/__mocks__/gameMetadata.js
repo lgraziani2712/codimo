@@ -28,9 +28,21 @@ export const blocklyData = {
   ],
   defaultElements: `
     <block type="move_forward">
-      <next><block type="move_forward">
-        <next><block type="move_forward">
-          <next><block type="move_forward"/></next>
+      <next><block type="move_left">
+        <next><block type="move_backward">
+            <next><block type="move_backward">
+              <next><block type="move_right">
+                <next><block type="move_right">
+                  <next><block type="move_forward">
+                    <next><block type="move_forward">
+                      <next><block type="move_left">
+                        <next><block type="move_backward"/></next>
+                      </block></next>
+                    </block></next>
+                  </block></next>
+                </block></next>
+              </block></next>
+            </block></next>
         </block></next>
       </block></next>
     </block>

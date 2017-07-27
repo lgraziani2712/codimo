@@ -6,22 +6,23 @@
  */
 import React from 'react';
 import { Application } from 'pixi.js';
-import swal from 'sweetalert2';
 
 import { type GameDifficulty } from 'core/workspaces/blockly/instanciateEveryBlock';
 import { type EngineData, type Engine } from 'core/engines/pixijs/engineGenerator';
-import {
-  type ClientError,
-} from 'core/engines/pixijs/engineGenerator/processors/checkers/engineErrorBuilder';
-import { type Instructions } from 'core/workspaces/blockly/parseInstructions';
 import { HALF } from 'core/constants/numbers';
-import gameTextUI from 'core/constants/localize/es/gameTextUI';
 
 type PixiApp$Props = {|
   difficulty: GameDifficulty,
   pixiData: EngineData,
   engine: Engine,
 |};
+/**
+ * This container is responsible for rendering an
+ * engine into a canvas element. Is also responsible
+ * for passing the parsed instructions to the engine.
+ *
+ * @version 1.0.0
+ */
 export default class PixiApp extends React.Component {
   props: PixiApp$Props;
   view: HTMLCanvasElement;
@@ -47,11 +48,6 @@ export default class PixiApp extends React.Component {
     this.app.stop();
     this.app.destroy(true);
   }
-  handleSetOfInstructions = (instructions: Instructions): Promise<void> => (
-    this.props.engine.excecuteSetOfInstructions(instructions)
-        .then(() => (swal(gameTextUI.successMessage).catch(swal.noop)))
-        .catch(({ name, ...error }: ClientError) => (swal(error).catch(swal.noop)))
-  )
   render() {
     return <canvas ref={(view: HTMLCanvasElement) => this.view = view} />;
   }

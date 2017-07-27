@@ -6,8 +6,6 @@
  */
 import defaultBlockParser from './blocks/defaultBlockParser';
 
-import './blocks/action_container';
-
 // FIXME move GameDifficulty to the corresponding module
 export type GameDifficulty = 'easy' | 'normal' | 'hard';
 

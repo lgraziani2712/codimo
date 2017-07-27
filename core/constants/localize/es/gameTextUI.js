@@ -4,7 +4,7 @@
  *
  * @flow
  */
-import { parseEmoji } from 'helpers/general';
+import parseEmoji from 'core/helpers/parseEmoji';
 
 export default {
   successMessage: {

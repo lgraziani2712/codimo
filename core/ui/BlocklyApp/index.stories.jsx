@@ -48,7 +48,7 @@ storiesOf('ui/BlocklyApp', module)
           difficulty="easy"
           blocklyData={newBlocklyData}
           handleSetOfInstructions={handleSetOfInstructions}
-          handleResetGame={() => {}}
+          handleResetGame={() => Promise.resolve()}
         />
       </Container>
     ))
@@ -83,7 +83,7 @@ storiesOf('ui/BlocklyApp', module)
             difficulty="normal"
             blocklyData={newestBlocklyData}
             handleSetOfInstructions={handleSetOfInstructions}
-            handleResetGame={() => {}}
+            handleResetGame={() => Promise.resolve()}
           />
         </Container>
       );

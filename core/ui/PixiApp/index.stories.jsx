@@ -17,20 +17,12 @@ import {
   MOVE_LEFT_MOCK,
 } from 'core/__mocks__/InstructionsMock';
 import gameMetadata from 'core/__mocks__/gameMetadata';
-import componentGenerator from 'core/engines/pixijs/components/componentGenerator';
-import positioningFunctionalityBuilder
-  from 'core/engines/pixijs/components/functionalities/positioningFunctionalityBuilder';
+import basicActorGenerator from 'core/__mocks__/basicActorGenerator';
 import positioningProcessorBuilder
   from 'core/engines/pixijs/engineGenerator/processors/positioningProcessorBuilder';
 import engineGenerator from 'core/engines/pixijs/engineGenerator';
 
 import PixiApp from '.';
-
-const basicActorGenerator = (size: number, margin: number) =>
-  (view: Container, position: string) => (
-    componentGenerator(view, size, margin)
-        .addFunctionality('positioning', positioningFunctionalityBuilder(position))
-  );
 
 storiesOf('ui/PixiApp', module)
     .add('Simple Pixi App', () => {

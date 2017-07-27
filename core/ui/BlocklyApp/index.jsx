@@ -10,6 +10,8 @@ import 'blockly/blocks_compressed';
 import 'blockly/javascript_compressed';
 import 'blockly/msg/js/es';
 
+import 'core/workspaces/blockly/blocks/action_container';
+
 import { ACTION_CONTAINER } from 'core/constants/instructions';
 import parseInstructions, {
   type Instructions,
@@ -28,7 +30,7 @@ Blockly.WorkspaceSvg.prototype.preloadAudio_ = () => {}; // eslint-disable-line 
 const ID = 'blockly-app';
 
 type BlockDefinition = string;
-type BlocklyData = {|
+export type BlocklyData = {|
   blockDefinitions: Array<BlockDefinition>,
   defaultElements: string,
   elements: Array<BlocklyToolboxElement>,
@@ -38,7 +40,7 @@ type BlocklyApp$Props = {|
   difficulty: GameDifficulty,
   blocklyData: BlocklyData,
   handleSetOfInstructions(instructions: Instructions): Promise<void>,
-  handleResetGame(): void,
+  handleResetGame(): Promise<void>,
 |};
 type BlocklyApp$State = {|
   isExecuting: boolean,
@@ -57,9 +59,7 @@ type BlocklyApp$State = {|
  * for passing the array of Instructions and one for
  * resetting the game.
  *
- * @todo Example?
  * @version 1.0.0
- * @class
  */
 export default class BlocklyApp extends React.Component {
   props: BlocklyApp$Props;
@@ -118,11 +118,29 @@ export default class BlocklyApp extends React.Component {
       this.workspace,
     );
   }
+  /**
+   * This callback will be sent to the reset button.
+   * On click will reset the engine state.
+   *
+   * @return {void}
+   */
   handleResetGame = () => {
-    this.setState(() => ({ isStopped: true }));
-
-    this.props.handleResetGame();
+    this.props.handleResetGame().then(() => {
+      this.setState(() => ({ isStopped: true }));
+    });
   }
+  /**
+   * This callback will be sent to the play button.
+   * When clicked it'll do the following:
+   *
+   * 1. Request the raw instructions to Blockly.
+   * 2. Pass the raw instructions to the
+   *    parseInstructions function.
+   * 3. Pass the Array<Instructions> to the
+   *    `handleSetOfInstructions` callback.
+   *
+   * @return {void}
+   */
   handleStartGame = () => {
     const rawInstructions = Blockly.JavaScript.workspaceToCode(this.workspace);
 

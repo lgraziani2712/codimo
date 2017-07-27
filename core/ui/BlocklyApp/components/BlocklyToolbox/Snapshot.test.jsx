@@ -15,7 +15,7 @@ import sepGenerator from './blockGenerators/sepGenerator';
 
 import BlocklyToolbox from '.';
 
-describe('BlocklyToolbox', () => {
+describe('ui/BlocklyApp/components/BlocklyToolbox', () => {
   it('renders correctly an empty toolbox', () => {
     const tree = renderer.create(
       <BlocklyToolbox elements={[]} handleWorkspaceCreation={() => {}} />,
