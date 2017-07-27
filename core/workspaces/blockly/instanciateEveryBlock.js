@@ -22,7 +22,7 @@ export type BlockDefinition = {|
  * @version 1.0.0
  * @param  {GameDifficulty} difficulty How complex must be the block
  * @param  {Array<string>}  blockNames A list of required blocks
- * @return {Promise<void | Error>}     Calls every instanciation.
+ * @return {Promise<void>}             Calls every instanciation.
  */
 export default function instanciateEveryBlock(
   difficulty: GameDifficulty,
@@ -41,7 +41,10 @@ const instanciateABlock = (difficulty: GameDifficulty) =>
    */
   async (blockName: string) => {
     const blockDefinition: BlockDefinition = await import(
-      /* webpackChunkName: "Blockly$Block" */`./blocks/${blockName}`);
+      // FIXME @see https://github.com/babel/babel-eslint/issues/507
+      // eslint-disable-next-line comma-dangle
+      /* webpackChunkName: "Blockly$Block" */`./blocks/${blockName}`
+    ).then(mod => mod.default);
 
     Blockly.Blocks[blockName] = {
       init() {
