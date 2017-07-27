@@ -6,7 +6,7 @@
   "main": "src/main.jsx",
   "scripts": {
     "build": "webpack -p --config ./.dev-tools/config/webpack.config.prod.js  --profile",
-    "build:start": "build -- --progress && static dist",
+    "build:start": "npm run build -- --progress && static dist",
     "build-storybook": "build-storybook",
     "check-deps": "dep-tool compare . -a",
     "flow:check": "flow check",
@@ -41,14 +41,14 @@
     "dotenv": "4.0.0",
     "gsap": "1.20.2",
     "node-static": "0.7.9",
-    "pixi.js": "4.5.3",
+    "pixi.js": "4.5.4",
     "react": "15.6.1",
     "react-dom": "15.6.1",
     "react-router-dom": "4.1.2",
     "speculation": "1.0.5",
     "styled-components": "2.1.1",
     "sweetalert2": "6.6.6",
-    "twemoji": "2.3.0"
+    "twemoji": "2.4.1"
   },
   "devDependencies": {
     "@storybook/react": "3.1.9",
@@ -68,21 +68,21 @@
     "babili-webpack-plugin": "0.1.2",
     "clean-webpack-plugin": "0.1.16",
     "dependency-comparator": "2.0.0",
-    "eslint": "4.2.0",
+    "eslint": "4.3.0",
     "eslint-import-resolver-webpack": "0.8.3",
     "eslint-plugin-flowtype": "2.35.0",
     "eslint-plugin-import": "2.7.0",
     "eslint-plugin-react": "7.1.0",
-    "flow-bin": "0.50.0",
+    "flow-bin": "0.51.0",
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
-    "jest-styled-components": "4.0.2",
+    "jest-styled-components": "4.2.2",
     "react-test-renderer": "15.6.1",
     "stylelint": "8.0.0",
     "stylelint-config-standard": "17.0.0",
-    "stylelint-order": "0.5.0",
-    "stylelint-processor-styled-components": "0.2.0",
-    "webpack": "3.3.0",
-    "webpack-dev-server": "2.5.1"
+    "stylelint-order": "0.6.0",
+    "stylelint-processor-styled-components": "0.2.1",
+    "webpack": "3.4.1",
+    "webpack-dev-server": "2.6.1"
   }
 }

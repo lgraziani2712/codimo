@@ -1,6 +1,7 @@
 .tmp
 coverage
 build
+documentation
 dist/*.*
 flow-typed/npm
 node_modules/

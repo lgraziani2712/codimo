@@ -5,7 +5,7 @@ machine:
     # the node_modules/.bin directory doesn’t get added to PATH
     PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
   node:
-    version: 8.1.1
+    version: 8.2.1
 
 dependencies:
   override:

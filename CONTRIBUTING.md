@@ -23,11 +23,11 @@ TODO this section
   - 🚀 when adding new feature
   - 🐛 when fixing a bug
   - 🔥 when removing code or files
-  - ⚙ when refactoring code
+  - ⚙️ when refactoring code
   - 💚 when fixing the CI build
   - ✅ when adding tests
   - 🆕 when added new dependencies
   - ⬆ when upgrading dependencies
   - ⬇ when downgrading dependencies
-  - 🗑 when removing dependencies
+  - 🗑️ when removing dependencies
   - 👕 when removing linter warnings
