@@ -29,3 +29,8 @@
 - 🆕 [v1.0.0] `engineGenerator/processors/checkers/engineErrorBuilder`.
 - 🆕 [v1.0.0] `engineGenerator/processors/checkers/hasHitAWallBuilder`.
 - 🆕 [v1.0.0] `engineGenerator/processors/checkers/hasHitAWallErrorGenerator`.
+
+### 💅 React UI
+
+- 🆕 [v1.0.0] `BlocklyApp`.
+- 🆕 [v1.0.0] `BlocklyApp/components/BlocklyToolbox`.
