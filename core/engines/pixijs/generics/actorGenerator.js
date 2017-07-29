@@ -6,17 +6,21 @@
  */
 import { type Container } from 'pixi.js';
 
+import { type EngineData, type EngineGenerator } from 'core/engines/pixijs/engineGenerator';
 import componentGenerator, {
   type CodimoComponent,
 } from 'core/engines/pixijs/components/componentGenerator';
+import processorGenerator from 'core/engines/pixijs/engineGenerator/processors/processorGenerator';
+import positioningProcessorBuilder
+  from 'core/engines/pixijs/engineGenerator/processors/positioningProcessorBuilder';
 import positioningFunctionalityBuilder
   from 'core/engines/pixijs/components/functionalities/positioningFunctionalityBuilder';
 import hitTheWallFunctionalityBuilder
   from 'core/engines/pixijs/components/functionalities/hitTheWallFunctionalityBuilder';
-import positioningProcessorBuilder
-  from 'core/engines/pixijs/engineGenerator/processors/positioningProcessorBuilder';
-import { type EngineData, type EngineGenerator } from 'core/engines/pixijs/engineGenerator';
-import processorGenerator from 'core/engines/pixijs/engineGenerator/processors/processorGenerator';
+import emotionFunctionalityBuilder
+  from 'core/engines/pixijs/components/functionalities/emotionFunctionalityBuilder';
+import theFallenOneFunctionalityBuilder
+  from 'core/engines/pixijs/components/functionalities/theFallenOneFunctionalityBuilder';
 import hasHitAWallBuilder
   from 'core/engines/pixijs/engineGenerator/processors/checkers/hasHitAWallBuilder';
 
@@ -25,6 +29,8 @@ export const actorGenerator = (size: number, margin: number) =>
     componentGenerator(view, size, margin)
         .addFunctionality('positioning', positioningFunctionalityBuilder(position))
         .addFunctionality('hitTheWall', hitTheWallFunctionalityBuilder())
+        .addFunctionality('emotions', emotionFunctionalityBuilder)
+        .addFunctionality('beTheFallenOne', theFallenOneFunctionalityBuilder)
   );
 
 export const actorProcessors = (

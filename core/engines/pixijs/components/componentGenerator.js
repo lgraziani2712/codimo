@@ -30,7 +30,7 @@ export type Generator = {|
  * @todo Add example
  * @version 1.0.0
  * @param  {Container} view   A PixiJS Container.
- * @param  {number}    size   Códimo's block size.
+ * @param  {number}    size   Block's size.
  * @param  {number}    margin Códimo's block margin.
  * @return {Generator}        The component generator object for
  *                            this specific `view`.
@@ -64,7 +64,7 @@ export default function componentGenerator(
      *
      * Also sets some default props to the view.
      *
-     * @return {CodimoComponent} A component with a set of functionalities
+     * @return {CodimoComponent} A component with a set of functionalities.
      */
     build() {
       const functionalityValues = functionalities.values();

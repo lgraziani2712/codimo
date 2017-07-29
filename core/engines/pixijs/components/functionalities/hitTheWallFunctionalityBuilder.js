@@ -13,8 +13,7 @@ import {
 } from 'core/constants/numbers';
 
 import { type FunctionalityBuilder } from '../componentGenerator';
-
-type Direction = 'top' | 'right' | 'bottom' | 'left';
+import { type Direction } from '../blockGenerator';
 
 const HIT_DURATION = 0.4;
 const EASE_STRENG_AT_EACH_END = ZERO;

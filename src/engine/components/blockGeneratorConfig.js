@@ -23,7 +23,7 @@ type Block = {|
   position: string,
 |};
 const blockGeneratorConfig = (
-  type: number,
+  type: $Values<typeof BLOCK_DEFINITIONS>,
   size: number,
   margin: number,
   // $FlowDoNotDisturb @see https://github.com/facebook/flow/issues/2386
@@ -57,9 +57,8 @@ const blockGeneratorConfig = (
 
   borderLeft.alpha = borderRight.alpha = borderTop.alpha = borderBottom.alpha = 1;
 
-  borderTop.x = borderLeft.y = margin;
+  borderTop.x = borderLeft.y = borderBottom.x = borderRight.y = margin;
   borderBottom.y = borderRight.x = size + margin;
-  borderBottom.x = borderRight.y = margin;
 
   if (activePathBorders.bottom) {
     borderBottom.tint = type;

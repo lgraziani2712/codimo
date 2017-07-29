@@ -54,8 +54,7 @@ const positioningExecutionProcessorBuilder = (
     typeof component.updatePosition !== 'function'
   ) {
     throw new Error(
-      // eslint-disable-next-line max-len
-      'The `positioning` engine\'s processor requires the component to have the `positioning` functionality',
+      '`positioning` processor requires the component to have the `positioning` functionality',
     );
   }
 
