@@ -11,11 +11,11 @@ import {
   MOVE_LEFT,
 } from 'core/constants/instructions';
 import { type CodimoComponent } from 'core/engines/pixijs/components/componentGenerator';
+import { type EngineData } from 'core/engines/pixijs/engineGenerator';
 
 import { type PositioningState } from '../positioningProcessorBuilder';
 import { type Checker } from '../processorGenerator';
 
-import { type ClientError } from './engineErrorBuilder';
 import hasHitAWallErrorGenerator from './hasHitAWallErrorGenerator';
 
 type ActivePathBorders = {|
@@ -24,6 +24,10 @@ type ActivePathBorders = {|
   right?: boolean,
   top?: boolean,
 |};
+/**
+ * The string represents a coord x,y.
+ */
+export type EngineData$Path = Array<[string, ActivePathBorders]>;
 
 const directionsToWalls = {
   [MOVE_FORWARD]: 'top',
@@ -31,7 +35,7 @@ const directionsToWalls = {
   [MOVE_BACKWARD]: 'bottom',
   [MOVE_LEFT]: 'left',
 };
-const defaultError = hasHitAWallErrorGenerator();
+const hasHitaWallError = hasHitAWallErrorGenerator();
 
 /**
  * It validates the next position.
@@ -39,23 +43,33 @@ const defaultError = hasHitAWallErrorGenerator();
  * and stop the execution of the animation.
  *
  * @version 1.0.0
- * @param  {CodimoComponent}  component        The component to check.
- * @param  {ClientError}      hasHitaWallError The kind of error to throw.
- * @return {Checker}                           The new instance.
+ * @param  {CodimoComponent}  component          The component to check.
+ * @param  {EngineData}       engineData         Contains the required data for validation.
+ * @param  {ClientError}      [hasHitaWallError] The kind of error to throw.
+ * @return {Checker}                             The new instance.
  */
 export default function hasHitAWallBuilder(
   component: CodimoComponent,
-  hasHitaWallError?: ClientError = defaultError,
+  engineData: EngineData,
 ): Checker {
   if (typeof component.hitTheWall !== 'function') {
     throw new Error(
-      'The `hasHitAWall` checker requires the component to have the `hitTheWall` functionality',
+      '`hasHitAWall` checker requires the component to have the `hitTheWall` functionality',
     );
   }
+  if (!engineData.path) {
+    throw new Error(
+      // TODO add the URL for the doc of the path shape!
+      '`hasHitAWall` checker requires `engineData.path`. ' +
+      'See blablabla for the `path` shape.',
+    );
+  }
+  // $FlowDoNotDisturb is an EngineData$Path
+  const paths: EngineData$Path = new Map(engineData.path);
 
-  return async ({ metadata, instruction, oldPosition }: PositioningState) => {
+  return async ({ instruction, oldPosition }: PositioningState) => {
     // $FlowDoNotDisturb it exists
-    const path: ActivePathBorders = metadata.path.get(oldPosition);
+    const path: ActivePathBorders = paths.get(oldPosition);
 
     if (!path[directionsToWalls[instruction]]) {
       await component.hitTheWall(directionsToWalls[instruction]);

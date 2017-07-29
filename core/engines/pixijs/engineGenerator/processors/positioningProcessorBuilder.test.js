@@ -32,13 +32,13 @@ const positioningMetadata = {
   height: 5,
   margin: 10,
   size: 64,
-  path: new Map([
+  path: [
     ['1,4', { top: true }],
     ['1,3', { top: true, bottom: true }],
     ['1,2', { top: true, bottom: true }],
     ['1,1', { top: true, bottom: true }],
     ['1,0', { top: true, bottom: true }],
-  ]),
+  ],
 };
 
 describe('engines/pixijs/engineGenerator/processors/positioningProcessorBuilder', () => {
@@ -49,7 +49,6 @@ describe('engines/pixijs/engineGenerator/processors/positioningProcessorBuilder'
           .build();
     const beforeUpdateStateCheckers = new Map();
     const positioning = positioningProcessorBuilder(
-      positioningMetadata,
       actor,
       beforeUpdateStateCheckers,
     );
@@ -68,7 +67,6 @@ describe('engines/pixijs/engineGenerator/processors/positioningProcessorBuilder'
           .build();
     const beforeUpdateStateCheckers = new Map();
     const positioning = positioningProcessorBuilder(
-      positioningMetadata,
       actor,
       beforeUpdateStateCheckers,
     );
@@ -86,9 +84,10 @@ describe('engines/pixijs/engineGenerator/processors/positioningProcessorBuilder'
           .addFunctionality('positioning', positioningFunctionalityBuilder(initialPosition))
           .addFunctionality('hitthewall', hitTheWallFunctionalityBuilder())
           .build();
-    const beforeUpdateStateCheckers = new Map([['hashitwall', hasHitAWallBuilder(actor)]]);
+    const beforeUpdateStateCheckers = new Map([
+      ['hashitwall', hasHitAWallBuilder(actor, positioningMetadata)],
+    ]);
     const positioning = positioningProcessorBuilder(
-      positioningMetadata,
       actor,
       beforeUpdateStateCheckers,
     );
