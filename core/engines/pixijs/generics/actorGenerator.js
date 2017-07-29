@@ -16,8 +16,7 @@ import hitTheWallFunctionalityBuilder
 import positioningProcessorBuilder
   from 'core/engines/pixijs/engineGenerator/processors/positioningProcessorBuilder';
 import { type EngineData, type EngineGenerator } from 'core/engines/pixijs/engineGenerator';
-import { executorProcessorGenerator }
-  from 'core/engines/pixijs/engineGenerator/processors/processorGenerator';
+import processorGenerator from 'core/engines/pixijs/engineGenerator/processors/processorGenerator';
 import hasHitAWallBuilder
   from 'core/engines/pixijs/engineGenerator/processors/checkers/hasHitAWallBuilder';
 
@@ -34,9 +33,9 @@ export const actorProcessors = (
   engineGenerator: EngineGenerator,
 ): EngineGenerator => (
   engineGenerator
-      .addExecutionProcessor(
+      .addProcessor(
         'positioning',
-        executorProcessorGenerator(
+        processorGenerator(
           engineData,
           actor,
           positioningProcessorBuilder,

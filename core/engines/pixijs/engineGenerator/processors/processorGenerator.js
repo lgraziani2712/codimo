@@ -2,8 +2,6 @@
  * @author Luciano Graziani @lgraziani2712
  * @license {@link http://www.opensource.org/licenses/mit-license.php|MIT License}
  *
- * FIXME processorGenerator can be only one function. Needs flow investigation.
- *
  * @flow
  */
 import { type Instruction } from 'core/workspaces/blockly/parseInstructions';
@@ -21,18 +19,18 @@ export type ExecutionProcessor = {|
   willStopExecutingProcessor?: () => Promise<void>,
 |};
 
-type ProcessorBuilder<T> = (
+type ProcessorBuilder = (
   actor: CodimoComponent,
   beforeUpdateStateCheckers: Map<string, Checker>,
   engineData: EngineData,
-) => T;
+) => ExecutionProcessor | ResetProcessor;
 
-type ProcessorGenerator<T> = {|
+type ProcessorGenerator = {|
   addChecker(
     key: string,
     checker: CheckerBuilder,
-  ): ProcessorGenerator<T>,
-  build(): T,
+  ): ProcessorGenerator,
+  build(): ExecutionProcessor | ResetProcessor,
 |};
 
 /**
@@ -46,11 +44,11 @@ type ProcessorGenerator<T> = {|
  * @param  {ProcessorBuilder} processorBuilder The ProcessorBuilder itself.
  * @return {ProcessorGenerator}                The generator object.
  */
-export function executorProcessorGenerator(
+export default function processorGenerator(
   engineData: EngineData,
   actor: CodimoComponent,
-  processorBuilder: ProcessorBuilder<ExecutionProcessor>,
-): ProcessorGenerator<ExecutionProcessor> {
+  processorBuilder: ProcessorBuilder,
+): ProcessorGenerator {
   const checkers = new Map();
 
   return {
@@ -69,38 +67,7 @@ export function executorProcessorGenerator(
     /**
      * The builder function. Returns a new Processor instance.
      *
-     * @return {ExecutionProcessor} The processor object.
-     */
-    build() {
-      return processorBuilder(actor, checkers, engineData);
-    },
-  };
-}
-
-export function resetterProcessorGenerator(
-  engineData: EngineData,
-  actor: CodimoComponent,
-  processorBuilder: ProcessorBuilder<ResetProcessor>,
-): ProcessorGenerator<ResetProcessor> {
-  const checkers = new Map();
-
-  return {
-    /**
-     * Adds or replace a Checker for the Processor
-     *
-     * @param {string}         key     The checker ID.
-     * @param {CheckerBuilder} checker The builder function.
-     * @return {ProcessorGenerator}    For chaining purpose.
-     */
-    addChecker(key: string, checker: CheckerBuilder) {
-      checkers.set(key, checker(actor, engineData));
-
-      return this;
-    },
-    /**
-     * The builder function. Returns a new Processor instance.
-     *
-     * @return {ResetProcessor} The processor object.
+     * @return {ExecutionProcessor | ResetProcessor} The processor object.
      */
     build() {
       return processorBuilder(actor, checkers, engineData);

@@ -66,4 +66,16 @@ describe('codimo/engines/pixijs/engineGenerator', () => {
 
     expect(mockFunction.mock.calls.length).toBe(1);
   });
+  it('should add the Inexact processor corresponding collection and execute it', async () => {
+    const mockFunction = jest.fn();
+    const engineBuilder = engineGenerator(() => (new Container()));
+    const engine =
+      engineBuilder
+          .addProcessor('reset', resetProcessorMock(0)(mockFunction))
+          .build();
+
+    await engine.handleResetGame();
+
+    expect(mockFunction.mock.calls.length).toBe(1);
+  });
 });

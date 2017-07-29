@@ -28,6 +28,10 @@ export type Engine = {|
 
 type EngineViewBuilder = () => Container;
 export type EngineGenerator = {|
+  addProcessor(
+    key: string,
+    processor: ExecutionProcessor | ResetProcessor,
+  ): EngineGenerator,
   addExecutionProcessor(
     key: string,
     processor: ExecutionProcessor,
@@ -59,6 +63,19 @@ export default function engineGenerator(
   const resetProcessors = new Map();
 
   return {
+    /**
+     * If the processor's type is Inexact,
+     * this function resolves it for you.
+     *
+     * @param {string}                            key       The processor ID.
+     * @param {ExecutionProcessor|ResetProcessor} processor The processor object.
+     * @return {EngineGenerator}                            For chaining purpose.
+     */
+    addProcessor(key: string, processor: ExecutionProcessor | ResetProcessor) {
+      return typeof processor === 'object'
+        ? this.addExecutionProcessor(key, processor)
+        : this.addResetProcessor(key, processor);
+    },
     /**
      * Adds or replace an ExecutionProcessor
      *
