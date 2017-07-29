@@ -1,0 +1,34 @@
+{
+  "difficulty": "easy",
+  "blocklyData": {
+    "elements": [{
+      "define": "block",
+      "type": "move_forward"
+    }, {
+      "define": "block",
+      "type": "move_backward"
+    }, {
+      "define": "block",
+      "type": "move_right"
+    }, {
+      "define": "block",
+      "type": "move_left"
+    }],
+    "blockDefinitions": [
+      "move_forward",
+      "move_backward",
+      "move_right",
+      "move_left"
+    ]
+  },
+  "engineData": {
+    "canvas": {
+      "height": 569,
+      "width": 700
+    },
+    "width": 3,
+    "height": 5,
+    "margin": 0,
+    "size": 128
+  }
+}
