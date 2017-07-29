@@ -27,7 +27,7 @@ export type Engine = {|
 |};
 
 type EngineViewBuilder = () => Container;
-type EngineGenerator = {|
+export type EngineGenerator = {|
   addExecutionProcessor(
     key: string,
     processor: ExecutionProcessor,

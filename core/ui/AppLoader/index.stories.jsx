@@ -35,7 +35,6 @@ storiesOf('ui/AppLoader', module)
         return view;
       });
       const positioningProcessor = positioningProcessorBuilder(
-        gameMetadata.engineData,
         actor,
         new Map(),
       );

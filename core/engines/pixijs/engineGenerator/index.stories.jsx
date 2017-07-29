@@ -42,7 +42,6 @@ storiesOf('engines/pixijs/engineGenerator', module)
         return view;
       });
       const positioningProcessor = positioningProcessorBuilder(
-        gameMetadata.engineData,
         actor,
         new Map(),
       );

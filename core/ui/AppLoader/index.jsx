@@ -23,7 +23,7 @@ import PixiApp from '../PixiApp';
 import BackgroundImage from './components/BackgroundImage';
 import TwoColumns from './components/TwoColumns';
 
-type Metadata = {|
+export type Metadata = {|
   difficulty: GameDifficulty,
   engineData: EngineData,
   blocklyData: BlocklyData,
