@@ -7,7 +7,14 @@ import 'babel-polyfill';
 
 import { configure } from '@storybook/react';
 
-const req = require.context('../core', true, /\.stories\.jsx$/);
+let req;
+
+if (process.env.STORYBOOK_FOLDER === 'activities') {
+  req = require.context('../activities', true, /\.stories\.jsx$/);
+}
+if (process.env.STORYBOOK_FOLDER === 'core') {
+  req = require.context('../core', true, /\.stories\.jsx$/);
+}
 
 function loadStories() {
   req.keys().forEach(req);
