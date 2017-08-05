@@ -15,7 +15,7 @@ describe('workspaces/blockly/blocks/instanciateEveryBlock', () => {
     expect(Blockly.JavaScript[blockTest]).toBeUndefined();
     expect(Blockly.Blocks[blockTest]).toBeUndefined();
 
-    await instanciateEveryBlock('easy', [blockTest]);
+    await instanciateEveryBlock('testActivity', 'easy', [blockTest]);
 
     expect(Blockly.JavaScript[blockTest]).toBeInstanceOf(Function);
     expect(Blockly.Blocks[blockTest].init).toBeInstanceOf(Function);
@@ -26,7 +26,7 @@ describe('workspaces/blockly/blocks/instanciateEveryBlock', () => {
     expect(Blockly.JavaScript[blockTest]).toBeUndefined();
     expect(Blockly.Blocks[blockTest]).toBeUndefined();
 
-    await instanciateEveryBlock('easy', [blockTest]);
+    await instanciateEveryBlock('testActivity', 'easy', [blockTest]);
 
     expect(Blockly.JavaScript[blockTest]).toBeInstanceOf(Function);
     expect(Blockly.Blocks[blockTest].init).toBeInstanceOf(Function);
