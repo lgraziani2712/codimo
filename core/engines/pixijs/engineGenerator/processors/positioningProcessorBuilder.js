@@ -15,7 +15,7 @@ import {
   type CodimoComponent,
 } from 'core/engines/pixijs/components/componentGenerator';
 
-import { type ExecutionProcessor } from './processorGenerator';
+import { type ExecutionProcessor, type ResetProcessor } from './processorGenerator';
 
 export type PositioningState = {|
   instruction: string,
@@ -45,7 +45,7 @@ const directions = {
  * @param  {CheckersCollection} checkers  A collection of Checker objects.
  * @return {ExecutionProcessor}           The new instance.
  */
-const positioningExecutionProcessorBuilder = (
+export const positioningProcessorBuilder = (
   component: CodimoComponent,
   checkers: CheckersCollection,
 ): ExecutionProcessor => {
@@ -58,34 +58,33 @@ const positioningExecutionProcessorBuilder = (
     );
   }
 
-  return {
-    async instructionProcessor(instruction: Instruction) {
-      const direction = instruction.key;
-      const times = parseInt(instruction.params[0]);
+  return async (instruction: Instruction) => {
+    const direction = instruction.key;
+    const times = parseInt(instruction.params[0]);
 
-      if (!directions.hasOwnProperty(direction)) {
-        return;
+    if (!directions.hasOwnProperty(direction)) {
+      return;
+    }
+    for (let i = 0; i < times; i++) {
+      const oldPosition = component.position;
+      const newPosition =
+        oldPosition
+            .split(',')
+            .map((pos, idx) => (parseInt(pos) + directions[direction][idx]))
+            .join(',');
+
+      for (const checker of checkers.values()) {
+        await checker({
+          instruction: direction,
+          oldPosition,
+          newPosition,
+        });
       }
-      for (let i = 0; i < times; i++) {
-        const oldPosition = component.position;
-        const newPosition =
-          oldPosition
-              .split(',')
-              .map((pos, idx) => (parseInt(pos) + directions[direction][idx]))
-              .join(',');
 
-        for (const checker of checkers.values()) {
-          await checker({
-            instruction: direction,
-            oldPosition,
-            newPosition,
-          });
-        }
-
-        await component.updatePosition(newPosition);
-      }
-    },
+      await component.updatePosition(newPosition);
+    }
   };
 };
 
-export default positioningExecutionProcessorBuilder;
+export const positionResetProcessorBuilder = (component: CodimoComponent): ResetProcessor =>
+  () => (Promise.resolve(component.resetPosition()));

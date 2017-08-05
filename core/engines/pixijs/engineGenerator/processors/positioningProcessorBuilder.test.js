@@ -17,7 +17,7 @@ import positioningFunctionalityBuilder
 import hitTheWallFunctionalityBuilder
   from 'core/engines/pixijs/components/functionalities/hitTheWallFunctionalityBuilder';
 
-import positioningProcessorBuilder from './positioningProcessorBuilder';
+import { positioningProcessorBuilder } from './positioningProcessorBuilder';
 import hasHitAWallBuilder from './checkers/hasHitAWallBuilder';
 
 const size = 64;
@@ -43,17 +43,21 @@ const positioningMetadata = {
 
 describe('engines/pixijs/engineGenerator/processors/positioningProcessorBuilder', () => {
   it('should do nothing if the instruction is unknown', async () => {
+    const actorView = new Container();
+
+    actorView.setParent(new Container());
+
     const actor =
-      componentGenerator(new Container(), size, margin)
+      componentGenerator(actorView, size, margin)
           .addFunctionality('positioning', positioningFunctionalityBuilder(initialPosition))
           .build();
     const beforeUpdateStateCheckers = new Map();
-    const positioning = positioningProcessorBuilder(
+    const positioningProcessor = positioningProcessorBuilder(
       actor,
       beforeUpdateStateCheckers,
     );
 
-    await positioning.instructionProcessor({
+    await positioningProcessor({
       key: 'doNothing',
       params: [],
     });
@@ -61,17 +65,21 @@ describe('engines/pixijs/engineGenerator/processors/positioningProcessorBuilder'
     expect(actor.position).toBe(initialPosition);
   });
   it('should update the position if is a known instruction', async () => {
+    const actorView = new Container();
+
+    actorView.setParent(new Container());
+
     const actor =
-      componentGenerator(new Container(), size, margin)
+      componentGenerator(actorView, size, margin)
           .addFunctionality('positioning', positioningFunctionalityBuilder(initialPosition))
           .build();
     const beforeUpdateStateCheckers = new Map();
-    const positioning = positioningProcessorBuilder(
+    const positioningProcessor = positioningProcessorBuilder(
       actor,
       beforeUpdateStateCheckers,
     );
 
-    await positioning.instructionProcessor({
+    await positioningProcessor({
       key: MOVE_FORWARD,
       params: ['1'],
     });
@@ -79,21 +87,25 @@ describe('engines/pixijs/engineGenerator/processors/positioningProcessorBuilder'
     expect(actor.position).toBe('1,3');
   });
   it('should throw a HasHitAWallError if has hit a wall', async () => {
+    const actorView = new Container();
+
+    actorView.setParent(new Container());
+
     const actor =
-      componentGenerator(new Container(), size, margin)
+      componentGenerator(actorView, size, margin)
           .addFunctionality('positioning', positioningFunctionalityBuilder(initialPosition))
           .addFunctionality('hitthewall', hitTheWallFunctionalityBuilder())
           .build();
     const beforeUpdateStateCheckers = new Map([
       ['hashitwall', hasHitAWallBuilder(actor, positioningMetadata)],
     ]);
-    const positioning = positioningProcessorBuilder(
+    const positioningProcessor = positioningProcessorBuilder(
       actor,
       beforeUpdateStateCheckers,
     );
 
     try {
-      await positioning.instructionProcessor({
+      await positioningProcessor({
         key: MOVE_LEFT,
         params: ['1'],
       });
