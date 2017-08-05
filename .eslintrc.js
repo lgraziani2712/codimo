@@ -89,7 +89,7 @@ module.exports = {
     'keyword-spacing': 1,
     'linebreak-style': 1,
     'max-len': [2, { code: 100, comments: 100 }],
-    'new-cap': 1,
+    'new-cap': [1, { properties: false }],
     'newline-after-var': 1,
     'newline-before-return': 1,
     'no-whitespace-before-property': 1,

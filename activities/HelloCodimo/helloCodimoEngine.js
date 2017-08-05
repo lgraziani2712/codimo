@@ -6,41 +6,71 @@
  */
 import { Container, Sprite } from 'pixi.js';
 
+import { ANCHOR_CENTER } from 'core/constants/numbers';
 import componentGenerator from 'core/engines/pixijs/components/componentGenerator';
 import positioningFunctionalityBuilder
   from 'core/engines/pixijs/components/functionalities/positioningFunctionalityBuilder';
 import engineGenerator from 'core/engines/pixijs/engineGenerator';
-import { type Metadata } from 'core/ui/AppLoader';
+import { type Metadata } from 'core/ui/Activity';
 import processorGenerator from 'core/engines/pixijs/engineGenerator/processors/processorGenerator';
-import positioningProcessorBuilder
-  from 'core/engines/pixijs/engineGenerator/processors/positioningProcessorBuilder';
+import {
+  positioningProcessorBuilder,
+  positionResetProcessorBuilder,
+} from 'core/engines/pixijs/engineGenerator/processors/positioningProcessorBuilder';
 
 export default function helloCodimoEngine(metadata: Metadata) {
-  // 1. Create the actor.
+  /////////////////////////////////////
+  // 1. Create the actor's view.
+  /////////////////////////////////////
+  const actorParent = new Container();
+  const actorView = Sprite.fromImage('/images/logo.png');
+
+  actorView.setParent(actorParent);
+
+  /////////////////////////////////////
+  // 2. Create the actor's component.
+  /////////////////////////////////////
   const actor = componentGenerator(
-    Sprite.fromImage('/images/logo.png'),
+    actorView,
     metadata.engineData.size,
     metadata.engineData.margin,
   )
-      // 1.1. Add a functionality.
-      .addFunctionality('positioning', positioningFunctionalityBuilder('-1,0'))
+      /////////////////////////////////////
+      // 2.1. Add a functionality.
+      /////////////////////////////////////
+      .addFunctionality('positioning', positioningFunctionalityBuilder('0,0'))
       .build();
 
-  // 2. Create the engine.
+  /////////////////////////////////////
+  // 3. Create the engine.
+  /////////////////////////////////////
   return engineGenerator(() => {
     const view = new Container();
+
+    actor.view.anchor.set(ANCHOR_CENTER);
+    actor.view.width = actor.view.height = metadata.engineData.size;
 
     view.addChild(actor.view);
 
     return view;
   })
-      // 2.1. Add a processor.
-      .addProcessor(
+      /////////////////////////////////////
+      // 3.1. Add an execution processor.
+      /////////////////////////////////////
+      .addExecutionProcessor(
         'positioning',
         processorGenerator(
           metadata.engineData,
           actor,
           positioningProcessorBuilder,
         ).build(),
-      ).build();
+      )
+      /////////////////////////////////////
+      // 3.2. Add a reset processor.
+      /////////////////////////////////////
+      .addResetProcessor('positioning', positionResetProcessorBuilder(actor))
+      /////////////////////////////////////
+      // 3.3. Build.
+      /////////////////////////////////////
+      .build();
 }

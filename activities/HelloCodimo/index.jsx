@@ -8,17 +8,18 @@
  */
 import React from 'react';
 
-import AppLoader from 'core/ui/AppLoader';
+import Activity from 'core/ui/Activity';
 
 import helloCodimoEngine from './helloCodimoEngine';
-import level from './level.json';
+import metadata from './metadata.json';
 
 export default function HelloCodimo() {
   return (
-    <AppLoader
+    <Activity
       backgroundImages={[]}
-      engine={helloCodimoEngine(level)}
-      metadata={level}
+      engine={helloCodimoEngine(metadata)}
+      metadata={metadata}
+      hasNotEnd={true}
     />
   );
 }
