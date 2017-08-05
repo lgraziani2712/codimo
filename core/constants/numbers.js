@@ -12,6 +12,7 @@ export const FOUR = 4;
 export const TEN = 10;
 
 export const HALF = TWO;
+export const NOT_EXIST = -1;
 
 ////////////////////////////////////////////////
 // Component constants
