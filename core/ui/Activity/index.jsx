@@ -24,34 +24,32 @@ import BackgroundImage from './components/BackgroundImage';
 import TwoColumns from './components/TwoColumns';
 
 export type Metadata = {|
+  activityName: string,
   difficulty: GameDifficulty,
   engineData: EngineData,
   blocklyData: BlocklyData,
 |};
-type AppLoader$Props = {|
+type Activity$Props = {|
   backgroundImages: Array<string>,
   engine: Engine,
   metadata: Metadata,
+  hasNotEnd?: boolean,
 |};
 
 /**
- * The Container is in charge of loading the required apps.
- * Available apps:
+ * The Container is in charge of loading the required activity.
  *
- *   - Blockly.
- *   - PixiJS.
- *
- * @todo 1. App async loading.
+ * @version 1.0.0
+ * @todo 1. Subcomponents async loading.
  * @todo 2. Make it more generic.
  * @todo 3. Add example.
- * @version 1.0.0
  */
-export default class AppLoader extends React.Component {
-  props: AppLoader$Props;
+export default class Activity extends React.Component {
+  props: Activity$Props;
 
   image: string;
 
-  constructor(props: AppLoader$Props) {
+  constructor(props: Activity$Props) {
     super(props);
 
     this.image = props.backgroundImages[getRandomInt(ZERO, props.backgroundImages.length)];
@@ -62,11 +60,24 @@ export default class AppLoader extends React.Component {
    * @param  {Instructions} instructions Aray of Instructions.
    * @return {Promise<void>}             Animation promise.
    */
-  handleSetOfInstructions = (instructions: Instructions): Promise<void> => (
-    this.props.engine.excecuteSetOfInstructions(instructions)
+  handleSetOfInstructions = (instructions: Instructions): Promise<void> => {
+    const executionPromise = this.props.engine.excecuteSetOfInstructions(instructions);
+
+    if (this.props.hasNotEnd) {
+      return executionPromise;
+    }
+
+    return executionPromise
         .then(() => (swal(gameTextUI.successMessage).catch(swal.noop)))
-        .catch(({ name, ...error }: ClientError) => (swal(error).catch(swal.noop)))
-  )
+        .catch((error: ClientError) => {
+          if (error.title === undefined) {
+            throw error;
+          }
+          delete error.name;
+
+          return swal(error).catch(swal.noop);
+        });
+  }
   render() {
     const { engine, metadata } = this.props;
 
@@ -79,6 +90,7 @@ export default class AppLoader extends React.Component {
             pixiData={metadata.engineData}
           />
           <BlocklyApp
+            activityName={metadata.activityName}
             difficulty={metadata.difficulty}
             blocklyData={metadata.blocklyData}
             handleResetGame={engine.handleResetGame}

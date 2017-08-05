@@ -10,18 +10,20 @@ import { Container, Sprite } from 'pixi.js';
 import { storiesOf } from 'test/storybook-facades';
 import basicActorGenerator from 'core/__mocks__/basicActorGenerator';
 import gameMetadata, { blocklyData } from 'core/__mocks__/gameMetadata';
-import positioningProcessorBuilder
-  from 'core/engines/pixijs/engineGenerator/processors/positioningProcessorBuilder';
+import {
+  positioningProcessorBuilder,
+} from 'core/engines/pixijs/engineGenerator/processors/positioningProcessorBuilder';
 import engineGenerator from 'core/engines/pixijs/engineGenerator';
 
-import AppLoader from '.';
+import Activity from '.';
 
 const metadata = {
+  activityName: 'Simple PixiJS & Blockly App',
   ...gameMetadata,
   blocklyData,
 };
 
-storiesOf('ui/AppLoader', module)
+storiesOf('ui/Activity', module)
     .add('Simple PixiJS & Blockly App', () => {
       const actor = basicActorGenerator(
         gameMetadata.engineData.size,
@@ -41,7 +43,7 @@ storiesOf('ui/AppLoader', module)
       const engine = engineGen.addExecutionProcessor('positioning', positioningProcessor).build();
 
       return (
-        <AppLoader
+        <Activity
           backgroundImages={[]}
           engine={engine}
           metadata={metadata}
