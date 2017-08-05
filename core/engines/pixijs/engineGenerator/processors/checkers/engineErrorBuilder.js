@@ -4,6 +4,7 @@
  *
  * @flow
  */
+import gameTextUI from 'core/constants/localize/es/gameTextUI';
 
 export type ClientError = {
   confirmButtonText: string,
@@ -13,10 +14,11 @@ export type ClientError = {
   title: string,
 };
 type ClientErrorProps = {|
-  imageUrl: string,
-  text: string,
   title: string,
   confirmButtonText?: string,
+  imageUrl?: string,
+  text?: string,
+  html?: string,
 |};
 
 /**
@@ -29,7 +31,7 @@ type ClientErrorProps = {|
  * @return {ClientError}            Error instance.
  */
 const engineErrorBuilder = (name: string, props: ClientErrorProps): ClientError => ({
-  confirmButtonText: 'Aceptar',
+  confirmButtonText: gameTextUI.accept,
   name,
   ...props,
 });

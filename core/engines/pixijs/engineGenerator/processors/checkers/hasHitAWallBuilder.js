@@ -4,6 +4,7 @@
  *
  * @flow
  */
+import parseEmoji from 'core/helpers/parseEmoji';
 import {
   MOVE_FORWARD,
   MOVE_RIGHT,
@@ -16,7 +17,8 @@ import { type EngineData } from 'core/engines/pixijs/engineGenerator';
 import { type PositioningState } from '../positioningProcessorBuilder';
 import { type Checker } from '../processorGenerator';
 
-import hasHitAWallErrorGenerator from './hasHitAWallErrorGenerator';
+import engineErrorBuilder from './engineErrorBuilder';
+import HasHitAWallError from './HasHitAWallError.png';
 
 type ActivePathBorders = {|
   bottom?: boolean,
@@ -27,7 +29,7 @@ type ActivePathBorders = {|
 /**
  * The string represents a coord x,y.
  */
-export type EngineData$Path = Array<[string, ActivePathBorders]>;
+export type EngineData$Path = Map<string, ActivePathBorders>;
 
 const directionsToWalls = {
   [MOVE_FORWARD]: 'top',
@@ -35,7 +37,12 @@ const directionsToWalls = {
   [MOVE_BACKWARD]: 'bottom',
   [MOVE_LEFT]: 'left',
 };
-const hasHitaWallError = hasHitAWallErrorGenerator();
+
+const hasHitaWallError = engineErrorBuilder('HasHitAWallError', {
+  imageUrl: HasHitAWallError,
+  text: 'La dirección que intentás tomar es incorrecta',
+  title: parseEmoji('🙅 Camino no válido 🙅‍♂️'),
+});
 
 /**
  * It validates the next position.
@@ -43,10 +50,9 @@ const hasHitaWallError = hasHitAWallErrorGenerator();
  * and stop the execution of the animation.
  *
  * @version 1.0.0
- * @param  {CodimoComponent}  component          The component to check.
- * @param  {EngineData}       engineData         Contains the required data for validation.
- * @param  {ClientError}      [hasHitaWallError] The kind of error to throw.
- * @return {Checker}                             The new instance.
+ * @param  {CodimoComponent}  component  The component to check.
+ * @param  {EngineData}       engineData Contains the required data for validation.
+ * @return {Checker}                     The new instance.
  */
 export default function hasHitAWallBuilder(
   component: CodimoComponent,
@@ -57,14 +63,13 @@ export default function hasHitAWallBuilder(
       '`hasHitAWall` checker requires the component to have the `hitTheWall` functionality',
     );
   }
-  if (!engineData.path) {
+  if (!Array.isArray(engineData.path)) {
     throw new Error(
       // TODO add the URL for the doc of the path shape!
       '`hasHitAWall` checker requires `engineData.path`. ' +
       'See blablabla for the `path` shape.',
     );
   }
-  // $FlowDoNotDisturb is an EngineData$Path
   const paths: EngineData$Path = new Map(engineData.path);
 
   return async ({ instruction, oldPosition }: PositioningState) => {

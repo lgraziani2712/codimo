@@ -19,18 +19,20 @@
 
 ### 🤖 PixiJS Engine
 
-- 🆕 [v1.0.0] `components/componentGenerator`.
 - 🆕 [v1.0.0] `components/blockGenerator`.
+- 🆕 [v1.0.0] `components/componentGenerator`.
+- 🆕 [v1.0.0] `components/functionalities/emotionFunctionalityBuilder`.
 - 🆕 [v1.0.0] `components/functionalities/hitTheWallFunctionalityBuilder`.
 - 🆕 [v1.0.0] `components/functionalities/positioningFunctionalityBuilder`.
-- 🆕 [v1.0.0] `components/functionalities/emotionFunctionalityBuilder`.
 - 🆕 [v1.0.0] `components/functionalities/theFallenOneFunctionalityBuilder`.
 - 🆕 [v1.0.0] `engineGenerator`.
-- 🆕 [v1.0.0] `engineGenerator/processors/processorGenerator`.
+- 🆕 [v1.0.0] `engineGenerator/beforeStopExecutionCheckers/starvationCheckerBuilder`.
+- 🆕 [v1.0.0] `engineGenerator/processors/emotionResetProcessorBuilder`.
 - 🆕 [v1.0.0] `engineGenerator/processors/positioningProcessorBuilder`.
+- 🆕 [v1.0.0] `engineGenerator/processors/processorGenerator`.
 - 🆕 [v1.0.0] `engineGenerator/processors/checkers/engineErrorBuilder`.
+- 🆕 [v1.0.0] `engineGenerator/processors/checkers/hasBecomeTheFallenOneBuilder`.
 - 🆕 [v1.0.0] `engineGenerator/processors/checkers/hasHitAWallBuilder`.
-- 🆕 [v1.0.0] `engineGenerator/processors/checkers/hasHitAWallErrorGenerator`.
 - 🆕 [v1.0.0] `generics/actorGenerator`.
 
 ### 💅 React UI
