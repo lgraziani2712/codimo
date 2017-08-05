@@ -10,7 +10,7 @@ import { Route } from 'react-router-dom';
 import activityLoader from './activityLoader';
 
 export type Codimo$Route = {|
-  activity: string,
+  activityName: string,
   difficulty?: 'easy' | 'normal' | 'hard',
   title: string,
   children?: Array<{|
@@ -34,14 +34,14 @@ type CodimoRouter$Props = {|
 export default function CodimoRouter({ routes }: CodimoRouter$Props) {
   return routes.map((route) => {
     if (!route.children) {
-      const path = `/${route.activity}`;
+      const path = `/${route.activityName}`;
 
       return (
         <Route
           key={path}
           path={path}
           exact={true}
-          component={activityLoader(route.activity)}
+          component={activityLoader(route.activityName)}
         />
       );
     }
@@ -50,17 +50,17 @@ export default function CodimoRouter({ routes }: CodimoRouter$Props) {
       if (!route.difficulty) {
         throw new Error(
           // eslint-disable-next-line max-len
-          `The activity ${route.activity} requires to add the difficulty to the metadata definition.`,
+          `The activity ${route.activityName} requires to add the difficulty to the metadata definition.`,
         );
       }
-      const path = `/${route.activity}/${route.difficulty}/${child.path}`;
+      const path = `/${route.activityName}/${route.difficulty}/${child.path}`;
 
       return (
         <Route
           key={path}
           path={path}
           exact={true}
-          component={activityLoader(route.activity, route.difficulty, child.path)}
+          component={activityLoader(route.activityName, route.difficulty, child.path)}
         />
       );
     });

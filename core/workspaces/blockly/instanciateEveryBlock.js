@@ -41,7 +41,11 @@ const activityBlockInstanciator = (activityName: string, blockName: string) => (
 const instanciateABlock = (
   activityName: string,
   difficulty: GameDifficulty,
-) =>
+) => {
+  if (!activityName) {
+    throw new Error('The `activityName` must be declared.');
+  }
+
   /**
    * Instanciate one block required by the activity.
    * Each block instance is stored in `Blockly.Blocks`.
@@ -49,7 +53,7 @@ const instanciateABlock = (
    * @param  {string} blockName      The block's ID.
    * @return {Promise<void | Error>} It loads a BlockBuilder lazily.
    */
-  async (blockName: string) => {
+  return async (blockName: string) => {
     const blockDefinition: BlockDefinition = await import(
       // FIXME @see https://github.com/babel/babel-eslint/issues/507
       // eslint-disable-next-line comma-dangle
@@ -66,3 +70,4 @@ const instanciateABlock = (
     };
     Blockly.JavaScript[blockName] = blockDefinition.parser || defaultBlockParser;
   };
+};

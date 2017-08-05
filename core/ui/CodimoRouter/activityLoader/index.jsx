@@ -26,6 +26,10 @@ import Loading from './Loading';
  * @return {React$Element<Activity>}  The Activity instance.
  */
 const activityLoader = (activityName: string, difficulty?: string, level?: string) => {
+  if (!activityName) {
+    throw new Error('The `activityName` must be declared.');
+  }
+
   const loader = {};
 
   loader.Activity = () => import(

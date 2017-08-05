@@ -17,8 +17,8 @@ import { type ResetProcessor } from './processorGenerator';
  * unkown race condition between reseters and the gsap methods.
  *
  * @version 1.0.0
- * @param {CodimoComponent} component [description]
- * @return {ResetProcessor}           The processor itself.
+ * @param  {CodimoComponent} component The component to be processed.
+ * @return {ResetProcessor}            The processor itself.
  */
 const emotionResetProcessorBuilder = (component: CodimoComponent): ResetProcessor => {
   if (typeof component.beHappy !== 'function') {
