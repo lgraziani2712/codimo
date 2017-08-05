@@ -18,8 +18,9 @@ import {
 } from 'core/__mocks__/InstructionsMock';
 import gameMetadata from 'core/__mocks__/gameMetadata';
 import basicActorGenerator from 'core/__mocks__/basicActorGenerator';
-import positioningProcessorBuilder
-  from 'core/engines/pixijs/engineGenerator/processors/positioningProcessorBuilder';
+import {
+  positioningProcessorBuilder,
+} from 'core/engines/pixijs/engineGenerator/processors/positioningProcessorBuilder';
 import engineGenerator from 'core/engines/pixijs/engineGenerator';
 
 import PixiApp from '.';
