@@ -7,7 +7,6 @@
 /* eslint-disable no-magic-numbers */
 
 export class DisplayObject {
-  setParent = (f: Container) => f;
   toLocal = (point: Point) => point;
 }
 export class Point {
@@ -24,6 +23,7 @@ export class Point {
 }
 export class Container extends DisplayObject {
   height: number;
+  parent: Container;
   pivot: Point;
   rotation: number;
   scale: Point;
@@ -40,6 +40,11 @@ export class Container extends DisplayObject {
   }
   addChild = (f: Container) => f;
   getChildAt = () => this;
+  setParent(parent: Container): Container {
+    this.parent = parent;
+
+    return parent;
+  }
 }
 
 function returnThis() {
