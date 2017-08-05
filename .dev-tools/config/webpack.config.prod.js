@@ -52,6 +52,10 @@ module.exports = {
     // This option let us to use "absolute path" for modules
     modules,
     extensions: ['.js', '.jsx'],
+    alias: {
+      core: paths.core,
+      activities: paths.activities,
+    },
   },
   devServer: {
     historyApiFallback: true,
@@ -91,10 +95,13 @@ module.exports = {
     rules: [{
       test: /\.jsx?$/,
       exclude: /node_modules/,
-      loaders: ['babel-loader'],
+      use: ['babel-loader'],
     }, {
       test: /\.json$/,
-      loader: 'json-loader',
+      use: 'json-loader',
+    }, {
+      test: /\.(png|svg|jpg|gif)$/,
+      use: 'file-loader',
     }],
   },
 };

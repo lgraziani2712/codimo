@@ -72,10 +72,13 @@ module.exports = {
     rules: [{
       test: /\.jsx?$/,
       exclude: /node_modules/,
-      loaders: ['babel-loader'],
+      use: ['babel-loader'],
     }, {
       test: /\.json$/,
-      loader: 'json-loader',
+      use: 'json-loader',
+    }, {
+      test: /\.(png|svg|jpg|gif)$/,
+      use: 'file-loader',
     }],
   },
 };

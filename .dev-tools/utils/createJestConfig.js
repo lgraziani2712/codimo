@@ -20,7 +20,7 @@ module.exports = (resolve, rootDir) => {
       '^core(.*)$': '<rootDir>/core$1',
       '^activities(.*)$': '<rootDir>/activities$1',
       '^.+\\.(p?css|less|scss)$': resolve('config/jest/cssTransform.js'),
-      '^.+\\.(gif|ttf|eot|svg)$': resolve('config/jest/fileTransform.js'),
+      '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': resolve('config/jest/fileTransform.js'),
       // FIXME @see https://github.com/facebook/jest/issues/553
       'blockly/blocks_compressed': `${paths.devElements}/test/__mocks__/blockly/blocks_compressed.js`,
       'blockly/javascript_compressed': `${paths.devElements}/test/__mocks__/blockly/javascript_compressed.js`,
