@@ -37,6 +37,7 @@ export type BlocklyData = {|
 |};
 
 type BlocklyApp$Props = {|
+  activityName: string,
   difficulty: GameDifficulty,
   blocklyData: BlocklyData,
   handleSetOfInstructions(instructions: Instructions): Promise<void>,
@@ -81,7 +82,11 @@ export default class BlocklyApp extends React.Component {
       blocksAreLoaded: false,
     };
 
-    instanciateEveryBlock(props.difficulty, props.blocklyData.blockDefinitions)
+    instanciateEveryBlock(
+      props.activityName,
+      props.difficulty,
+      props.blocklyData.blockDefinitions,
+    )
         .then(() => {
           this.setState(() => ({ blocksAreLoaded: true }));
         });

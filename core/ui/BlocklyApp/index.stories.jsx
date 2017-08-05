@@ -45,6 +45,7 @@ storiesOf('ui/BlocklyApp', module)
     .add('Simple Blockly app', () => (
       <Container>
         <BlocklyApp
+          activityName={'Simple Blockly app'}
           difficulty="easy"
           blocklyData={newBlocklyData}
           handleSetOfInstructions={handleSetOfInstructions}
@@ -80,6 +81,7 @@ storiesOf('ui/BlocklyApp', module)
       return (
         <Container>
           <BlocklyApp
+            activityName={'Complex Blockly app'}
             difficulty="normal"
             blocklyData={newestBlocklyData}
             handleSetOfInstructions={handleSetOfInstructions}
