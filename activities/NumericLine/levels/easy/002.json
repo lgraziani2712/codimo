@@ -1,6 +1,6 @@
 {
   "difficulty": "normal",
-  "mazeData": {
+  "engineData": {
     "canvas": {
       "height": 569,
       "width": 550
@@ -29,12 +29,12 @@
       ["2,0", { "right": true, "left": true }],
       ["1,0", { "top": true, "right": true }]
     ],
-    "access": "0,4",
-    "exits": ["1,0"],
-    "actorExitIdx": 0
-  },
-  "numericLineData": {
-    "statics": [0, null, 6, 7, 9],
-    "accesses": [1]
+    "startPosition": "0,4",
+    "endPositions": ["1,0"],
+    "actorExitIdx": 0,
+    "numericLineData": {
+      "statics": [0, null, 6, 7, 9],
+      "accesses": [1]
+    }
   }
 }

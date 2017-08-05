@@ -14,19 +14,12 @@
   }, {
     "define": "block",
     "type": "leave_maze"
-  }, {
-    "define": "block",
-    "type": "simple_loop"
   }],
-  "blockDefinitions": [{
-    "name": "move_forward"
-  }, {
-    "name": "move_backward"
-  }, {
-    "name": "move_right"
-  }, {
-    "name": "move_left"
-  }, {
-    "name": "leave_maze"
-  }]
+  "blockDefinitions": [
+    "move_forward",
+    "move_backward",
+    "move_right",
+    "move_left",
+    "leave_maze"
+  ]
 }
