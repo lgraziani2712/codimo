@@ -12,25 +12,22 @@ import { type EngineData } from '../';
 export type Checker = (state: any) => Promise<void | Error>;
 type CheckerBuilder = (actor: CodimoComponent, metadata: EngineData) => Checker;
 
+export type ExecutionProcessor = (instruction: Instruction) => Promise<void>;
 export type ResetProcessor = () => Promise<void>;
-export type ExecutionProcessor = {|
-  willStartExecutingProcessor?: () => Promise<void>,
-  instructionProcessor(instruction: Instruction): Promise<void>,
-  willStopExecutingProcessor?: () => Promise<void>,
-|};
+type Processors = ExecutionProcessor | ResetProcessor;
 
 type ProcessorBuilder = (
   actor: CodimoComponent,
   beforeUpdateStateCheckers: Map<string, Checker>,
   engineData: EngineData,
-) => ExecutionProcessor | ResetProcessor;
+) => Processors;
 
 type ProcessorGenerator = {|
   addChecker(
     key: string,
     checker: CheckerBuilder,
   ): ProcessorGenerator,
-  build(): ExecutionProcessor | ResetProcessor,
+  build(): Processors,
 |};
 
 /**
@@ -67,7 +64,7 @@ export default function processorGenerator(
     /**
      * The builder function. Returns a new Processor instance.
      *
-     * @return {ExecutionProcessor | ResetProcessor} The processor object.
+     * @return {Processors} The processor object.
      */
     build() {
       return processorBuilder(actor, checkers, engineData);

@@ -18,18 +18,7 @@ const wait = (time: number, mock: () => void) => (
     }, time);
   })
 );
-const resetProcessorMock = (time) => (resetMock) => (() => wait(time, resetMock));
-const executionProcessorMock = (time) => (willStartMock, instructionMock, willStopMock) => ({
-  willStartExecutingProcessor() {
-    return wait(time, willStartMock);
-  },
-  instructionProcessor() {
-    return wait(time, instructionMock);
-  },
-  willStopExecutingProcessor() {
-    return wait(time, willStopMock);
-  },
-});
+const processorMock = (time) => (mockFunction) => (() => wait(time, mockFunction));
 
 describe('codimo/engines/pixijs/engineGenerator', () => {
   it('should execute all instruction processors', async () => {
@@ -37,11 +26,7 @@ describe('codimo/engines/pixijs/engineGenerator', () => {
     const engineBuilder = engineGenerator(() => (new Container()));
     const engine =
       engineBuilder
-          .addExecutionProcessor('mock', executionProcessorMock(0)(
-            mockFunction,
-            mockFunction,
-            mockFunction,
-          ))
+          .addExecutionProcessor('mock', processorMock(0)(mockFunction))
           .build();
 
     await engine.excecuteSetOfInstructions([{
@@ -52,26 +37,14 @@ describe('codimo/engines/pixijs/engineGenerator', () => {
       params: [],
     }]);
 
-    expect(mockFunction.mock.calls.length).toBe(4);
+    expect(mockFunction.mock.calls.length).toBe(2);
   });
   it('should execute all reset processors', async () => {
     const mockFunction = jest.fn();
     const engineBuilder = engineGenerator(() => (new Container()));
     const engine =
       engineBuilder
-          .addResetProcessor('reset', resetProcessorMock(0)(mockFunction))
-          .build();
-
-    await engine.handleResetGame();
-
-    expect(mockFunction.mock.calls.length).toBe(1);
-  });
-  it('should add the Inexact processor corresponding collection and execute it', async () => {
-    const mockFunction = jest.fn();
-    const engineBuilder = engineGenerator(() => (new Container()));
-    const engine =
-      engineBuilder
-          .addProcessor('reset', resetProcessorMock(0)(mockFunction))
+          .addResetProcessor('reset', processorMock(0)(mockFunction))
           .build();
 
     await engine.handleResetGame();

@@ -10,16 +10,15 @@ import { type Instructions } from 'core/workspaces/blockly/parseInstructions';
 
 import { type ExecutionProcessor, type ResetProcessor } from './processors/processorGenerator';
 
-export type EngineData = {
-  canvas: {|
-    height: number,
-    width: number,
-  |},
-  width: number,
-  height: number,
-  margin: number,
-  size: number,
-};
+/**
+ * Custom props needs to define its type like the following
+ *
+ * @example
+ * type EngineData$Prop = Type;
+ *
+ * TODO Add documentation for the basic shape.
+ */
+export type EngineData = Object;
 export type Engine = {|
   view: Container,
   excecuteSetOfInstructions(instructions: Instructions): Promise<void>,
@@ -28,10 +27,6 @@ export type Engine = {|
 
 type EngineViewBuilder = () => Container;
 export type EngineGenerator = {|
-  addProcessor(
-    key: string,
-    processor: ExecutionProcessor | ResetProcessor,
-  ): EngineGenerator,
   addExecutionProcessor(
     key: string,
     processor: ExecutionProcessor,
@@ -40,8 +35,13 @@ export type EngineGenerator = {|
     key: string,
     processor: ResetProcessor,
   ): EngineGenerator,
+  addWillStopExecutionChecker(
+    key: string,
+    checker: WillStopExecutionChecker,
+  ): EngineGenerator,
   build(): Engine,
 |};
+export type WillStopExecutionChecker = () => void;
 
 /**
  * Returns an EngineGenerator object for generating a specific
@@ -56,26 +56,11 @@ export type EngineGenerator = {|
 export default function engineGenerator(
   viewBuilder: EngineViewBuilder,
 ): EngineGenerator {
-  const willStartExecutingProcessors = new Map();
-  const instructionProcessors = new Map();
-  const willStopExecutingProcessors = new Map();
-
+  const executionProcessors = new Map();
+  const willStopExecutionCheckers = new Map();
   const resetProcessors = new Map();
 
   return {
-    /**
-     * If the processor's type is Inexact,
-     * this function resolves it for you.
-     *
-     * @param {string}                            key       The processor ID.
-     * @param {ExecutionProcessor|ResetProcessor} processor The processor object.
-     * @return {EngineGenerator}                            For chaining purpose.
-     */
-    addProcessor(key: string, processor: ExecutionProcessor | ResetProcessor) {
-      return typeof processor === 'object'
-        ? this.addExecutionProcessor(key, processor)
-        : this.addResetProcessor(key, processor);
-    },
     /**
      * Adds or replace an ExecutionProcessor
      *
@@ -84,13 +69,12 @@ export default function engineGenerator(
      * @return {EngineGenerator}             For chaining purpose.
      */
     addExecutionProcessor(key: string, processor: ExecutionProcessor) {
-      if (processor.willStartExecutingProcessor) {
-        willStartExecutingProcessors.set(key, processor.willStartExecutingProcessor);
-      }
-      if (processor.willStopExecutingProcessor) {
-        willStopExecutingProcessors.set(key, processor.willStopExecutingProcessor);
-      }
-      instructionProcessors.set(key, processor.instructionProcessor);
+      executionProcessors.set(key, processor);
+
+      return this;
+    },
+    addWillStopExecutionChecker(key: string, checker: WillStopExecutionChecker) {
+      willStopExecutionCheckers.set(key, checker);
 
       return this;
     },
@@ -123,29 +107,17 @@ export default function engineGenerator(
          * @return {Promise<void>}              The animation Promise.
          */
         async excecuteSetOfInstructions(instructions: Instructions) {
-          const willStartExecutingProcessorsPromises = [];
-          const willStopExecutingProcessorsPromises = [];
-
-          // 1. Run all the willStartExecutingProcessors at the same time
-          for (const willStartExecutingProcessor of willStartExecutingProcessors.values()) {
-            willStartExecutingProcessorsPromises.push(willStartExecutingProcessor());
-          }
-
-          await Promise.all(willStartExecutingProcessorsPromises);
-
-          // 2. Run each of the instructionProcessors sequentially
           for (let i = 0; i < instructions.length; i++) {
-            for (const instructionProcessor of instructionProcessors.values()) {
-              await instructionProcessor(instructions[i]);
+            // 1. Run each of the instructionProcessors sequentially
+            for (const execute of executionProcessors.values()) {
+              await execute(instructions[i]);
             }
           }
 
-          // 3. Run all the willStopExecutingProcessors at the same time
-          for (const willStopExecutingProcessor of willStopExecutingProcessors.values()) {
-            willStopExecutingProcessorsPromises.push(willStopExecutingProcessor());
+          // 2. Run all the willStopExecutingProcessors at the same time
+          for (const willStopExecutionCheck of willStopExecutionCheckers.values()) {
+            willStopExecutionCheck();
           }
-
-          await Promise.all(willStopExecutingProcessorsPromises);
         },
         /**
          * It resets the game.

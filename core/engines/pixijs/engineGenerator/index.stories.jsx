@@ -24,7 +24,7 @@ import {
 import gameMetadata from 'core/__mocks__/gameMetadata';
 import basicActorGenerator from 'core/__mocks__/basicActorGenerator';
 
-import positioningProcessorBuilder from './processors/positioningProcessorBuilder';
+import { positioningProcessorBuilder } from './processors/positioningProcessorBuilder';
 
 import engineGenerator from '.';
 
