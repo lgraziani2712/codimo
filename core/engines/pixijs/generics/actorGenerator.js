@@ -6,32 +6,45 @@
  */
 import { type Container } from 'pixi.js';
 
-import { type EngineData, type EngineGenerator } from 'core/engines/pixijs/engineGenerator';
+import { type EngineData, type EngineGenerator } from '../engineGenerator';
 import componentGenerator, {
   type CodimoComponent,
-} from 'core/engines/pixijs/components/componentGenerator';
-import processorGenerator from 'core/engines/pixijs/engineGenerator/processors/processorGenerator';
-import positioningProcessorBuilder
-  from 'core/engines/pixijs/engineGenerator/processors/positioningProcessorBuilder';
+} from '../components/componentGenerator';
+import processorGenerator from '../engineGenerator/processors/processorGenerator';
+import {
+  positioningProcessorBuilder,
+  positionResetProcessorBuilder,
+} from '../engineGenerator/processors/positioningProcessorBuilder';
+import emotionResetProcessorBuilder
+  from '../engineGenerator/processors/emotionResetProcessorBuilder';
 import positioningFunctionalityBuilder
-  from 'core/engines/pixijs/components/functionalities/positioningFunctionalityBuilder';
+  from '../components/functionalities/positioningFunctionalityBuilder';
 import hitTheWallFunctionalityBuilder
-  from 'core/engines/pixijs/components/functionalities/hitTheWallFunctionalityBuilder';
+  from '../components/functionalities/hitTheWallFunctionalityBuilder';
 import emotionFunctionalityBuilder
-  from 'core/engines/pixijs/components/functionalities/emotionFunctionalityBuilder';
+  from '../components/functionalities/emotionFunctionalityBuilder';
 import theFallenOneFunctionalityBuilder
-  from 'core/engines/pixijs/components/functionalities/theFallenOneFunctionalityBuilder';
+  from '../components/functionalities/theFallenOneFunctionalityBuilder';
 import hasHitAWallBuilder
-  from 'core/engines/pixijs/engineGenerator/processors/checkers/hasHitAWallBuilder';
+  from '../engineGenerator/processors/checkers/hasHitAWallBuilder';
+import hasBecomeTheFallenOneBuilder
+  from '../engineGenerator/processors/checkers/hasBecomeTheFallenOneBuilder';
+import starvationCheckerBuilder
+  from '../engineGenerator/beforeStopExecutionCheckers/starvationCheckerBuilder';
 
-export const actorGenerator = (size: number, margin: number) =>
-  (view: Container, position: string) => (
-    componentGenerator(view, size, margin)
-        .addFunctionality('positioning', positioningFunctionalityBuilder(position))
-        .addFunctionality('hitTheWall', hitTheWallFunctionalityBuilder())
-        .addFunctionality('emotions', emotionFunctionalityBuilder)
-        .addFunctionality('beTheFallenOne', theFallenOneFunctionalityBuilder)
-  );
+export const actorGenerator = (
+  view: Container,
+  size: number,
+  margin: number,
+  startPosition: string,
+  endPosition: string,
+) => (
+  componentGenerator(view, size, margin)
+      .addFunctionality('positioning', positioningFunctionalityBuilder(startPosition, endPosition))
+      .addFunctionality('hitTheWall', hitTheWallFunctionalityBuilder())
+      .addFunctionality('emotions', emotionFunctionalityBuilder)
+      .addFunctionality('beTheFallenOne', theFallenOneFunctionalityBuilder)
+);
 
 export const actorProcessors = (
   engineData: EngineData,
@@ -39,12 +52,23 @@ export const actorProcessors = (
   engineGenerator: EngineGenerator,
 ): EngineGenerator => (
   engineGenerator
-      .addProcessor(
+      ////////////////////////////
+      // Execution Processors
+      ////////////////////////////
+      .addExecutionProcessor(
         'positioning',
-        processorGenerator(
-          engineData,
-          actor,
-          positioningProcessorBuilder,
-        ).addChecker('hashitwall', hasHitAWallBuilder).build(),
+        processorGenerator(engineData, actor, positioningProcessorBuilder)
+            .addChecker('hasHitAWall', hasHitAWallBuilder)
+            .addChecker('hasBecomeTheFallenOne', hasBecomeTheFallenOneBuilder)
+            .build(),
       )
+      ////////////////////////////
+      // Will Stop Checkers
+      ////////////////////////////
+      .addWillStopExecutionChecker('starvation', starvationCheckerBuilder(actor))
+      ////////////////////////////
+      // Reset Processors
+      ////////////////////////////
+      .addResetProcessor('emotions', emotionResetProcessorBuilder(actor))
+      .addResetProcessor('positioning', positionResetProcessorBuilder(actor))
 );
