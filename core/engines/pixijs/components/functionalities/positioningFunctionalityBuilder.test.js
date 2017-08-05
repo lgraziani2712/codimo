@@ -17,8 +17,12 @@ describe('engines/pixijs/components/functionalities/positioningFunctionalityBuil
     const newPosition = '2,2';
     const size = 64;
     const margin = 10;
+    const actorView = new Container();
+
+    actorView.setParent(new Container());
+
     const actor =
-      componentGenerator(new Container(), size, margin)
+      componentGenerator(actorView, size, margin)
           .addFunctionality('positioning', positioningFunctionalityBuilder(initPosition))
           .build();
     const initX = actor.view.x;

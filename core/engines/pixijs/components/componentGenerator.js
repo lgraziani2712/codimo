@@ -6,8 +6,6 @@
  */
 import { type Container } from 'pixi.js';
 
-import { ANCHOR_CENTER } from 'core/constants/numbers';
-
 type Functionality = Object;
 export type CodimoComponent = {
   view: Container,
@@ -71,14 +69,6 @@ export default function componentGenerator(
       let component = {
         view,
       };
-
-      view.width = view.height = size;
-
-      // TODO I don't know if is OK to have this here
-      // anchor is only available on Sprite family objects
-      if (view.anchor) {
-        view.anchor.set(ANCHOR_CENTER);
-      }
 
       for (const functionality of functionalityValues) {
         component = {

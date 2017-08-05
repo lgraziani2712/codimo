@@ -17,8 +17,12 @@ describe('engines/pixijs/components/functionalities/theFallenOneFunctionalityBui
     const initPosition = '1,1';
     const size = 64;
     const margin = 10;
+    const actorView = new Container();
+
+    actorView.setParent(new Container());
+
     const actor =
-      componentGenerator(new Container(), size, margin)
+      componentGenerator(actorView, size, margin)
           .addFunctionality('positioning', positioningFunctionalityBuilder(initPosition))
           .addFunctionality('beTheFallenOne', theFallenOneFunctionalityBuilder)
           .build();

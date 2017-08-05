@@ -15,18 +15,24 @@ import { type CodimoComponent, type FunctionalityBuilder } from '../componentGen
  *
  * @version 1.0.0
  * @param  {string} position               CodimoComponent's starting point.
+ * @param  {string} [endPosition]          CodimoComponent's possible end point.
  * @param  {number} [movementDuration=0.5] Main animation time
  * @return {FunctionalityBuilder}          This new function returns an object with
  *                                         the `positioning` functionality.
  */
 const positioningFunctionalityBuilder = (
   position: string,
+  endPosition: string = '',
   movementDuration: number = DEFAULT_MOVEMENT_DURATION,
 ): FunctionalityBuilder => (
   size: number,
   margin: number,
   component: CodimoComponent,
 ) => {
+  if (!component.view.parent) {
+    throw new Error('`positioning` functionality requires the component to have a parent');
+  }
+  const initialParent = component.view.parent;
   const initialPosition =
     position
         .split(',')
@@ -47,6 +53,11 @@ const positioningFunctionalityBuilder = (
      * @readonly
      */
     initialPosition,
+    /**
+     *
+     * @readonly
+     */
+    endPosition,
     /**
      * This animation moves the component to a new position.
      * It uses a linear ease.
@@ -79,6 +90,8 @@ const positioningFunctionalityBuilder = (
      */
     resetPosition() {
       this.position = `${this.initialPosition[0]},${this.initialPosition[1]}`;
+
+      this.view.setParent(initialParent);
 
       this.view.x = this.initialPosition[0] * (size + margin) + size / HALF + margin;
       this.view.y = this.initialPosition[1] * (size + margin) + size / HALF + margin;
