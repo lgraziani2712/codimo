@@ -129,7 +129,11 @@ const numberGenerator = (
 
   return actorGenerator(view, size, margin, startPosition, endPosition)
       .addFunctionality('enterToNumericLine', enterToNumericLineFunctionalityBuilder)
-      .addFunctionality('changeActor', changeActorFunctionalityBuilder(randomizeActor, exitIdx))
+      .addFunctionality('changeActor', changeActorFunctionalityBuilder(
+        difficulty,
+        randomizeActor,
+        exitIdx,
+      ))
       .build();
 };
 

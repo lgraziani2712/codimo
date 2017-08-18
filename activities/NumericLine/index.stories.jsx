@@ -20,6 +20,6 @@ const metadata = {
 };
 
 storiesOf('NumericLine', module)
-    .add('First easy game', () => (
+    .add('First normal game', () => (
       <NumericLine metadata={metadata} />
     ));
