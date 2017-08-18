@@ -62,7 +62,7 @@ storiesOf('engines/pixijs/engineGenerator', module)
 
       (async () => {
         await wait(1000);
-        await engine.excecuteSetOfInstructions(instructions);
+        await engine.excecuteSetOfInstructions(instructions, () => {});
       })();
 
       return (

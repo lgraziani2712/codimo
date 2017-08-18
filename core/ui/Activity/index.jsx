@@ -57,11 +57,18 @@ export default class Activity extends React.Component {
   /**
    * This callback will be used by the BlocklyApp.
    *
-   * @param  {Instructions} instructions Aray of Instructions.
-   * @return {Promise<void>}             Animation promise.
+   * @param  {Instructions} instructions         Aray of Instructions.
+   * @param  {Function}     handleHighlightBlock Highlight a block through blockly.
+   * @return {Promise<void>}                     Animation promise.
    */
-  handleSetOfInstructions = (instructions: Instructions): Promise<void> => {
-    const executionPromise = this.props.engine.excecuteSetOfInstructions(instructions);
+  handleSetOfInstructions = (
+    instructions: Instructions,
+    handleHighlightBlock: (id: string) => void,
+  ): Promise<void> => {
+    const executionPromise = this.props.engine.excecuteSetOfInstructions(
+      instructions,
+      handleHighlightBlock,
+    );
 
     if (this.props.hasNotEnd) {
       return executionPromise;

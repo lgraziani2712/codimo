@@ -9,7 +9,7 @@ import parseInstructions from './parseInstructions';
 
 describe('workspaces/core/blockly/parseInstructions', () => {
   it('should parse correctly a set of instructions-as-string', () => {
-    const rawInstructions = 'instruction1,param1,param2;instruction2,param1;';
+    const rawInstructions = 'instruction1👋id👋param1👋param2👇instruction2👋id👋param1👇';
     const instructions = parseInstructions(rawInstructions);
 
     expect(instructions.length).toBe(2);

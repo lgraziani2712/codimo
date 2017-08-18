@@ -10,7 +10,7 @@ import { REPEAT_PARAM } from 'core/constants/instructions';
 /**
  * The new function is associated to the `blockName` block.
  * The returning string is an instruction and follow this format:
- *    instruction,{number};
+ *    instruction👋id👋{number}👇
  *
  * @version 1.0.0
  * @param  {Blockly$Block} block The block instance
@@ -23,5 +23,5 @@ export default function defaultBlockParser(block: Blockly$Block) {
     Blockly.JavaScript.ORDER_ATOMIC,
   );
 
-  return `${block.type},${iterations || ONE};`;
+  return `${block.type}👋${block.id}👋${iterations || ONE}👇`;
 }

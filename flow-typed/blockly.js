@@ -54,6 +54,7 @@ declare class Blockly$Input {
  */
 declare class Blockly$Block {
   type: string;
+  id: string;
 
   appendDummyInput(optName?: string): Blockly$Input;
   appendStatementInput(name: string): Blockly$Input;

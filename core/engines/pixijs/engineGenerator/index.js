@@ -21,7 +21,10 @@ import { type ExecutionProcessor, type ResetProcessor } from './processors/proce
 export type EngineData = Object;
 export type Engine = {|
   view: Container,
-  excecuteSetOfInstructions(instructions: Instructions): Promise<void>,
+  excecuteSetOfInstructions(
+    instructions: Instructions,
+    handleHighlightBlock: (id: string) => void,
+  ): Promise<void>,
   handleResetGame(): Promise<void>,
 |};
 
@@ -95,7 +98,7 @@ export default function engineGenerator(
      *
      * @return {Engine} The engine object.
      */
-    build() {
+    build(): Engine {
       const view = viewBuilder();
 
       return {
@@ -103,13 +106,19 @@ export default function engineGenerator(
         /**
          * Invokes each of the processors in the corresponding order.
          *
-         * @param  {Instructions}  instructions An array of instructions.
-         * @return {Promise<void>}              The animation Promise.
+         * @param  {Instructions}  instructions         An array of instructions.
+         * @param  {Function}      handleHighlightBlock Highlight a block through blockly.
+         * @return {Promise<void>}                      The animation Promise.
          */
-        async excecuteSetOfInstructions(instructions: Instructions) {
+        async excecuteSetOfInstructions (
+          instructions: Instructions,
+          handleHighlightBlock: (id: string) => void,
+        ) {
           for (let i = 0; i < instructions.length; i++) {
             // 1. Run each of the instructionProcessors sequentially
             for (const execute of executionProcessors.values()) {
+              handleHighlightBlock(instructions[i].id);
+
               await execute(instructions[i]);
             }
           }

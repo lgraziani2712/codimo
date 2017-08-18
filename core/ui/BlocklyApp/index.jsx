@@ -6,9 +6,9 @@
  */
 import React from 'react';
 
-import 'blockly/blocks_compressed';
-import 'blockly/javascript_compressed';
-import 'blockly/msg/js/es';
+import 'vendors/blockly/blocks_compressed';
+import 'vendors/blockly/javascript_compressed';
+import 'vendors/blockly/msg/js/es';
 
 import 'core/workspaces/blockly/blocks/action_container';
 
@@ -40,7 +40,10 @@ type BlocklyApp$Props = {|
   activityName: string,
   difficulty: GameDifficulty,
   blocklyData: BlocklyData,
-  handleSetOfInstructions(instructions: Instructions): Promise<void>,
+  handleSetOfInstructions(
+    instructions: Instructions,
+    handleHighlightBlock: (id: string) => void,
+  ): Promise<void>,
   handleResetGame(): Promise<void>,
 |};
 type BlocklyApp$State = {|
@@ -68,6 +71,7 @@ export default class BlocklyApp extends React.Component {
 
   handleWorkspaceCreation: (toolbox: HTMLElement) => void;
   handleClick: () => void;
+  highlightBlock: (id: string) => void;
   workspace: Object;
 
   constructor(props: BlocklyApp$Props) {
@@ -104,6 +108,9 @@ export default class BlocklyApp extends React.Component {
       toolbox,
       trashcan: true,
     });
+    this.highlightBlock = (id: string) => {
+      this.workspace.highlightBlock(id);
+    };
 
     // 1. Will make orphans a little transparent and they won't be
     //    executed even when Blockly ask to parse workspaceToCode
@@ -155,7 +162,10 @@ export default class BlocklyApp extends React.Component {
     }));
 
     this.props
-        .handleSetOfInstructions(parseInstructions(rawInstructions))
+        .handleSetOfInstructions(
+          parseInstructions(rawInstructions),
+          this.highlightBlock,
+        )
         .then(() => {
           this.setState(() => ({ isExecuting: false }));
         });

@@ -58,6 +58,7 @@ describe('engines/pixijs/engineGenerator/processors/positioningProcessorBuilder'
     );
 
     await positioningProcessor({
+      id: '1',
       key: 'doNothing',
       params: [],
     });
@@ -80,6 +81,7 @@ describe('engines/pixijs/engineGenerator/processors/positioningProcessorBuilder'
     );
 
     await positioningProcessor({
+      id: '1',
       key: MOVE_FORWARD,
       params: ['1'],
     });
@@ -106,6 +108,7 @@ describe('engines/pixijs/engineGenerator/processors/positioningProcessorBuilder'
 
     try {
       await positioningProcessor({
+        id: '1',
         key: MOVE_LEFT,
         params: ['1'],
       });

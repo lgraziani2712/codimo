@@ -59,7 +59,7 @@ storiesOf('ui/PixiApp', module)
 
       (async () => {
         await wait(1000);
-        await engine.excecuteSetOfInstructions(instructions);
+        await engine.excecuteSetOfInstructions(instructions, () => {});
       })();
 
       return (

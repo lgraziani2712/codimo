@@ -39,7 +39,6 @@
     "dev-elements"
   ],
   "dependencies": {
-    "blockly": "1.0.0",
     "dotenv": "4.0.0",
     "gsap": "1.20.2",
     "node-static": "0.7.9",

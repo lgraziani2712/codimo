@@ -30,12 +30,14 @@ describe('codimo/engines/pixijs/engineGenerator', () => {
           .build();
 
     await engine.excecuteSetOfInstructions([{
+      id: '1',
       key: 'instruction1',
       params: [],
     }, {
+      id: '2',
       key: 'instruction2',
       params: [],
-    }]);
+    }], () => {});
 
     expect(mockFunction.mock.calls.length).toBe(2);
   });

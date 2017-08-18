@@ -1564,10 +1564,6 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
-blockly@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/blockly/-/blockly-1.0.0.tgz#db14ce06cf6a9f3ea0e5b21c11ca89da6af461e8"
-
 bluebird@^3.4.7:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.0.tgz#791420d7f551eea2897453a8a77653f96606d67c"
