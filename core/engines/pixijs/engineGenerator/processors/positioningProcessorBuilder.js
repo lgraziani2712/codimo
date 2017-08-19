@@ -86,5 +86,13 @@ export const positioningProcessorBuilder = (
   };
 };
 
-export const positionResetProcessorBuilder = (component: CodimoComponent): ResetProcessor =>
-  () => (Promise.resolve(component.resetPosition()));
+export const positionResetProcessorBuilder = (component: CodimoComponent): ResetProcessor => {
+  if (typeof component.resetPosition !== 'function') {
+    throw new Error(
+      '`positioning` reset processor requires the component to have the ' +
+      '`positioning` functionality',
+    );
+  }
+
+  return () => (Promise.resolve(component.resetPosition()));
+};

@@ -23,7 +23,7 @@ import { type ResetProcessor } from './processorGenerator';
 const emotionResetProcessorBuilder = (component: CodimoComponent): ResetProcessor => {
   if (typeof component.beHappy !== 'function') {
     throw new Error(
-      '`emotionReset` processor requires the component to have the `emotion` functionality',
+      '`emotion` reset processor requires the component to have the `emotion` functionality',
     );
   }
 

@@ -6,7 +6,7 @@
  */
 import { TimelineLite, Linear, Power1 } from 'gsap';
 
-import { ZERO, DEFAULT_MOVEMENT_DURATION } from 'core/constants/numbers';
+import { ZERO, DEFAULT_MOVEMENT_DURATION, ANCHOR_CENTER } from 'core/constants/numbers';
 
 import { type CodimoComponent, type FunctionalityBuilder } from '../componentGenerator';
 
@@ -60,6 +60,10 @@ const theFallenOneFunctionalityBuilder: FunctionalityBuilder = (
               ease: Power1.easeIn,
             }, DEFAULT_MOVEMENT_DURATION);
       });
+    },
+    resetTheFallenOne() {
+      this.view.scale.x = this.view.scale.y = ANCHOR_CENTER;
+      this.view.rotation = 0;
     },
   };
 };

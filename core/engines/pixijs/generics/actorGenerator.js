@@ -17,6 +17,8 @@ import {
 } from '../engineGenerator/processors/positioningProcessorBuilder';
 import emotionResetProcessorBuilder
   from '../engineGenerator/processors/emotionResetProcessorBuilder';
+import theFallenOneResetProcessorBuilder
+  from '../engineGenerator/processors/theFallenOneResetProcessorBuilder';
 import positioningFunctionalityBuilder
   from '../components/functionalities/positioningFunctionalityBuilder';
 import hitTheWallFunctionalityBuilder
@@ -43,7 +45,7 @@ export const actorGenerator = (
       .addFunctionality('positioning', positioningFunctionalityBuilder(startPosition, endPosition))
       .addFunctionality('hitTheWall', hitTheWallFunctionalityBuilder())
       .addFunctionality('emotions', emotionFunctionalityBuilder)
-      .addFunctionality('beTheFallenOne', theFallenOneFunctionalityBuilder)
+      .addFunctionality('theFallenOne', theFallenOneFunctionalityBuilder)
 );
 
 export const actorProcessors = (
@@ -59,7 +61,7 @@ export const actorProcessors = (
         'positioning',
         processorGenerator(engineData, actor, positioningProcessorBuilder)
             .addChecker('hasHitAWall', hasHitAWallBuilder)
-            .addChecker('hasBecomeTheFallenOne', hasBecomeTheFallenOneBuilder)
+            .addChecker('theFallenOne', hasBecomeTheFallenOneBuilder)
             .build(),
       )
       ////////////////////////////
@@ -70,5 +72,6 @@ export const actorProcessors = (
       // Reset Processors
       ////////////////////////////
       .addResetProcessor('emotions', emotionResetProcessorBuilder(actor))
+      .addResetProcessor('theFallenOne', theFallenOneResetProcessorBuilder(actor))
       .addResetProcessor('positioning', positionResetProcessorBuilder(actor))
 );
