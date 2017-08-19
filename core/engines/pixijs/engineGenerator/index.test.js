@@ -23,7 +23,7 @@ const processorMock = (time) => (mockFunction) => (() => wait(time, mockFunction
 describe('codimo/engines/pixijs/engineGenerator', () => {
   it('should execute all instruction processors', async () => {
     const mockFunction = jest.fn();
-    const engineBuilder = engineGenerator(() => (new Container()));
+    const engineBuilder = engineGenerator(new Container());
     const engine =
       engineBuilder
           .addExecutionProcessor('mock', processorMock(0)(mockFunction))
@@ -43,7 +43,7 @@ describe('codimo/engines/pixijs/engineGenerator', () => {
   });
   it('should execute all reset processors', async () => {
     const mockFunction = jest.fn();
-    const engineBuilder = engineGenerator(() => (new Container()));
+    const engineBuilder = engineGenerator(new Container());
     const engine =
       engineBuilder
           .addResetProcessor('reset', processorMock(0)(mockFunction))

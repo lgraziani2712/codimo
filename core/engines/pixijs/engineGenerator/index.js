@@ -28,7 +28,7 @@ export type Engine = {|
   handleResetGame(): Promise<void>,
 |};
 
-type EngineViewBuilder = () => Container;
+type EngineView = Container;
 export type EngineGenerator = {|
   addExecutionProcessor(
     key: string,
@@ -52,12 +52,11 @@ export type WillStopExecutionChecker = () => void;
  *
  * @todo Add example
  * @version v1.0.0
- * @param  {EngineViewBuilder} viewBuilder This function returns
- *                                         a consistent view.
- * @return {EngineGenerator}               The generator object.
+ * @param  {EngineView} view This function returns a consistent view.
+ * @return {EngineGenerator} The generator object.
  */
 export default function engineGenerator(
-  viewBuilder: EngineViewBuilder,
+  view: EngineView,
 ): EngineGenerator {
   const executionProcessors = new Map();
   const willStopExecutionCheckers = new Map();
@@ -99,8 +98,6 @@ export default function engineGenerator(
      * @return {Engine} The engine object.
      */
     build(): Engine {
-      const view = viewBuilder();
-
       return {
         view,
         /**

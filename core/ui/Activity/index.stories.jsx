@@ -25,17 +25,15 @@ const metadata = {
 
 storiesOf('ui/Activity', module)
     .add('Simple PixiJS & Blockly App', () => {
+      const view = new Container();
       const actor = basicActorGenerator(
         gameMetadata.engineData.size,
         gameMetadata.engineData.margin,
       )(Sprite.fromImage('/images/logo.png'), '0,0').build();
-      const engineGen = engineGenerator(() => {
-        const view = new Container();
 
-        view.addChild(actor.view);
+      view.addChild(actor.view);
 
-        return view;
-      });
+      const engineGen = engineGenerator(view);
       const positioningProcessor = positioningProcessorBuilder(
         actor,
         new Map(),
