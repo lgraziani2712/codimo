@@ -4,7 +4,7 @@
  *
  * @flow
  */
-import { Text, TextStyle } from 'pixi.js';
+import { type Container, Text, TextStyle } from 'pixi.js';
 
 import { ZERO, HALF, ANCHOR_CENTER } from 'core/constants/numbers';
 import { actorGenerator } from 'core/engines/pixijs/generics/actorGenerator';
@@ -83,7 +83,7 @@ type EngineData = {
  *
  * @version 1.0.0
  * @param  {GameDifficulty}             difficulty      Metadata required for the randomizer.
- * @param  {CodimoComponent}            initialParent   The component parent required
+ * @param  {Container}                  initialParent   The component parent required
  *                                                      for resetting.
  * @param  {EngineData$NumericLineData} numericLineData Metadata required for the randomizer.
  * @param  {number}                     [actorExitIdx]  Index used with the randomizer result.
@@ -95,7 +95,7 @@ type EngineData = {
  */
 const numberGenerator = (
   difficulty: GameDifficulty,
-  initialParent: CodimoComponent,
+  initialParent: Container,
   { numericLineData, actorExitIdx, startPosition, endPositions, size, margin }: EngineData,
 ): CodimoComponent => {
   ////////////////////////////////////////////

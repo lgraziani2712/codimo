@@ -173,7 +173,7 @@ storiesOf('NumericLine/engine/components/numberGenerator', module)
         SIZES.hitting,
         MARGINS.hitting,
       )(SIZES.hitting / 1.25, SIZES.hitting);
-      const number = numberGenerator('hard', block, {
+      const number = numberGenerator('hard', block.view, {
         numericLineData: {
           statics: [null, -98],
           accesses: [0],
@@ -184,8 +184,6 @@ storiesOf('NumericLine/engine/components/numberGenerator', module)
         size: SIZES.hitting,
         margin: MARGINS.hitting,
       });
-
-      block.view.addChild(number.view);
 
       (async () => {
         await wait(1000);

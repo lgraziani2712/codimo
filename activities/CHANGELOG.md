@@ -7,8 +7,15 @@
 
 ### 📏 codimo-activity-numeric-line
 
-- Version: `1.0.0`.
+- Version: `1.0.1`.
 - Description: It's a 6-8 years old mathematical activity. The objective is to move the number into the numeric line while trying to leave a maze without falling in the attempt.
+
+#### Updates
+
+##### v1.0.1
+
+- Add SVG image instead of emoji to `leave_maze` block. This homogenize the icon through every OS and browser, and ensures is going to be rendered as expected.
+- Remove text from `leave_maze` block.
 
 #### Technical Description
 

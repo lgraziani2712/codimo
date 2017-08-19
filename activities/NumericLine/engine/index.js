@@ -29,20 +29,17 @@ import numericLineGenerator from './components/numericLineGenerator';
  * @return {Engine}                    The new engine.
  */
 export default function engine({ difficulty, engineData }: Metadata) {
+  const view = new Container();
   const numericLine = numericLineGenerator(engineData);
   const maze = mazeGenerator(engineData);
   const number = numberGenerator(difficulty, maze.view, engineData);
+  const MARGIN_NUMERIC_LINE_MAZE = engineData.margin + engineData.size / HALF;
 
-  return actorProcessors(engineData, number, engineGenerator(() => {
-    const view = new Container();
-    const MARGIN_NUMERIC_LINE_MAZE = engineData.margin + engineData.size / HALF;
+  maze.view.y = numericLine.view.height + MARGIN_NUMERIC_LINE_MAZE;
 
-    maze.view.y = numericLine.view.height + MARGIN_NUMERIC_LINE_MAZE;
+  view.addChild(maze.view, numericLine.view);
 
-    view.addChild(maze.view, numericLine.view);
-
-    return view;
-  }))
+  return actorProcessors(engineData, number, engineGenerator(view))
       .addExecutionProcessor(
         'hasLeftTheMaze',
         hasLeftTheMazeProcessorBuilder(number, numericLine, engineData),

@@ -8,8 +8,8 @@ import React from 'react';
 
 import { storiesOf } from 'test/storybook-facades';
 
-import level from './levels/normal/001.json';
-import normalBloklyData from './levels/normal/blocklyData.json';
+import level from './levels/hard/001.json';
+import normalBloklyData from './levels/hard/blocklyData.json';
 
 import NumericLine from '.';
 

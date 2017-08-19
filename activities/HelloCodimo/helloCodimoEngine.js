@@ -22,10 +22,10 @@ export default function helloCodimoEngine(metadata: Metadata) {
   /////////////////////////////////////
   // 1. Create the actor's view.
   /////////////////////////////////////
-  const actorParent = new Container();
+  const view = new Container();
   const actorView = Sprite.fromImage('/images/logo.png');
 
-  actorView.setParent(actorParent);
+  view.addChild(actorView);
 
   /////////////////////////////////////
   // 2. Create the actor's component.
@@ -41,19 +41,13 @@ export default function helloCodimoEngine(metadata: Metadata) {
       .addFunctionality('positioning', positioningFunctionalityBuilder('0,0'))
       .build();
 
+  actor.view.anchor.set(ANCHOR_CENTER);
+  actor.view.width = actor.view.height = metadata.engineData.size;
+
   /////////////////////////////////////
   // 3. Create the engine.
   /////////////////////////////////////
-  return engineGenerator(() => {
-    const view = new Container();
-
-    actor.view.anchor.set(ANCHOR_CENTER);
-    actor.view.width = actor.view.height = metadata.engineData.size;
-
-    view.addChild(actor.view);
-
-    return view;
-  })
+  return engineGenerator(view)
       /////////////////////////////////////
       // 3.1. Add an execution processor.
       /////////////////////////////////////
