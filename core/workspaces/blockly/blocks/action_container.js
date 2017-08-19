@@ -12,6 +12,7 @@ import {
 import { ACTION_CONTAINER } from 'core/constants/instructions';
 
 const mainInput = 'program';
+const IMAGE_SIZE = 15;
 
 /**
  * This special block is eagerly imported.
@@ -22,7 +23,12 @@ const mainInput = 'program';
 Blockly.Blocks[ACTION_CONTAINER] = {
   init: function init() {
     this.appendDummyInput()
-        .appendField(ACTION_CONTAINER_TITLE);
+        .appendField(ACTION_CONTAINER_TITLE)
+        .appendField(new Blockly.FieldImage(
+          'https://twemoji.maxcdn.com/2/svg/1f601.svg',
+          IMAGE_SIZE,
+          IMAGE_SIZE,
+        ));
     this.appendStatementInput(mainInput);
     this.setDeletable(false);
     this.setEditable(false);

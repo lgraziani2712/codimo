@@ -5,6 +5,7 @@
  * @flow
  */
 import * as colors from 'core/constants/colors';
+import { IMAGE_SIZE } from 'core/constants/numbers';
 import { REPEAT_PARAM } from 'core/constants/instructions';
 import {
   type BlockDefinition,
@@ -15,13 +16,15 @@ import {
  * It builds a move block.
  *
  * @version 1.0.0
- * @param  {string}  title   The block's title.
- * @param  {string}  tooltip The block's tooltip.
- * @return {BlockDefinition} The new block definition.
+ * @param  {string}  title      The block's title.
+ * @param  {string}  tooltip    The block's tooltip.
+ * @param  {string}  [imageURL] The SVG to show as title.
+ * @return {BlockDefinition}    The new block definition.
  */
 const moveBuilder = (
   title: string,
   tooltip: string,
+  imageURL?: string,
 ): BlockDefinition => ({
   builder(block: Blockly$Block, difficulty: GameDifficulty) {
     const input =
@@ -30,7 +33,11 @@ const moveBuilder = (
         : block.appendValueInput(REPEAT_PARAM);
 
     input.setAlign(Blockly.ALIGN_CENTRE)
-        .appendField(title);
+        .appendField(
+          imageURL
+            ? new Blockly.FieldImage(imageURL, IMAGE_SIZE, IMAGE_SIZE, title)
+            : title,
+        );
     block.setColour(colors.ACTION);
     block.setNextStatement(true);
     block.setPreviousStatement(true);

@@ -7,7 +7,7 @@
 
 export default {
   actions: {
-    play: '▶ Ejecutá!',
-    reset: '⏹ Reseteá!',
+    play: '▶ EJECUTÁ!',
+    reset: '⏹ INTENTAR DE NUEVO!',
   },
 };

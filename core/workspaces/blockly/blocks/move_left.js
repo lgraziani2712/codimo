@@ -9,6 +9,7 @@ import {
   MOVE_LEFT_TOOLTIP,
 } from 'core/constants/localize/es/blocklyTextsBlocks';
 
+import leftArrowURL from './images/left_arrow.svg';
 import moveBuilder from './moveBuilder';
 
-export default moveBuilder(MOVE_LEFT_TITLE, MOVE_LEFT_TOOLTIP);
+export default moveBuilder(MOVE_LEFT_TITLE, MOVE_LEFT_TOOLTIP, leftArrowURL);

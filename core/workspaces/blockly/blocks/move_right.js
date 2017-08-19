@@ -9,6 +9,7 @@ import {
   MOVE_RIGHT_TOOLTIP,
 } from 'core/constants/localize/es/blocklyTextsBlocks';
 
+import rightArrowURL from './images/right_arrow.svg';
 import moveBuilder from './moveBuilder';
 
-export default moveBuilder(MOVE_RIGHT_TITLE, MOVE_RIGHT_TOOLTIP);
+export default moveBuilder(MOVE_RIGHT_TITLE, MOVE_RIGHT_TOOLTIP, rightArrowURL);

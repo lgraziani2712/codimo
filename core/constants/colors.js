@@ -7,8 +7,8 @@
 
 const WHITE = '#fff';
 
-export const ACTION = '#b63668';
-export const END_ACTION = '#b36320';
+export const ACTION = '#a55b6d';
+export const END_ACTION = '#a5a55b';
 export const CONTROL = '#5b67a5';
 export const CONTAINER = '#369836';
 

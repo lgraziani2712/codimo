@@ -23,10 +23,6 @@ import { type BlocklyToolboxElement } from 'core/ui/BlocklyApp/components/Blockl
 import ActionBar from 'core/ui/BlocklyApp/components/ActionBar';
 import BlocklyWorkspace from 'core/ui/BlocklyApp/components/BlocklyWorkspace';
 
-// FIXME MonkeyPatch https://github.com/google/blockly/issues/299
-// $FlowDoNotDisturb it's a monkeypatch
-Blockly.WorkspaceSvg.prototype.preloadAudio_ = () => {}; // eslint-disable-line no-underscore-dangle
-
 const ID = 'blockly-app';
 
 type BlockDefinition = string;
@@ -107,6 +103,9 @@ export default class BlocklyApp extends React.Component {
       scrollbars: true,
       toolbox,
       trashcan: true,
+      zoom: {
+        startScale: 1.25,
+      },
     });
     this.highlightBlock = (id: string) => {
       this.workspace.highlightBlock(id);

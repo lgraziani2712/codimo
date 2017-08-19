@@ -38,6 +38,18 @@ declare class Blockly$FieldNumber extends Blockly$Field {
   ): Blockly$FieldNumber;
 }
 /**
+ * @see https://developers.google.com/blockly/reference/js/Blockly.FieldImage
+ */
+declare class Blockly$FieldImage extends Blockly$Field {
+  constructor(
+    src: string,
+    width: number,
+    height: number,
+    alt?: string,
+    handleClick?: (event: SyntheticEvent) => void,
+  ): Blockly$FieldImage;
+}
+/**
  * @see https://developers.google.com/blockly/reference/js/Blockly.Input
  */
 declare class Blockly$Input {
@@ -83,6 +95,7 @@ declare var Blockly: {
     disableOrphans(event: Event): void,
     recordUndo: boolean,
   },
+  FieldImage: typeof Blockly$FieldImage,
   FieldNumber: typeof Blockly$FieldNumber,
   FieldTextInput: typeof Blockly$FieldTextInput,
   inject(elementId: string | HTMLElement, options: Object): Object,

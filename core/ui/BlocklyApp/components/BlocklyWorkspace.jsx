@@ -10,8 +10,8 @@ import styled from 'styled-components';
 import BlocklyToolbox, { type BlocklyToolboxElement } from './BlocklyToolbox';
 
 const Workspace = styled.div`
-  height: 500px;
-  width: 500px;
+  height: 520px;
+  width: 580px;
 `;
 
 type Props = {|

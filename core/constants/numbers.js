@@ -14,6 +14,8 @@ export const TEN = 10;
 export const HALF = TWO;
 export const NOT_EXIST = -1;
 
+export const IMAGE_SIZE = 36;
+
 ////////////////////////////////////////////////
 // Component constants
 ////////////////////////////////////////////////
