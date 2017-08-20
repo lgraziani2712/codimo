@@ -5,10 +5,6 @@
  * @flow
  */
 
-export function getRandomInt(min: number) {
-  return min;
-}
-
-export function getRandomFloat(min: number) {
-  return min;
+export default function loadModulesFromContext() {
+  return ['module.url'];
 }

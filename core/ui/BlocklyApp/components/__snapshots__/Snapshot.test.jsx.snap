@@ -58,7 +58,7 @@ exports[`ui/BlocklyApp/components renders the ActionBar correctly 1`] = `
     onClick={[Function]}
     type="green"
   >
-    ▶ Ejecutá!
+    ▶ EJECUTÁ!
   </a>
 </div>
 `;

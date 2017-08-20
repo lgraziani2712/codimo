@@ -21,4 +21,16 @@ export default {
     title: parseEmoji('🎉'),
     type: 'success',
   },
+  exercise: 'Ejercicio',
+  levels: [
+    'Primer',
+    'Segundo',
+    'Tercer',
+    'Cuarto',
+  ],
+  difficulty: {
+    easy: 'Nivel inicial',
+    normal: 'Nivel intermedio',
+    hard: 'Nivel avanzado',
+  },
 };
