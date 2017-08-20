@@ -1,0 +1,47 @@
+{
+  "difficulty": "normal",
+  "engineData": {
+    "canvas": {
+      "height": 589,
+      "width": 600
+    },
+    "width": 7,
+    "height": 5,
+    "margin": 8,
+    "size": 48,
+    "path": [
+      ["0,4", { "right": true, "top": true }],
+      ["0,3", { "bottom": true, "top": true }],
+      ["0,2", { "bottom": true, "top": true }],
+      ["0,1", { "bottom": true, "top": true }],
+      ["0,0", { "bottom": true, "top": true }],
+
+      ["1,4", { "left": true, "right": true }],
+      ["2,4", { "left": true, "right": true, "top": true }],
+      ["2,3", { "bottom": true, "top": true }],
+      ["2,2", { "bottom": true, "top": true }],
+      ["2,1", { "bottom": true, "top": true }],
+      ["2,0", { "bottom": true, "top": true }],
+
+      ["3,4", { "left": true, "right": true }],
+      ["4,4", { "left": true, "right": true, "top": true }],
+      ["4,3", { "bottom": true, "top": true }],
+      ["4,2", { "bottom": true, "top": true }],
+      ["4,1", { "bottom": true, "top": true }],
+      ["4,0", { "bottom": true, "top": true }],
+
+      ["5,4", { "left": true, "right": true }],
+      ["6,4", { "left": true, "top": true }],
+      ["6,3", { "bottom": true, "top": true }],
+      ["6,2", { "bottom": true, "top": true }],
+      ["6,1", { "bottom": true, "top": true }],
+      ["6,0", { "bottom": true, "top": true }]
+    ],
+    "startPosition": "3,4",
+    "endPositions": ["0,0", "2,0", "4,0", "6,0"],
+    "numericLineData": {
+      "statics": [null, 20, null, 40, null, 80, null],
+      "accesses": [0, 2, 4, 6]
+    }
+  }
+}

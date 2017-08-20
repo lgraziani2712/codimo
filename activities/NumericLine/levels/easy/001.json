@@ -1,0 +1,27 @@
+{
+  "difficulty": "easy",
+  "engineData": {
+    "canvas": {
+      "height": 589,
+      "width": 450
+    },
+    "width": 3,
+    "height": 5,
+    "margin": 10,
+    "size": 64,
+    "path": [
+      ["1,4", { "top": true }],
+      ["1,3", { "top": true, "bottom": true }],
+      ["1,2", { "top": true, "bottom": true }],
+      ["1,1", { "top": true, "bottom": true }],
+      ["1,0", { "top": true, "bottom": true }]
+    ],
+    "startPosition": "1,4",
+    "endPositions": ["1,0"],
+    "actorExitIdx": 0,
+    "numericLineData": {
+      "statics": [1, null, 5],
+      "accesses": [1]
+    }
+  }
+}

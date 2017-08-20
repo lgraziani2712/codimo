@@ -1,0 +1,33 @@
+{
+  "elements": [{
+    "define": "block",
+    "type": "move_forward"
+  }, {
+    "define": "block",
+    "type": "move_backward"
+  }, {
+    "define": "block",
+    "type": "move_right"
+  }, {
+    "define": "block",
+    "type": "move_left"
+  }, {
+    "define": "block",
+    "type": "repeat_x"
+  }, {
+    "define": "block",
+    "type": "simple_loop"
+  }, {
+    "define": "block",
+    "type": "leave_maze"
+  }],
+  "blockDefinitions": [
+    "move_forward",
+    "move_backward",
+    "move_right",
+    "move_left",
+    "repeat_x",
+    "simple_loop",
+    "leave_maze"
+  ]
+}

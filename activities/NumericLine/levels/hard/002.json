@@ -1,0 +1,80 @@
+{
+  "difficulty": "hard",
+  "engineData": {
+    "canvas": {
+      "height": 589,
+      "width": 730
+    },
+    "width": 15,
+    "height": 3,
+    "margin": 6,
+    "size": 36,
+    "path": [
+      ["0,0", { "bottom": true, "top": true }],
+      ["0,1", { "top": true, "right": true, "bottom": true }],
+      ["0,2", { "top": true }],
+
+      ["1,0", { "bottom": true, "right": true }],
+      ["1,1", { "bottom": true, "top": true, "left": true }],
+      ["1,2", { "top": true, "right": true }],
+
+      ["2,0", { "top": true, "bottom": true, "left": true }],
+      ["2,1", { "top": true, "right": true, "bottom": true }],
+      ["2,2", { "top": true, "left": true }],
+
+      ["3,0", { "bottom": true, "right": true }],
+      ["3,1", { "bottom": true, "top": true, "left": true }],
+      ["3,2", { "top": true, "right": true }],
+
+      ["4,0", { "top": true, "bottom": true, "left": true }],
+      ["4,1", { "top": true, "right": true, "bottom": true }],
+      ["4,2", { "top": true, "left": true }],
+
+      ["5,0", { "bottom": true, "right": true }],
+      ["5,1", { "bottom": true, "top": true, "left": true }],
+      ["5,2", { "top": true, "right": true }],
+
+      ["6,0", { "top": true, "bottom": true, "left": true }],
+      ["6,1", { "top": true, "right": true, "bottom": true }],
+      ["6,2", { "top": true, "left": true }],
+
+      ["7,0", { "bottom": true, "right": true }],
+      ["7,1", { "bottom": true, "top": true, "left": true }],
+      ["7,2", { "top": true, "right": true }],
+
+      ["8,0", { "top": true, "bottom": true, "left": true }],
+      ["8,1", { "top": true, "bottom": true }],
+      ["8,2", { "top": true, "left": true }],
+
+      ["9,0", { "bottom": true, "right": true }],
+      ["9,1", { "bottom": true, "top": true, "left": true }],
+      ["9,2", { "top": true, "right": true }],
+
+      ["10,0", { "top": true, "bottom": true, "left": true }],
+      ["10,1", { "top": true, "bottom": true }],
+      ["10,2", { "top": true, "left": true }],
+
+      ["11,0", { "bottom": true, "right": true }],
+      ["11,1", { "bottom": true, "top": true, "left": true }],
+      ["11,2", { "top": true, "right": true }],
+
+      ["12,0", { "top": true, "bottom": true, "left": true }],
+      ["12,1", { "top": true, "bottom": true }],
+      ["12,2", { "top": true, "left": true }],
+
+      ["13,0", { "bottom": true, "right": true }],
+      ["13,1", { "bottom": true, "top": true, "left": true }],
+      ["13,2", { "top": true, "right": true }],
+
+      ["14,0", { "top": true, "bottom": true, "left": true }],
+      ["14,1", { "top": true, "bottom": true }],
+      ["14,2", { "top": true, "left": true }]
+    ],
+    "startPosition": "0,0",
+    "endPositions": ["0,0", "2,0", "4,0", "6,0", "8,0", "10,0", "12,0", "14,0"],
+    "numericLineData": {
+      "statics": [null, -80, null, -60, null, -30, null, 0, null, 30, null, 60, null, 80, null],
+      "accesses": [0, 2, 4, 6, 8, 10, 12, 14]
+    }
+  }
+}

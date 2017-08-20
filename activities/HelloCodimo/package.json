@@ -1,0 +1,9 @@
+{
+  "name": "codimo-activity-hello-codimo",
+  "version": "1.0.0",
+  "description": "A good starting example",
+  "author": "Luciano Graziani @lgraziani2712",
+  "peerDependencies": {
+    "codimo": "~1.0.0"
+  }
+}
