@@ -14,12 +14,12 @@ emoji=true
 
 # Modules
 module.system.node.resolve_dirname=node_modules
-module.system.node.resolve_dirname=src
 module.system.node.resolve_dirname=dev-elements
 
 # Aliases
 module.name_mapper='^core\/\(.*\)$' -> '<PROJECT_ROOT>/core/\1'
 module.name_mapper='^activities\/\(.*\)$' -> '<PROJECT_ROOT>/activities/\1'
+module.name_mapper='^client\/\(.*\)$' -> '<PROJECT_ROOT>/client/\1'
 
 module.name_mapper.extension='css' -> '<PROJECT_ROOT>/.dev-tools/config/CSSFlowStub.js.flow'
 

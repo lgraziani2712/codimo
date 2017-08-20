@@ -26,8 +26,9 @@ module.exports = {
     'babel-polyfill',
     paths.appMainJs,
   ],
-  target: 'web', // necessary for https://webpack.github.io/docs/testing.html#compile-and-test
-  context: paths.appSrc,
+  // necessary for https://webpack.github.io/docs/testing.html#compile-and-test
+  target: 'web',
+  context: paths.client,
   output: {
     // This does not produce a real file. It's just the virtual path that is
     // served by WebpackDevServer in development. This is the JS bundle
@@ -50,6 +51,7 @@ module.exports = {
     alias: {
       core: paths.core,
       activities: paths.activities,
+      client: paths.client,
     },
   },
   devServer: {
