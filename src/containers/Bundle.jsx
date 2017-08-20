@@ -12,7 +12,7 @@ type Props = {|
   children(null | Object | Array<Object>): void,
 |};
 type State = {|
-  mod: any,
+  mod: React.Element<*>,
 |};
 class Bundle extends React.Component {
   props: Props;

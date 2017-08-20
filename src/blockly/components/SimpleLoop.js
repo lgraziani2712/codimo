@@ -27,7 +27,7 @@ Blockly.Blocks[SIMPLE_LOOP] = {
 };
 
 Blockly.JavaScript[SIMPLE_LOOP] = (block) => {
-  const cant = block.getFieldValue(CANT_VAR);
+  const cant = parseInt(block.getFieldValue(CANT_VAR));
   const statements = Blockly.JavaScript.statementToCode(block, LOOP_STATEMENT);
 
   return statements.repeat(cant);

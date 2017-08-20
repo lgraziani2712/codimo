@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ui/BlocklyApp/components/BlocklyToolbox Generators blockGenerator renders correctly without children 1`] = `
+<block
+  type="test_block"
+/>
+`;
+
+exports[`ui/BlocklyApp/components/BlocklyToolbox categoryGenerator renders correctly with children 1`] = `
+<category
+  color="#deedee"
+  name="test_category"
+>
+  <block
+    type="test_block"
+  />
+  <sep
+    gap={24}
+  />
+</category>
+`;
+
+exports[`ui/BlocklyApp/components/BlocklyToolbox categoryGenerator renders correctly without children 1`] = `
+<category
+  color="#deedee"
+  name="test_category"
+/>
+`;
+
+exports[`ui/BlocklyApp/components/BlocklyToolbox renders correctly an empty toolbox 1`] = `
+<xml
+  style={
+    Object {
+      "display": "none",
+    }
+  }
+/>
+`;
+
+exports[`ui/BlocklyApp/components/BlocklyToolbox sepGenerator renders correctly 1`] = `
+<sep
+  gap={32}
+/>
+`;

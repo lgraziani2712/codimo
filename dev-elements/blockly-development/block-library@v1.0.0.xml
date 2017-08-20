@@ -1,0 +1,145 @@
+<xml xmlns="http://www.w3.org/1999/xhtml"><block type="factory_base" id="NFPV7`Zck8$o97o9yYe)" deletable="false" movable="false" x="0" y="0">
+    <mutation connections="LEFT"></mutation>
+    <field name="NAME">repeat_x</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">LEFT</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id=":O2i#sX_J_j.h.Pvk%L6">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_number" id="K%+,e]*(|sZ-NeEph]!B">
+            <field name="VALUE">0</field>
+            <field name="FIELDNAME">CANT</field>
+            <field name="MIN">2</field>
+            <field name="MAX">Infinity</field>
+            <field name="PRECISION">0</field>
+            <next>
+              <block type="field_static" id="(*ncTCQ0;Rc]:`x*9CO.">
+                <field name="TEXT">times</field>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id=";%|a@{J%%1F@;jz!a-xn" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="wod6MX?O!HB|A};LpU6=" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="OUTPUTTYPE">
+      <shadow type="type_null" id="$C+Z#6XgZY|ov/6h6b}_"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="wR??a%nR8F}CFF;W?-*/">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="~kI3}tW:ZSl=6AlSy=dn" deletable="false" movable="false" x="0" y="0">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">loop_simple</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="E?R:I%:{4_}@XYUY^1^[">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="wf`SPUTq5yUl]H#7TATD">
+            <field name="TEXT">Repeat</field>
+            <next>
+              <block type="field_number" id="^)BVoE6q`(m^^TNDXZdR">
+                <field name="VALUE">1</field>
+                <field name="FIELDNAME">CANT</field>
+                <field name="MIN">1</field>
+                <field name="MAX">Infinity</field>
+                <field name="PRECISION">0</field>
+                <next>
+                  <block type="field_static" id="TZ1.u]^.E,xSxb9Ds^tt">
+                    <field name="TEXT">times</field>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="input_statement" id="hkO:7F5W+aKL2xh,?8U{">
+            <field name="INPUTNAME">LOOP</field>
+            <field name="ALIGN">LEFT</field>
+            <value name="TYPE">
+              <shadow type="type_null" id="/4+L%$oV+@jHu/RTN]D8"></shadow>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="Q49i(L(w`/A}#G*#];Y?" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="*xbcXRO%v[L3~[R,o$|g" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id="t-@8::%F?36lEH3Q)|VJ"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="!xR5*5fx%j2n(q}@#kBU"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="43CxbylTjAyHAs.2sb-k">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="jZpBp}dvpI5zq+8|[0C4" deletable="false" movable="false" x="0" y="0">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">move_left</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_value" id="T+6_K5vljad|.U9igTfz">
+        <field name="INPUTNAME">ITERATIONS</field>
+        <field name="ALIGN">CENTRE</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="O0$*fzKg/di9E5!d,]2w">
+            <field name="TEXT">⬅ Move left</field>
+          </block>
+        </statement>
+        <value name="TYPE">
+          <shadow type="type_null" id="kjZ{_l:;4K)m-oXGw[S["></shadow>
+        </value>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="x+0L+_QH%NVan#dv{[[i" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="%jm])pXP@**FJ(xj)h))" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id="DIuL.#aS8`SD/_o`yfOS"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="O!R%ab,zc,}?{f`x@m^r"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="#=HTZFMaliL1mh$r4`EA">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
+  </block></xml>

@@ -5,10 +5,8 @@
  * @flow
  */
 
-export function getRandomInt(min: number) {
-  return min;
-}
-
-export function getRandomFloat(min: number) {
-  return min;
-}
+export type BlocklyBlockField = {|
+  define: 'field',
+  name: string,
+  value: string,
+|};
