@@ -1,5 +1,7 @@
 ## HEAD
 
+- 🚀 [2017-06-22] `containers/MazeGameContainer`: update to v1.2.0.
+  - 🚀 Wait until background image is loaded before render the app.
 - 🚀 [2017-06-16] `containers/GameViewer`: update to v1.2.0.
   - 🚀 To match new `routes` version.
 - 🚀 [2017-06-16] `containers/gameLoader`: update v1.1.0.
