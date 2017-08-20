@@ -8,6 +8,8 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 
+import LogoTitleURL from './logo-title.png';
+
 const rotate360 = keyframes`
   from {
     transform: rotate(0deg);
@@ -37,7 +39,7 @@ const ShadowedImg = styled.img`
 
 const CodimoLink = () => (
   <HomeLink to="/">
-    <ShadowedImg src="/images/logo-title.png" />
+    <ShadowedImg src={LogoTitleURL} />
     <Title>{'Códimo'}</Title>
   </HomeLink>
 );

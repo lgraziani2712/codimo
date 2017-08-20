@@ -8,7 +8,7 @@ import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { COLOR_PALETTE } from 'constants/colors';
+import { COLOR_PALETTE } from 'core/constants/colors';
 
 const LinkContainer = styled.li`
   list-style-type: none;

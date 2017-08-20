@@ -7,7 +7,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import { COLOR_PALETTE } from 'constants/colors';
+import { COLOR_PALETTE } from 'core/constants/colors';
 
 import FooterLink from './links/FooterLink';
 import RawContentContainer from './RawContentContainer';

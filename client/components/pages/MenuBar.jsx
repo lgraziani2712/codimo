@@ -7,7 +7,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { type RouteDescription } from 'routes';
+import { type Codimo$Route } from 'core/ui/CodimoRouter';
 
 import CodimoLink from './logos/CodimoLink';
 import GithubLink from './logos/GithubLink';
@@ -48,7 +48,7 @@ const ExternalLinksContainer = styled.div`
 `;
 
 type Props = {|
-  routes: Array<RouteDescription>,
+  routes: Array<Codimo$Route>,
 |};
 const MenuBar = ({ routes }: Props) => (
   <Background>
@@ -57,19 +57,39 @@ const MenuBar = ({ routes }: Props) => (
 
       <LinksContainer>
         <LocalLinksContainer>
-          {routes.map((route, key) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <HeaderLink key={key} title={route.title}>
-              {route.children.map((child, key2) => (
+          {routes.map((route, key) => {
+            const parentPath = `/${route.activityName}`;
+
+            if (!route.children) {
+              return (
                 <HeaderLink
-                  // eslint-disable-next-line react/no-array-index-key
-                  key={key2}
-                  to={`/${route.game}/${route.difficulty}/${child.path}`}
-                  title={child.title}
+                  key={parentPath}
+                  to={parentPath}
+                  title={route.title}
                 />
-              ))}
-            </HeaderLink>
-          ))}
+              );
+            }
+
+            return (
+              // eslint-disable-next-line react/no-array-index-key
+              <HeaderLink key={key} title={route.title}>
+                {route.children.map((child) => {
+                  if (!route.difficulty) {
+                    throw new Error(
+                      // eslint-disable-next-line max-len
+                      `The activity ${route.activityName} requires to add the difficulty to the metadata definition.`,
+                    );
+                  }
+                  const childrenPath =
+                    `/${route.activityName}/${route.difficulty}/${child.path}`;
+
+                  return (
+                    <HeaderLink key={childrenPath} to={childrenPath} title={child.title} />
+                  );
+                })}
+              </HeaderLink>
+            );
+          })}
         </LocalLinksContainer>
 
         <ExternalLinksContainer>

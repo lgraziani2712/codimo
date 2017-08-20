@@ -157,14 +157,18 @@ exports[`Components snapshots renders the FrontPage correctly 1`] = `
         Cada actividad está estructurada en niveles. Cada nivel representa un desafío y a medida que se avanza de nivel, más aumenta la dificultad.
       </div>
       <img
-        src="/images/game-ss0.png"
+        src="module.url"
       />
     </div>
     <div
       className="c6 c3"
     >
       <img
-        src="/images/computer-thinking.png"
+        src={
+          Object {
+            "process": [Function],
+          }
+        }
       />
       <div
         className="c7"
@@ -208,48 +212,4 @@ exports[`Components snapshots renders the FrontPage correctly 1`] = `
     </div>
   </div>
 </div>
-`;
-
-exports[`Components snapshots renders the GameContainer correctly 1`] = `
-.c0 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  height: 100%;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  width: 100%;
-}
-
-.c0::before {
-  background: url(/images/test-url.jpg) repeat;
-  content: '';
-  filter: contrast(65%) brightness(110%) saturate(75%) sepia(22%) grayscale(20%);
-  height: 100%;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: -1;
-}
-
-.c0::after {
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAG0lEQVQIW2NkYGD4z8DAwMgABXAGNgGwSgwVAFbmAgXxvZSoAAAAAElFTkSuQmCC) repeat;
-  content: '';
-  height: 100%;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: -1;
-}
-
-<div
-  className="c0"
-/>
 `;

@@ -7,7 +7,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { COLOR_PALETTE } from 'constants/colors';
+import { COLOR_PALETTE } from 'core/constants/colors';
+
+import ComputerThinkingURL from '../images/computer-thinking.png';
 
 import PageContainer from './pages/PageContainer';
 import Container from './pages/RawContentContainer';
@@ -83,7 +85,7 @@ const FrontPage = () => (
       <ImageGallery />
     </GreenRow>
     <WhiteRow>
-      <img src="/images/computer-thinking.png" />
+      <img src={ComputerThinkingURL} />
       <Text>
         {'¿Qué es el '}
         <b>{'Pensamiento Computacional'}</b>

@@ -1,45 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Components snapshots renders the Loading correctly 1`] = `
-.c0 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  height: 100%;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  width: 100%;
-}
-
-.c1 {
-  color: #d3823f;
-  font-size: 2em;
-}
-
-<div
-  className="c0"
->
-  <img
-    src="/images/loading-animal.gif"
-  />
-  <div
-    className="c1"
-  >
-    Armando la línea numérica
-  </div>
-</div>
-`;
-
 exports[`Components snapshots renders the MenuBar correctly 1`] = `
 .c3 {
   -webkit-align-items: center;
@@ -168,7 +128,11 @@ a:hover > .c9 path {
     >
       <img
         className="c4"
-        src="/images/logo-title.png"
+        src={
+          Object {
+            "process": [Function],
+          }
+        }
       />
       <span
         className="c5"
@@ -362,7 +326,11 @@ exports[`Components snapshots renders the links correctly 2`] = `
 >
   <img
     className="c1"
-    src="/images/logo-title.png"
+    src={
+      Object {
+        "process": [Function],
+      }
+    }
   />
   <span
     className="c2"

@@ -20,9 +20,8 @@ import GithubLink from './logos/GithubLink';
 import RawContentContainer from './RawContentContainer';
 import MenuBar from './MenuBar';
 import PageContainer from './PageContainer';
-import Loading from './Loading';
 
-jest.mock('helpers/randomizers');
+jest.mock('core/helpers/randomizers');
 
 describe('Components snapshots', () => {
   it('renders the links correctly', () => {
@@ -40,11 +39,6 @@ describe('Components snapshots', () => {
     const rawContentContainerTree = renderer.create(<RawContentContainer />).toJSON();
 
     expect(rawContentContainerTree).toMatchSnapshot();
-  });
-  it('renders the Loading correctly', () => {
-    const tree = renderer.create(<Loading />).toJSON();
-
-    expect(tree).toMatchSnapshot();
   });
   it('renders the MenuBar correctly', () => {
     const tree = renderer.create(<Router><MenuBar routes={[]} /></Router>).toJSON();
