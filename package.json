@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "A simple platform for learning Computational Thinking",
-  "main": "src/main.jsx",
+  "main": "client/main.jsx",
   "scripts": {
     "build": "webpack -p --config ./.dev-tools/config/webpack.config.prod.js  --profile",
     "build:start": "npm run build -- --progress && static dist",
@@ -13,11 +13,12 @@
     "flow:check": "flow check",
     "flow:start": "flow start",
     "flow:stop": "flow stop",
-    "lint": "eslint core activities src dev-elements .dev-tools --ext .js --ext .jsx --fix",
-    "lint:css": "stylelint src/**/*.jsx src/**/*.js",
+    "lint": "eslint core activities client dev-elements .dev-tools --ext .js --ext .jsx --fix",
+    "lint:css": "stylelint activities/**/*.jsx activities/**/*.js client/**/*.jsx client/**/*.js core/**/*.jsx core/**/*.js",
     "start": "webpack-dev-server --progress --config ./.dev-tools/config/webpack.config.dev.js",
     "stats": "webpack --config ./.dev-tools/config/webpack.config.dev.js --profile --json > stats.json",
     "storybook:activities": "cross-env STORYBOOK_FOLDER=activities start-storybook -s ./dist -p 6006",
+    "storybook:client": "cross-env STORYBOOK_FOLDER=client start-storybook -s ./dist -p 6006",
     "storybook:core": "cross-env STORYBOOK_FOLDER=core start-storybook -s ./dist -p 6006",
     "test": "babel-node .dev-tools/scripts/test.js",
     "test:coverage": "babel-node .dev-tools/scripts/test.js --coverage"
@@ -35,7 +36,6 @@
     "computational-thinking"
   ],
   "moduleRoots": [
-    "src",
     "dev-elements"
   ],
   "dependencies": {
