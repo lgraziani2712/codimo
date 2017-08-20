@@ -8,8 +8,7 @@ import React from 'react';
 
 import { ONE } from 'core/constants/numbers';
 
-// FIXME When https://github.com/facebook/jest/issues/4262 is solved
-import loadModulesFromContext from '../../../core/helpers/loadModulesFromContext';
+import requireScreenshots from './requireScreenshots';
 
 const THREE_SECONDS = 3000;
 
@@ -30,11 +29,7 @@ export default class ImageGallery extends React.Component {
     };
     this.randomTextInterval = setInterval(this.timer, THREE_SECONDS);
 
-    this.imagesURL = loadModulesFromContext(
-      '../../images/screenshots',
-      false,
-      /^\.\/.*\.png$/,
-    );
+    this.imagesURL = requireScreenshots();
   }
   componentWillUnmount() {
     clearInterval(this.randomTextInterval);

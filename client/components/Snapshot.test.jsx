@@ -12,7 +12,7 @@ import 'jest-styled-components';
 
 import FrontPage from './FrontPage';
 
-jest.mock('core/helpers/loadModulesFromContext');
+jest.mock('./pages/requireScreenshots');
 
 describe('Components snapshots', () => {
   it('renders the FrontPage correctly', () => {
