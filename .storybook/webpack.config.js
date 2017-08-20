@@ -1,5 +1,7 @@
 /**
  * @author Luciano Graziani @lgraziani2712
+ * @license {@link http://www.opensource.org/licenses/mit-license.php|MIT License}
+ *
  */
 
 const webpack = require('webpack');
@@ -25,6 +27,7 @@ module.exports = (config, env) => {
     alias: {
       core: paths.core,
       activities: paths.activities,
+      client: paths.client,
     }
   };
 

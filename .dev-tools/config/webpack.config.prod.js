@@ -26,6 +26,9 @@ const foldersToClean = [
   `${paths.appDist}/*.js`,
   `${paths.appDist}/*.js.map`,
   `${paths.appDist}/*.html`,
+  `${paths.appDist}/*.svg`,
+  `${paths.appDist}/*.png`,
+  `${paths.appDist}/*.gif`,
 ];
 
 module.exports = {
@@ -37,7 +40,7 @@ module.exports = {
     paths.appMainJs,
   ],
   target: 'web', // necessary for https://webpack.github.io/docs/testing.html#compile-and-test
-  context: paths.appSrc,
+  context: paths.client,
   output: {
     filename: '[name].[chunkhash].js',
     chunkFilename: '[name].[chunkhash].js',
@@ -55,6 +58,7 @@ module.exports = {
     alias: {
       core: paths.core,
       activities: paths.activities,
+      client: paths.client,
     },
   },
   devServer: {

@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`blockly > executorGenerator should generate a Map of actions 1`] = `"move_backward;"`;
