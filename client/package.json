@@ -1,7 +1,7 @@
 {
   "name": "codimo-client",
   "description": "The client used on netlify",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha.0",
   "author": "Luciano Graziani @lgraziani2712",
   "dependencies": {
     "codimo": "~1.0.0"

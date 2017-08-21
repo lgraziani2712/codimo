@@ -1,5 +1,7 @@
 ## HEAD
 
+## v1.0.0-alpha.0
+
 ### 🀄 Blockly Workspace
 
 - 🆕 [v1.0.0] `parseInstructions`.

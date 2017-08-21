@@ -1,7 +1,7 @@
 {
   "name": "codimo-activity-numeric-line",
+  "description": "It's a 6-8 years old mathematical activity. The objective is to move the number from the maze into the numeric line.",
   "version": "1.0.1",
-  "description": "It's a 6-8 years old mathematical activity.",
   "author": "Luciano Graziani @lgraziani2712",
   "peerDependencies": {
     "codimo": "~1.0.0"
