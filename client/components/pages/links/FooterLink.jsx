@@ -11,6 +11,7 @@ const Link = styled.a`
   color: snow;
   font-weight: bold;
   text-decoration: none;
+
   &:hover {
     color: #dadada;
     text-decoration: underline;

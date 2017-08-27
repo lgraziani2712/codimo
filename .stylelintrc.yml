@@ -7,8 +7,6 @@ processors: [stylelint-processor-styled-components]
 syntax: scss
 
 rules:
-  rule-empty-line-before: null
-
   # Order
   order/order: [
     custom-properties,

@@ -42,6 +42,7 @@ const ExternalLinksContainer = styled.div`
   display: flex;
   flex-grow: 1;
   justify-content: flex-end;
+
   & > * {
     padding-left: 0.5rem;
   }

@@ -4,6 +4,8 @@
  *
  * @flow
  */
+// @see https://github.com/styled-components/stylelint-processor-styled-components/issues/54
+// stylelint-disable
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import styled from 'styled-components';

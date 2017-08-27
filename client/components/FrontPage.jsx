@@ -25,6 +25,7 @@ const ColoredRow = styled(Row)`
   color: white;
   justify-content: flex-end;
   margin: 0;
+
   & > img {
     filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
   }
@@ -41,6 +42,7 @@ const WhiteRow = styled(Row)`
   justify-content: flex-start;
   position: relative;
   z-index: 1;
+
   & > img {
     filter: drop-shadow(-2px 2px 2px rgba(0, 0, 0, 0.5));
   }

@@ -11,9 +11,11 @@ const SvgIcon = styled.svg`
   height: 22px;
   position: relative;
   vertical-align: middle;
+
   & path {
     fill: rgba(0, 0, 0, 0.6);
   }
+
   a:hover > & path {
     fill: rgba(0, 0, 0, 0.7);
   }
