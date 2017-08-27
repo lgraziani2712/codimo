@@ -1,5 +1,10 @@
 ## HEAD
 
+### 💅 React UI
+
+- 🎨 [v1.0.1] `Activity`: Add more visually atractive cursors (#57).
+- 🎨 [v1.0.1] `BlocklyApp`: Add more visually atractive cursors (#57).
+
 ## v1.0.0-alpha.0
 
 ### 🀄 Blockly Workspace
