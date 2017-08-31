@@ -17,16 +17,38 @@ const Workspace = styled.div`
   height: 520px;
   width: 580px;
 
+  & .blocklyTrash {
+    opacity: 1 !important;
+  }
+
   & .blocklyDraggable {
     cursor: url(${GrabURL}) 15 5, auto;
+
+    &.blocklyDragging {
+      cursor: url(${GrabbingURL}) 15 5, auto;
+
+      &.blocklyDraggingDelete {
+        cursor: url(${GrabbingNotURL}) 15 5, auto;
+      }
+    }
   }
 
-  & .blocklyDraggable.blocklyDragging {
-    cursor: url(${GrabbingURL}) 15 5, auto;
+  & .blocklyScrollbarBackground {
+    &:hover+.blocklyScrollbarHandle {
+      fill: rgba(80, 80, 80, 0.75);
+    }
   }
 
-  & .blocklyDraggable.blocklyDragging.blocklyDraggingDelete {
-    cursor: url(${GrabbingNotURL}) 15 5, auto;
+  & .blocklyScrollbarHandle {
+    fill: rgba(100, 100, 100, 0.75);
+
+    &:hover {
+      fill: rgba(80, 80, 80, 0.75);
+    }
+
+    &:active {
+      fill: rgba(60, 60, 60, 0.75);
+    }
   }
 `;
 

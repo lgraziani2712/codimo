@@ -4,6 +4,7 @@
 
 - 🎨 [v1.0.1] `Activity`: Add more visually atractive cursors (#57).
 - 🎨 [v1.0.1] `BlocklyApp`: Add more visually atractive cursors (#57).
+- 🎨 [v1.0.1] `BlocklyApp/components/BlocklyWorkspace`: Increase the opaque to the scrollbars and the trashcan (#53).
 
 ## v1.0.0-alpha.0
 
@@ -48,5 +49,6 @@
 - 🆕 [v1.0.0] `Activity`.
 - 🆕 [v1.0.0] `BlocklyApp`.
 - 🆕 [v1.0.0] `BlocklyApp/components/BlocklyToolbox`.
+- 🆕 [v1.0.0] `BlocklyApp/components/BlocklyWorkspace`.
 - 🆕 [v1.0.0] `CodimoRouter`.
 - 🆕 [v1.0.0] `PixiApp`.
