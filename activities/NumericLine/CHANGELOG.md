@@ -1,5 +1,7 @@
 ## HEAD
 
+## v1.0.2
+
 - 🎨 Add an image for the `MazeWrongExitError`.
 - 🎨 Improve game messages.
 

@@ -1,5 +1,7 @@
 ## HEAD
 
+## v1.0.0-alpha.1
+
 ### 🤖 PixiJS Engine
 
 - 🎨 [v1.0.1] `starvationCheckerBuilder`: Improve error message (#54).

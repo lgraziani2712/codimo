@@ -8,7 +8,7 @@
 process.env.NODE_ENV = 'production';
 
 const webpack = require('webpack');
-const BabiliPlugin = require('babili-webpack-plugin');
+const MinifyPlugin = require('babel-minify-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -29,6 +29,7 @@ const foldersToClean = [
   `${paths.appDist}/*.svg`,
   `${paths.appDist}/*.png`,
   `${paths.appDist}/*.gif`,
+  `${paths.appDist}/*.jpg`,
 ];
 
 module.exports = {
@@ -73,7 +74,7 @@ module.exports = {
     }),
     new webpack.DefinePlugin(GLOBALS),
     new webpack.NoEmitOnErrorsPlugin(),
-    new BabiliPlugin({}, {
+    new MinifyPlugin({}, {
       comments: false,
     }),
     new webpack.optimize.CommonsChunkPlugin({
