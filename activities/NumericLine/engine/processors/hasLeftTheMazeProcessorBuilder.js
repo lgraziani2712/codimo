@@ -20,17 +20,19 @@ import {
 } from 'core/engines/pixijs/components/functionalities/emotionFunctionalityBuilder';
 
 import { type EngineData$NumericLineData } from '../components/numericLineGenerator';
-import MazeExitError from '../../images/MazeExitError.png';
+import MazeExitErrorURL from '../../images/MazeExitError.png';
+import MazeWrongExitErrorURL from '../../images/MazeWrongExitError.png';
 
 const mazeExitError = engineErrorBuilder('MazeExitError', {
-  // FIXME add folder for images or make a loader for activity files
-  imageUrl: MazeExitError,
-  title: parseEmoji('🤖 El número no pudo saltar 🤖'),
-  text: 'El número solo tiene fuerzas para saltar cuando llega a una salida',
+  imageUrl: MazeExitErrorURL,
+  title: parseEmoji('🤖 NO PUDO SALTAR 🤖'),
+  text: 'EL NÚMERO SÓLO PUEDE SALTAR CUANDO ESTÁ EN UN FINAL DEL LABERINTO',
 });
 const mazeWrongExitError = engineErrorBuilder('MazeWrongExitError', {
-  title: parseEmoji('👻 El número se equivocó de lugar 👻'),
-  text: '¿El número es más grande que el de su izquierda y más chico que el de su derecha?',
+  imageUrl: MazeWrongExitErrorURL,
+  title: parseEmoji('👻 ¡OJO! ¿QUÉ PASO? 👻'),
+  // eslint-disable-next-line max-len
+  html: '¿EL NÚMERO ES MÁS <b>GRANDE</b> QUE EL DE SU <b>IZQUIERDA</b> Y MÁS <b>CHICO</b> QUE EL DE SU <b>DERECHA</b>?',
 });
 
 type Props = {
@@ -43,7 +45,7 @@ type Props = {
  * It verifies if the number has entered the numeric and in which empty slot.
  * Informs the result to the user.
  *
- * @version 1.0.0
+ * @version 1.0.1
  * @param  {CodimoComponent}            number          The actor.
  * @param  {CodimoComponent}            numericLine     The numeric line which the actor will enter.
  * @param  {Array<string>}              endPositions    An array of possible endings.

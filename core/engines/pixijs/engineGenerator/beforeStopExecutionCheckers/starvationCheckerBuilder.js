@@ -16,15 +16,15 @@ import StarvationError from './StarvationError.png';
 
 const starvationError = engineErrorBuilder('StarvationError', {
   imageUrl: StarvationError,
-  title: 'El número jamás saltó hacia la recta numérica',
-  html: parseEmoji('Estará perdido en el laberinto por toda la eternidad 😢'),
+  title: '¡UPS! EL NÚMERO NUNCA LLEGÓ A LA RECTA',
+  html: parseEmoji('😢 Y NO PODRÁ VOLVER CON SUS AMIGOS 😢'),
 });
 
 /**
  * If the component contains a consistent position, it means it didn't reach
  * its objective. Hence the name `starvation` for the thrown error.
  *
- * @version 1.0.0
+ * @version 1.0.1
  * @param  {CodimoComponent} component Required to verify its position.
  * @return {WillStopExecutionChecker}  The checker itself.
  */

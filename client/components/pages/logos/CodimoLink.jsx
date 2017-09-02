@@ -14,6 +14,7 @@ const rotate360 = keyframes`
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -22,6 +23,7 @@ const HomeLink = styled(Link)`
   align-items: center;
   display: flex;
   text-decoration: none;
+
   &:active img {
     animation: ${rotate360} 0.245s linear infinite;
   }

@@ -4,7 +4,7 @@
  *
  * @flow
  */
-import parseEmoji from 'core/helpers/parseEmoji';
+import CompleteURL from '../../images/complete.gif';
 
 export default {
   accept: 'Aceptar',
@@ -16,10 +16,9 @@ export default {
     'Dibujando los bloques',
   ],
   successMessage: {
-    confirmButtonText: 'Ir al siguiente nivel',
-    text: '¡Nivel completado!',
-    title: parseEmoji('🎉'),
-    type: 'success',
+    imageUrl: CompleteURL,
+    title: '¡NIVEL COMPLETADO!',
+    confirmButtonText: 'IR AL SIGUIENTE NIVEL',
   },
   exercise: 'Ejercicio',
   levels: [

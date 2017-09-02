@@ -19,6 +19,7 @@ const Bar = styled.div`
   display: flex;
   height: 68px;
   width: calc(100% - 2px);
+
   & * {
     margin: 0 0 0 10px;
   }

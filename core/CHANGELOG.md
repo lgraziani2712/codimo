@@ -1,5 +1,21 @@
 ## HEAD
 
+### 🤖 PixiJS Engine
+
+- 🎨 [v1.0.1] `starvationCheckerBuilder`: Improve error message (#54).
+- 🎨 [v1.0.1] `hasBecomeTheFallenOneBuilder`: Improve error message (#54).
+- 🎨 [v1.0.1] `hasBecomeTheFallenOneBuilder`: Replace image with an animated one (#55).
+- 🎨 [v1.0.1] `hasHitAWallBuilder`: Improve error message (#54).
+- 🎨 [v1.0.1] `hasHitAWallBuilder`: Replace image with an animated one (#55).
+
+### 💅 React UI
+
+- 🎨 `constants`: Add an animated image to the success message (#55).
+- 🎨 `constants`: Improve success message (#54).
+- 🎨 [v1.0.1] `Activity`: Add more visually atractive cursors (#57).
+- 🎨 [v1.0.1] `BlocklyApp`: Add more visually atractive cursors (#57).
+- 🎨 [v1.0.1] `BlocklyWorkspace`: Increase the opaque to the scrollbars and the trashcan (#53).
+
 ## v1.0.0-alpha.0
 
 ### 🀄 Blockly Workspace
@@ -43,5 +59,6 @@
 - 🆕 [v1.0.0] `Activity`.
 - 🆕 [v1.0.0] `BlocklyApp`.
 - 🆕 [v1.0.0] `BlocklyApp/components/BlocklyToolbox`.
+- 🆕 [v1.0.0] `BlocklyApp/components/BlocklyWorkspace`.
 - 🆕 [v1.0.0] `CodimoRouter`.
 - 🆕 [v1.0.0] `PixiApp`.

@@ -164,11 +164,7 @@ exports[`Components snapshots renders the FrontPage correctly 1`] = `
       className="c6 c3"
     >
       <img
-        src={
-          Object {
-            "process": [Function],
-          }
-        }
+        src="computer-thinking.png"
       />
       <div
         className="c7"

@@ -14,11 +14,12 @@ import { type PositioningState } from '../positioningProcessorBuilder';
 import { type Checker } from '../processorGenerator';
 
 import engineErrorBuilder from './engineErrorBuilder';
+import PathOverflowErrorURL from './PathOverflowError.gif';
 
 const pathOverflowError = engineErrorBuilder('PathOverflowError', {
-  // eslint-disable-next-line max-len
-  text: 'Diste un paso de más y, en vez de saltar, ¡el número se cayó del laberinto! El pobre cayó en las profundidades del abismo, jamás podrá volver... a no ser que...',
-  title: parseEmoji('😱 ¡Oh no! 😱'),
+  imageUrl: PathOverflowErrorURL,
+  title: parseEmoji('😱 ¡OH NO! ¡EL NÚMERO SE CAYÓ! 😱'),
+  text: '¿PROBASTE EN SALTAR?',
 });
 
 /**
@@ -27,7 +28,7 @@ const pathOverflowError = engineErrorBuilder('PathOverflowError', {
  * But there won't be anything after and the component will fall into the void.
  * And we don't want that.
  *
- * @version 1.0.0
+ * @version 1.0.1
  * @param  {CodimoComponent}  component  The component to check.
  * @param  {EngineData}       engineData Contains the required data for validation.
  * @return {Checker}                     The new instance.

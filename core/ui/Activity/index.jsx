@@ -39,7 +39,7 @@ type Activity$Props = {|
 /**
  * The Container is in charge of loading the required activity.
  *
- * @version 1.0.0
+ * @version 1.0.1
  * @todo 1. Subcomponents async loading.
  * @todo 2. Make it more generic.
  * @todo 3. Add example.

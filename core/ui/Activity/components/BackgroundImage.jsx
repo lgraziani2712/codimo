@@ -7,6 +7,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import CursorURL from '../images/cursor.png';
+import PointerURL from '../images/pointer.png';
+
 type Props = {|
   children?: React.Element<*>,
   image: string,
@@ -15,10 +18,12 @@ const blurImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAAC
                   'AAAAG0lEQVQIW2NkYGD4z8DAwMgABXAGNgGwSgwVAFbmAgXxvZSoAAAAAElFTkSuQmCC';
 const CenterGame = styled.div`
   align-items: center;
+  cursor: url(${CursorURL}) 4 0, auto;
   display: flex;
   height: 100%;
   justify-content: center;
   width: 100%;
+
   &::before {
     background: url(${({ image }: Props) => image}) repeat;
     content: '';
@@ -29,6 +34,7 @@ const CenterGame = styled.div`
     width: 100%;
     z-index: -1;
   }
+
   &::after {
     background: url(${blurImage}) repeat;
     content: '';
@@ -37,6 +43,11 @@ const CenterGame = styled.div`
     top: 0;
     width: 100%;
     z-index: -1;
+  }
+
+  & a,
+  & button {
+    cursor: url(${PointerURL}) 15 0, auto;
   }
 `;
 

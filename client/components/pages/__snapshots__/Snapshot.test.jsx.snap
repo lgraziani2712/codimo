@@ -128,11 +128,7 @@ a:hover > .c9 path {
     >
       <img
         className="c4"
-        src={
-          Object {
-            "process": [Function],
-          }
-        }
+        src="logo-title.png"
       />
       <span
         className="c5"
@@ -326,11 +322,7 @@ exports[`Components snapshots renders the links correctly 2`] = `
 >
   <img
     className="c1"
-    src={
-      Object {
-        "process": [Function],
-      }
-    }
+    src="logo-title.png"
   />
   <span
     className="c2"
