@@ -114,7 +114,7 @@ describe('engines/pixijs/engineGenerator/processors/positioningProcessorBuilder'
       });
     } catch (error) {
       expect(error.name).toBe('HasHitAWallError');
-      expect(error.text).toMatchSnapshot();
+      expect(error.html).toMatchSnapshot();
 
       return;
     }

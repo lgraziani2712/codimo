@@ -15,6 +15,7 @@ import { COLOR_PALETTE } from 'core/constants/colors';
 const LinkContainer = styled.li`
   list-style-type: none;
   position: relative;
+
   &::before {
     content: '';
     height: 100%;
@@ -24,11 +25,13 @@ const LinkContainer = styled.li`
     width: 0;
     z-index: -1;
   }
+
   &:hover::before {
     background: ${COLOR_PALETTE.orange.clear};
     left: 0;
     width: 100%;
   }
+
   &::after {
     bottom: 0;
     content: '';
@@ -38,6 +41,7 @@ const LinkContainer = styled.li`
     transition: 0.5s;
     width: 0;
   }
+
   &:hover::after {
     background: ${COLOR_PALETTE.orange.light};
     left: 0;
@@ -53,6 +57,7 @@ const Link = styled(RouterLink)`
   height: 100%;
   padding: 0 0.5em;
   text-decoration: none;
+
   ${LinkContainer}:hover > a {
     font-weight: bold;
   }
@@ -73,6 +78,7 @@ const ChildrenContainer = styled.ul`
   visibility: hidden;
   width: 100%;
   z-index: -1;
+
   ${LinkContainer}:hover > & {
     opacity: 1;
     transform: translateY(0%);
