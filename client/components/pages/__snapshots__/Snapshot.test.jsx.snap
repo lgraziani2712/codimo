@@ -27,6 +27,7 @@ exports[`Components snapshots renders the MenuBar correctly 1`] = `
 }
 
 .c4 {
+  -webkit-filter: drop-shadow(0 1px 2px rgba(85,95,110,0.4));
   filter: drop-shadow(0 1px 2px rgba(85,95,110,0.4));
 }
 
@@ -37,10 +38,12 @@ exports[`Components snapshots renders the MenuBar correctly 1`] = `
 }
 
 .c9 path {
+  -webkit-fill: rgba(0,0,0,0.6);
   fill: rgba(0,0,0,0.6);
 }
 
 a:hover > .c9 path {
+  -webkit-fill: rgba(0,0,0,0.7);
   fill: rgba(0,0,0,0.7);
 }
 
@@ -312,6 +315,7 @@ exports[`Components snapshots renders the links correctly 2`] = `
 }
 
 .c1 {
+  -webkit-filter: drop-shadow(0 1px 2px rgba(85,95,110,0.4));
   filter: drop-shadow(0 1px 2px rgba(85,95,110,0.4));
 }
 
@@ -340,10 +344,12 @@ exports[`Components snapshots renders the links correctly 3`] = `
 }
 
 .c0 path {
+  -webkit-fill: rgba(0,0,0,0.6);
   fill: rgba(0,0,0,0.6);
 }
 
 a:hover > .c0 path {
+  -webkit-fill: rgba(0,0,0,0.7);
   fill: rgba(0,0,0,0.7);
 }
 

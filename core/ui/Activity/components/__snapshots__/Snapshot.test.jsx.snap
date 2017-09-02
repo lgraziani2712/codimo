@@ -22,6 +22,7 @@ exports[`ui/Activity/components renders <BackgroundImage /> correctly 1`] = `
 .c0::before {
   background: url(/test.png) repeat;
   content: '';
+  -webkit-filter: contrast(65%) brightness(110%) saturate(75%) sepia(22%) grayscale(20%);
   filter: contrast(65%) brightness(110%) saturate(75%) sepia(22%) grayscale(20%);
   height: 100%;
   position: absolute;
@@ -60,6 +61,7 @@ exports[`ui/Activity/components renders <TwoColumns /> correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-filter: drop-shadow(2px 2px 8px rgba(0,0,0,0.8));
   filter: drop-shadow(2px 2px 8px rgba(0,0,0,0.8));
 }
 
