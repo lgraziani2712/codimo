@@ -34,7 +34,7 @@ const Workspace = styled.div`
   }
 
   & .blocklyScrollbarBackground {
-    &:hover+.blocklyScrollbarHandle {
+    &:hover + .blocklyScrollbarHandle {
       fill: rgba(80, 80, 80, 0.75);
     }
   }
@@ -57,6 +57,15 @@ type Props = {|
   elements: Array<BlocklyToolboxElement>,
   handleWorkspaceCreation(toolbox: HTMLElement): void,
 |};
+/**
+ * It contains the Blockly UI definition.
+ *
+ * @version 1.0.1
+ * @param {string}                       id                      Element ID.
+ * @param {Array<BlocklyToolboxElement>} elements                JSON blocks definition.
+ * @param {Function}                     handleWorkspaceCreation Blockly instantiation callback.
+ * @return {React$Element}                                       Blockly workspace.
+ */
 const BlocklyWorkspace = ({ id, elements, handleWorkspaceCreation }: Props) => (
   <Workspace id={id}>
     <BlocklyToolbox

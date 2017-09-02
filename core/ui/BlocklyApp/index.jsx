@@ -59,7 +59,7 @@ type BlocklyApp$State = {|
  * for passing the array of Instructions and one for
  * resetting the game.
  *
- * @version 1.0.0
+ * @version 1.0.1
  */
 export default class BlocklyApp extends React.Component {
   props: BlocklyApp$Props;

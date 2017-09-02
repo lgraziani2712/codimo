@@ -18,7 +18,7 @@ import { type PositioningState } from '../positioningProcessorBuilder';
 import { type Checker } from '../processorGenerator';
 
 import engineErrorBuilder from './engineErrorBuilder';
-import HasHitAWallError from './HasHitAWallError.png';
+import HasHitAWallError from './HasHitAWallError.gif';
 
 type ActivePathBorders = {|
   bottom?: boolean,
@@ -40,8 +40,8 @@ const directionsToWalls = {
 
 const hasHitaWallError = engineErrorBuilder('HasHitAWallError', {
   imageUrl: HasHitAWallError,
-  text: 'La dirección que intentás tomar es incorrecta',
-  title: parseEmoji('🙅 Camino no válido 🙅‍♂️'),
+  title: parseEmoji('🙅 POR AHÍ NO 🙅‍♂️'),
+  html: '¡UY! ¡TE CHOCASTE LA PARED!<br/>TRATÁ DE SEGUIR EL CAMINO',
 });
 
 /**
@@ -49,7 +49,7 @@ const hasHitaWallError = engineErrorBuilder('HasHitAWallError', {
  * If there is a wall, it throws a new exection
  * and stop the execution of the animation.
  *
- * @version 1.0.0
+ * @version 1.0.1
  * @param  {CodimoComponent}  component  The component to check.
  * @param  {EngineData}       engineData Contains the required data for validation.
  * @return {Checker}                     The new instance.
