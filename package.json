@@ -13,6 +13,7 @@
     "flow:check": "flow check",
     "flow:start": "flow start",
     "flow:stop": "flow stop",
+    "flow-typed": "flow-typed update",
     "lint": "eslint core activities client dev-elements .dev-tools --ext .js --ext .jsx --fix",
     "lint:css": "stylelint activities/**/*.jsx activities/**/*.js client/**/*.jsx client/**/*.js core/**/*.jsx core/**/*.js",
     "start": "webpack-dev-server --progress --config ./.dev-tools/config/webpack.config.dev.js",
