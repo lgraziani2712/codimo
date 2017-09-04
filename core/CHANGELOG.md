@@ -1,5 +1,7 @@
 ## HEAD
 
+## 1.0.0-alpha.2
+
 ### 💅 React UI
 
 - ⚙️ [v1.0.2] `Activity`: Adds the `handleNextLevelRedirection` helper (#59).
