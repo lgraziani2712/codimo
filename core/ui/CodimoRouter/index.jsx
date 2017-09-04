@@ -72,7 +72,7 @@ export default function CodimoRouter({ routes }: CodimoRouter$Props) {
         * 404 for exercises. This means the game has ended.
         * TODO 404 for exercises needs a proper refactor.
         */}
-      <Route component={FourOhFour} />
+      <Route path="/:activity/:difficulty/:exercise" component={FourOhFour} />
     </Switch>
   );
 }
