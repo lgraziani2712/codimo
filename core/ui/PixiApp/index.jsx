@@ -46,7 +46,7 @@ export default class PixiApp extends React.Component {
   // TODO destroy app? reset on new props
   componentWillUnmount() {
     this.app.stop();
-    this.app.destroy(true);
+    this.app.destroy();
   }
   render() {
     return <canvas ref={(view: HTMLCanvasElement) => this.view = view} />;

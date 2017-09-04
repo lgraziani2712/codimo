@@ -7,22 +7,24 @@
 // @see https://github.com/styled-components/stylelint-processor-styled-components/issues/54
 // stylelint-disable
 import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { COLOR_PALETTE } from 'core/constants/colors';
+import gameTextUI from 'core/constants/localize/es/gameTextUI';
 
 const LinkContainer = styled.li`
   list-style-type: none;
   position: relative;
 
   &::before {
+    background: ${({ isActive }) => (!isActive ? 'default' : COLOR_PALETTE.orange.clear)};
     content: '';
     height: 100%;
-    left: 50%;
+    left: ${({ isActive }) => (!isActive ? '50%' : '0')};
     position: absolute;
     transition: 0.5s;
-    width: 0;
+    width: ${({ isActive }) => (!isActive ? '0' : '100%')};
     z-index: -1;
   }
 
@@ -88,19 +90,33 @@ const ChildrenContainer = styled.ul`
   }
 `;
 
-type Props = {|
-  title: string,
-  children?: React.Element<HeaderLink>,
-  to?: string,
-|};
-const HeaderLink = ({ children, to, title }: Props) => (
-  <LinkContainer>
-    {!to
-      ? <EmptyLink>{title}</EmptyLink>
-      : <Link to={to}>{title}</Link>
-    }
-    {!children || (<ChildrenContainer>{children}</ChildrenContainer>)}
-  </LinkContainer>
+const isActive = (actualUrl: string, url: string) => (
+  actualUrl.split('/')[2] === url.split('/')[2]
 );
+const exerciseTitle = (actualUrl: string) => {
+  const level = parseInt(actualUrl.split('/').pop());
 
-export default HeaderLink;
+  return `: ${gameTextUI.exercise} ${gameTextUI.levels(level)}`;
+};
+
+type Props = {|
+  location: Object,
+  title: string,
+  to: string,
+  children?: React.Element<HeaderLink>,
+|};
+const HeaderLink = ({ children, location, to, title }: Props) => {
+  const active = isActive(location.pathname, to);
+
+  return (
+    <LinkContainer isActive={active}>
+      {active
+        ? <EmptyLink>{title}{exerciseTitle(location.pathname)}</EmptyLink>
+        : <Link to={to}>{title}</Link>
+      }
+      {!children || (<ChildrenContainer>{children}</ChildrenContainer>)}
+    </LinkContainer>
+  );
+};
+
+export default withRouter(HeaderLink);

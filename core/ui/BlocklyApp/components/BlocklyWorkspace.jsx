@@ -15,10 +15,14 @@ import BlocklyToolbox, { type BlocklyToolboxElement } from './BlocklyToolbox';
 
 const Workspace = styled.div`
   height: 520px;
-  width: 580px;
+  width: 500px;
 
   & .blocklyTrash {
     opacity: 1 !important;
+  }
+
+  & .blocklyZoom > image {
+    opacity: 1;
   }
 
   & .blocklyDraggable {

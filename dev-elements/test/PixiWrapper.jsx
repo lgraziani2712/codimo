@@ -38,7 +38,7 @@ export default class PixiWrapper extends React.Component {
   }
   componentWillUnmount() {
     this.app.stop();
-    this.app.destroy(true);
+    this.app.destroy();
   }
   render() {
     return <canvas ref={(view) => this.view = view} />;

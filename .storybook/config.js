@@ -15,6 +15,9 @@ if (process.env.STORYBOOK_FOLDER === 'activities') {
 if (process.env.STORYBOOK_FOLDER === 'core') {
   req = require.context('../core', true, /\.stories\.jsx$/);
 }
+if (process.env.STORYBOOK_FOLDER === 'client') {
+  req = require.context('../client', true, /\.stories\.jsx$/);
+}
 
 function loadStories() {
   req.keys().forEach(req);

@@ -51,6 +51,13 @@ const ExternalLinksContainer = styled.div`
 type Props = {|
   routes: Array<Codimo$Route>,
 |};
+/**
+ * Códimo client menu bar.
+ *
+ * @version 1.1.0
+ * @param {Array<Codimo$Route>} routes List of routes.
+ * @return {React$Element}             Menu bar element.
+ */
 const MenuBar = ({ routes }: Props) => (
   <Background>
     <ContentContainer>
@@ -58,37 +65,19 @@ const MenuBar = ({ routes }: Props) => (
 
       <LinksContainer>
         <LocalLinksContainer>
-          {routes.map((route, key) => {
-            const parentPath = `/${route.activityName}`;
-
-            if (!route.children) {
-              return (
-                <HeaderLink
-                  key={parentPath}
-                  to={parentPath}
-                  title={route.title}
-                />
-              );
-            }
+          {routes.map((route) => {
+            const path =
+              !route.children
+                ? `/${route.activityName}`
+                // $FlowDoNotDisturb difficulty prop exist if the route has children
+                : `/${route.activityName}/${route.difficulty}/${route.children[0].path}`;
 
             return (
-              // eslint-disable-next-line react/no-array-index-key
-              <HeaderLink key={key} title={route.title}>
-                {route.children.map((child) => {
-                  if (!route.difficulty) {
-                    throw new Error(
-                      // eslint-disable-next-line max-len
-                      `The activity ${route.activityName} requires to add the difficulty to the metadata definition.`,
-                    );
-                  }
-                  const childrenPath =
-                    `/${route.activityName}/${route.difficulty}/${child.path}`;
-
-                  return (
-                    <HeaderLink key={childrenPath} to={childrenPath} title={child.title} />
-                  );
-                })}
-              </HeaderLink>
+              <HeaderLink
+                key={path}
+                to={path}
+                title={route.title}
+              />
             );
           })}
         </LocalLinksContainer>

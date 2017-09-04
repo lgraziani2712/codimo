@@ -1,5 +1,11 @@
 ## HEAD
 
+### 💅 React UI
+
+- ⚙️ [v1.0.2] `Activity`: Adds the `handleNextLevelRedirection` helper (#59).
+- ⚙️ [v1.1.0] `CodimoRouter`: Adds a 404 page to announce the end game of an activity (#59).
+- 🆕 [v1.0.0] `CodimoRouter/FourOhFour`: 404 page (#59).
+
 ## v1.0.0-alpha.1
 
 ### 🤖 PixiJS Engine

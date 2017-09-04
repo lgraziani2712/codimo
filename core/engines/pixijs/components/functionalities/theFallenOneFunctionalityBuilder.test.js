@@ -12,7 +12,7 @@ import componentGenerator from '../componentGenerator';
 import positioningFunctionalityBuilder from './positioningFunctionalityBuilder';
 import theFallenOneFunctionalityBuilder from './theFallenOneFunctionalityBuilder';
 
-describe('engines/pixijs/components/functionalities/theFallenOneFunctionalityBuilder', async () => {
+describe('engines/pixijs/components/functionalities/theFallenOneFunctionalityBuilder', () => {
   it('should disappear on `beTheFallenOne`', async () => {
     const initPosition = '1,1';
     const size = 64;

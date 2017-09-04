@@ -104,7 +104,10 @@ export default class BlocklyApp extends React.Component {
       toolbox,
       trashcan: true,
       zoom: {
-        startScale: 1.25,
+        controls: true,
+        maxScale: 1.5,
+        startScale: 1,
+        scaleSpeed: 1.05,
       },
     });
     this.highlightBlock = (id: string) => {
