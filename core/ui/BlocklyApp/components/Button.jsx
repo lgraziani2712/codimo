@@ -45,6 +45,7 @@ export default function Button({ handleClick, title, type, disabled }: Props) {
       disabled={disabled}
       type={type}
       onClick={handleClick}
-    >{title}</ColoredAnimatedButton>
+      dangerouslySetInnerHTML={{ __html: title }}
+    />
   );
 }

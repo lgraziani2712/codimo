@@ -4,10 +4,11 @@
  *
  * @flow
  */
+import parseEmoji from 'core/helpers/parseEmoji';
 
 export default {
   actions: {
-    play: '▶ EJECUTÁ!',
-    reset: '⏹ INTENTAR DE NUEVO!',
+    play: `${parseEmoji('▶')} EJECUTÁ!`,
+    reset: `${parseEmoji('⏹')} INTENTAR DE NUEVO!`,
   },
 };

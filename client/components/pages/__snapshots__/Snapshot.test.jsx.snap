@@ -121,40 +121,331 @@ a:hover > .c9 path {
 <div
   className="c0"
 >
-  <div
-    className="c1 c2"
+  .c2 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-decoration: none;
+}
+
+.c2:active img {
+  -webkit-animation: iVXCSc 0.245s linear infinite;
+  animation: iVXCSc 0.245s linear infinite;
+}
+
+.c4 {
+  color: #f9524e;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-left: 3px;
+  text-shadow: 0 1px 2px rgba(85,95,110,0.4);
+}
+
+.c3 {
+  -webkit-filter: drop-shadow(0 1px 2px rgba(85,95,110,0.4));
+  filter: drop-shadow(0 1px 2px rgba(85,95,110,0.4));
+}
+
+.c8 {
+  height: 22px;
+  position: relative;
+  vertical-align: middle;
+}
+
+.c8 path {
+  -webkit-fill: rgba(0,0,0,0.6);
+  fill: rgba(0,0,0,0.6);
+}
+
+a:hover > .c8 path {
+  -webkit-fill: rgba(0,0,0,0.7);
+  fill: rgba(0,0,0,0.7);
+}
+
+.c1 {
+  margin: 0 auto;
+  width: 980px;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-grow: 1;
+  -ms-flex-grow: 1;
+  flex-grow: 1;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0;
+  padding: 0 0 0 1.5rem;
+}
+
+.c7 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-grow: 1;
+  -ms-flex-grow: 1;
+  flex-grow: 1;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c7 > * {
+  padding-left: 0.5rem;
+}
+
+<div
+    className="c0 c1"
   >
-    <a
-      className="c3"
+    .c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-decoration: none;
+}
+
+.c0:active img {
+  -webkit-animation: iVXCSc 0.245s linear infinite;
+  animation: iVXCSc 0.245s linear infinite;
+}
+
+.c2 {
+  color: #f9524e;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-left: 3px;
+  text-shadow: 0 1px 2px rgba(85,95,110,0.4);
+}
+
+.c1 {
+  -webkit-filter: drop-shadow(0 1px 2px rgba(85,95,110,0.4));
+  filter: drop-shadow(0 1px 2px rgba(85,95,110,0.4));
+}
+
+<a
+      className="c0"
       href="/"
       onClick={[Function]}
     >
-      <img
-        className="c4"
+      .c0 {
+  -webkit-filter: drop-shadow(0 1px 2px rgba(85,95,110,0.4));
+  filter: drop-shadow(0 1px 2px rgba(85,95,110,0.4));
+}
+
+<img
+        className="c0"
         src="logo-title.png"
       />
-      <span
-        className="c5"
+      .c0 {
+  color: #f9524e;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-left: 3px;
+  text-shadow: 0 1px 2px rgba(85,95,110,0.4);
+}
+
+<span
+        className="c0"
       >
         Códimo
       </span>
     </a>
-    <div
-      className="c6"
+    .c3 {
+  height: 22px;
+  position: relative;
+  vertical-align: middle;
+}
+
+.c3 path {
+  -webkit-fill: rgba(0,0,0,0.6);
+  fill: rgba(0,0,0,0.6);
+}
+
+a:hover > .c3 path {
+  -webkit-fill: rgba(0,0,0,0.7);
+  fill: rgba(0,0,0,0.7);
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-grow: 1;
+  -ms-flex-grow: 1;
+  flex-grow: 1;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0;
+  padding: 0 0 0 1.5rem;
+}
+
+.c2 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-grow: 1;
+  -ms-flex-grow: 1;
+  flex-grow: 1;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c2 > * {
+  padding-left: 0.5rem;
+}
+
+<div
+      className="c0"
     >
-      <ul
-        className="c7"
+      .c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0;
+  padding: 0 0 0 1.5rem;
+}
+
+<ul
+        className="c0"
       />
-      <div
-        className="c8"
+      .c1 {
+  height: 22px;
+  position: relative;
+  vertical-align: middle;
+}
+
+.c1 path {
+  -webkit-fill: rgba(0,0,0,0.6);
+  fill: rgba(0,0,0,0.6);
+}
+
+a:hover > .c1 path {
+  -webkit-fill: rgba(0,0,0,0.7);
+  fill: rgba(0,0,0,0.7);
+}
+
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-grow: 1;
+  -ms-flex-grow: 1;
+  flex-grow: 1;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c0 > * {
+  padding-left: 0.5rem;
+}
+
+<div
+        className="c0"
       >
-        <a
+        .c0 {
+  height: 22px;
+  position: relative;
+  vertical-align: middle;
+}
+
+.c0 path {
+  -webkit-fill: rgba(0,0,0,0.6);
+  fill: rgba(0,0,0,0.6);
+}
+
+a:hover > .c0 path {
+  -webkit-fill: rgba(0,0,0,0.7);
+  fill: rgba(0,0,0,0.7);
+}
+
+<a
           href="https://github.com/lgraziani2712/codimo"
           target="_blank"
         >
-          <svg
+          .c0 {
+  height: 22px;
+  position: relative;
+  vertical-align: middle;
+}
+
+.c0 path {
+  -webkit-fill: rgba(0,0,0,0.6);
+  fill: rgba(0,0,0,0.6);
+}
+
+a:hover > .c0 path {
+  -webkit-fill: rgba(0,0,0,0.7);
+  fill: rgba(0,0,0,0.7);
+}
+
+<svg
             aria-labelledby="github-svg"
-            className="c9"
+            className="c0"
             role="img"
             viewBox="0 0 32.6 31.8"
             xmlns="http://www.w3.org/2000/svg"
@@ -234,16 +525,111 @@ exports[`Components snapshots renders the PageContainer correctly 1`] = `
   className="c0"
 >
   <div />
-  <div
-    className="c1"
+  .c3 {
+  color: snow;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.c3:hover {
+  color: #dadada;
+  text-decoration: underline;
+}
+
+.c2 {
+  margin: 0 auto;
+  width: 980px;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
+}
+
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: #428bca;
+  color: white;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  bottom: 0;
+  height: 10rem;
+  margin: 0;
+  position: fixed;
+  width: 100%;
+  z-index: -1;
+}
+
+<div
+    className="c0"
   >
-    <div
-      className="c2 c3"
+    .c2 {
+  color: snow;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.c2:hover {
+  color: #dadada;
+  text-decoration: underline;
+}
+
+.c1 {
+  margin: 0 auto;
+  width: 980px;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
+}
+
+<div
+      className="c0 c1"
     >
-      <span>
+      .c0 {
+  color: snow;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.c0:hover {
+  color: #dadada;
+  text-decoration: underline;
+}
+
+<span>
         Equipo de desarrollo de Códimo. 
-        <a
-          className="c4"
+        .c0 {
+  color: snow;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.c0:hover {
+  color: #dadada;
+  text-decoration: underline;
+}
+
+<a
+          className="c0"
           href="https://www.unrn.edu.ar/"
           target="_blank"
         >
@@ -251,10 +637,32 @@ exports[`Components snapshots renders the PageContainer correctly 1`] = `
         </a>
         .
       </span>
-      <span>
+      .c0 {
+  color: snow;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.c0:hover {
+  color: #dadada;
+  text-decoration: underline;
+}
+
+<span>
         Distribuído bajo licencia 
-        <a
-          className="c4"
+        .c0 {
+  color: snow;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.c0:hover {
+  color: #dadada;
+  text-decoration: underline;
+}
+
+<a
+          className="c0"
           href="https://github.com/lgraziani2712/codimo/blob/master/LICENSE"
           target="_blank"
         >
@@ -324,12 +732,25 @@ exports[`Components snapshots renders the links correctly 2`] = `
   href="/"
   onClick={[Function]}
 >
-  <img
-    className="c1"
+  .c0 {
+  -webkit-filter: drop-shadow(0 1px 2px rgba(85,95,110,0.4));
+  filter: drop-shadow(0 1px 2px rgba(85,95,110,0.4));
+}
+
+<img
+    className="c0"
     src="logo-title.png"
   />
-  <span
-    className="c2"
+  .c0 {
+  color: #f9524e;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-left: 3px;
+  text-shadow: 0 1px 2px rgba(85,95,110,0.4);
+}
+
+<span
+    className="c0"
   >
     Códimo
   </span>
@@ -357,7 +778,23 @@ a:hover > .c0 path {
   href="https://github.com/lgraziani2712/codimo"
   target="_blank"
 >
-  <svg
+  .c0 {
+  height: 22px;
+  position: relative;
+  vertical-align: middle;
+}
+
+.c0 path {
+  -webkit-fill: rgba(0,0,0,0.6);
+  fill: rgba(0,0,0,0.6);
+}
+
+a:hover > .c0 path {
+  -webkit-fill: rgba(0,0,0,0.7);
+  fill: rgba(0,0,0,0.7);
+}
+
+<svg
     aria-labelledby="github-svg"
     className="c0"
     role="img"

@@ -3,8 +3,7 @@
  *
  * @flow
  */
-// $FlowDoNotDisturb internal jest module
-import expectReal from 'jest-matchers';
+import expectReal from 'expect';
 
 export { storiesOf } from '@storybook/react';
 export { action } from '@storybook/addon-actions';

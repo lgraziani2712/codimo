@@ -52,14 +52,45 @@ exports[`ui/BlocklyApp/components renders the ActionBar correctly 1`] = `
 <div
   className="c0"
 >
-  <a
-    className="c1 c2"
+  .c1 {
+  border-radius: 10px;
+  cursor: pointer;
+  float: left;
+  font-size: 25px;
+  font-weight: bold;
+  opacity: auto;
+  padding: 10px 40px;
+  pointer-events: auto;
+  text-decoration: none;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+}
+
+.c1:active {
+  border-bottom: 1px solid;
+  -webkit-transform: translate(0,5px);
+  -ms-transform: translate(0,5px);
+  transform: translate(0,5px);
+}
+
+.c0 {
+  background-color: #5cb85c;
+  border-bottom: 5px solid #1b7c1b;
+  color: #fff;
+  text-shadow: 0 -2px #1b7c1b;
+}
+
+<a
+    className="c0 c1"
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<img class=\\"emoji\\" draggable=\\"false\\" alt=\\"▶\\" src=\\"https://twemoji.maxcdn.com/2/svg/25b6.svg\\"/> EJECUTÁ!",
+      }
+    }
     disabled={undefined}
     onClick={[Function]}
     type="green"
-  >
-    ▶ EJECUTÁ!
-  </a>
+  />
 </div>
 `;
 
@@ -94,10 +125,13 @@ exports[`ui/BlocklyApp/components renders the Button correctly 1`] = `
 
 <a
   className="c0 c1"
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": "I'm a button",
+    }
+  }
   disabled={undefined}
   onClick={[Function]}
   type="red"
->
-  I'm a button
-</a>
+/>
 `;
