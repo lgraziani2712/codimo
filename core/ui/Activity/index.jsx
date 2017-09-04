@@ -6,6 +6,7 @@
  */
 import React from 'react';
 import swal from 'sweetalert2';
+import { withRouter } from 'react-router-dom';
 
 import {
   type ClientError,
@@ -13,7 +14,6 @@ import {
 import { type Instructions } from 'core/workspaces/blockly/parseInstructions';
 import { type GameDifficulty } from 'core/workspaces/blockly/instanciateEveryBlock';
 import { type EngineData, type Engine } from 'core/engines/pixijs/engineGenerator';
-import gameTextUI from 'core/constants/localize/es/gameTextUI';
 import { ZERO } from 'core/constants/numbers';
 import { getRandomInt } from 'core/helpers/randomizers';
 
@@ -22,6 +22,7 @@ import PixiApp from '../PixiApp';
 
 import BackgroundImage from './components/BackgroundImage';
 import TwoColumns from './components/TwoColumns';
+import handleNextLevelRedirection from './helpers/handleNextLevelRedirection';
 
 export type Metadata = {|
   activityName: string,
@@ -34,25 +35,36 @@ type Activity$Props = {|
   engine: Engine,
   metadata: Metadata,
   hasNotEnd?: boolean,
+  // react-router props
+  history: Object,
+  location: Object,
+  match: Object,
 |};
 
 /**
  * The Container is in charge of loading the required activity.
  *
- * @version 1.0.1
+ * @version 1.0.2
  * @todo 1. Subcomponents async loading.
  * @todo 2. Make it more generic.
  * @todo 3. Add example.
  */
-export default class Activity extends React.Component {
+class Activity extends React.Component {
   props: Activity$Props;
 
   image: string;
+  handleNextLevelRedirection: () => Promise<void>;
 
   constructor(props: Activity$Props) {
     super(props);
 
     this.image = props.backgroundImages[getRandomInt(ZERO, props.backgroundImages.length)];
+    this.handleNextLevelRedirection = handleNextLevelRedirection(
+      this.props.metadata.activityName,
+      this.props.metadata.difficulty,
+      this.props.location,
+      this.props.history,
+    );
   }
   /**
    * This callback will be used by the BlocklyApp.
@@ -75,7 +87,7 @@ export default class Activity extends React.Component {
     }
 
     return executionPromise
-        .then(() => (swal(gameTextUI.successMessage).catch(swal.noop)))
+        .then(this.handleNextLevelRedirection)
         .catch((error: ClientError) => {
           if (error.title === undefined) {
             throw error;
@@ -108,3 +120,5 @@ export default class Activity extends React.Component {
     );
   }
 }
+
+export default withRouter(Activity);

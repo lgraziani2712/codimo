@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CodimoRouter components snapshots renders the raw components correctly 1`] = `
+.c1 {
+  background: rgb(255,255,255);
+  display: block;
+  min-height: 316px;
+  padding: 0 20px 20px;
+  width: 630px;
+}
+
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+}
+
+.c0::before {
+  background: url(endGameBackground.jpg);
+  background-size: cover;
+  content: '';
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.c0::after {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAG0lEQVQIW2NkYGD4z8DAwMgABXAGNgGwSgwVAFbmAgXxvZSoAAAAAElFTkSuQmCC) repeat;
+  content: '';
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.c2 {
+  display: block;
+}
+
+<div
+  className="swal2-fade swal2-shown c0"
+>
+  <div
+    className="swal2-modal swal2-show c1"
+    role="dialog"
+  >
+    <img
+      className="swal2-image c2"
+      src="endGameDifficulty.gif"
+    />
+    <h2
+      className="swal2-title"
+    >
+      ¡GENIAL!
+    </h2>
+    <div
+      className="swal2-content"
+    >
+      ¡TERMINASTE TODOS LOS EJERCICIOS DEL undefined!
+    </div>
+  </div>
+</div>
+`;
