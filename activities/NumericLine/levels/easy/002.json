@@ -1,5 +1,5 @@
 {
-  "difficulty": "normal",
+  "difficulty": "easy",
   "engineData": {
     "canvas": {
       "height": 589,
@@ -25,16 +25,16 @@
       ["4,2", { "top": true, "bottom": true }],
       ["4,1", { "top": true, "bottom": true }],
       ["4,0", { "left": true, "bottom": true }],
-      ["3,0", { "right": true, "left": true }],
+      ["3,0", { "top": true, "right": true, "left": true }],
       ["2,0", { "right": true, "left": true }],
       ["1,0", { "top": true, "right": true }]
     ],
     "startPosition": "0,4",
-    "endPositions": ["1,0"],
+    "endPositions": ["1,0", "3,0"],
     "actorExitIdx": 0,
     "numericLineData": {
-      "statics": [0, null, 6, 7, 9],
-      "accesses": [1]
+      "statics": [0, null, 6, null, 9],
+      "accesses": [1, 3]
     }
   }
 }

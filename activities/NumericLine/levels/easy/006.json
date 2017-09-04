@@ -1,0 +1,44 @@
+{
+  "difficulty": "easy",
+  "engineData": {
+    "canvas": {
+      "height": 589,
+      "width": 660
+    },
+    "width": 7,
+    "height": 3,
+    "margin": 10,
+    "size": 64,
+    "path": [
+      ["3,1", { "top": true, "right": true }],
+      ["3,0", { "left": true, "bottom": true }],
+      ["2,0", { "right": true, "bottom": true }],
+      ["2,1", { "top": true, "left": true, "bottom": true }],
+      ["2,2", { "top": true, "left": true, "right": true }],
+      ["1,2", { "left": true, "right": true }],
+      ["0,2", { "top": true, "right": true }],
+      ["0,1", { "top": true, "bottom": true }],
+      ["0,0", { "right": true, "bottom": true }],
+      ["1,0", { "top": true, "left": true, "bottom": true }],
+
+      ["1,1", { "right": true, "top": true }],
+
+      ["4,1", { "left": true, "bottom": true }],
+      ["4,2", { "right": true, "top": true, "left": true }],
+      ["3,2", { "right": true }],
+
+      ["5,2", { "right": true, "left": true }],
+      ["6,2", { "left": true, "top": true }],
+      ["6,1", { "bottom": true, "top": true }],
+      ["6,0", { "bottom": true, "left": true }],
+      ["5,0", { "top": true, "right": true }]
+    ],
+    "startPosition": "3,1",
+    "endPositions": ["1,0", "5,0"],
+    "actorExitIdx": 0,
+    "numericLineData": {
+      "statics": [0, null, 3, 4, 5, null, 9],
+      "accesses": [1, 5]
+    }
+  }
+}

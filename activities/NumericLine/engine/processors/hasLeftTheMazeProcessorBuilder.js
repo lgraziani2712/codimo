@@ -26,7 +26,7 @@ import MazeWrongExitErrorURL from '../../images/MazeWrongExitError.png';
 const mazeExitError = engineErrorBuilder('MazeExitError', {
   imageUrl: MazeExitErrorURL,
   title: parseEmoji('🤖 NO PUDO SALTAR 🤖'),
-  text: 'EL NÚMERO SÓLO PUEDE SALTAR CUANDO ESTÁ EN UN FINAL DEL LABERINTO',
+  text: 'EL NÚMERO SÓLO PUEDE SALTAR CUANDO ESTÁ EN EL FINAL DEL LABERINTO',
 });
 const mazeWrongExitError = engineErrorBuilder('MazeWrongExitError', {
   imageUrl: MazeWrongExitErrorURL,

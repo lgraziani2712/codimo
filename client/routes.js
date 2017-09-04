@@ -23,6 +23,12 @@ const routes: Array<Codimo$Route> = [{
   }, {
     title: `${gameTextUI.levels[3]} ${gameTextUI.exercise}`,
     path: '004',
+  }, {
+    title: `${gameTextUI.levels[4]} ${gameTextUI.exercise}`,
+    path: '005',
+  }, {
+    title: `${gameTextUI.levels[5]} ${gameTextUI.exercise}`,
+    path: '006',
   }],
 }, {
   activityName: 'NumericLine',
@@ -37,6 +43,12 @@ const routes: Array<Codimo$Route> = [{
   }, {
     title: `${gameTextUI.levels[2]} ${gameTextUI.exercise}`,
     path: '003',
+  }, {
+    title: `${gameTextUI.levels[3]} ${gameTextUI.exercise}`,
+    path: '004',
+  }, {
+    title: `${gameTextUI.levels[4]} ${gameTextUI.exercise}`,
+    path: '005',
   }],
 }, {
   activityName: 'NumericLine',

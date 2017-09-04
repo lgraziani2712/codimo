@@ -10,6 +10,8 @@ import { ZERO, ONE } from 'core/constants/numbers';
 
 import { type CodimoComponent } from './componentGenerator';
 
+const SHADOW_WALL = 0.075;
+
 export const BLOCK_DEFINITIONS = {
   BORDER: 0x7d7d7d,
   PATH: 0x2a2a2a,
@@ -43,7 +45,7 @@ const wallGenerator = (
   const wall = new Sprite(Texture.WHITE);
 
   // If is the wall is an active path, then it is transparent.
-  wall.alpha = activePathBorders[position] ? ZERO : ONE;
+  wall.alpha = activePathBorders[position] ? SHADOW_WALL : ONE;
 
   wall.width = position === 'right' || position === 'left' ? margin : size;
   wall.height = position === 'right' || position === 'left' ? size : margin;

@@ -16,6 +16,9 @@
     "type": "repeat_x"
   }, {
     "define": "block",
+    "type": "simple_loop"
+  }, {
+    "define": "block",
     "type": "leave_maze"
   }],
   "blockDefinitions": [
@@ -24,6 +27,7 @@
     "move_right",
     "move_left",
     "repeat_x",
+    "simple_loop",
     "leave_maze"
   ]
 }

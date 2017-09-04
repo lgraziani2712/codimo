@@ -1,5 +1,9 @@
 ## HEAD
 
+## v1.0.3
+
+- ⛳ Add more games.
+
 ## v1.0.2
 
 - 🎨 Add an image for the `MazeWrongExitError`.
