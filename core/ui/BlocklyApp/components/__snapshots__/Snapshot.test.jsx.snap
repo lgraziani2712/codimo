@@ -84,7 +84,7 @@ exports[`ui/BlocklyApp/components renders the ActionBar correctly 1`] = `
     className="c0 c1"
     dangerouslySetInnerHTML={
       Object {
-        "__html": "<img class=\\"emoji\\" draggable=\\"false\\" alt=\\"▶\\" src=\\"https://twemoji.maxcdn.com/2/svg/25b6.svg\\"/> EJECUTÁ!",
+        "__html": "<img class=\\"emoji\\" draggable=\\"false\\" alt=\\"▶\\" src=\\"https://twemoji.maxcdn.com/2/svg/25b6.svg\\"/> PROBAR",
       }
     }
     disabled={undefined}

@@ -29,7 +29,7 @@ describe('Components snapshots', () => {
       <FooterLink href="http://helloworld.test" text="Hello dear" />,
     ).toJSON();
     const codimoLinkTree = renderer.create(<Router><CodimoLink /></Router>).toJSON();
-    const githubLinkTree = renderer.create(<GithubLink />).toJSON();
+    const githubLinkTree = renderer.create(<Router><GithubLink /></Router>).toJSON();
 
     expect(footerLinkTree).toMatchSnapshot();
     expect(codimoLinkTree).toMatchSnapshot();

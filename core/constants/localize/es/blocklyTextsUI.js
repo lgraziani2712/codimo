@@ -8,7 +8,7 @@ import parseEmoji from 'core/helpers/parseEmoji';
 
 export default {
   actions: {
-    play: `${parseEmoji('▶')} EJECUTÁ!`,
-    reset: `${parseEmoji('⏹')} INTENTAR DE NUEVO!`,
+    play: `${parseEmoji('▶')} PROBAR`,
+    reset: `${parseEmoji('⏹')} INTENTAR DE NUEVO`,
   },
 };

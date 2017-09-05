@@ -43,7 +43,7 @@
       ["7,2", { "top": true, "right": true }],
 
       ["8,0", { "top": true, "bottom": true, "left": true }],
-      ["8,1", { "top": true, "bottom": true }],
+      ["8,1", { "top": true, "bottom": true, "right": true }],
       ["8,2", { "top": true, "left": true }],
 
       ["9,0", { "bottom": true, "right": true }],
@@ -51,7 +51,7 @@
       ["9,2", { "top": true, "right": true }],
 
       ["10,0", { "top": true, "bottom": true, "left": true }],
-      ["10,1", { "top": true, "bottom": true }],
+      ["10,1", { "top": true, "bottom": true, "right": true }],
       ["10,2", { "top": true, "left": true }],
 
       ["11,0", { "bottom": true, "right": true }],
@@ -59,7 +59,7 @@
       ["11,2", { "top": true, "right": true }],
 
       ["12,0", { "top": true, "bottom": true, "left": true }],
-      ["12,1", { "top": true, "bottom": true }],
+      ["12,1", { "top": true, "bottom": true, "right": true }],
       ["12,2", { "top": true, "left": true }],
 
       ["13,0", { "bottom": true, "right": true }],

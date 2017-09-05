@@ -106,8 +106,8 @@ export default class BlocklyApp extends React.Component {
       zoom: {
         controls: true,
         maxScale: 1.5,
-        startScale: 1,
-        scaleSpeed: 1.05,
+        scaleSpeed: 1.01,
+        startScale: 0.9,
       },
     });
     this.highlightBlock = (id: string) => {
