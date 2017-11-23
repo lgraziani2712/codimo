@@ -1,3 +1,4 @@
 dist/vendors/**/*.js
 dev-elements/vendors/**/*.js
 documentation
+node_modules

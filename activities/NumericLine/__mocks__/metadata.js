@@ -4,7 +4,7 @@
  *
  * @flow
  */
-/* eslint-disable no-magic-numbers */
+/* eslint-disable no-magic-numbers, object-property-newline */
 export default {
   difficulty: 'easy',
   engineData: {

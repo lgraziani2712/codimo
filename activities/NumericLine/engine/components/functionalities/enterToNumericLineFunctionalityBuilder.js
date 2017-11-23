@@ -46,7 +46,9 @@ const enterToNumericLineFunctionalityBuilder: FunctionalityBuilder = (
       this.view.position = localPosition;
 
       return new Promise((onComplete) => {
-        const timeline = new TimelineLite({ onComplete });
+        const timeline = new TimelineLite({
+          onComplete,
+        });
 
         timeline
             .to(this.view, DEFAULT_MOVEMENT_DURATION, {

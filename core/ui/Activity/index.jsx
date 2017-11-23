@@ -34,7 +34,7 @@ type Activity$Props = {|
   backgroundImages: Array<string>,
   engine: Engine,
   metadata: Metadata,
-  hasNotEnd?: boolean,
+  hasNoEnd?: boolean,
   // react-router props
   history: Object,
   location: Object,
@@ -82,7 +82,7 @@ class Activity extends React.Component {
       handleHighlightBlock,
     );
 
-    if (this.props.hasNotEnd) {
+    if (this.props.hasNoEnd) {
       return executionPromise;
     }
 

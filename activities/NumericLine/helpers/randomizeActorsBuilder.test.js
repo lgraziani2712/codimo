@@ -13,7 +13,10 @@ describe('NumericLine/helpers/randomizeActorsBuilder', () => {
   it('should return an appropriate number for each empty position on the numeric line', () => {
     const statics = [0, null, 5];
     const accesses = [1];
-    const result = randomizeActorsBuilder(EASY, { statics, accesses })();
+    const result = randomizeActorsBuilder(EASY, {
+      statics,
+      accesses,
+    })();
 
     expect(result).toBeInstanceOf(Array);
     expect(result.length).toBe(accesses.length);
@@ -23,7 +26,10 @@ describe('NumericLine/helpers/randomizeActorsBuilder', () => {
   it('should always return the same number if the diff between min and max is eq 2', () => {
     const statics = [1, null, 3, null, 5];
     const accesses = [1, 3];
-    const result = randomizeActorsBuilder(EASY, { statics, accesses })();
+    const result = randomizeActorsBuilder(EASY, {
+      statics,
+      accesses,
+    })();
 
     expect(result[0]).toBe(statics[0] + 1);
     expect(result[1]).toBe(statics[4] - 1);
@@ -31,7 +37,10 @@ describe('NumericLine/helpers/randomizeActorsBuilder', () => {
   it('should work as expected when the `null` are defined at first and last position', () => {
     const statics = [null, 5, null];
     const accesses = [0, 2];
-    const result = randomizeActorsBuilder(EASY, { statics, accesses })();
+    const result = randomizeActorsBuilder(EASY, {
+      statics,
+      accesses,
+    })();
 
     expect(typeof result[0]).toBe('number');
     expect(typeof result[1]).toBe('number');

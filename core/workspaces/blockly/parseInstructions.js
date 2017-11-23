@@ -4,7 +4,6 @@
  *
  * @flow
  */
-
 export type Instruction = {|
   id: string,
   key: string,

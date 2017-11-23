@@ -34,7 +34,7 @@ type CodimoRouter$Props = {|
  */
 export default function CodimoRouter({ routes }: CodimoRouter$Props) {
   return (
-    <Switch path="/:activity/:difficulty/:exercise">
+    <Switch path="/:activity/:difficulty/:level">
       {routes.map((route) => {
         if (!route.children) {
           const path = `/${route.activityName}`;
@@ -69,10 +69,10 @@ export default function CodimoRouter({ routes }: CodimoRouter$Props) {
         });
       })}
       {/*
-        * 404 for exercises. This means the game has ended.
-        * TODO 404 for exercises needs a proper refactor.
+        * 404 for levels. This means the game has ended.
+        * TODO 404 for levels needs a proper refactor.
         */}
-      <Route path="/:activity/:difficulty/:exercise" component={FourOhFour} />
+      <Route path="/:activity/:difficulty/:level" component={FourOhFour} />
     </Switch>
   );
 }

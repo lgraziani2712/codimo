@@ -30,9 +30,9 @@ exports[`Components snapshots renders the FrontPage correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-between;
+  -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
-  -ms-flex-pack: space-between;
+  -ms-flex-pack: justify;
   justify-content: space-between;
 }
 
@@ -124,262 +124,37 @@ exports[`Components snapshots renders the FrontPage correctly 1`] = `
 <div
   className="c0"
 >
-  .c3 {
-  margin: 0 auto;
-  width: 980px;
-}
-
-.c2 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  min-height: 300px;
-  padding: 5rem;
-}
-
-.c1 {
-  color: white;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  margin: 0;
-}
-
-.c1 > img {
-  -webkit-filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.5));
-  filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.5));
-}
-
-.c0 {
-  background: #d9534f;
-}
-
-.c7 {
-  background: #5cb85c;
-}
-
-.c5 {
-  background: white;
-  box-shadow: 0 0 4px 4px rgba(85,95,110,0.4);
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  position: relative;
-  z-index: 1;
-}
-
-.c5 > img {
-  -webkit-filter: drop-shadow(-2px 2px 2px rgba(0,0,0,0.5));
-  filter: drop-shadow(-2px 2px 2px rgba(0,0,0,0.5));
-}
-
-.c4 {
-  font-size: 4.5em;
-  font-weight: 200;
-  margin: 0;
-  text-shadow: 5px 5px #be2f2b;
-}
-
-.c6 {
-  font-family: 'Open Sans Condensed',sans-serif;
-  font-size: 2em;
-  font-weight: lighter;
-  padding: 0 0.5em;
-  width: 42%;
-}
-
-<div>
-    .c3 {
-  margin: 0 auto;
-  width: 980px;
-}
-
-.c2 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  min-height: 300px;
-  padding: 5rem;
-}
-
-.c1 {
-  color: white;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  margin: 0;
-}
-
-.c1 > img {
-  -webkit-filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.5));
-  filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.5));
-}
-
-.c0 {
-  background: #d9534f;
-}
-
-.c4 {
-  font-size: 4.5em;
-  font-weight: 200;
-  margin: 0;
-  text-shadow: 5px 5px #be2f2b;
-}
-
-<div
-      className="c0 c1 c2"
+  <div>
+    <div
+      className="c1 c2 c3"
     >
-      .c0 {
-  margin: 0 auto;
-  width: 980px;
-}
-
-.c1 {
-  font-size: 4.5em;
-  font-weight: 200;
-  margin: 0;
-  text-shadow: 5px 5px #be2f2b;
-}
-
-<div
-        className="c0"
+      <div
+        className="c4"
       >
-        .c0 {
-  font-size: 4.5em;
-  font-weight: 200;
-  margin: 0;
-  text-shadow: 5px 5px #be2f2b;
-}
-
-<h1
-          className="c0"
+        <h1
+          className="c5"
         >
           ¡Donde el código, la imaginación y la motivación se encuentran!
         </h1>
       </div>
     </div>
-    .c1 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  min-height: 300px;
-  padding: 5rem;
-}
-
-.c0 {
-  background: white;
-  box-shadow: 0 0 4px 4px rgba(85,95,110,0.4);
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  position: relative;
-  z-index: 1;
-}
-
-.c0 > img {
-  -webkit-filter: drop-shadow(-2px 2px 2px rgba(0,0,0,0.5));
-  filter: drop-shadow(-2px 2px 2px rgba(0,0,0,0.5));
-}
-
-.c2 {
-  font-family: 'Open Sans Condensed',sans-serif;
-  font-size: 2em;
-  font-weight: lighter;
-  padding: 0 0.5em;
-  width: 42%;
-}
-
-<div
-      className="c0 c1"
+    <div
+      className="c6 c3"
     >
       <img
         src="/images/logo.png"
       />
-      .c0 {
-  font-family: 'Open Sans Condensed',sans-serif;
-  font-size: 2em;
-  font-weight: lighter;
-  padding: 0 0.5em;
-  width: 42%;
-}
-
-<div
-        className="c0"
+      <div
+        className="c7"
       >
         Es una plataforma que presenta actividades escolares diseñadas para que sean divertidas y ayuden a afianzar los conocimientos de las distintas asignaturas a través de resolverlas de una manera diferente a como se aprenden en clase.
       </div>
     </div>
-    .c2 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  min-height: 300px;
-  padding: 5rem;
-}
-
-.c1 {
-  color: white;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  margin: 0;
-}
-
-.c1 > img {
-  -webkit-filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.5));
-  filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.5));
-}
-
-.c0 {
-  background: #5cb85c;
-}
-
-.c3 {
-  font-family: 'Open Sans Condensed',sans-serif;
-  font-size: 2em;
-  font-weight: lighter;
-  padding: 0 0.5em;
-  width: 42%;
-}
-
-<div
-      className="c0 c1 c2"
+    <div
+      className="c8 c2 c3"
     >
-      .c0 {
-  font-family: 'Open Sans Condensed',sans-serif;
-  font-size: 2em;
-  font-weight: lighter;
-  padding: 0 0.5em;
-  width: 42%;
-}
-
-<div
-        className="c0"
+      <div
+        className="c7"
       >
         Cada actividad está estructurada en niveles. Cada nivel representa un desafío y a medida que se avanza de nivel, más aumenta la dificultad.
       </div>
@@ -387,59 +162,14 @@ exports[`Components snapshots renders the FrontPage correctly 1`] = `
         src="module.url"
       />
     </div>
-    .c1 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  min-height: 300px;
-  padding: 5rem;
-}
-
-.c0 {
-  background: white;
-  box-shadow: 0 0 4px 4px rgba(85,95,110,0.4);
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  position: relative;
-  z-index: 1;
-}
-
-.c0 > img {
-  -webkit-filter: drop-shadow(-2px 2px 2px rgba(0,0,0,0.5));
-  filter: drop-shadow(-2px 2px 2px rgba(0,0,0,0.5));
-}
-
-.c2 {
-  font-family: 'Open Sans Condensed',sans-serif;
-  font-size: 2em;
-  font-weight: lighter;
-  padding: 0 0.5em;
-  width: 42%;
-}
-
-<div
-      className="c0 c1"
+    <div
+      className="c6 c3"
     >
       <img
         src="computer-thinking.png"
       />
-      .c0 {
-  font-family: 'Open Sans Condensed',sans-serif;
-  font-size: 2em;
-  font-weight: lighter;
-  padding: 0 0.5em;
-  width: 42%;
-}
-
-<div
-        className="c0"
+      <div
+        className="c7"
       >
         ¿Qué es el 
         <b>
@@ -449,111 +179,16 @@ exports[`Components snapshots renders the FrontPage correctly 1`] = `
       </div>
     </div>
   </div>
-  .c3 {
-  color: snow;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.c3:hover {
-  color: #dadada;
-  text-decoration: underline;
-}
-
-.c2 {
-  margin: 0 auto;
-  width: 980px;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: space-between;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: space-between;
-  justify-content: space-between;
-}
-
-.c0 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background: #428bca;
-  color: white;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  bottom: 0;
-  height: 10rem;
-  margin: 0;
-  position: fixed;
-  width: 100%;
-  z-index: -1;
-}
-
-<div
-    className="c0"
+  <div
+    className="c9"
   >
-    .c2 {
-  color: snow;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.c2:hover {
-  color: #dadada;
-  text-decoration: underline;
-}
-
-.c1 {
-  margin: 0 auto;
-  width: 980px;
-}
-
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: space-between;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: space-between;
-  justify-content: space-between;
-}
-
-<div
-      className="c0 c1"
+    <div
+      className="c10 c4"
     >
-      .c0 {
-  color: snow;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.c0:hover {
-  color: #dadada;
-  text-decoration: underline;
-}
-
-<span>
+      <span>
         Equipo de desarrollo de Códimo. 
-        .c0 {
-  color: snow;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.c0:hover {
-  color: #dadada;
-  text-decoration: underline;
-}
-
-<a
-          className="c0"
+        <a
+          className="c11"
           href="https://www.unrn.edu.ar/"
           target="_blank"
         >
@@ -561,32 +196,10 @@ exports[`Components snapshots renders the FrontPage correctly 1`] = `
         </a>
         .
       </span>
-      .c0 {
-  color: snow;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.c0:hover {
-  color: #dadada;
-  text-decoration: underline;
-}
-
-<span>
+      <span>
         Distribuído bajo licencia 
-        .c0 {
-  color: snow;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.c0:hover {
-  color: #dadada;
-  text-decoration: underline;
-}
-
-<a
-          className="c0"
+        <a
+          className="c11"
           href="https://github.com/lgraziani2712/codimo/blob/master/LICENSE"
           target="_blank"
         >

@@ -49,28 +49,12 @@ exports[`CodimoRouter components snapshots renders the raw components correctly 
 <div
   className="swal2-fade swal2-shown c0"
 >
-  .c0 {
-  background: rgb(255,255,255);
-  display: block;
-  min-height: 316px;
-  padding: 0 20px 20px;
-  width: 630px;
-}
-
-.c1 {
-  display: block;
-}
-
-<div
-    className="swal2-modal swal2-show c0"
+  <div
+    className="swal2-modal swal2-show c1"
     role="dialog"
   >
-    .c0 {
-  display: block;
-}
-
-<img
-      className="swal2-image c0"
+    <img
+      className="swal2-image c2"
       src="endGameDifficulty.gif"
     />
     <h2

@@ -1,8 +1,12 @@
-extends: stylelint-config-standard
+extends:
+  - stylelint-config-standard
+  - stylelint-config-styled-components
 
-plugins: [stylelint-order]
+plugins:
+  - stylelint-order
 
-processors: [stylelint-processor-styled-components]
+processors:
+  - stylelint-processor-styled-components
 
 syntax: scss
 

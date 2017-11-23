@@ -42,7 +42,10 @@ export const actorGenerator = (
   endPosition: string,
 ) => (
   componentGenerator(view, size, margin)
-      .addFunctionality('positioning', positioningFunctionalityBuilder(startPosition, endPosition))
+      .addFunctionality(
+        'positioning',
+        positioningFunctionalityBuilder(startPosition, endPosition),
+      )
       .addFunctionality('hitTheWall', hitTheWallFunctionalityBuilder())
       .addFunctionality('emotions', emotionFunctionalityBuilder)
       .addFunctionality('theFallenOne', theFallenOneFunctionalityBuilder)

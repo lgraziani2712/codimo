@@ -45,10 +45,10 @@ module.exports = {
       },
     },
   },
-    parserOptions: {
-      ecmaVersion: 6,
-      sourceType: 'module',
-      ecmaFeatures: {
+  parserOptions: {
+    ecmaVersion: 8,
+    sourceType: 'module',
+    ecmaFeatures: {
       classes: true,
       jsx: true,
       experimentalObjectRestSpread: true,
@@ -122,6 +122,7 @@ module.exports = {
     'no-useless-escape': 1,
     'no-var': 1,
     'object-curly-spacing': [1, 'always'],
+    'object-property-newline': 1,
     'object-shorthand': 1,
     'one-var': [2, 'never'],
     'padded-blocks': [1, 'never'],

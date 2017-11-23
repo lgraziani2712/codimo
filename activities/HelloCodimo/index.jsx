@@ -19,7 +19,7 @@ export default function HelloCodimo() {
       backgroundImages={[]}
       engine={helloCodimoEngine(metadata)}
       metadata={metadata}
-      hasNotEnd={true}
+      hasNoEnd={true}
     />
   );
 }

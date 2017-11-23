@@ -34,22 +34,22 @@ const foldersToClean = [
 
 module.exports = {
   // more info: https://webpack.js.org/configuration/devtool/
-  devtool: 'cheap-module-source-map',
+  // FIXME: https://github.com/webpack-contrib/babel-minify-webpack-plugin/issues/68
+  // devtool: 'source-map',
   entry: [
     // Used for async/await to work
     'babel-polyfill',
     paths.appMainJs,
   ],
-  target: 'web', // necessary for https://webpack.github.io/docs/testing.html#compile-and-test
   context: paths.client,
   output: {
     filename: '[name].[chunkhash].js',
     chunkFilename: '[name].[chunkhash].js',
 
-    // Note: Physical files are only output by the production build task `npm run build`.
+    // Note: Physical files are only output by the production build task.
     path: paths.appDist,
 
-    // necessary for HMR to know where to load the hot update chunks
+    // Necessary for HMR to know where to load the hot update chunks
     publicPath: '/',
   },
   resolve: {

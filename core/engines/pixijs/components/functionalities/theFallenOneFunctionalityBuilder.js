@@ -43,7 +43,9 @@ const theFallenOneFunctionalityBuilder: FunctionalityBuilder = (
       this.position = '';
 
       return new Promise((onComplete) => {
-        const timeline = new TimelineLite({ onComplete });
+        const timeline = new TimelineLite({
+          onComplete,
+        });
 
         timeline
             .to(this.view, DEFAULT_MOVEMENT_DURATION, {
