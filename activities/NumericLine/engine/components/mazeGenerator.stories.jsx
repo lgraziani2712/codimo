@@ -20,6 +20,6 @@ const HEIGHT = engineData.canvas.height;
 const basicMaze = mazeGenerator(engineData);
 
 storiesOf('NumericLine/engine/components/mazeGenerator', module)
-    .add('basic Maze', () => (
-      <PixiWrapper component={basicMaze.view} isContainer={true} height={HEIGHT} width={WIDTH} />
-    ));
+  .add('basic Maze', () => (
+    <PixiWrapper component={basicMaze.view} isContainer={true} height={HEIGHT} width={WIDTH} />
+  ));

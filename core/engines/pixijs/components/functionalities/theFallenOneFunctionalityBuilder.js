@@ -48,19 +48,19 @@ const theFallenOneFunctionalityBuilder: FunctionalityBuilder = (
         });
 
         timeline
-            .to(this.view, DEFAULT_MOVEMENT_DURATION, {
-              y: this.view.y - size * FALL_DISTANCE_MULTIPLIER,
-              ease: Linear.easeNone,
-            })
-            .to(this.view, FALL_SPIN_DURATION, {
-              rotation: 50,
-              ease: Power1.easeIn,
-            }, ZERO)
-            .to(this.view.scale, SQUISH_DURATION, {
-              x: 0,
-              y: 0,
-              ease: Power1.easeIn,
-            }, DEFAULT_MOVEMENT_DURATION);
+          .to(this.view, DEFAULT_MOVEMENT_DURATION, {
+            y: this.view.y - size * FALL_DISTANCE_MULTIPLIER,
+            ease: Linear.easeNone,
+          })
+          .to(this.view, FALL_SPIN_DURATION, {
+            rotation: 50,
+            ease: Power1.easeIn,
+          }, ZERO)
+          .to(this.view.scale, SQUISH_DURATION, {
+            x: 0,
+            y: 0,
+            ease: Power1.easeIn,
+          }, DEFAULT_MOVEMENT_DURATION);
       });
     },
     resetTheFallenOne() {

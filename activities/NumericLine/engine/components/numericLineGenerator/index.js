@@ -60,8 +60,8 @@ const numericLineGenerator = ({ numericLineData, size, margin }: Props): CodimoC
   view.addChild(leftArrow.view, line.view, rightArrow.view);
 
   return componentGenerator(view, size, margin)
-      .addFunctionality('numericLine', numericLineFunctionalities(line))
-      .build();
+    .addFunctionality('numericLine', numericLineFunctionalities(line))
+    .build();
 };
 
 export default numericLineGenerator;

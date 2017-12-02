@@ -23,9 +23,9 @@ describe('engines/pixijs/components/functionalities/theFallenOneFunctionalityBui
 
     const actor =
       componentGenerator(actorView, size, margin)
-          .addFunctionality('positioning', positioningFunctionalityBuilder(initPosition))
-          .addFunctionality('beTheFallenOne', theFallenOneFunctionalityBuilder)
-          .build();
+        .addFunctionality('positioning', positioningFunctionalityBuilder(initPosition))
+        .addFunctionality('beTheFallenOne', theFallenOneFunctionalityBuilder)
+        .build();
 
     await actor.beTheFallenOne();
 

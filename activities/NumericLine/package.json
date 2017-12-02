@@ -4,6 +4,6 @@
   "version": "1.0.3",
   "author": "Luciano Graziani @lgraziani2712",
   "peerDependencies": {
-    "codimo": "~1.0.0"
+    "codimo-core": "^1.0.0"
   }
 }

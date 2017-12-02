@@ -23,47 +23,47 @@ const Container = styled.div`
 const clickedAction = action('Clicked!');
 
 storiesOf('ui/BlocklyApp/components', module)
-    .add('Clickable animated buttons', () => (
-      <Container>
-        <div><Button handleClick={clickedAction} title="Click me 😃" type="blue" /></div>
-        <div><Button handleClick={clickedAction} title="Click me 😃" type="green" /></div>
-        <div><Button handleClick={clickedAction} title="Click me 😃" type="red" /></div>
-        <div><Button handleClick={clickedAction} title="Click me 😃" type="orange" /></div>
-      </Container>
-    ))
-    .add('Unclickable non-animated buttons', () => (
-      <Container>
-        <div>
-          <Button
-            disabled={true}
-            title="Click me 😃"
-            type="blue"
-            handleClick={clickedAction}
-          />
-        </div>
-        <div>
-          <Button
-            disabled={true}
-            title="Click me 😃"
-            type="green"
-            handleClick={clickedAction}
-          />
-        </div>
-        <div>
-          <Button
-            disabled={true}
-            title="Click me 😃"
-            type="red"
-            handleClick={clickedAction}
-          />
-        </div>
-        <div>
-          <Button
-            disabled={true}
-            title="Click me 😃"
-            type="orange"
-            handleClick={clickedAction}
-          />
-        </div>
-      </Container>
-    ));
+  .add('Clickable animated buttons', () => (
+    <Container>
+      <div><Button handleClick={clickedAction} title="Click me 😃" type="blue" /></div>
+      <div><Button handleClick={clickedAction} title="Click me 😃" type="green" /></div>
+      <div><Button handleClick={clickedAction} title="Click me 😃" type="red" /></div>
+      <div><Button handleClick={clickedAction} title="Click me 😃" type="orange" /></div>
+    </Container>
+  ))
+  .add('Unclickable non-animated buttons', () => (
+    <Container>
+      <div>
+        <Button
+          disabled={true}
+          title="Click me 😃"
+          type="blue"
+          handleClick={clickedAction}
+        />
+      </div>
+      <div>
+        <Button
+          disabled={true}
+          title="Click me 😃"
+          type="green"
+          handleClick={clickedAction}
+        />
+      </div>
+      <div>
+        <Button
+          disabled={true}
+          title="Click me 😃"
+          type="red"
+          handleClick={clickedAction}
+        />
+      </div>
+      <div>
+        <Button
+          disabled={true}
+          title="Click me 😃"
+          type="orange"
+          handleClick={clickedAction}
+        />
+      </div>
+    </Container>
+  ));

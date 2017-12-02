@@ -60,7 +60,7 @@ module.exports = {
     // match the output path
     contentBase: paths.appDist,
 
-    // hot: true,
+    hot: true,
   },
   plugins: [
     new webpack.DefinePlugin(GLOBALS),

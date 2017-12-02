@@ -37,9 +37,9 @@ const lineGenerator = (numbers: Array<number | null>, size: number, margin: numb
   const staticNumbers: Array<CodimoComponent> = [];
 
   view
-      .beginFill(NUMERIC_LINE_BG_COLOR)
-      .drawRect(ZERO, ZERO, width, height)
-      .endFill();
+    .beginFill(NUMERIC_LINE_BG_COLOR)
+    .drawRect(ZERO, ZERO, width, height)
+    .endFill();
 
   view.x = ZERO;
   view.y = margin;
@@ -48,9 +48,9 @@ const lineGenerator = (numbers: Array<number | null>, size: number, margin: numb
     const square = new Graphics();
 
     square
-        .beginFill(NUMERIC_LINE_NUMBER_BG_COLOR)
-        .drawRect(ZERO, ZERO, size, size)
-        .endFill();
+      .beginFill(NUMERIC_LINE_NUMBER_BG_COLOR)
+      .drawRect(ZERO, ZERO, size, size)
+      .endFill();
 
     square.x = i * size + (margin + i * margin);
     square.y = margin;
@@ -66,9 +66,9 @@ const lineGenerator = (numbers: Array<number | null>, size: number, margin: numb
   }
 
   return componentGenerator(view, size, margin)
-      .addFunctionality('emotions', lineEmotionsFunctionalityBuilder(staticNumbers))
-      .addFunctionality('receiveNumberAtPosition', receiveNumberAtPositionFunctionalityBuilder)
-      .build();
+    .addFunctionality('emotions', lineEmotionsFunctionalityBuilder(staticNumbers))
+    .addFunctionality('receiveNumberAtPosition', receiveNumberAtPositionFunctionalityBuilder)
+    .build();
 };
 
 export default lineGenerator;

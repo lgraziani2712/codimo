@@ -11,13 +11,13 @@ import { storiesOf } from 'test/storybook-facades';
 import activityLoader from '.';
 
 storiesOf('ui/CodimoRouter/activityLoader', module)
-    .add('Load HelloCodimo asynchronously', () => {
-      const ActivityLoader = activityLoader('HelloCodimo');
+  .add('Load HelloCodimo asynchronously', () => {
+    const ActivityLoader = activityLoader('HelloCodimo');
 
-      return <ActivityLoader />;
-    })
-    .add('Load NumericLine/easy/001 asynchronously', () => {
-      const ActivityLoader = activityLoader('NumericLine', 'easy', '001');
+    return <ActivityLoader />;
+  })
+  .add('Load NumericLine/easy/001 asynchronously', () => {
+    const ActivityLoader = activityLoader('NumericLine', 'easy', '001');
 
-      return <ActivityLoader />;
-    });
+    return <ActivityLoader />;
+  });

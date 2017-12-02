@@ -23,8 +23,8 @@ describe('engines/pixijs/components/functionalities/positioningFunctionalityBuil
 
     const actor =
       componentGenerator(actorView, size, margin)
-          .addFunctionality('positioning', positioningFunctionalityBuilder(initPosition))
-          .build();
+        .addFunctionality('positioning', positioningFunctionalityBuilder(initPosition))
+        .build();
     const initX = actor.view.x;
     const initY = actor.view.y;
 

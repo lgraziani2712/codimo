@@ -5,6 +5,7 @@
  * @flow
  */
 import React from 'react';
+import { MemoryRouter } from 'react-router-dom';
 
 import { storiesOf } from 'test/storybook-facades';
 
@@ -20,6 +21,8 @@ const metadata = {
 };
 
 storiesOf('NumericLine', module)
-    .add('First normal game', () => (
+  .add('First normal game', () => (
+    <MemoryRouter>
       <NumericLine metadata={metadata} />
-    ));
+    </MemoryRouter>
+  ));

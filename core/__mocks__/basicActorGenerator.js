@@ -13,7 +13,7 @@ import positioningFunctionalityBuilder
 const basicActorGenerator = (size: number, margin: number) =>
   (view: Container, position: string) => (
     componentGenerator(view, size, margin)
-        .addFunctionality('positioning', positioningFunctionalityBuilder(position))
+      .addFunctionality('positioning', positioningFunctionalityBuilder(position))
   );
 
 export default basicActorGenerator;

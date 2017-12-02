@@ -17,8 +17,8 @@ describe('engines/pixijs/components/functionalities/hitTheWallFunctionalityBuild
     const margin = 10;
     const actor =
       componentGenerator(new Container(), size, margin)
-          .addFunctionality('hitTheWall', hitTheWallFunctionalityBuilder())
-          .build();
+        .addFunctionality('hitTheWall', hitTheWallFunctionalityBuilder())
+        .build();
     const initX = 1;
     const initY = 1;
 

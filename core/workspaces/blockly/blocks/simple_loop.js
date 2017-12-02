@@ -18,9 +18,9 @@ const LOOP_STATEMENT = 'LOOP';
 export default {
   builder(block: Blockly$Block) {
     block.appendDummyInput()
-        .appendField(SIMPLE_LOOP_TITLE_1)
-        .appendField(new Blockly.FieldNumber(TWO, TWO), CANT_VAR)
-        .appendField(SIMPLE_LOOP_TITLE_2);
+      .appendField(SIMPLE_LOOP_TITLE_1)
+      .appendField(new Blockly.FieldNumber(TWO, TWO), CANT_VAR)
+      .appendField(SIMPLE_LOOP_TITLE_2);
     block.appendStatementInput(LOOP_STATEMENT);
     block.setPreviousStatement(true);
     block.setNextStatement(true);

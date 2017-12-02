@@ -87,15 +87,15 @@ class Activity extends React.Component {
     }
 
     return executionPromise
-        .then(this.handleNextLevelRedirection)
-        .catch((error: ClientError) => {
-          if (error.title === undefined) {
-            throw error;
-          }
-          delete error.name;
+      .then(this.handleNextLevelRedirection)
+      .catch((error: ClientError) => {
+        if (error.title === undefined) {
+          throw error;
+        }
+        delete error.name;
 
-          return swal(error).catch(swal.noop);
-        });
+        return swal(error).catch(swal.noop);
+      });
   }
   render() {
     const { engine, metadata } = this.props;

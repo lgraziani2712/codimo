@@ -26,8 +26,8 @@ describe('codimo/engines/pixijs/engineGenerator', () => {
     const engineBuilder = engineGenerator(new Container());
     const engine =
       engineBuilder
-          .addExecutionProcessor('mock', processorMock(0)(mockFunction))
-          .build();
+        .addExecutionProcessor('mock', processorMock(0)(mockFunction))
+        .build();
 
     await engine.excecuteSetOfInstructions([{
       id: '1',
@@ -46,8 +46,8 @@ describe('codimo/engines/pixijs/engineGenerator', () => {
     const engineBuilder = engineGenerator(new Container());
     const engine =
       engineBuilder
-          .addResetProcessor('reset', processorMock(0)(mockFunction))
-          .build();
+        .addResetProcessor('reset', processorMock(0)(mockFunction))
+        .build();
 
     await engine.handleResetGame();
 

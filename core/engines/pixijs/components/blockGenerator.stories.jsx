@@ -36,64 +36,64 @@ const onePosition = SIZE + MARGIN;
 const twoPositions = (SIZE + MARGIN) * TWO;
 
 storiesOf('engines/pixijs/components/blockGenerator', module)
-    .add('2x2 wall and border blocks', () => {
-      const container = new Container();
-      const topLeftWall = wallBlockGenerator(ZERO, ZERO);
-      const bottomRightWall = wallBlockGenerator(onePosition, onePosition);
-      const topRightBorder = borderBlockGenerator(onePosition, ZERO);
-      const bottomLeftBorder = borderBlockGenerator(ZERO, onePosition);
+  .add('2x2 wall and border blocks', () => {
+    const container = new Container();
+    const topLeftWall = wallBlockGenerator(ZERO, ZERO);
+    const bottomRightWall = wallBlockGenerator(onePosition, onePosition);
+    const topRightBorder = borderBlockGenerator(onePosition, ZERO);
+    const bottomLeftBorder = borderBlockGenerator(ZERO, onePosition);
 
-      container.x = container.y = 32;
-      container.addChild(
-        topLeftWall.view,
-        topRightBorder.view,
-        bottomLeftBorder.view,
-        bottomRightWall.view,
-      );
+    container.x = container.y = 32;
+    container.addChild(
+      topLeftWall.view,
+      topRightBorder.view,
+      bottomLeftBorder.view,
+      bottomRightWall.view,
+    );
 
-      return (
-        <PixiWrapper isContainer={true} component={container} height={HEIGHT} width={WIDTH} />
-      );
-    })
-    .add('3x3 wall, border and path blocks', () => {
-      const container = new Container();
+    return (
+      <PixiWrapper isContainer={true} component={container} height={HEIGHT} width={WIDTH} />
+    );
+  })
+  .add('3x3 wall, border and path blocks', () => {
+    const container = new Container();
 
-      const topLeftWall = wallBlockGenerator(ZERO, ZERO);
-      const centerLeftWall = wallBlockGenerator(ZERO, onePosition);
-      const botomLeftWall = wallBlockGenerator(ZERO, twoPositions);
+    const topLeftWall = wallBlockGenerator(ZERO, ZERO);
+    const centerLeftWall = wallBlockGenerator(ZERO, onePosition);
+    const botomLeftWall = wallBlockGenerator(ZERO, twoPositions);
 
-      const topRightBorder = borderBlockGenerator(twoPositions, ZERO);
-      const centerRightBorder = borderBlockGenerator(twoPositions, onePosition);
-      const bottomRightBorder = borderBlockGenerator(twoPositions, twoPositions);
+    const topRightBorder = borderBlockGenerator(twoPositions, ZERO);
+    const centerRightBorder = borderBlockGenerator(twoPositions, onePosition);
+    const bottomRightBorder = borderBlockGenerator(twoPositions, twoPositions);
 
-      const topCenterPath = pathBlockGenerator(onePosition, ZERO, { bottom: true });
-      const centerCenterPath = pathBlockGenerator(onePosition, onePosition, {
-        top: true,
-        bottom: true,
-      });
-      const bottomCenterPath = pathBlockGenerator(onePosition, twoPositions, { top: true });
-
-      container.x = container.y = 32;
-      container.addChild(
-        topLeftWall.view,
-        centerLeftWall.view,
-        botomLeftWall.view,
-
-        topRightBorder.view,
-        centerRightBorder.view,
-        bottomRightBorder.view,
-
-        topCenterPath.view,
-        centerCenterPath.view,
-        bottomCenterPath.view,
-      );
-
-      return (
-        <PixiWrapper
-          isContainer={true}
-          component={container}
-          height={HEIGHT + HEIGHT}
-          width={WIDTH + WIDTH}
-        />
-      );
+    const topCenterPath = pathBlockGenerator(onePosition, ZERO, { bottom: true });
+    const centerCenterPath = pathBlockGenerator(onePosition, onePosition, {
+      top: true,
+      bottom: true,
     });
+    const bottomCenterPath = pathBlockGenerator(onePosition, twoPositions, { top: true });
+
+    container.x = container.y = 32;
+    container.addChild(
+      topLeftWall.view,
+      centerLeftWall.view,
+      botomLeftWall.view,
+
+      topRightBorder.view,
+      centerRightBorder.view,
+      bottomRightBorder.view,
+
+      topCenterPath.view,
+      centerCenterPath.view,
+      bottomCenterPath.view,
+    );
+
+    return (
+      <PixiWrapper
+        isContainer={true}
+        component={container}
+        height={HEIGHT + HEIGHT}
+        width={WIDTH + WIDTH}
+      />
+    );
+  });

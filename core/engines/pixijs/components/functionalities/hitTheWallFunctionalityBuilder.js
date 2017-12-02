@@ -87,18 +87,18 @@ const hitTheWallFunctionalityBuilder = (
       }
 
       timeline
-          .to(this.view, movementDuration, {
-            ...movement,
-            ease: SlowMo.ease.config(hitDuration, EASE_STRENG_AT_EACH_END, true),
-          })
-          .to(this.view, movementDuration, {
-            ...movement,
-            ease: SlowMo.ease.config(hitDuration, EASE_STRENG_AT_EACH_END, true),
-          })
-          .to(this.view, movementDuration, {
-            ...movement,
-            ease: SlowMo.ease.config(hitDuration, EASE_STRENG_AT_EACH_END, true),
-          });
+        .to(this.view, movementDuration, {
+          ...movement,
+          ease: SlowMo.ease.config(hitDuration, EASE_STRENG_AT_EACH_END, true),
+        })
+        .to(this.view, movementDuration, {
+          ...movement,
+          ease: SlowMo.ease.config(hitDuration, EASE_STRENG_AT_EACH_END, true),
+        })
+        .to(this.view, movementDuration, {
+          ...movement,
+          ease: SlowMo.ease.config(hitDuration, EASE_STRENG_AT_EACH_END, true),
+        });
     });
   },
 });

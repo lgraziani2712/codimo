@@ -59,9 +59,9 @@ const instanciateABlock = (
       // eslint-disable-next-line comma-dangle
       /* webpackChunkName: "Codimo$Block" */`./blocks/${blockName}`
     ).then(mod => mod.default)
-        .catch(() => (
-          activityBlockInstanciator(activityName, blockName).then(mod => mod.default)
-        ));
+      .catch(() => (
+        activityBlockInstanciator(activityName, blockName).then(mod => mod.default)
+      ));
 
     Blockly.Blocks[blockName] = {
       init() {

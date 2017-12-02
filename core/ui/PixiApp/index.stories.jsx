@@ -26,45 +26,45 @@ import engineGenerator from 'core/engines/pixijs/engineGenerator';
 import PixiApp from '.';
 
 storiesOf('ui/PixiApp', module)
-    .add('Simple Pixi App', () => {
-      const view = new Container();
-      const actor = basicActorGenerator(
-        gameMetadata.engineData.size,
-        gameMetadata.engineData.margin,
-      )(Sprite.fromImage('/images/logo.png'), '0,0').build();
+  .add('Simple Pixi App', () => {
+    const view = new Container();
+    const actor = basicActorGenerator(
+      gameMetadata.engineData.size,
+      gameMetadata.engineData.margin,
+    )(Sprite.fromImage('/images/logo.png'), '0,0').build();
 
-      view.addChild(actor.view);
+    view.addChild(actor.view);
 
-      const engineGen = engineGenerator(view);
-      const positioningProcessor = positioningProcessorBuilder(
-        actor,
-        new Map(),
-      );
-      const engine = engineGen.addExecutionProcessor('positioning', positioningProcessor).build();
+    const engineGen = engineGenerator(view);
+    const positioningProcessor = positioningProcessorBuilder(
+      actor,
+      new Map(),
+    );
+    const engine = engineGen.addExecutionProcessor('positioning', positioningProcessor).build();
 
-      const instructions = [
-        MOVE_FORWARD_MOCK,
-        MOVE_LEFT_MOCK,
-        MOVE_BACKWARD_MOCK,
-        MOVE_BACKWARD_MOCK,
-        MOVE_RIGHT_MOCK,
-        MOVE_RIGHT_MOCK,
-        MOVE_FORWARD_MOCK,
-        MOVE_FORWARD_MOCK,
-        MOVE_LEFT_MOCK,
-        MOVE_BACKWARD_MOCK,
-      ];
+    const instructions = [
+      MOVE_FORWARD_MOCK,
+      MOVE_LEFT_MOCK,
+      MOVE_BACKWARD_MOCK,
+      MOVE_BACKWARD_MOCK,
+      MOVE_RIGHT_MOCK,
+      MOVE_RIGHT_MOCK,
+      MOVE_FORWARD_MOCK,
+      MOVE_FORWARD_MOCK,
+      MOVE_LEFT_MOCK,
+      MOVE_BACKWARD_MOCK,
+    ];
 
-      (async () => {
-        await wait(1000);
-        await engine.excecuteSetOfInstructions(instructions, () => {});
-      })();
+    (async () => {
+      await wait(1000);
+      await engine.excecuteSetOfInstructions(instructions, () => {});
+    })();
 
-      return (
-        <PixiApp
-          difficulty={gameMetadata.difficulty}
-          engine={engine}
-          pixiData={gameMetadata.engineData}
-        />
-      );
-    });
+    return (
+      <PixiApp
+        difficulty={gameMetadata.difficulty}
+        engine={engine}
+        pixiData={gameMetadata.engineData}
+      />
+    );
+  });

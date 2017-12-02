@@ -65,8 +65,8 @@ export const staticNumberGenerator = (
   view.anchor.set(ANCHOR_CENTER);
 
   return componentGenerator(view, size, margin)
-      .addFunctionality('emotions', emotionFunctionalityBuilder)
-      .build();
+    .addFunctionality('emotions', emotionFunctionalityBuilder)
+    .build();
 };
 
 type EngineData = {
@@ -128,13 +128,13 @@ const numberGenerator = (
   initialParent.addChild(view);
 
   return actorGenerator(view, size, margin, startPosition, endPosition)
-      .addFunctionality('enterToNumericLine', enterToNumericLineFunctionalityBuilder)
-      .addFunctionality('changeActor', changeActorFunctionalityBuilder(
-        difficulty,
-        randomizeActor,
-        exitIdx,
-      ))
-      .build();
+    .addFunctionality('enterToNumericLine', enterToNumericLineFunctionalityBuilder)
+    .addFunctionality('changeActor', changeActorFunctionalityBuilder(
+      difficulty,
+      randomizeActor,
+      exitIdx,
+    ))
+    .build();
 };
 
 export default numberGenerator;

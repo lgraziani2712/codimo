@@ -51,16 +51,16 @@ const enterToNumericLineFunctionalityBuilder: FunctionalityBuilder = (
         });
 
         timeline
-            .to(this.view, DEFAULT_MOVEMENT_DURATION, {
-              y: size / HALF,
-              x: size / HALF,
-              ease: Linear.easeNone,
-            })
-            .to(this.view.scale, DEFAULT_MOVEMENT_DURATION, {
-              x: this.view.scale.x * TWO,
-              y: this.view.scale.y * TWO,
-              ease: SlowMo.ease.config(JUMP_DURATION, ZERO, true),
-            }, ZERO);
+          .to(this.view, DEFAULT_MOVEMENT_DURATION, {
+            y: size / HALF,
+            x: size / HALF,
+            ease: Linear.easeNone,
+          })
+          .to(this.view.scale, DEFAULT_MOVEMENT_DURATION, {
+            x: this.view.scale.x * TWO,
+            y: this.view.scale.y * TWO,
+            ease: SlowMo.ease.config(JUMP_DURATION, ZERO, true),
+          }, ZERO);
       });
     },
   };

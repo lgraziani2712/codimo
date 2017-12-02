@@ -24,21 +24,21 @@ const StoryContainer = styled.div`
 `;
 
 storiesOf('components.pages.links.HeaderLink', module)
-    .add('without children', () => {
-      const story = <Router><HeaderLink to="#" title={label} /></Router>;
+  .add('without children', () => {
+    const story = <Router><HeaderLink to="#" title={label} /></Router>;
 
-      return <MainContainer><StoryContainer>{story}</StoryContainer></MainContainer>;
-    })
-    .add('with children', () => {
-      const story = (
-        <Router>
-          <HeaderLink to="#" title={label}>
-            <HeaderLink to="#" title="Child 1" />
-            <HeaderLink to="#" title="Child 2" />
-            <HeaderLink to="#" title="Child 3" />
-          </HeaderLink>
-        </Router>
-      );
+    return <MainContainer><StoryContainer>{story}</StoryContainer></MainContainer>;
+  })
+  .add('with children', () => {
+    const story = (
+      <Router>
+        <HeaderLink to="#" title={label}>
+          <HeaderLink to="#" title="Child 1" />
+          <HeaderLink to="#" title="Child 2" />
+          <HeaderLink to="#" title="Child 3" />
+        </HeaderLink>
+      </Router>
+    );
 
-      return <MainContainer><StoryContainer>{story}</StoryContainer></MainContainer>;
-    });
+    return <MainContainer><StoryContainer>{story}</StoryContainer></MainContainer>;
+  });

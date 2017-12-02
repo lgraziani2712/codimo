@@ -24,9 +24,10 @@ module.exports = {
     'plugin:flowtype/recommended',
   ],
   plugins: [
-    'react',
-    'import',
+    'filenames',
     'flowtype',
+    'import',
+    'react',
   ],
   settings: {
     flowtype: ['onlyFilesWithFlowAnnotation'],
@@ -82,9 +83,7 @@ module.exports = {
     'eol-last': 0,
     eqeqeq: 1,
     'generator-star-spacing': [1, { before: false, after: true }],
-    indent: [1, 2, {
-      MemberExpression: 2,
-    }],
+    indent: [1, 2],
     'key-spacing': 1,
     'keyword-spacing': 1,
     'linebreak-style': 1,
@@ -139,6 +138,10 @@ module.exports = {
     'space-unary-ops': 1,
     'template-curly-spacing': 1,
     'valid-jsdoc': 2,
+    //////////////////////
+    // Filenames
+    //////////////////////
+    'filenames/match-exported': 2,
     //////////////////////////
     // Flow Type
     //////////////////////////

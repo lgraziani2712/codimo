@@ -33,11 +33,11 @@ const moveBuilder = (
         : block.appendValueInput(REPEAT_PARAM);
 
     input.setAlign(Blockly.ALIGN_CENTRE)
-        .appendField(
-          imageURL
-            ? new Blockly.FieldImage(imageURL, IMAGE_SIZE, IMAGE_SIZE, title)
-            : title,
-        );
+      .appendField(
+        imageURL
+          ? new Blockly.FieldImage(imageURL, IMAGE_SIZE, IMAGE_SIZE, title)
+          : title,
+      );
     block.setColour(colors.ACTION);
     block.setNextStatement(true);
     block.setPreviousStatement(true);

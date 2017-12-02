@@ -29,46 +29,46 @@ import { positioningProcessorBuilder } from './processors/positioningProcessorBu
 import engineGenerator from '.';
 
 storiesOf('engines/pixijs/engineGenerator', module)
-    .add('Simple engine with positioning', () => {
-      const view = new Container();
-      const actor = basicActorGenerator(
-        gameMetadata.engineData.size,
-        gameMetadata.engineData.margin,
-      )(Sprite.fromImage('/images/logo.png'), '0,0').build();
+  .add('Simple engine with positioning', () => {
+    const view = new Container();
+    const actor = basicActorGenerator(
+      gameMetadata.engineData.size,
+      gameMetadata.engineData.margin,
+    )(Sprite.fromImage('/images/logo.png'), '0,0').build();
 
-      view.addChild(actor.view);
+    view.addChild(actor.view);
 
-      const engineGen = engineGenerator(view);
-      const positioningProcessor = positioningProcessorBuilder(
-        actor,
-        new Map(),
-      );
-      const engine = engineGen.addExecutionProcessor('positioning', positioningProcessor).build();
+    const engineGen = engineGenerator(view);
+    const positioningProcessor = positioningProcessorBuilder(
+      actor,
+      new Map(),
+    );
+    const engine = engineGen.addExecutionProcessor('positioning', positioningProcessor).build();
 
-      const instructions = [
-        MOVE_FORWARD_MOCK,
-        MOVE_LEFT_MOCK,
-        MOVE_BACKWARD_MOCK,
-        MOVE_BACKWARD_MOCK,
-        MOVE_RIGHT_MOCK,
-        MOVE_RIGHT_MOCK,
-        MOVE_FORWARD_MOCK,
-        MOVE_FORWARD_MOCK,
-        MOVE_LEFT_MOCK,
-        MOVE_BACKWARD_MOCK,
-      ];
+    const instructions = [
+      MOVE_FORWARD_MOCK,
+      MOVE_LEFT_MOCK,
+      MOVE_BACKWARD_MOCK,
+      MOVE_BACKWARD_MOCK,
+      MOVE_RIGHT_MOCK,
+      MOVE_RIGHT_MOCK,
+      MOVE_FORWARD_MOCK,
+      MOVE_FORWARD_MOCK,
+      MOVE_LEFT_MOCK,
+      MOVE_BACKWARD_MOCK,
+    ];
 
-      (async () => {
-        await wait(1000);
-        await engine.excecuteSetOfInstructions(instructions, () => {});
-      })();
+    (async () => {
+      await wait(1000);
+      await engine.excecuteSetOfInstructions(instructions, () => {});
+    })();
 
-      return (
-        <PixiWrapper
-          component={engine.view}
-          isContainer={true}
-          height={gameMetadata.engineData.canvas.height}
-          width={gameMetadata.engineData.canvas.width}
-        />
-      );
-    });
+    return (
+      <PixiWrapper
+        component={engine.view}
+        isContainer={true}
+        height={gameMetadata.engineData.canvas.height}
+        width={gameMetadata.engineData.canvas.width}
+      />
+    );
+  });

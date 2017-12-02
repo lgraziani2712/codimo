@@ -87,9 +87,9 @@ export default class BlocklyApp extends React.Component {
       props.difficulty,
       props.blocklyData.blockDefinitions,
     )
-        .then(() => {
-          this.setState(() => ({ blocksAreLoaded: true }));
-        });
+      .then(() => {
+        this.setState(() => ({ blocksAreLoaded: true }));
+      });
   }
   /**
    * This function is the Blockly workspace constructor.
@@ -164,13 +164,13 @@ export default class BlocklyApp extends React.Component {
     }));
 
     this.props
-        .handleSetOfInstructions(
-          parseInstructions(rawInstructions),
-          this.highlightBlock,
-        )
-        .then(() => {
-          this.setState(() => ({ isExecuting: false }));
-        });
+      .handleSetOfInstructions(
+        parseInstructions(rawInstructions),
+        this.highlightBlock,
+      )
+      .then(() => {
+        this.setState(() => ({ isExecuting: false }));
+      });
   }
   render() {
     if (!this.state.blocksAreLoaded) {

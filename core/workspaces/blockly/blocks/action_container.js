@@ -23,12 +23,12 @@ const IMAGE_SIZE = 15;
 Blockly.Blocks[ACTION_CONTAINER] = {
   init: function init() {
     this.appendDummyInput()
-        .appendField(ACTION_CONTAINER_TITLE)
-        .appendField(new Blockly.FieldImage(
-          'https://twemoji.maxcdn.com/2/svg/1f601.svg',
-          IMAGE_SIZE,
-          IMAGE_SIZE,
-        ));
+      .appendField(ACTION_CONTAINER_TITLE)
+      .appendField(new Blockly.FieldImage(
+        'https://twemoji.maxcdn.com/2/svg/1f601.svg',
+        IMAGE_SIZE,
+        IMAGE_SIZE,
+      ));
     this.appendStatementInput(mainInput);
     this.setDeletable(false);
     this.setEditable(false);

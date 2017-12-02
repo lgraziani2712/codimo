@@ -16,8 +16,8 @@ const CANT_VAR = 'CANT';
 export default {
   builder(block: Blockly$Block) {
     block.appendDummyInput()
-        .appendField(new Blockly.FieldNumber(ZERO, TWO), CANT_VAR)
-        .appendField(REPEAT_X_TITLE);
+      .appendField(new Blockly.FieldNumber(ZERO, TWO), CANT_VAR)
+      .appendField(REPEAT_X_TITLE);
     block.setOutput(true);
     block.setColour(PURPLE);
     block.setTooltip(REPEAT_X_TOOLTIP);

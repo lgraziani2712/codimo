@@ -42,51 +42,51 @@ const Container = styled.div`
 `;
 
 storiesOf('ui/BlocklyApp', module)
-    .add('Simple Blockly app', () => (
+  .add('Simple Blockly app', () => (
+    <Container>
+      <BlocklyApp
+        activityName={'Simple Blockly app'}
+        difficulty="easy"
+        blocklyData={newBlocklyData}
+        handleSetOfInstructions={handleSetOfInstructions}
+        handleResetGame={() => Promise.resolve()}
+      />
+    </Container>
+  ))
+  .add('Complex Blockly app', () => {
+    const newestBlocklyData = {
+      ...blocklyData,
+      elements: [{
+        define: 'category',
+        name: 'Actions',
+        blocks: blocklyData.elements,
+      }, {
+        define: 'category',
+        name: 'Loops',
+        blocks: [{
+          define: 'block',
+          type: 'simple_loop',
+        }, {
+          define: 'block',
+          type: 'repeat_x',
+        }],
+      }],
+      blockDefinitions: [
+        ...blocklyData.blockDefinitions,
+        'simple_loop',
+        'repeat_x',
+      ],
+    };
+
+    return (
       <Container>
         <BlocklyApp
-          activityName={'Simple Blockly app'}
-          difficulty="easy"
-          blocklyData={newBlocklyData}
+          activityName={'Complex Blockly app'}
+          difficulty="normal"
+          blocklyData={newestBlocklyData}
           handleSetOfInstructions={handleSetOfInstructions}
           handleResetGame={() => Promise.resolve()}
         />
       </Container>
-    ))
-    .add('Complex Blockly app', () => {
-      const newestBlocklyData = {
-        ...blocklyData,
-        elements: [{
-          define: 'category',
-          name: 'Actions',
-          blocks: blocklyData.elements,
-        }, {
-          define: 'category',
-          name: 'Loops',
-          blocks: [{
-            define: 'block',
-            type: 'simple_loop',
-          }, {
-            define: 'block',
-            type: 'repeat_x',
-          }],
-        }],
-        blockDefinitions: [
-          ...blocklyData.blockDefinitions,
-          'simple_loop',
-          'repeat_x',
-        ],
-      };
-
-      return (
-        <Container>
-          <BlocklyApp
-            activityName={'Complex Blockly app'}
-            difficulty="normal"
-            blocklyData={newestBlocklyData}
-            handleSetOfInstructions={handleSetOfInstructions}
-            handleResetGame={() => Promise.resolve()}
-          />
-        </Container>
-      );
-    });
+    );
+  });

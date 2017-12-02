@@ -40,11 +40,11 @@ export default function engine({ difficulty, engineData }: Metadata) {
   view.addChild(maze.view, numericLine.view);
 
   return actorProcessors(engineData, number, engineGenerator(view))
-      .addExecutionProcessor(
-        'hasLeftTheMaze',
-        hasLeftTheMazeProcessorBuilder(number, numericLine, engineData),
-      )
-      .addResetProcessor('numericLineEmotions', emotionResetProcessorBuilder(numericLine))
-      .addResetProcessor('changeActor', changeActorOnResetBuilder(number))
-      .build();
+    .addExecutionProcessor(
+      'hasLeftTheMaze',
+      hasLeftTheMazeProcessorBuilder(number, numericLine, engineData),
+    )
+    .addResetProcessor('numericLineEmotions', emotionResetProcessorBuilder(numericLine))
+    .addResetProcessor('changeActor', changeActorOnResetBuilder(number))
+    .build();
 }

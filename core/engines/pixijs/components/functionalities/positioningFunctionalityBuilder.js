@@ -35,8 +35,8 @@ const positioningFunctionalityBuilder = (
   const initialParent = component.view.parent;
   const initialPosition =
     position
-        .split(',')
-        .map((string: string): number => (parseInt(string)));
+      .split(',')
+      .map((string: string): number => (parseInt(string)));
 
   component.view.x = initialPosition[0] * (size + margin) + size / HALF + margin;
   component.view.y = initialPosition[1] * (size + margin) + size / HALF + margin;
@@ -70,8 +70,8 @@ const positioningFunctionalityBuilder = (
 
       const positionNumbers =
         this.position
-            .split(',')
-            .map((string: string): number => (parseInt(string)));
+          .split(',')
+          .map((string: string): number => (parseInt(string)));
 
       return new Promise((onComplete) => {
         TweenLite.to(this.view, movementDuration, {

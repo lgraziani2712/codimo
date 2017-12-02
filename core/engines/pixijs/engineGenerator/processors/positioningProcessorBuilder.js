@@ -69,9 +69,9 @@ export const positioningProcessorBuilder = (
       const oldPosition = component.position;
       const newPosition =
         oldPosition
-            .split(',')
-            .map((pos, idx) => (parseInt(pos) + directions[direction][idx]))
-            .join(',');
+          .split(',')
+          .map((pos, idx) => (parseInt(pos) + directions[direction][idx]))
+          .join(',');
 
       for (const checker of checkers.values()) {
         await checker({

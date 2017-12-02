@@ -42,13 +42,13 @@ export const actorGenerator = (
   endPosition: string,
 ) => (
   componentGenerator(view, size, margin)
-      .addFunctionality(
-        'positioning',
-        positioningFunctionalityBuilder(startPosition, endPosition),
-      )
-      .addFunctionality('hitTheWall', hitTheWallFunctionalityBuilder())
-      .addFunctionality('emotions', emotionFunctionalityBuilder)
-      .addFunctionality('theFallenOne', theFallenOneFunctionalityBuilder)
+    .addFunctionality(
+      'positioning',
+      positioningFunctionalityBuilder(startPosition, endPosition),
+    )
+    .addFunctionality('hitTheWall', hitTheWallFunctionalityBuilder())
+    .addFunctionality('emotions', emotionFunctionalityBuilder)
+    .addFunctionality('theFallenOne', theFallenOneFunctionalityBuilder)
 );
 
 export const actorProcessors = (
@@ -57,24 +57,24 @@ export const actorProcessors = (
   engineGenerator: EngineGenerator,
 ): EngineGenerator => (
   engineGenerator
-      ////////////////////////////
-      // Execution Processors
-      ////////////////////////////
-      .addExecutionProcessor(
-        'positioning',
-        processorGenerator(engineData, actor, positioningProcessorBuilder)
-            .addChecker('hasHitAWall', hasHitAWallBuilder)
-            .addChecker('theFallenOne', hasBecomeTheFallenOneBuilder)
-            .build(),
-      )
-      ////////////////////////////
-      // Will Stop Checkers
-      ////////////////////////////
-      .addWillStopExecutionChecker('starvation', starvationCheckerBuilder(actor))
-      ////////////////////////////
-      // Reset Processors
-      ////////////////////////////
-      .addResetProcessor('emotions', emotionResetProcessorBuilder(actor))
-      .addResetProcessor('theFallenOne', theFallenOneResetProcessorBuilder(actor))
-      .addResetProcessor('positioning', positionResetProcessorBuilder(actor))
+  ////////////////////////////
+  // Execution Processors
+  ////////////////////////////
+    .addExecutionProcessor(
+      'positioning',
+      processorGenerator(engineData, actor, positioningProcessorBuilder)
+        .addChecker('hasHitAWall', hasHitAWallBuilder)
+        .addChecker('theFallenOne', hasBecomeTheFallenOneBuilder)
+        .build(),
+    )
+  ////////////////////////////
+  // Will Stop Checkers
+  ////////////////////////////
+    .addWillStopExecutionChecker('starvation', starvationCheckerBuilder(actor))
+  ////////////////////////////
+  // Reset Processors
+  ////////////////////////////
+    .addResetProcessor('emotions', emotionResetProcessorBuilder(actor))
+    .addResetProcessor('theFallenOne', theFallenOneResetProcessorBuilder(actor))
+    .addResetProcessor('positioning', positionResetProcessorBuilder(actor))
 );

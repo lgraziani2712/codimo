@@ -35,11 +35,11 @@ export default function helloCodimoEngine(metadata: Metadata) {
     metadata.engineData.size,
     metadata.engineData.margin,
   )
-      /////////////////////////////////////
-      // 2.1. Add a functionality.
-      /////////////////////////////////////
-      .addFunctionality('positioning', positioningFunctionalityBuilder('0,0'))
-      .build();
+    /////////////////////////////////////
+    // 2.1. Add a functionality.
+    /////////////////////////////////////
+    .addFunctionality('positioning', positioningFunctionalityBuilder('0,0'))
+    .build();
 
   actor.view.anchor.set(ANCHOR_CENTER);
   actor.view.width = actor.view.height = metadata.engineData.size;
@@ -48,23 +48,23 @@ export default function helloCodimoEngine(metadata: Metadata) {
   // 3. Create the engine.
   /////////////////////////////////////
   return engineGenerator(view)
-      /////////////////////////////////////
-      // 3.1. Add an execution processor.
-      /////////////////////////////////////
-      .addExecutionProcessor(
-        'positioning',
-        processorGenerator(
-          metadata.engineData,
-          actor,
-          positioningProcessorBuilder,
-        ).build(),
-      )
-      /////////////////////////////////////
-      // 3.2. Add a reset processor.
-      /////////////////////////////////////
-      .addResetProcessor('positioning', positionResetProcessorBuilder(actor))
-      /////////////////////////////////////
-      // 3.3. Build.
-      /////////////////////////////////////
-      .build();
+  /////////////////////////////////////
+  // 3.1. Add an execution processor.
+  /////////////////////////////////////
+    .addExecutionProcessor(
+      'positioning',
+      processorGenerator(
+        metadata.engineData,
+        actor,
+        positioningProcessorBuilder,
+      ).build(),
+    )
+  /////////////////////////////////////
+  // 3.2. Add a reset processor.
+  /////////////////////////////////////
+    .addResetProcessor('positioning', positionResetProcessorBuilder(actor))
+  /////////////////////////////////////
+  // 3.3. Build.
+  /////////////////////////////////////
+    .build();
 }

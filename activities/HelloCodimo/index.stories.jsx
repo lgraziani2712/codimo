@@ -5,12 +5,15 @@
  * @flow
  */
 import React from 'react';
+import { MemoryRouter } from 'react-router-dom';
 
 import { storiesOf } from 'test/storybook-facades';
 
 import HelloCodimo from '.';
 
 storiesOf('HelloWorld', module)
-    .add('Hello World!', () => (
+  .add('Hello World!', () => (
+    <MemoryRouter>
       <HelloCodimo />
-    ));
+    </MemoryRouter>
+  ));
