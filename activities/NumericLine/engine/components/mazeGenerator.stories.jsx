@@ -9,7 +9,8 @@ import React from 'react';
 
 import { storiesOf } from 'test/storybook-facades';
 import PixiWrapper from 'test/PixiWrapper';
-import metadata from 'activities/NumericLine/__mocks__/metadata';
+
+import metadata from '../../__mocks__/metadata';
 
 import mazeGenerator from './mazeGenerator';
 
