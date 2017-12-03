@@ -75,7 +75,7 @@ const blockBuilder = (tint: $Values<typeof BLOCK_DEFINITIONS>, size: number, mar
  * @return {CodimoComponent}  A visual component representing a block.
  */
 const blockGenerator = (
-  tint: $Values<typeof BLOCK_DEFINITIONS>,
+  tint: number,
   size: number,
   margin: number,
   // $FlowDoNotDisturb @see https://github.com/facebook/flow/issues/2386
