@@ -17,11 +17,11 @@ const GLOBALS = {
 };
 
 module.exports = (config, env) => {
-  const storyBookBaseConfig = genDefaultConfig(config, env);
+  const baseConfig = genDefaultConfig(config, env);
 
-  storyBookBaseConfig.devtool = 'cheap-module-source-map';
-  storyBookBaseConfig.plugins.push(new webpack.DefinePlugin(GLOBALS));
-  storyBookBaseConfig.resolve = {
+  baseConfig.devtool = 'cheap-module-source-map';
+  baseConfig.plugins.push(new webpack.DefinePlugin(GLOBALS));
+  baseConfig.resolve = {
     modules,
     extensions: ['.js', '.jsx'],
     alias: {
@@ -31,5 +31,5 @@ module.exports = (config, env) => {
     }
   };
 
-  return storyBookBaseConfig;
+  return baseConfig;
 };

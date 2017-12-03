@@ -4,7 +4,6 @@
  *
  * @flow
  */
-/* eslint-disable no-magic-numbers */
 import { Container } from 'pixi.js';
 
 import componentGenerator from '../componentGenerator';
