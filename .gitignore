@@ -4,8 +4,11 @@ build
 documentation
 dist/*.*
 flow-typed/npm
-node_modules/
+node_modules
+reports
 npm-debug.log
 yarn-error.log
 stats.json
 **/TODO.md
+
+!reports/simple.xsl

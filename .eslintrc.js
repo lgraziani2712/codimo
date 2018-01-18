@@ -153,6 +153,7 @@ module.exports = {
     //////////////////////////
     'import/extensions': [1, { js: 'never', json: 'always' }],
     'import/imports-first': 1,
+    'import/newline-after-import': 1,
     'import/no-anonymous-default-export': [2, { allowObject: true, allowArray: true }],
     'import/no-deprecated': 2,
     'import/no-duplicates': 2,

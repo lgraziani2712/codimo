@@ -1,7 +1,13 @@
+/**
+ * @author Luciano Graziani @lgraziani2712
+ * @license {@link http://www.opensource.org/licenses/mit-license.php|MIT License}
+ *
+ */
 /* eslint-disable max-len */
 'use strict';
 
 const paths = require('../config/paths');
+
 const packageData = require(paths.appPackageJson);
 
 const globals = {
@@ -24,7 +30,7 @@ module.exports = (resolve, rootDir) => {
       '^activities(.*)$': '<rootDir>/activities$1',
       '^client(.*)$': '<rootDir>/client$1',
       '^core(.*)$': '<rootDir>/core$1',
-      // FIXME @see https://github.com/facebook/jest/issues/553
+      // SEE: https://github.com/facebook/jest/issues/553
       'vendors/blockly/blocks_compressed': `${paths.devElements}/test/__mocks__/blockly/blocks_compressed.js`,
       'vendors/blockly/javascript_compressed': `${paths.devElements}/test/__mocks__/blockly/javascript_compressed.js`,
       'vendors/blockly/msg/js/es': `${paths.devElements}/test/__mocks__/blockly/es.js`,
