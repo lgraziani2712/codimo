@@ -6,7 +6,11 @@
  */
 import { TimelineLite } from 'gsap';
 
-import { ZERO, ONE, DEFAULT_MOVEMENT_DURATION } from 'core/constants/numbers';
+import {
+  ZERO,
+  ONE,
+  DEFAULT_MOVEMENT_DURATION,
+} from 'core/constants/numbers';
 import {
   type CodimoComponent,
   type FunctionalityBuilder,
@@ -18,10 +22,9 @@ import {
  * @version 1.0.0
  * @return {Functionality} The functionality itself.
  */
-const openThePortalBuilder: FunctionalityBuilder = () => {
+const openThePortalBuilder: FunctionalityBuilder = () =>
   // TODO Make pre-execution checks
-
-  return {
+  ({
     openThePortal(componentToTeleportTo: CodimoComponent) {
       return new Promise((onComplete) => {
         const timeline = new TimelineLite({
@@ -40,7 +43,6 @@ const openThePortalBuilder: FunctionalityBuilder = () => {
           });
       });
     },
-  };
-};
+  });
 
 export default openThePortalBuilder;

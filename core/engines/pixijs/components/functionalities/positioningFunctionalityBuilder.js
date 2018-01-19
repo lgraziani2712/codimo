@@ -14,11 +14,11 @@ import { type CodimoComponent, type FunctionalityBuilder } from '../componentGen
  * A builder with two prerequired params.
  *
  * @version 1.0.0
- * @param  {string} position               CodimoComponent's starting point.
- * @param  {string} [endPosition]          CodimoComponent's possible end point.
- * @param  {number} [movementDuration=0.5] Main animation time
- * @return {FunctionalityBuilder}          This new function returns an object with
- *                                         the `positioning` functionality.
+ * @param {string} position CodimoComponent's starting point.
+ * @param {string} [endPosition] CodimoComponent's possible end point.
+ * @param {number} [movementDuration=0.5] Main animation time
+ * @returns {FunctionalityBuilder} This new function returns an object with
+ *                                 the `positioning` functionality.
  */
 const positioningFunctionalityBuilder = (
   position: string,
@@ -30,7 +30,9 @@ const positioningFunctionalityBuilder = (
   component: CodimoComponent,
 ) => {
   if (!component.view.parent) {
-    throw new Error('`positioning` functionality requires the component to have a parent');
+    throw new Error(
+      '`positioning` functionality requires the component to have a parent',
+    );
   }
   const initialParent = component.view.parent;
   const initialPosition =

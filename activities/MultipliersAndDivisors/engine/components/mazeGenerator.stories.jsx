@@ -4,7 +4,6 @@
  *
  * @flow
  */
-/* eslint-disable no-magic-numbers, */
 import React from 'react';
 
 import { storiesOf } from 'test/storybook-facades';

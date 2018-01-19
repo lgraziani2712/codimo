@@ -14,12 +14,12 @@ import { NUMERIC_LINE_BG_COLOR } from '.';
  * Numeric line's arrows.
  *
  * @version 1.0.0
- * @param  {number}   size        Block's size.
- * @param  {number}   margin      Block's margin.
- * @param  {boolean}  [turnRight] Points to the left or the right?
- * @return {CodimoComponent}      The new static component.
+ * @param {number} size Block's size.
+ * @param {number} margin Block's margin.
+ * @param {boolean} [turnRight] Points to the left or the right?
+ * @return {CodimoComponent} The new static component.
  */
-const viewCreator = (size: number, margin: number, turnRight?: boolean) => {
+const arrowGenerator = (size: number, margin: number, turnRight?: boolean) => {
   const view = new Graphics();
   /**
    * Arrow's height must be `margin * 2` greater than the line.
@@ -43,4 +43,4 @@ const viewCreator = (size: number, margin: number, turnRight?: boolean) => {
   };
 };
 
-export default viewCreator;
+export default arrowGenerator;

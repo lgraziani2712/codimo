@@ -43,9 +43,9 @@ type NumberMetadata = {
  * This is the MultipliersAndDivisors  game's actor generator function.
  *
  * @version 1.0.0
- * @param  {GameDifficulty} difficulty    Metadata required for the randomizer.
- * @param  {Container}      initialParent The component parent required for resetting.
- * @return {CodimoComponent}              The new actor component.
+ * @param {GameDifficulty} difficulty Metadata required for the randomizer.
+ * @param {Container} initialParent The component parent required for resetting.
+ * @returns {CodimoComponent} The new actor component.
  */
 const numberGenerator = (
   difficulty: GameDifficulty,

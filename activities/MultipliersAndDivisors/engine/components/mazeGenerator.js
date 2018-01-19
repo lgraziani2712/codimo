@@ -8,9 +8,9 @@ import { Container } from 'pixi.js';
 
 import { ZERO, ONE } from 'core/constants/numbers';
 import blockGenerator, { BLOCK_DEFINITIONS } from 'core/engines/pixijs/components/blockGenerator';
-import { type EngineData } from 'core/engines/pixijs/engineGenerator';
 import { type EngineData$Path }
   from 'core/engines/pixijs/engineGenerator/processors/checkers/hasHitAWallBuilder';
+import { type CodimoComponent } from 'core/engines/pixijs/components/componentGenerator';
 
 import platformBlockGenerator from './platformBlockGenerator';
 
@@ -23,10 +23,10 @@ const BLOCK_WALL = 0x428bca;
  * @version 1.0.0
  * @todo Add link to the metadata shape documentation.
  * @todo Make it Generator compliant.
- * @param  {EngineData} engineData The metadata required by the maze.
- * @return {CodimoComponent}       The new static component.
+ * @param {Object} engineData The metadata required by the maze.
+ * @returns {CodimoComponent} The new static component.
  */
-const mazeGenerator = (engineData: EngineData) => {
+const mazeGenerator = (engineData: Object): CodimoComponent => {
   if (!engineData.path) {
     throw new Error(
       // TODO add the URL for the doc of the path shape!
