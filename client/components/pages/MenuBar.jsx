@@ -56,7 +56,7 @@ type Props = {|
  *
  * @version 1.1.0
  * @param {Array<Codimo$Route>} routes List of routes.
- * @return {React$Element}             Menu bar element.
+ * @return {React$Element} Menu bar element.
  */
 const MenuBar = ({ routes }: Props) => (
   <Background>

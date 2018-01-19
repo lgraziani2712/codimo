@@ -19,8 +19,8 @@ const BLOCK_FIRST = 0;
  *
  * @version 1.0.0
  * @todo Add link to the metadata shape documentation.
- * @param  {EngineData} engineData The metadata required by the maze.
- * @return {CodimoComponent}       The new static component.
+ * @param {EngineData} engineData The metadata required by the maze.
+ * @return {CodimoComponent} The new static component.
  */
 const mazeGenerator = (engineData: EngineData) => {
   if (!engineData.path) {

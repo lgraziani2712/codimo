@@ -19,10 +19,10 @@ const SQUISH_DURATION = 2.5;
  * falls from the stage.
  *
  * @version 1.0.0
- * @param  {number}           size      Block's size.
- * @param  {number}           margin    Not used.
- * @param  {CodimoComponent}  component A PixiJS Container.
- * @return {Functionality}              Adds `beTheFallenOne` method.
+ * @param {number} size Block's size.
+ * @param {number} margin Not used.
+ * @param {CodimoComponent} component A PixiJS Container.
+ * @return {Functionality} Adds `beTheFallenOne` method.
  */
 const theFallenOneFunctionalityBuilder: FunctionalityBuilder = (
   size: number,

@@ -20,10 +20,10 @@ const JUMP_DURATION = 0.4;
  * It adds to the actor the possibility to jump to the numeric line.
  *
  * @version 1.0.0
- * @param  {number}          size      Block's size.
- * @param  {number}          margin    Block's margin.
- * @param  {CodimoComponent} component The component to add the functionality.
- * @return {Functionality}             The functionality itself.
+ * @param {number} size Block's size.
+ * @param {number} margin Block's margin.
+ * @param {CodimoComponent} component The component to add the functionality.
+ * @return {Functionality} The functionality itself.
  */
 const enterToNumericLineFunctionalityBuilder: FunctionalityBuilder = (
   size: number,

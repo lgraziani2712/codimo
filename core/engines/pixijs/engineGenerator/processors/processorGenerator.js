@@ -36,10 +36,10 @@ type ProcessorGenerator = {|
  *
  * @todo Add example
  * @version 1.0.0
- * @param  {Metadata}         engineData       Required by the ProcessorBuilder.
- * @param  {CodimoComponent}  actor            Required by the ProcessorBuilder.
- * @param  {ProcessorBuilder} processorBuilder The ProcessorBuilder itself.
- * @return {ProcessorGenerator}                The generator object.
+ * @param {Metadata} engineData Required by the ProcessorBuilder.
+ * @param {CodimoComponent} actor Required by the ProcessorBuilder.
+ * @param {ProcessorBuilder} processorBuilder The ProcessorBuilder itself.
+ * @return {ProcessorGenerator} The generator object.
  */
 export default function processorGenerator(
   engineData: EngineData,
@@ -52,9 +52,9 @@ export default function processorGenerator(
     /**
      * Adds or replace a Checker for the Processor
      *
-     * @param {string}         key     The checker ID.
+     * @param {string} key The checker ID.
      * @param {CheckerBuilder} checker The builder function.
-     * @return {ProcessorGenerator}    For chaining purpose.
+     * @return {ProcessorGenerator} For chaining purpose.
      */
     addChecker(key: string, checker: CheckerBuilder) {
       checkers.set(key, checker(actor, engineData));

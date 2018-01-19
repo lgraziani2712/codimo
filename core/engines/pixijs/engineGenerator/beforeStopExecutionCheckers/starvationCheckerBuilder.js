@@ -25,8 +25,8 @@ const starvationError = engineErrorBuilder('StarvationError', {
  * its objective. Hence the name `starvation` for the thrown error.
  *
  * @version 1.0.1
- * @param  {CodimoComponent} component Required to verify its position.
- * @return {WillStopExecutionChecker}  The checker itself.
+ * @param {CodimoComponent} component Required to verify its position.
+ * @return {WillStopExecutionChecker} The checker itself.
  */
 const starvationCheckerBuilder = (
   component: CodimoComponent,

@@ -18,10 +18,10 @@ export type BlockDefinition = {|
  * Instanciate every block required by the activity.
  *
  * @version 1.0.0
- * @param  {string}         activityName A function for loading custom blocks.
- * @param  {GameDifficulty} difficulty   How complex must be the block.
- * @param  {Array<string>}  blockNames   A list of required blocks.
- * @return {Promise<void>}               Calls every instanciation.
+ * @param {string} activityName A function for loading custom blocks.
+ * @param {GameDifficulty} difficulty How complex must be the block.
+ * @param {Array<string>} blockNames A list of required blocks.
+ * @return {Promise<void>} Calls every instanciation.
  */
 export default function instanciateEveryBlock(
   activityName: string,
@@ -50,7 +50,7 @@ const instanciateABlock = (
    * Instanciate one block required by the activity.
    * Each block instance is stored in `Blockly.Blocks`.
    *
-   * @param  {string} blockName      The block's ID.
+   * @param {string} blockName The block's ID.
    * @return {Promise<void | Error>} It loads a BlockBuilder lazily.
    */
   return async (blockName: string) => {

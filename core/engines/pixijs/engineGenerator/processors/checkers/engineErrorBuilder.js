@@ -26,9 +26,9 @@ type ClientErrorProps = {|
  * to the user.
  *
  * @version 1.0.0
- * @param  {string}           name  Error's name.
- * @param  {ClientErrorProps} props Error data.
- * @return {ClientError}            Error instance.
+ * @param {string} name Error's name.
+ * @param {ClientErrorProps} props Error data.
+ * @return {ClientError} Error instance.
  */
 const engineErrorBuilder = (name: string, props: ClientErrorProps): ClientError => ({
   confirmButtonText: gameTextUI.accept,

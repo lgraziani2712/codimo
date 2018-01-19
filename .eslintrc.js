@@ -142,6 +142,7 @@ module.exports = {
         returns: 'return',
         arg: 'param',
         argument: 'param',
+        constructor: 'class',
       },
     }],
     //////////////////////

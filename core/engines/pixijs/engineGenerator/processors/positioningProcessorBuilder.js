@@ -41,9 +41,9 @@ const directions = {
  *
  * @todo Add example
  * @version 1.0.0
- * @param  {CodimoComponent}    component The component that will have attached the processor.
- * @param  {CheckersCollection} checkers  A collection of Checker objects.
- * @return {ExecutionProcessor}           The new instance.
+ * @param {CodimoComponent} component The component that will have attached the processor.
+ * @param {CheckersCollection} checkers  A collection of Checker objects.
+ * @return {ExecutionProcessor} The new instance.
  */
 export const positioningProcessorBuilder = (
   component: CodimoComponent,

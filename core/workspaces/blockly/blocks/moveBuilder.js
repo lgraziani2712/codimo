@@ -16,10 +16,10 @@ import {
  * It builds a move block.
  *
  * @version 1.0.0
- * @param  {string}  title      The block's title.
- * @param  {string}  tooltip    The block's tooltip.
- * @param  {string}  [imageURL] The SVG to show as title.
- * @return {BlockDefinition}    The new block definition.
+ * @param {string} title The block's title.
+ * @param {string} tooltip The block's tooltip.
+ * @param {string} [imageURL] The SVG to show as title.
+ * @return {BlockDefinition} The new block definition.
  */
 const moveBuilder = (
   title: string,

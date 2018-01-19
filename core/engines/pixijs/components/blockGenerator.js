@@ -71,10 +71,10 @@ const blockBuilder = (tint: $Values<typeof BLOCK_DEFINITIONS>, size: number, mar
  * one block to another.
  *
  * @version 1.0.0
- * @param  {number} tint      Block's colour.
- * @param  {number} size      Block's size.
- * @param  {number} margin    Block's margin.
- * @return {CodimoComponent}  A visual component representing a block.
+ * @param {number} tint Block's colour.
+ * @param {number} size Block's size.
+ * @param {number} margin Block's margin.
+ * @return {CodimoComponent} A visual component representing a block.
  */
 const blockGenerator = (
   tint: number,

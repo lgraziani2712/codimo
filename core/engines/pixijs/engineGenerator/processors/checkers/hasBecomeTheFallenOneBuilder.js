@@ -29,9 +29,9 @@ const pathOverflowError = engineErrorBuilder('PathOverflowError', {
  * And we don't want that.
  *
  * @version 1.0.1
- * @param  {CodimoComponent}  component  The component to check.
- * @param  {EngineData}       engineData Contains the required data for validation.
- * @return {Checker}                     The new instance.
+ * @param {CodimoComponent} component The component to check.
+ * @param {EngineData} engineData Contains the required data for validation.
+ * @return {Checker} The new instance.
  */
 export default function hasBecomeTheFallenOneBuilder(
   component: CodimoComponent,

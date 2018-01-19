@@ -23,10 +23,10 @@ const RANGES = {
  * accesses and the range between each access.
  *
  * @version 1.0.0
- * @param  {GameDifficulty}       difficulty  Determines which range limits use.
- * @param  {Array<number | void>} statics     Defines the range for each empty slot.
- * @param  {Array<string>}        accesses    Defines wich slots are empty.
- * @return {Function<Array<number>>}          The new randomizer.
+ * @param {GameDifficulty} difficulty Determines which range limits use.
+ * @param {Array<number | void>} statics Defines the range for each empty slot.
+ * @param {Array<string>} accesses Defines wich slots are empty.
+ * @return {Function<Array<number>>} The new randomizer.
  */
 const randomizeActorsBuilder = (
   difficulty: GameDifficulty,

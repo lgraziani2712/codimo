@@ -55,7 +55,7 @@ export type WillStopExecutionChecker = () => void;
  *
  * @todo Add example
  * @version v1.0.0
- * @param  {EngineView} view This function returns a consistent view.
+ * @param {EngineView} view This function returns a consistent view.
  * @return {EngineGenerator} The generator object.
  */
 export default function engineGenerator(
@@ -69,9 +69,9 @@ export default function engineGenerator(
     /**
      * Adds or replace an ExecutionProcessor
      *
-     * @param {string}             key       The processor ID.
+     * @param {string} key The processor ID.
      * @param {ExecutionProcessor} processor The processor object.
-     * @return {EngineGenerator}             For chaining purpose.
+     * @return {EngineGenerator} For chaining purpose.
      */
     addExecutionProcessor(key: string, processor: ExecutionProcessor) {
       executionProcessors.set(key, processor);
@@ -86,9 +86,9 @@ export default function engineGenerator(
     /**
      * Adds or replace an ResetProcessor
      *
-     * @param {string}         key       The processor ID.
+     * @param {string} key The processor ID.
      * @param {ResetProcessor} processor The processor object.
-     * @return {EngineGenerator}         For chaining purpose.
+     * @return {EngineGenerator} For chaining purpose.
      */
     addResetProcessor(key: string, processor: ResetProcessor) {
       resetProcessors.set(key, processor);
@@ -106,9 +106,9 @@ export default function engineGenerator(
         /**
          * Invokes each of the processors in the corresponding order.
          *
-         * @param  {Instructions}  instructions         An array of instructions.
-         * @param  {Function}      handleHighlightBlock Highlight a block through blockly.
-         * @return {Promise<void>}                      The animation Promise.
+         * @param {Instructions} instructions An array of instructions.
+         * @param {Function} handleHighlightBlock Highlight a block through blockly.
+         * @return {Promise<void>} The animation Promise.
          */
         async excecuteSetOfInstructions (
           instructions: Instructions,

@@ -69,9 +69,9 @@ class Activity extends React.Component {
   /**
    * This callback will be used by the BlocklyApp.
    *
-   * @param  {Instructions} instructions         Aray of Instructions.
-   * @param  {Function}     handleHighlightBlock Highlight a block through blockly.
-   * @return {Promise<void>}                     Animation promise.
+   * @param {Instructions} instructions Aray of Instructions.
+   * @param {Function} handleHighlightBlock Highlight a block through blockly.
+   * @return {Promise<void>} Animation promise.
    */
   handleSetOfInstructions = (
     instructions: Instructions,

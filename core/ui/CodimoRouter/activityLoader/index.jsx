@@ -20,10 +20,10 @@ import Loading from './Loading';
  * activity's metadata to the loader.
  *
  * @version 1.0.0
- * @param  {string} activityName      Which activity are you loading?
- * @param  {string} [difficulty]      With what difficulty?
- * @param  {string} [level]           And which level?
- * @return {React$Element<Activity>}  The Activity instance.
+ * @param {string} activityName Which activity are you loading?
+ * @param {string} [difficulty] With what difficulty?
+ * @param {string} [level] And which level?
+ * @return {React$Element<Activity>} The Activity instance.
  */
 const activityLoader = (activityName: string, difficulty?: string, level?: string) => {
   if (!activityName) {
@@ -33,8 +33,10 @@ const activityLoader = (activityName: string, difficulty?: string, level?: strin
   const loader = {};
 
   loader.Activity = () => import(
+    /* webpackChunkName: "Actvity$Component" */
+    // FIXME: When eslint implements it
     // eslint-disable-next-line comma-dangle
-    /* webpackChunkName: "Actvity$Component" */`activities/${activityName}/index.jsx`
+    `activities/${activityName}/index.jsx`
   );
 
   if (difficulty) {

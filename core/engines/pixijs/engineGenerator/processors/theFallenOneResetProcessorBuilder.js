@@ -14,8 +14,8 @@ import { type ResetProcessor } from './processorGenerator';
  * It resets the actor if it has the `theFallenOne` functionality.
  *
  * @version 1.0.0
- * @param  {CodimoComponent} component The component to be processed.
- * @return {ResetProcessor}            The processor itself.
+ * @param {CodimoComponent} component The component to be processed.
+ * @return {ResetProcessor} The processor itself.
  */
 const theFallenOneResetProcessorBuilder = (component: CodimoComponent): ResetProcessor => {
   if (typeof component.resetTheFallenOne !== 'function') {

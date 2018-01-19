@@ -50,9 +50,9 @@ const hasHitaWallError = engineErrorBuilder('HasHitAWallError', {
  * and stop the execution of the animation.
  *
  * @version 1.0.1
- * @param  {CodimoComponent}  component  The component to check.
- * @param  {EngineData}       engineData Contains the required data for validation.
- * @return {Checker}                     The new instance.
+ * @param {CodimoComponent} component The component to check.
+ * @param {EngineData} engineData Contains the required data for validation.
+ * @return {Checker} The new instance.
  */
 export default function hasHitAWallBuilder(
   component: CodimoComponent,

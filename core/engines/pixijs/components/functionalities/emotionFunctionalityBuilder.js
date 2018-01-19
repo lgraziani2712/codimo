@@ -23,10 +23,10 @@ const SHAKE_DISTANCE = 2.3;
  * and shake from sadness.
  *
  * @version 1.0.0
- * @param  {number}           size      Block's size.
- * @param  {number}           margin    Not used.
- * @param  {CodimoComponent}  component A PixiJS Container.
- * @return {Functionality}              Adds `beHappy` and `beSad` methods.
+ * @param {number} size Block's size.
+ * @param {number} margin Not used.
+ * @param {CodimoComponent} component A PixiJS Container.
+ * @return {Functionality} Adds `beHappy` and `beSad` methods.
  */
 const emotionFunctionalityBuilder: FunctionalityBuilder = (
   size: number,

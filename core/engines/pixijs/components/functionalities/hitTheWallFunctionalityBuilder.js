@@ -22,10 +22,10 @@ const EASE_STRENG_AT_EACH_END = ZERO;
  * A builder with two prerequired params.
  *
  * @version 1.0.0
- * @param  {number} [movementDuration=0.5] Main animation time
- * @param  {number} [hitDuration=0.4]      Hit effect time
- * @return {FunctionalityBuilder}          This new function returns an object with
- *                                         the `hitTheWall` functionality.
+ * @param {number} [movementDuration=0.5] Main animation time
+ * @param {number} [hitDuration=0.4] Hit effect time
+ * @return {FunctionalityBuilder} This new function returns an object with
+ *                                the `hitTheWall` functionality.
  */
 const hitTheWallFunctionalityBuilder = (
   movementDuration: number = DEFAULT_MOVEMENT_DURATION,
@@ -38,8 +38,8 @@ const hitTheWallFunctionalityBuilder = (
    * This animation simulates as if the component has hit a wall.
    * It uses a Linear ease.
    *
-   * @param  {Direction} direction what wall has hit.
-   * @return {Promise<void>}       animation's promise.
+   * @param {Direction} direction what wall has hit.
+   * @return {Promise<void>} animation's promise.
    */
   hitTheWall(direction: Direction) {
     return new Promise((onComplete) => {

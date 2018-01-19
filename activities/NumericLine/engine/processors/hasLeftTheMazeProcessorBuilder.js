@@ -46,11 +46,11 @@ type Props = {
  * Informs the result to the user.
  *
  * @version 1.0.1
- * @param  {CodimoComponent}            number          The actor.
- * @param  {CodimoComponent}            numericLine     The numeric line which the actor will enter.
- * @param  {Array<string>}              endPositions    An array of possible endings.
- * @param  {EngineData$NumericLineData} numericLineData Metadata required by the numeric line.
- * @return {ExecutionProcessor}                         The new processor.
+ * @param {CodimoComponent} number The actor.
+ * @param {CodimoComponent} numericLine The numeric line which the actor will enter.
+ * @param {Array<string>} endPositions An array of possible endings.
+ * @param {EngineData$NumericLineData} numericLineData Metadata required by the numeric line.
+ * @return {ExecutionProcessor} The new processor.
  */
 const hasLeftTheMazeProcessorBuilder = (
   number: CodimoComponent,

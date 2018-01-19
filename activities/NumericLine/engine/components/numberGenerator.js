@@ -40,10 +40,10 @@ const styleRaw = {
  * Static generator for the numeric line's numbers.
  *
  * @version 1.0.0
- * @param  {number} number    The actor shape.
- * @param  {number} size      Block's size.
- * @param  {number} margin    Block's margin.
- * @return {CodimoComponent}  The new static component.
+ * @param {number} number The actor shape.
+ * @param {number} size Block's size.
+ * @param {number} margin Block's margin.
+ * @return {CodimoComponent} The new static component.
  */
 export const staticNumberGenerator = (
   number: number,
@@ -82,16 +82,15 @@ type EngineData = {
  * This is the NumericLine game's actor generator function.
  *
  * @version 1.0.0
- * @param  {GameDifficulty}             difficulty      Metadata required for the randomizer.
- * @param  {Container}                  initialParent   The component parent required
- *                                                      for resetting.
- * @param  {EngineData$NumericLineData} numericLineData Metadata required for the randomizer.
- * @param  {number}                     [actorExitIdx]  Index used with the randomizer result.
- * @param  {string}                     startPosition   Represented by an "x,y" string.
- * @param  {string}                     endPositions    Represented by an "x,y" string.
- * @param  {number}                     size            Block's size.
- * @param  {number}                     margin          Block's margin.
- * @return {CodimoComponent}                            The new actor component.
+ * @param {GameDifficulty} difficulty Metadata required for the randomizer.
+ * @param {Container} initialParent The component parent required for resetting.
+ * @param {EngineData$NumericLineData} numericLineData Metadata required for the randomizer.
+ * @param {number} [actorExitIdx] Index used with the randomizer result.
+ * @param {string} startPosition Represented by an "x,y" string.
+ * @param {string} endPositions Represented by an "x,y" string.
+ * @param {number} size Block's size.
+ * @param {number} margin Block's margin.
+ * @return {CodimoComponent} The new actor component.
  */
 const numberGenerator = (
   difficulty: GameDifficulty,

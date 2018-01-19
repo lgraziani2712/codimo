@@ -29,8 +29,8 @@ type CodimoRouter$Props = {|
  * activity.
  *
  * @version 1.1.0
- * @param  {CodimoRouter$Props} routes A list of description of a Route.
- * @constructor
+ * @param {CodimoRouter$Props} routes A list of description of a Route.
+ * @class
  */
 export default function CodimoRouter({ routes }: CodimoRouter$Props) {
   return (

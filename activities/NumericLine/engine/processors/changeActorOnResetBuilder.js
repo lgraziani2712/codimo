@@ -16,7 +16,7 @@ import {
  *
  * @version 1.0.0
  * @param {CodimoComponent} component The component to invoke the changeActor method.
- * @return {ResetProcessor}           The new reset processor.
+ * @return {ResetProcessor} The new reset processor.
  */
 const changeActorOnResetBuilder = (
   component: CodimoComponent,
