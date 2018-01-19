@@ -45,7 +45,7 @@ type NumberMetadata = {
  * @version 1.0.0
  * @param {GameDifficulty} difficulty Metadata required for the randomizer.
  * @param {Container} initialParent The component parent required for resetting.
- * @returns {CodimoComponent} The new actor component.
+ * @return {CodimoComponent} The new actor component.
  */
 const numberGenerator = (
   difficulty: GameDifficulty,

@@ -137,7 +137,13 @@ module.exports = {
     'space-infix-ops': 1,
     'space-unary-ops': 1,
     'template-curly-spacing': 1,
-    'valid-jsdoc': 2,
+    'valid-jsdoc': [2, {
+      prefer: {
+        returns: 'return',
+        arg: 'param',
+        argument: 'param',
+      },
+    }],
     //////////////////////
     // Filenames
     //////////////////////

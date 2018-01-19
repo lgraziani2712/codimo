@@ -29,7 +29,7 @@ const NUMERIC_LINE_NUMBER_CONTAINER_BG_ALPHA = 0;
  * @param {GameDifficulty} difficulty Exercise difficulty.
  * @param {Object} engineData The metadata required by the maze.
  * @param {CodimoComponent} portalPlatform The component to teleport the numbers.
- * @returns {CodimoComponent} The new static component.
+ * @return {CodimoComponent} The new static component.
  */
 const actorsContainer = (
   difficulty: GameDifficulty,

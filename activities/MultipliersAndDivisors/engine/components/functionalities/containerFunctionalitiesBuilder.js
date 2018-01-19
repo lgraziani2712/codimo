@@ -16,7 +16,7 @@ import {
  * @version 1.0.0
  * @param {Array<CodimoComponent>} actors List of movable numbers.
  * @param {CodimoComponent} portalPlatform The portal where the numbers teleport.
- * @returns {FunctionalityBuilder} It builds the actorsContainer Mixin.
+ * @return {FunctionalityBuilder} It builds the actorsContainer Mixin.
  */
 const containerFunctionalitiesBuilder = (
   actors: Array<CodimoComponent>,

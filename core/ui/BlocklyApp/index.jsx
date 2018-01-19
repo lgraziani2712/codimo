@@ -100,7 +100,7 @@ export default class BlocklyApp extends React.Component {
    * Every Blockly configuration must be placed here.
    *
    * @param {HTMLElement} toolbox   Elements to be used on an exercise.
-   * @returns {void}
+   * @return {void}
    */
   handleWorkspaceCreation = (toolbox: HTMLElement) => {
     this.workspace = Blockly.inject(ID, {

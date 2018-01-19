@@ -29,7 +29,7 @@ import {
  *                                       Null means an empty slot.
  * @param {number} size Block's size.
  * @param {number} margin Block's margin.
- * @returns {CodimoComponent} The new component.
+ * @return {CodimoComponent} The new component.
  */
 const lineGenerator = (
   numbers: Array<number | null>,

@@ -24,7 +24,7 @@ const BLOCK_WALL = 0x428bca;
  * @todo Add link to the metadata shape documentation.
  * @todo Make it Generator compliant.
  * @param {Object} engineData The metadata required by the maze.
- * @returns {CodimoComponent} The new static component.
+ * @return {CodimoComponent} The new static component.
  */
 const mazeGenerator = (engineData: Object): CodimoComponent => {
   if (!engineData.path) {

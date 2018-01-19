@@ -17,8 +17,8 @@ import { type CodimoComponent, type FunctionalityBuilder } from '../componentGen
  * @param {string} position CodimoComponent's starting point.
  * @param {string} [endPosition] CodimoComponent's possible end point.
  * @param {number} [movementDuration=0.5] Main animation time
- * @returns {FunctionalityBuilder} This new function returns an object with
- *                                 the `positioning` functionality.
+ * @return {FunctionalityBuilder} This new function returns an object with
+ *                                the `positioning` functionality.
  */
 const positioningFunctionalityBuilder = (
   position: string,
@@ -64,8 +64,8 @@ const positioningFunctionalityBuilder = (
      * This animation moves the component to a new position.
      * It uses a linear ease.
      *
-     * @param  {string} newPosition coords as x,y string.
-     * @return {Promise<void>}      animation's promise.
+     * @param {string} newPosition coords as x,y string.
+     * @return {Promise<void>} animation's promise.
      */
     updatePosition(newPosition: string): Promise<void> {
       this.position = newPosition;
@@ -88,7 +88,7 @@ const positioningFunctionalityBuilder = (
      * Reset the actor's position to the initial one.
      * No animation is involved.
      *
-     * @returns {void}
+     * @return {void}
      */
     resetPosition() {
       this.position = `${this.initialPosition[0]},${this.initialPosition[1]}`;
