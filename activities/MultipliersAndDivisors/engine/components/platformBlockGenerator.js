@@ -32,7 +32,6 @@ const platformBlockGenerator = (
 ) => {
   const baseBlock = blockGenerator(RED, size, margin);
 
-  // $FlowDoNotDisturb @see https://github.com/facebook/flow/issues/2386
   return (x: number, y: number, activePathBorders?: ActivePathBorders = {}): CodimoComponent => {
     const block = baseBlock(x, y, activePathBorders);
     const logo = Sprite.fromImage(CodimoEnergyPath);

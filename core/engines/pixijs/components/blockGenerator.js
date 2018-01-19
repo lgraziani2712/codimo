@@ -18,12 +18,14 @@ export const BLOCK_DEFINITIONS = {
   WALL: 0xda4b4b,
 };
 
-export type ActivePathBorders = {|
+export type ActivePathBorders = {
   bottom?: boolean,
   left?: boolean,
   right?: boolean,
   top?: boolean,
-|};
+
+  [any]: empty,
+};
 export type Direction = 'top' | 'right' | 'bottom' | 'left';
 type CornerDirection = 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight';
 
@@ -78,7 +80,6 @@ const blockGenerator = (
   tint: number,
   size: number,
   margin: number,
-  // $FlowDoNotDisturb @see https://github.com/facebook/flow/issues/2386
 ) => (x: number, y: number, activePathBorders?: ActivePathBorders = {}): CodimoComponent => {
   const view = new Container();
   const block = blockBuilder(tint, size, margin);
