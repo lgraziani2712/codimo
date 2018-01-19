@@ -27,6 +27,28 @@ export default {
     exits: ['2,0'],
     actorExitIdx: 0,
     platformCoords: '2,4',
+    actors: [
+      {
+        number: 1,
+        startPosition: '0,0',
+        endPosition: '2,0',
+      },
+      {
+        number: 5,
+        startPosition: '0,0',
+        endPosition: '3,0',
+      },
+      {
+        number: -3,
+        startPosition: '0,0',
+        endPosition: '4,0',
+      },
+      {
+        number: 4,
+        startPosition: '0,0',
+        endPosition: '5,0',
+      },
+    ],
   },
   numericLineData: {
     statics: [0, null, 4, 5, 6, 7, 8, 9, 10, 11],
