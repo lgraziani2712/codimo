@@ -23,6 +23,10 @@ import { type BlocklyToolboxElement } from 'core/ui/BlocklyApp/components/Blockl
 import ActionBar from 'core/ui/BlocklyApp/components/ActionBar';
 import BlocklyWorkspace from 'core/ui/BlocklyApp/components/BlocklyWorkspace';
 
+// FIXME MonkeyPatch https://github.com/google/blockly/issues/299
+// $FlowDoNotDisturb It's a monkeypatch
+Blockly.WorkspaceAudio.prototype.preload = () => {};
+
 const ID = 'blockly-app';
 
 type BlockDefinition = string;
