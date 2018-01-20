@@ -18,6 +18,7 @@ import {
 } from 'core/workspaces/blockly/instanciateEveryBlock';
 
 import openThePortalBuilder from './functionalities/openThePortalBuilder';
+import enterToNumericLineBuilder from './functionalities/enterToNumericLineBuilder';
 
 const SIX = 6;
 const styleRaw = {
@@ -40,11 +41,17 @@ type NumberMetadata = {
 };
 
 /**
- * This is the MultipliersAndDivisors  game's actor generator function.
+ * This is the MultipliersAndDivisors game's actor generator function.
  *
- * @version 1.0.0
+ * @version 1.1.0
  * @param {GameDifficulty} difficulty Metadata required for the randomizer.
  * @param {Container} initialParent The component parent required for resetting.
+ * @param {NumberMetadata} metadata Required information.
+ * @param {Number} metadata.number Which number represents this actor?
+ * @param {String} metadata.startPosition In which block appears?
+ * @param {String} metadata.endPosition Which position on the Numeric Line  is the correct?
+ * @param {Number} metadata.size Used by functionalities and for component representation.
+ * @param {Number} metadata.margin Used by functionalities and for component representation.
  * @return {CodimoComponent} The new actor component.
  */
 const numberGenerator = (
@@ -65,6 +72,7 @@ const numberGenerator = (
 
   return actorGenerator(view, size, margin, startPosition, endPosition)
     .addFunctionality('openThePortal', openThePortalBuilder)
+    .addFunctionality('enterToNumericLine', enterToNumericLineBuilder)
     .build();
 };
 
