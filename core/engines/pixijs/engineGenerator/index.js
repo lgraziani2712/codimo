@@ -67,7 +67,7 @@ export default function engineGenerator(
 
   return {
     /**
-     * Adds or replace an ExecutionProcessor
+     * Adds or replace an ExecutionProcessor.
      *
      * @param {string} key The processor ID.
      * @param {ExecutionProcessor} processor The processor object.
@@ -78,6 +78,13 @@ export default function engineGenerator(
 
       return this;
     },
+    /**
+     * Adds or replace a WillStopExecutionChecker.
+     *
+     * @param {string} key The checker ID.
+     * @param {WillStopExecutionChecker} checker The checker function.
+     * @return {EngineGenerator} For chaining purpose.
+     */
     addWillStopExecutionChecker(key: string, checker: WillStopExecutionChecker) {
       willStopExecutionCheckers.set(key, checker);
 
