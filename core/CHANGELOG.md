@@ -3,6 +3,12 @@
 ### 🤖 PixiJS Engine
 
 - ⚙️ [v1.1.0] `engineGenerator/processors/processorGenerator`: Adds the possibility to receive one `CodimoComponent` or an array of `CodimoComponent`, being able to process all of them. Usefull when the activity has more than one actor.
+  - Processors and checkers which follows the new `ProcessorBuilder` type version:
+    - ⚙️ [v1.1.0] `engineGenerator/processors/theFallenOneResetProcessorBuilder`.
+    - ⚙️ [v1.1.0] `engineGenerator/processors/positioningFunctionalityBuilder`.
+    - ⚙️ [v1.1.0] `engineGenerator/processors/checkers/hasHitAWallBuilder`.
+    - ⚙️ [v1.1.0] `engineGenerator/processors/checkers/hasBecomeTheFallenOneBuilder`.
+    - ⚙️ [v1.1.0] `engineGenerator/beforeStopExecutionCheckers/starvationCheckerBuilder`.
 
 ## 1.0.0-alpha.2
 

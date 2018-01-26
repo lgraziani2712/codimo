@@ -13,19 +13,41 @@ import { type ResetProcessor } from './processorGenerator';
 /**
  * It resets the actor if it has the `theFallenOne` functionality.
  *
- * @version 1.0.0
- * @param {CodimoComponent} component The component to be processed.
+ * @version 1.1.0
+ * @param {CodimoComponent | Array<CodimoComponent>} components
+ *  The component to be processed.
  * @return {ResetProcessor} The processor itself.
  */
-const theFallenOneResetProcessorBuilder = (component: CodimoComponent): ResetProcessor => {
-  if (typeof component.resetTheFallenOne !== 'function') {
-    throw new Error(
-      '`theFallenOne` reset processor requires the component to have the ' +
-      '`theFallenOne` functionality',
-    );
+const theFallenOneResetProcessorBuilder = (
+  components: CodimoComponent | Array<CodimoComponent>,
+): ResetProcessor => {
+  if (!Array.isArray(components)) {
+    if (typeof components.resetTheFallenOne !== 'function') {
+      throw new Error(
+        '`theFallenOne` reset processor requires the component to have the ' +
+        '`theFallenOne` functionality',
+      );
+    }
+  } else {
+    components.forEach(component => {
+      if (typeof component.resetTheFallenOne !== 'function') {
+        throw new Error(
+          '`theFallenOne` reset processor requires the component to have the ' +
+          '`theFallenOne` functionality',
+        );
+      }
+    });
   }
 
-  return () => (Promise.resolve(component.resetTheFallenOne()));
+  return () => (
+    !Array.isArray(components)
+      ? Promise.resolve(components.resetTheFallenOne())
+      : Promise.resolve(
+        components.forEach(component => {
+          component.resetTheFallenOne();
+        }),
+      )
+  );
 };
 
 export default theFallenOneResetProcessorBuilder;

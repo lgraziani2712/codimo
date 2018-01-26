@@ -28,34 +28,51 @@ const pathOverflowError = engineErrorBuilder('PathOverflowError', {
  * But there won't be anything after and the component will fall into the void.
  * And we don't want that.
  *
- * @version 1.0.1
- * @param {CodimoComponent} component The component to check.
+ * @version 1.1.0
+ * @param {CodimoComponent | Array<CodimoComponent>} components
+ *  The component to check.
  * @param {EngineData} engineData Contains the required data for validation.
  * @return {Checker} The new instance.
  */
 export default function hasBecomeTheFallenOneBuilder(
-  component: CodimoComponent,
+  components: CodimoComponent | Array<CodimoComponent>,
   engineData: EngineData,
 ): Checker {
-  if (typeof component.beTheFallenOne !== 'function') {
-    throw new Error(
-      '`hasBecomeTheFallenOne` checker requires the component ' +
-      'to have the `beTheFallenOne` functionality',
-    );
+  if (!Array.isArray(components)) {
+    if (typeof components.beTheFallenOne !== 'function') {
+      throw new Error(
+        '`hasBecomeTheFallenOne` checker requires the component ' +
+        'to have the `beTheFallenOne` functionality',
+      );
+    }
+  } else {
+    components.forEach(component => {
+      if (typeof component.beTheFallenOne !== 'function') {
+        throw new Error(
+          '`hasBecomeTheFallenOne` checker requires the component ' +
+          'to have the `beTheFallenOne` functionality',
+        );
+      }
+    });
   }
-  if (!Array.isArray(engineData.endPositions)) {
+  if (!Array.isArray(engineData.exits)) {
     throw new Error(
       // TODO add the URL for the doc of the path shape!
       '`hasBecomeTheFallenOne` checker requires `engineData.exits`. ' +
       'See blablabla for the `exits` shape.',
     );
   }
-  const endPositions: Array<string> = engineData.endPositions;
+  const endPositions: Array<string> = engineData.exits;
 
   return async ({ instruction, oldPosition }: PositioningState) => {
+    const direction = instruction.key;
+    const idxActor = parseInt(instruction.params[1]);
+    const component =
+      Array.isArray(components) ? components[idxActor] : components;
+
     if (
-      endPositions.indexOf(oldPosition) !== -ONE &&
-      instruction === MOVE_FORWARD
+      endPositions.indexOf(oldPosition) !== -ONE
+      && direction === MOVE_FORWARD
     ) {
       await component.beTheFallenOne();
 

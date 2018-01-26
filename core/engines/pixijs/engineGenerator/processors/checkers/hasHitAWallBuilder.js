@@ -25,6 +25,8 @@ type ActivePathBorders = {|
   left?: boolean,
   right?: boolean,
   top?: boolean,
+
+  [any]: empty,
 |};
 /**
  * The string represents a coord x,y.
@@ -49,19 +51,30 @@ const hasHitaWallError = engineErrorBuilder('HasHitAWallError', {
  * If there is a wall, it throws a new exection
  * and stop the execution of the animation.
  *
- * @version 1.0.1
- * @param {CodimoComponent} component The component to check.
+ * @version 1.1.0
+ * @param {CodimoComponent | Array<CodimoComponent>} components
+ *  The component to check.
  * @param {EngineData} engineData Contains the required data for validation.
  * @return {Checker} The new instance.
  */
 export default function hasHitAWallBuilder(
-  component: CodimoComponent,
+  components: CodimoComponent | Array<CodimoComponent>,
   engineData: EngineData,
 ): Checker {
-  if (typeof component.hitTheWall !== 'function') {
-    throw new Error(
-      '`hasHitAWall` checker requires the component to have the `hitTheWall` functionality',
-    );
+  if (!Array.isArray(components)) {
+    if (typeof components.hitTheWall !== 'function') {
+      throw new Error(
+        '`hasHitAWall` checker requires the component to have the `hitTheWall` functionality',
+      );
+    }
+  } else {
+    components.forEach(component => {
+      if (typeof component.hitTheWall !== 'function') {
+        throw new Error(
+          '`hasHitAWall` checker requires the component to have the `hitTheWall` functionality',
+        );
+      }
+    });
   }
   if (!Array.isArray(engineData.path)) {
     throw new Error(
@@ -75,9 +88,13 @@ export default function hasHitAWallBuilder(
   return async ({ instruction, oldPosition }: PositioningState) => {
     // $FlowDoNotDisturb it exists
     const path: ActivePathBorders = paths.get(oldPosition);
+    const direction = instruction.key;
+    const idxActor = parseInt(instruction.params[1]);
+    const component =
+      Array.isArray(components) ? components[idxActor] : components;
 
-    if (!path[directionsToWalls[instruction]]) {
-      await component.hitTheWall(directionsToWalls[instruction]);
+    if (!path[directionsToWalls[direction]]) {
+      await component.hitTheWall(directionsToWalls[direction]);
 
       throw hasHitaWallError;
     }
