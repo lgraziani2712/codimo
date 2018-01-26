@@ -11,14 +11,16 @@ import { Container } from 'pixi.js';
 import { storiesOf, action } from 'test/storybook-facades';
 import PixiWrapper from 'test/PixiWrapper';
 
-import metadata from '../../__mocks__/metadata';
+import multipliersMetadata from '../../__mocks__/multipliersMetadata';
 
 import platformBlockGenerator from './platformBlockGenerator';
 import actorsContainer from './actorsContainer';
 
-const { difficulty, engineData } = metadata;
+const { difficulty, engineData } = multipliersMetadata;
 const WIDTH = engineData.canvas.width;
 const HEIGHT = 300;
+const UNUSED_TINT = 0x0;
+const POS_ZERO = '0,0';
 const openingThePortalEvent = action('Opening the portal');
 const resetEvent = action('Reseting everything');
 
@@ -26,7 +28,12 @@ storiesOf('MultipliersAndDivisors/engine/components/actorsContainer', module)
   .add('it renders', () => {
     const view = new Container();
     const platform =
-      platformBlockGenerator(0x0, engineData.size, engineData.margin)(0, 0);
+      platformBlockGenerator(
+        UNUSED_TINT,
+        engineData.size,
+        engineData.margin,
+        POS_ZERO,
+      )(0, 0);
     const actors = actorsContainer(difficulty, engineData, platform);
 
     platform.view.x = 20;

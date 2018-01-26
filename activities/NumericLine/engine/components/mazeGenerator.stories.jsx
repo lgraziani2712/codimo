@@ -10,11 +10,11 @@ import React from 'react';
 import { storiesOf } from 'test/storybook-facades';
 import PixiWrapper from 'test/PixiWrapper';
 
-import metadata from '../../__mocks__/metadata';
+import numericLineMetadata from '../../__mocks__/numericLineMetadata';
 
 import mazeGenerator from './mazeGenerator';
 
-const { engineData } = metadata;
+const { engineData } = numericLineMetadata;
 const WIDTH = engineData.canvas.width;
 const HEIGHT = engineData.canvas.height;
 
