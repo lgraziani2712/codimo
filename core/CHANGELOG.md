@@ -1,5 +1,9 @@
 ## HEAD
 
+### 🤖 PixiJS Engine
+
+- ⚙️ [v1.1.0] `engineGenerator/processors/processorGenerator`: Adds the possibility to receive one `CodimoComponent` or an array of `CodimoComponent`, being able to process all of them. Usefull when the activity has more than one actor.
+
 ## 1.0.0-alpha.2
 
 ### 💅 React UI

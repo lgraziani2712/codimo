@@ -46,8 +46,8 @@ export default function componentGenerator(
      * `key` as the one you want to replace.
      *
      * @param {string} key Unique key.
-     * @param {FunctionalityBuilder} functionality A new animation or action for
-     *                                             the component.
+     * @param {FunctionalityBuilder} functionality
+     *  A new animation or action for the component.
      * @return {Generator} This allow chaining calls.
      */
     addFunctionality(key: string, functionality: FunctionalityBuilder): Generator {
