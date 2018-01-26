@@ -2,20 +2,25 @@
 
 ### 🤖 PixiJS Engine
 
-- ⚙️ [v1.1.0] `engineGenerator/processors/processorGenerator`: Adds the possibility to receive one `CodimoComponent` or an array of `CodimoComponent`, being able to process all of them. Usefull when the activity has more than one actor.
+- ⚙️ [v1.1.0] `engineGenerator/processors/processorGenerator`: Add the possibility to receive one `CodimoComponent` or an array of `CodimoComponent`, being able to process all of them. Usefull when the activity has more than one actor.
   - Processors and checkers which follows the new `ProcessorBuilder` type version:
     - ⚙️ [v1.1.0] `engineGenerator/processors/theFallenOneResetProcessorBuilder`.
-    - ⚙️ [v1.1.0] `engineGenerator/processors/positioningFunctionalityBuilder`.
+    - ⚙️ [v1.1.0] `engineGenerator/processors/positioningProcessorBuilder`.
     - ⚙️ [v1.1.0] `engineGenerator/processors/checkers/hasHitAWallBuilder`.
     - ⚙️ [v1.1.0] `engineGenerator/processors/checkers/hasBecomeTheFallenOneBuilder`.
     - ⚙️ [v1.1.0] `engineGenerator/beforeStopExecutionCheckers/starvationCheckerBuilder`.
+
+- ⚙️ [v1.1.0] `components/functionalities/positioningFunctionalityBuilder`:
+  - Add an state in which the actor can be, or not, in movement.
+  - 🆕 Exportable constant `NO_START_POSITION`.
+  - 🆕 Method `setPosition(newPosition: string): void`. It sets the actor in the new position instantly without animation.
 
 ## 1.0.0-alpha.2
 
 ### 💅 React UI
 
-- ⚙️ [v1.0.2] `Activity`: Adds the `handleNextLevelRedirection` helper (#59).
-- ⚙️ [v1.1.0] `CodimoRouter`: Adds a 404 page to announce the end game of an activity (#59).
+- ⚙️ [v1.0.2] `Activity`: Add the `handleNextLevelRedirection` helper (#59).
+- ⚙️ [v1.1.0] `CodimoRouter`: Add a 404 page to announce the end game of an activity (#59).
 - 🆕 [v1.0.0] `CodimoRouter/FourOhFour`: 404 page (#59).
 
 ## v1.0.0-alpha.1
