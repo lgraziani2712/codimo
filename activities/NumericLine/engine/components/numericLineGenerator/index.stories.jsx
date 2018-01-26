@@ -100,7 +100,7 @@ storiesOf('NumericLine/engine/components/numericLineGenerator', module)
       },
       actorExitIdx: 0,
       startPosition: POSITION,
-      endPositions: [POSITION],
+      exits: [POSITION],
       size: SIZE,
       margin: TEN,
     });
@@ -137,7 +137,7 @@ storiesOf('NumericLine/engine/components/numericLineGenerator', module)
       },
       actorExitIdx: 0,
       startPosition: POSITION,
-      endPositions: [POSITION],
+      exits: [POSITION],
       size: SIZE,
       margin: TEN,
     });
@@ -176,7 +176,7 @@ storiesOf('NumericLine/engine/components/numericLineGenerator', module)
       },
       actorExitIdx: 0,
       startPosition: POSITION,
-      endPositions: [POSITION],
+      exits: [POSITION],
       size: SIZE,
       margin: TEN,
     });
@@ -246,7 +246,7 @@ storiesOf('NumericLine/engine/components/numericLineGenerator', module)
       },
       actorExitIdx: 0,
       startPosition: POSITION,
-      endPositions: [POSITION],
+      exits: [POSITION],
       size: SIZE,
       margin: TEN,
     });
@@ -289,7 +289,7 @@ storiesOf('NumericLine/engine/components/numericLineGenerator', module)
       },
       actorExitIdx: 0,
       startPosition: POSITION,
-      endPositions: [POSITION],
+      exits: [POSITION],
       size: SIZE,
       margin: TEN,
     });
@@ -334,7 +334,7 @@ storiesOf('NumericLine/engine/components/numericLineGenerator', module)
       },
       actorExitIdx: 0,
       startPosition: POSITION,
-      endPositions: [POSITION],
+      exits: [POSITION],
       size: SIZE,
       margin: TEN,
     });

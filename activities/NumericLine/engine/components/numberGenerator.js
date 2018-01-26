@@ -73,7 +73,7 @@ type EngineData = {
   numericLineData: EngineData$NumericLineData,
   actorExitIdx?: number,
   startPosition: string,
-  endPositions: Array<string>,
+  exits: Array<string>,
   size: number,
   margin: number,
 };
@@ -81,21 +81,34 @@ type EngineData = {
 /**
  * This is the NumericLine game's actor generator function.
  *
- * @version 1.0.0
- * @param {GameDifficulty} difficulty Metadata required for the randomizer.
- * @param {Container} initialParent The component parent required for resetting.
- * @param {EngineData$NumericLineData} numericLineData Metadata required for the randomizer.
- * @param {number} [actorExitIdx] Index used with the randomizer result.
- * @param {string} startPosition Represented by an "x,y" string.
- * @param {string} endPositions Represented by an "x,y" string.
- * @param {number} size Block's size.
- * @param {number} margin Block's margin.
+ * @version 1.0.1
+ * @param {GameDifficulty} difficulty
+ *  Metadata required for the randomizer.
+ * @param {Container} initialParent
+ *  The component parent required for resetting.
+ * @param {EngineData} engineData Exercise metadata.
+ * @param {EngineData$NumericLineData} engineData.numericLineData
+ *  Metadata required for the randomizer.
+ * @param {number} [engineData.actorExitIdx]
+ *  Index used with the randomizer result.
+ * @param {string} engineData.startPosition Represented by an "x,y" string.
+ * @param {Array<string>} engineData.exits
+ *  Array of strings with 2D coords as "x,y".
+ * @param {number} engineData.size Block's size.
+ * @param {number} engineData.margin Block's margin.
  * @return {CodimoComponent} The new actor component.
  */
 const numberGenerator = (
   difficulty: GameDifficulty,
   initialParent: Container,
-  { numericLineData, actorExitIdx, startPosition, endPositions, size, margin }: EngineData,
+  {
+    numericLineData,
+    actorExitIdx,
+    startPosition,
+    exits,
+    size,
+    margin,
+  }: EngineData,
 ): CodimoComponent => {
   ////////////////////////////////////////////
   // 1. Create the randomizer function
@@ -110,7 +123,7 @@ const numberGenerator = (
   // 2. Get the actual number and endPosition
   ////////////////////////////////////////////
   const number = randomActor[exitIdx];
-  const endPosition = endPositions[exitIdx];
+  const endPosition = exits[exitIdx];
   const style = new TextStyle({
     ...styleRaw,
     fontSize: size + size / SIX,
@@ -127,7 +140,10 @@ const numberGenerator = (
   initialParent.addChild(view);
 
   return actorGenerator(view, size, margin, startPosition, endPosition)
-    .addFunctionality('enterToNumericLine', enterToNumericLineFunctionalityBuilder)
+    .addFunctionality(
+      'enterToNumericLine',
+      enterToNumericLineFunctionalityBuilder,
+    )
     .addFunctionality('changeActor', changeActorFunctionalityBuilder(
       difficulty,
       randomizeActor,

@@ -24,7 +24,7 @@
       ["4,0", { "top": true, "left": true }]
     ],
     "startPosition": "4,1",
-    "endPositions": ["0,0", "2,0", "4,0"],
+    "exits": ["0,0", "2,0", "4,0"],
     "actorExitIdx": 2,
     "numericLineData": {
       "statics": [null, 2, null, 4, null],
