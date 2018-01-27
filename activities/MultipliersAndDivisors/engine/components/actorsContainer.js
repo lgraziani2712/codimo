@@ -64,7 +64,7 @@ const actorsContainer = (
     .drawRect(ZERO, ZERO, width, height)
     .endFill();
 
-  view.x = ZERO;
+  view.x = engineData.size - engineData.margin;
 
   engineData.actors.forEach((actorData, i) => {
     const actorContainer = new Graphics();

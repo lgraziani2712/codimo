@@ -12,13 +12,19 @@ import PixiWrapper from 'test/PixiWrapper';
 
 import platformBlockGenerator from './platformBlockGenerator';
 
-const UNUSED_TINT = 0x000;
+const UNUSED_TINT = 0x0;
 const SIZE = 100;
 const MARGIN = 20;
+const POS_ZERO = '0,0';
 
 storiesOf('MultipliersAndDivisors/engine/components/platformBlockGenerator', module)
   .add('Setting the portal platform', () => {
-    const platform = platformBlockGenerator(UNUSED_TINT, SIZE, MARGIN)(ZERO, ZERO);
+    const platform = platformBlockGenerator(
+      UNUSED_TINT,
+      SIZE,
+      MARGIN,
+      POS_ZERO,
+    )(ZERO, ZERO);
 
     platform.view.x = platform.view.y = MARGIN;
 

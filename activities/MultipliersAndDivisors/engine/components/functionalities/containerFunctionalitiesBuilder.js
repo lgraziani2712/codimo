@@ -27,6 +27,7 @@ const containerFunctionalitiesBuilder = (
       actor.resetPosition();
     });
   },
+  actors: () => actors,
   openThePortal: (actor: number) => actors[actor].openThePortal(portalPlatform),
 });
 

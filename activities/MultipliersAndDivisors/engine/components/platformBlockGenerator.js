@@ -23,12 +23,14 @@ const FIX_CENTER = 5;
  * @param {number} tint Unused. Block's colour.
  * @param {number} size Block's size.
  * @param {number} margin Block's margin.
+ * @param {string} platformCoords Coords where the platform is setted.
  * @return {CodimoComponent} A visual component representing a block.
  */
 const platformBlockGenerator = (
   tint: number,
   size: number,
   margin: number,
+  platformCoords: string,
 ) => {
   const baseBlock = blockGenerator(RED, size, margin);
 
@@ -42,6 +44,9 @@ const platformBlockGenerator = (
     logo.alpha = 0.5;
 
     block.view.addChild(logo);
+
+    // Coords where the platform is setted.
+    block.position = platformCoords;
 
     return block;
   };

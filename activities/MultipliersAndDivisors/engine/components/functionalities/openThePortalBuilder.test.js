@@ -7,6 +7,9 @@
 import { Container } from 'pixi.js';
 
 import componentGenerator from 'core/engines/pixijs/components/componentGenerator';
+import positioningFunctionalityBuilder, {
+  NO_START_POSITION,
+} from 'core/engines/pixijs/components/functionalities/positioningFunctionalityBuilder';
 
 import openThePortalBuilder from './openThePortalBuilder';
 
@@ -16,18 +19,29 @@ describe('activities/MultipliersAndDivisors/engine/components/functionalities/op
     const size = 64;
     const margin = 10;
     const firstParent = new Container();
-    const secondParent = {
-      view: new Container(),
-    };
-    const actor =
-      componentGenerator(new Container(), size, margin)
-        .addFunctionality('openThePortal', openThePortalBuilder)
-        .build();
+    const parentSecondParent = new Container();
+    const secondParentView = new Container();
 
-    actor.view.setParent(firstParent);
+    secondParentView.setParent(parentSecondParent);
+
+    const secondParent = {
+      position: NO_START_POSITION,
+      view: secondParentView,
+    };
+    const view = new Container();
+
+    view.setParent(firstParent);
+
+    const actor = componentGenerator(view, size, margin)
+      .addFunctionality(
+        'positioning',
+        positioningFunctionalityBuilder(NO_START_POSITION),
+      )
+      .addFunctionality('openThePortal', openThePortalBuilder)
+      .build();
 
     await actor.openThePortal(secondParent);
 
-    expect(actor.view.parent).toBe(secondParent.view);
+    expect(actor.view.parent).toBe(parentSecondParent);
   });
 });

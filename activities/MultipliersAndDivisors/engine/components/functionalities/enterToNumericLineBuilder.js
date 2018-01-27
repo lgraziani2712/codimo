@@ -39,11 +39,13 @@ const enterToNumericLineBuilder: FunctionalityBuilder = (
 
   return {
     enterToNumericLine(emptyBlock: Container): Promise<void> {
-      this.position = '';
       const localPosition = emptyBlock.toLocal(GLOBAL_POINT, this.view);
 
       this.view.setParent(emptyBlock);
       this.view.position = localPosition;
+
+      // Has finished moving.
+      this.isMoving = false;
 
       return new Promise((onComplete) => {
         const timeline = new TimelineLite({

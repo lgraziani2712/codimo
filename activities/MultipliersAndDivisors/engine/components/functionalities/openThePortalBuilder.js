@@ -40,6 +40,10 @@ const openThePortalBuilder: FunctionalityBuilder = () =>
           })
           .to(this.view, DEFAULT_MOVEMENT_DURATION, {
             alpha: ONE,
+            onComplete: () => {
+              this.setPosition(componentToTeleportTo.position);
+              this.view.setParent(componentToTeleportTo.view.parent);
+            },
           });
       });
     },

@@ -96,7 +96,7 @@ storiesOf('MultipliersAndDivisors/engine/components/numericLineGenerator', modul
     const ten = numberGenerator('normal', container, {
       number: TEN,
       startPosition: POSITION,
-      endPositions: [POSITION],
+      endPosition: POSITION,
       size: SIZE,
       margin: TEN,
     });
@@ -129,7 +129,7 @@ storiesOf('MultipliersAndDivisors/engine/components/numericLineGenerator', modul
     const ten = numberGenerator('normal', container, {
       number: TEN,
       startPosition: POSITION,
-      endPositions: [POSITION],
+      endPosition: POSITION,
       size: SIZE,
       margin: TEN,
     });
@@ -164,7 +164,7 @@ storiesOf('MultipliersAndDivisors/engine/components/numericLineGenerator', modul
     const ten = numberGenerator('normal', container, {
       number: TEN,
       startPosition: POSITION,
-      endPositions: [POSITION],
+      endPosition: POSITION,
       size: SIZE,
       margin: TEN,
     });
@@ -230,7 +230,7 @@ storiesOf('MultipliersAndDivisors/engine/components/numericLineGenerator', modul
     const ten = numberGenerator('normal', container, {
       number: TEN,
       startPosition: POSITION,
-      endPositions: [POSITION],
+      endPosition: POSITION,
       size: SIZE,
       margin: TEN,
     });
@@ -269,7 +269,7 @@ storiesOf('MultipliersAndDivisors/engine/components/numericLineGenerator', modul
     const ten = numberGenerator('normal', container, {
       number: TEN,
       startPosition: POSITION,
-      endPositions: [POSITION],
+      endPosition: POSITION,
       size: SIZE,
       margin: TEN,
     });
@@ -310,7 +310,7 @@ storiesOf('MultipliersAndDivisors/engine/components/numericLineGenerator', modul
     const ten = numberGenerator('normal', container, {
       number: TEN,
       startPosition: POSITION,
-      endPositions: [POSITION],
+      endPosition: POSITION,
       size: SIZE,
       margin: TEN,
     });

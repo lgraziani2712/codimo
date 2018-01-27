@@ -16,6 +16,9 @@ import {
 import {
   type GameDifficulty,
 } from 'core/workspaces/blockly/instanciateEveryBlock';
+import {
+  NO_START_POSITION,
+} from 'core/engines/pixijs/components/functionalities/positioningFunctionalityBuilder';
 
 import openThePortalBuilder from './functionalities/openThePortalBuilder';
 import enterToNumericLineBuilder from './functionalities/enterToNumericLineBuilder';
@@ -47,8 +50,7 @@ type NumberMetadata = {
  * @param {GameDifficulty} difficulty Metadata required for the randomizer.
  * @param {Container} initialParent The component parent required for resetting.
  * @param {NumberMetadata} metadata Required information.
- * @param {Number} metadata.number Which number represents this actor?
- * @param {String} metadata.startPosition In which block appears?
+ * @param {Number} metadata.number Which number represents this actor
  * @param {String} metadata.endPosition Which position on the Numeric Line  is the correct?
  * @param {Number} metadata.size Used by functionalities and for component representation.
  * @param {Number} metadata.margin Used by functionalities and for component representation.
@@ -57,7 +59,7 @@ type NumberMetadata = {
 const numberGenerator = (
   difficulty: GameDifficulty,
   initialParent: Container,
-  { number, startPosition, endPosition, size, margin }: NumberMetadata,
+  { number, endPosition, size, margin }: NumberMetadata,
 ): CodimoComponent => {
   const style = new TextStyle({
     ...styleRaw,
@@ -70,7 +72,7 @@ const numberGenerator = (
 
   initialParent.addChild(view);
 
-  return actorGenerator(view, size, margin, startPosition, endPosition)
+  return actorGenerator(view, size, margin, NO_START_POSITION, endPosition)
     .addFunctionality('openThePortal', openThePortalBuilder)
     .addFunctionality('enterToNumericLine', enterToNumericLineBuilder)
     .build();

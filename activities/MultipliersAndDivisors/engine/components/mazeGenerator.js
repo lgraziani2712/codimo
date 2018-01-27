@@ -44,9 +44,15 @@ const mazeGenerator = (engineData: Object): CodimoComponent => {
   const BLOCKS = {
     borderCreator: blockGenerator(BLOCK_DEFINITIONS.BORDER, engineData.size, engineData.margin),
     pathCreator: blockGenerator(BLOCK_DEFINITIONS.PATH, engineData.size, engineData.margin),
-    platformCreator: platformBlockGenerator(ZERO, engineData.size, engineData.margin),
+    platformCreator: platformBlockGenerator(
+      ZERO,
+      engineData.size,
+      engineData.margin,
+      engineData.platformCoords,
+    ),
     wallCreator: blockGenerator(BLOCK_WALL, engineData.size, engineData.margin),
   };
+  let platformBlock;
 
   for (let x = 0; x < engineData.width; x++) {
     for (let y = 0; y < engineData.height; y++) {
@@ -57,13 +63,13 @@ const mazeGenerator = (engineData: Object): CodimoComponent => {
       let block;
 
       if (engineData.platformCoords === position) {
-        const block = BLOCKS.platformCreator(
+        platformBlock = BLOCKS.platformCreator(
           positionX,
           positionY,
           paths.get(position),
         );
 
-        view.addChild(block.view);
+        view.addChild(platformBlock.view);
 
         continue;
       }
@@ -88,6 +94,13 @@ const mazeGenerator = (engineData: Object): CodimoComponent => {
 
   return {
     view,
+    /**
+     * This is required by the actorsContainer,
+     * since it needs this block to work correctly.
+     *
+     * @return {CodimoComponent} The actual platform block.
+     */
+    platformBlock: () => platformBlock,
   };
 };
 
