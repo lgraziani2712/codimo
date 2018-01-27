@@ -21,7 +21,7 @@ const metadata = {
 };
 
 storiesOf('NumericLine', module)
-  .add('First normal game', () => (
+  .add('First hard game', () => (
     <MemoryRouter>
       <NumericLine metadata={metadata} />
     </MemoryRouter>

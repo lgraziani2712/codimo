@@ -9,7 +9,9 @@ export default {
   activityName: 'MultipliersAndDivisors',
   difficulty: 'normal',
   blocklyData: {
-    // TODO
+    blockDefinitions: [],
+    defaultElements: 'no one',
+    elements: [],
   },
   engineData: {
     canvas: {
