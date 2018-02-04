@@ -30,7 +30,7 @@ const moveBuilder = (
     const input =
       difficulty === 'easy'
         ? block.appendDummyInput()
-        : block.appendValueInput(REPEAT_PARAM);
+        : block.appendValueInput(REPEAT_PARAM).setCheck('repeat');
 
     input.setAlign(Blockly.ALIGN_CENTRE)
       .appendField(

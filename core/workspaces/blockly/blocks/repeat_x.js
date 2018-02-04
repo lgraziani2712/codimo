@@ -18,7 +18,7 @@ export default {
     block.appendDummyInput()
       .appendField(new Blockly.FieldNumber(ZERO, TWO), CANT_VAR)
       .appendField(REPEAT_X_TITLE);
-    block.setOutput(true);
+    block.setOutput(true, 'repeat');
     block.setColour(PURPLE);
     block.setTooltip(REPEAT_X_TOOLTIP);
   },

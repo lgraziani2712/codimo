@@ -22,7 +22,7 @@ export default {
       .appendField(new Blockly.FieldNumber(TWO, TWO), CANT_VAR)
       .appendField(SIMPLE_LOOP_TITLE_2);
     block.appendStatementInput(LOOP_STATEMENT);
-    block.setPreviousStatement(true);
+    block.setPreviousStatement(true, 'loop');
     block.setNextStatement(true);
     block.setColour(CONTROL);
     block.setTooltip(SIMPLE_LOOP_TOOLTIP);
