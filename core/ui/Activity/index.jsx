@@ -22,13 +22,20 @@ import PixiApp from '../PixiApp';
 
 import BackgroundImage from './components/BackgroundImage';
 import TwoColumns from './components/TwoColumns';
+import parseExerciseDescription from './helpers/parseExerciseDescription';
 import handleNextLevelRedirection from './helpers/handleNextLevelRedirection';
 
+export type SwalObject = {
+  html: string,
+  imageUrl: string,
+  title: string,
+};
 export type Metadata = {|
   activityName: string,
   difficulty: GameDifficulty,
   engineData: EngineData,
   blocklyData: BlocklyData,
+  exerciseDescription?: SwalObject,
 |};
 type Activity$Props = {|
   backgroundImages: Array<string>,
@@ -44,7 +51,7 @@ type Activity$Props = {|
 /**
  * The Container is in charge of loading the required activity.
  *
- * @version 1.0.3
+ * @version 1.1.0
  * @todo 1. Subcomponents async loading.
  * @todo 2. Make it more generic.
  * @todo 3. Add example.
@@ -65,6 +72,13 @@ class Activity extends React.Component {
       this.props.location,
       this.props.history,
     );
+
+    // If `props.metadata.exerciseDescription` exists, show it
+    // with SweetAlert.
+    props.metadata.exerciseDescription
+      && swal(
+        parseExerciseDescription(props.metadata.exerciseDescription),
+      ).catch(swal.noop);
   }
   /**
    * This callback will be used by the BlocklyApp.

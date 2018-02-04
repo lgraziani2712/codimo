@@ -24,6 +24,7 @@
 
 ### 💅 React UI
 
+- ⚙️ [v1.1.0] `Activity`: Add `props.metadata.exerciseDescription`, an object used with swal to show to the user a useful message about the exercise.
 - ⚙️ [v1.1.0] `BlocklyApp`: Add `props.blocklyData.doNotUseRootBlock` flag to determine if the Root Blocks is going to be used or not.
 
 ## 1.0.0-alpha.2
