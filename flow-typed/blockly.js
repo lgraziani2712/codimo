@@ -26,7 +26,7 @@ declare class Blockly$FieldTextInput extends Blockly$Field {
   setSpellcheck(spellcheck: boolean): void;
 }
 /**
- * @see
+ * @see https://developers.google.com/blockly/reference/js/Blockly.FieldNumber
  */
 declare class Blockly$FieldNumber extends Blockly$Field {
   constructor(
@@ -48,6 +48,15 @@ declare class Blockly$FieldImage extends Blockly$Field {
     alt?: string,
     handleClick?: (event: SyntheticEvent) => void,
   ): Blockly$FieldImage;
+}
+/**
+ * @see https://developers.google.com/blockly/reference/js/Blockly.FieldDropdown
+ */
+declare class Blockly$FieldDropdown extends Blockly$Field {
+  constructor(
+    menuGenerator: Array<[string, string]> | () => Array<[string, string]>,
+    opt_validator?: (selectedValue: string) => string | null,
+  ): Blockly$FieldDropdown;
 }
 /**
  * @see https://developers.google.com/blockly/reference/js/Blockly.Input
@@ -98,6 +107,7 @@ declare var Blockly: {
   FieldImage: typeof Blockly$FieldImage,
   FieldNumber: typeof Blockly$FieldNumber,
   FieldTextInput: typeof Blockly$FieldTextInput,
+  FieldDropdown: typeof Blockly$FieldDropdown,
   inject(elementId: string | HTMLElement, options: Object): Object,
   JavaScript: {
     ORDER_ATOMIC: 0,

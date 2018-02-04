@@ -11,8 +11,7 @@ import { type GameDifficulty } from 'core/workspaces/blockly/instanciateEveryBlo
 import {
   ACTOR_PROCESS_START,
   ACTOR_PROCESS_STOP,
-  ACTOR_PROCESSOR_TITLE_1,
-  ACTOR_PROCESSOR_TITLE_2,
+  ACTOR_PROCESSOR_TITLE,
   ACTOR_PROCESSOR_TOOLTIP,
 } from '../../constants';
 
@@ -26,16 +25,15 @@ export default {
     engineData: EngineData,
   ) {
     const actorsIdx = engineData.actors.map(
-      (actor, idx) => [actor.number.toString(), idx],
+      (actor, idx) => [actor.number.toString(), idx.toString()],
     );
 
     block.appendDummyInput()
-      .appendField(ACTOR_PROCESSOR_TITLE_1)
+      .appendField(ACTOR_PROCESSOR_TITLE)
       .appendField(
         new Blockly.FieldDropdown(actorsIdx),
         ACTOR_SELECTION,
-      )
-      .appendField(ACTOR_PROCESSOR_TITLE_2);
+      );
     block.appendStatementInput(MAIN_INPUT);
     block.setColour(CONTAINER);
     block.setTooltip(ACTOR_PROCESSOR_TOOLTIP);
