@@ -22,20 +22,21 @@ import hasHitAWallBuilder
   from 'core/engines/pixijs/engineGenerator/processors/checkers/hasHitAWallBuilder';
 import hasBecomeTheFallenOneBuilder
   from 'core/engines/pixijs/engineGenerator/processors/checkers/hasBecomeTheFallenOneBuilder';
-import starvationCheckerBuilder
-  from 'core/engines/pixijs/engineGenerator/beforeStopExecutionCheckers/starvationCheckerBuilder';
 
 import numericLineGenerator from './components/numericLineGenerator';
 import mazeGenerator from './components/mazeGenerator';
 import actorsContainer from './components/actorsContainer';
 import hasLeftTheMazeProcessorBuilder from './processors/hasLeftTheMazeProcessorBuilder';
-import openThePortalProcessorBuilder from './processors/openThePortalProcessorBuilder';
+import actorProcessStartProcessor from './processors/actorProcessStartProcessor';
+import actorProcessEndProcessor from './processors/actorProcessEndProcessor';
+import actorProcessBeforeStartChecker from './processors/actorProcessBeforeStartChecker';
 import allNumbersInOrderBeforeEndChecker from './processors/allNumbersInOrderBeforeEndChecker';
+import atLeastOneNumberInTheLineBeforeEndChecker
+  from './processors/atLeastOneNumberInTheLineBeforeEndChecker';
 
 /**
  * The MultipliersAndDivisors game engine generator.
  *
- * FIXME: Make a good error when the number didn't teleport but do something.
  * @version 1.0.0
  * @todo Add link to the metadata shape documentation.
  * @param {Metadata} metadata The activity specific information.
@@ -62,6 +63,10 @@ export default function engine({ difficulty, engineData }: Metadata) {
   view.addChild(actorsLine.view, maze.view, numericLine.view);
 
   return engineGenerator(view)
+    .addPreExecutionChecker(
+      'actorProcessBeforeStart',
+      actorProcessBeforeStartChecker,
+    )
     ////////////////////////////
     // Execution Processors
     ////////////////////////////
@@ -77,22 +82,26 @@ export default function engine({ difficulty, engineData }: Metadata) {
         .build(),
     )
     .addExecutionProcessor(
-      'openThePortal',
+      'actorProcessStart',
       processorGenerator(
         engineData,
         actorsLine,
-        openThePortalProcessorBuilder,
+        actorProcessStartProcessor,
       ).build(),
+    )
+    .addExecutionProcessor(
+      'actorProcessStop',
+      actorProcessEndProcessor(actorsLine.actors()),
     )
     ////////////////////////////
     // Will Stop Checkers
     ////////////////////////////
     .addWillStopExecutionChecker(
-      'starvation',
-      starvationCheckerBuilder(actorsLine.actors()),
+      'atLeastOneNumberInTheLine',
+      atLeastOneNumberInTheLineBeforeEndChecker(numericLine),
     )
     .addWillStopExecutionChecker(
-      'starvation',
+      'allNumbersInOrder',
       allNumbersInOrderBeforeEndChecker(numericLine),
     )
     ////////////////////////////

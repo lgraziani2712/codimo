@@ -13,7 +13,7 @@ import PixiWrapper from 'test/PixiWrapper';
 import { MOVE_FORWARD } from 'core/constants/instructions';
 
 import multipliersMetadata from '../__mocks__/multipliersMetadata';
-import { OPEN_PORTAL, LEAVE_MAZE } from '../constants';
+import { ACTOR_PROCESS_START, LEAVE_MAZE } from '../constants';
 
 import engine from '.';
 
@@ -22,9 +22,9 @@ const MOVE_FORWARD_MOCK = {
   key: MOVE_FORWARD,
   params: ['4', '3'],
 };
-const OPEN_PORTAL_MOCK = {
+const ACTOR_PROCESS_START_MOCK = {
   id: '2',
-  key: OPEN_PORTAL,
+  key: ACTOR_PROCESS_START,
   params: ['3'],
 };
 const LEAVE_MAZE_MOCK = {
@@ -40,7 +40,7 @@ storiesOf('MultipliersAndDivisors/engine', module)
     const basicEngine = engine(multipliersMetadata);
 
     const instructions = [
-      OPEN_PORTAL_MOCK,
+      ACTOR_PROCESS_START_MOCK,
       MOVE_FORWARD_MOCK,
       LEAVE_MAZE_MOCK,
     ];

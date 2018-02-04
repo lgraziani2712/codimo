@@ -17,10 +17,10 @@ import engineErrorBuilder
 
 import MazeWrongExitErrorURL from '../../images/MazeWrongExitError.png';
 
-const mazeWrongExitError = engineErrorBuilder('MazeWrongExitError', {
+const noNumbersInTheLineError = engineErrorBuilder('NoNumbersInTheLineError', {
   imageUrl: MazeWrongExitErrorURL,
-  title: parseEmoji('👻 ¡UPS! 👻'),
-  html: 'LOS NÚMEROS Y/O SU ORDEN NO ESTÁ BIEN.',
+  title: parseEmoji('👻 ¡UPS! NO PASÓ NADA 👻'),
+  html: '¡INTENTÁ MOVER UN NÚMERO!',
 });
 
 /**
@@ -31,15 +31,14 @@ const mazeWrongExitError = engineErrorBuilder('MazeWrongExitError', {
  *  The actor that know how to verify if their children are in order.
  * @return {void}
  */
-const allNumbersInOrderBeforeEndChecker = (
+const atLeastOneNumberInTheLineBeforeEndChecker = (
   numericLine: CodimoComponent,
 ): WillStopExecutionChecker => () => {
-  if (numericLine.actorsPositionAreInvalid()) {
+  if (numericLine.thereAreNoActorsInTheLine()) {
     numericLine.beSad(START_STATE);
 
-    throw mazeWrongExitError;
+    throw noNumbersInTheLineError;
   }
-  numericLine.beHappy(START_STATE);
 };
 
-export default allNumbersInOrderBeforeEndChecker;
+export default atLeastOneNumberInTheLineBeforeEndChecker;

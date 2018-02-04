@@ -8,6 +8,11 @@
 export const LEAVE_MAZE = 'leave_maze';
 export const LEAVE_MAZE_TITLE = '🕳🏃💨 Saltar';
 export const LEAVE_MAZE_TOOLTIP =
-  'Si el número está sobre una salida, salta hacia la línea numérica';
+  'SI EL NÚMERO ESTÁ EN EL FINAL DEL LABERINTO, SALTA A LA RECTA NUMÉRICA';
 
-export const OPEN_PORTAL = 'open_portal';
+export const ACTOR_PROCESS_START = 'actor_process_start';
+export const ACTOR_PROCESS_STOP = 'actor_process_stop';
+
+export const ACTOR_PROCESSOR_TITLE_1 = 'EL NÚMERO';
+export const ACTOR_PROCESSOR_TITLE_2 = 'SE MUEVE ASÍ:';
+export const ACTOR_PROCESSOR_TOOLTIP = 'ELEGÍ EL NÚMERO QUE QUERÉS MOVER';

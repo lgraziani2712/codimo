@@ -11,22 +11,22 @@ import {
 import { type ExecutionProcessor }
   from 'core/engines/pixijs/engineGenerator/processors/processorGenerator';
 
-import { OPEN_PORTAL } from '../../constants';
+import { ACTOR_PROCESS_START } from '../../constants';
 
 /**
- * Process the `OPEN_PORTAL` instruction.
+ * Process the `ACTOR_PROCESS_START` instruction.
  *
  * @version 1.0.0
  * @param {CodimoComponent | Array<CodimoComponent>} components
  *  The actor(s) which will open the portal.
  * @return {ExecutionProcessor} The new processor.
  */
-const openThePortalProcessorBuilder = (
+const actorProcessStartProcessor = (
   components: CodimoComponent | Array<CodimoComponent>,
 ): ExecutionProcessor =>
   // TODO: Make pre execution checks.
   async (instruction: Instruction) => {
-    if (instruction.key !== OPEN_PORTAL) {
+    if (instruction.key !== ACTOR_PROCESS_START) {
       return;
     }
     if (!Array.isArray(components)) {
@@ -41,4 +41,4 @@ const openThePortalProcessorBuilder = (
     }
   };
 
-export default openThePortalProcessorBuilder;
+export default actorProcessStartProcessor;
