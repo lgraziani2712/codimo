@@ -44,7 +44,7 @@ type Activity$Props = {|
 /**
  * The Container is in charge of loading the required activity.
  *
- * @version 1.0.2
+ * @version 1.0.3
  * @todo 1. Subcomponents async loading.
  * @todo 2. Make it more generic.
  * @todo 3. Add example.
@@ -111,6 +111,7 @@ class Activity extends React.Component {
           <BlocklyApp
             activityName={metadata.activityName}
             difficulty={metadata.difficulty}
+            engineData={metadata.engineData}
             blocklyData={metadata.blocklyData}
             handleResetGame={engine.handleResetGame}
             handleSetOfInstructions={this.handleSetOfInstructions}

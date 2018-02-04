@@ -15,7 +15,7 @@ import BlocklyToolbox, { type BlocklyToolboxElement } from './BlocklyToolbox';
 
 const Workspace = styled.div`
   height: 520px;
-  width: 500px;
+  width: 600px;
 
   & .blocklyTrash {
     opacity: 1 !important;

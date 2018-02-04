@@ -21,12 +21,13 @@ export type Instructions = Array<Instruction>;
  * Parameter divisor: 👋
  * Instruction divisor: 👇
  *
- * @version 1.0.0
+ * @version 1.1.0
  * @param {string} rawInstructions a sequence of raw instructions
  * @return {Instructions} an array of instructions
  */
 export default function parseInstructions(rawInstructions: string): Instructions {
-  const instructions = rawInstructions.replace(/ /g, '').split('👇');
+  const instructions =
+    rawInstructions.replace(/ /g, '').replace(/\r?\n|\r/g, '').split('👇');
 
   // Deletes the last & empty value
   instructions.pop();

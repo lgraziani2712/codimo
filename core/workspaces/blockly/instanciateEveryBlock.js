@@ -4,34 +4,47 @@
  *
  * @flow
  */
+import { type EngineData } from 'core/engines/pixijs/engineGenerator';
+
 import defaultBlockParser from './blocks/defaultBlockParser';
 
 // FIXME move GameDifficulty to the corresponding module
 export type GameDifficulty = 'easy' | 'normal' | 'hard';
 
 export type BlockDefinition = {|
-  builder(block: Blockly$Block, difficulty: GameDifficulty): void;
+  builder(
+    block: Blockly$Block,
+    difficulty: GameDifficulty,
+    engineData: EngineData,
+  ): void;
   parser?: (block: Blockly$Block) => string;
 |};
 
 /**
  * Instanciate every block required by the activity.
  *
- * @version 1.0.0
+ * @version 1.1.0
  * @param {string} activityName A function for loading custom blocks.
  * @param {GameDifficulty} difficulty How complex must be the block.
  * @param {Array<string>} blockNames A list of required blocks.
+ * @param {EngineData} engineData Metadata used for configuration.
  * @return {Promise<void>} Calls every instanciation.
  */
 export default function instanciateEveryBlock(
   activityName: string,
   difficulty: GameDifficulty,
   blockNames: Array<string>,
+  engineData: EngineData,
 ) {
-  return Promise.all(blockNames.map(instanciateABlock(activityName, difficulty)));
+  return Promise.all(blockNames.map(
+    instanciateABlock(activityName, difficulty, engineData),
+  ));
 }
 
-const activityBlockInstanciator = (activityName: string, blockName: string) => (import(
+const activityBlockInstanciator = (
+  activityName: string,
+  blockName: string,
+) => (import(
   // FIXME @see https://github.com/babel/babel-eslint/issues/507
   /* webpackChunkName: "Activity$Block" */
   // eslint-disable-next-line comma-dangle
@@ -41,6 +54,7 @@ const activityBlockInstanciator = (activityName: string, blockName: string) => (
 const instanciateABlock = (
   activityName: string,
   difficulty: GameDifficulty,
+  engineData: EngineData,
 ) => {
   if (!activityName) {
     throw new Error('The `activityName` must be declared.');
@@ -65,7 +79,8 @@ const instanciateABlock = (
 
     Blockly.Blocks[blockName] = {
       init() {
-        blockDefinition.builder(this, difficulty);
+        // `this` means the block instance.
+        blockDefinition.builder(this, difficulty, engineData);
       },
     };
     Blockly.JavaScript[blockName] = blockDefinition.parser || defaultBlockParser;
