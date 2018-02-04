@@ -1,5 +1,10 @@
 {
   "difficulty": "easy",
+  "exerciseDescription": {
+    "title": "EJERCICIO DE MÚLTIPLOS",
+    "html": "<p>LLEVÁ HASTA LA RECTA NUMÉRICA LOS DOS MÚLTIPLOS DE 3 QUE FALTAN.</p>",
+    "useVideo": true
+  },
   "engineData": {
     "canvas": {
       "width": 500,

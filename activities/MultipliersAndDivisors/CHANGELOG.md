@@ -1,5 +1,7 @@
 ## HEAD
 
+- 🚀 Add introductory message to exercises.
+- 🚀 Add video for the first exercise to show how to use the actor_process block.
 - 🚀 [v1.0.0] `actor_processor`: Block that generates the process for an specific actor. Wraps the list of instruction for each actor with `ACTOR_PROCESS_STOP` and `ACTOR_PROCESS_START` instructions.
 - 🚀 [v1.0.0] `actorProcessBeforeStartChecker`: Verify that all the parsed instructions are valid.
 - 🚀 [v1.0.0] `actorProcessEndProcessor`: Process the `ACTOR_PROCESS_STOP` instruction.
