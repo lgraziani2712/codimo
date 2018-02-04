@@ -10,14 +10,14 @@ import { MemoryRouter } from 'react-router-dom';
 import { storiesOf } from 'test/storybook-facades';
 
 import level from './levels/hard/001.json';
-import normalBloklyData from './levels/hard/blocklyData.json';
+import hardBloklyData from './levels/hard/blocklyData.json';
 
 import NumericLine from '.';
 
 const metadata = {
   activityName: 'NumericLine',
   ...level,
-  blocklyData: normalBloklyData,
+  blocklyData: hardBloklyData,
 };
 
 storiesOf('NumericLine', module)
