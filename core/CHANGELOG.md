@@ -7,6 +7,8 @@
 
 ### 🤖 PixiJS Engine
 
+- ⚙️ [v1.1.0] `engineGenerator`: Add `addPreExecutionChecker` method. It allow to validate instructions before execution. Solves the problem of duplicated blocks with the same params.
+
 - ⚙️ [v1.1.0] `engineGenerator/processors/processorGenerator`: Add the possibility to receive one `CodimoComponent` or an array of `CodimoComponent`, being able to process all of them. Usefull when the activity has more than one actor.
   - Processors and checkers which follows the new `ProcessorBuilder` type version:
     - ⚙️ [v1.1.0] `engineGenerator/processors/theFallenOneResetProcessorBuilder`.

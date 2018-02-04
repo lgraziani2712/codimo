@@ -33,6 +33,10 @@ export type Engine = {|
 
 type EngineView = Container;
 export type EngineGenerator = {|
+  addPreExecutionChecker(
+    key: string,
+    checker: PreExecutionChecker,
+  ): EngineGenerator,
   addExecutionProcessor(
     key: string,
     processor: ExecutionProcessor,
@@ -49,23 +53,35 @@ export type EngineGenerator = {|
 |};
 export type WillStopExecutionChecker = () => void;
 
+export type HighlightBlockHandler = (id: string) => void;
+export type PreExecutionChecker = (
+  instructions: Instructions,
+  handleHighlightBlock: HighlightBlockHandler,
+) => void;
+
 /**
  * Returns an EngineGenerator object for generating a specific
  * engine
  *
  * @todo Add example
- * @version v1.0.0
+ * @version v1.1.0
  * @param {EngineView} view This function returns a consistent view.
  * @return {EngineGenerator} The generator object.
  */
 export default function engineGenerator(
   view: EngineView,
 ): EngineGenerator {
+  const preExecutionCheckers = new Map();
   const executionProcessors = new Map();
   const willStopExecutionCheckers = new Map();
   const resetProcessors = new Map();
 
   return {
+    addPreExecutionChecker(key: string, checker: PreExecutionChecker) {
+      preExecutionCheckers.set(key, checker);
+
+      return this;
+    },
     /**
      * Adds or replace an ExecutionProcessor.
      *
@@ -119,8 +135,12 @@ export default function engineGenerator(
          */
         async excecuteSetOfInstructions (
           instructions: Instructions,
-          handleHighlightBlock: (id: string) => void,
+          handleHighlightBlock: HighlightBlockHandler,
         ) {
+          for (const preExecutionChecker of preExecutionCheckers.values()) {
+            preExecutionChecker(instructions, handleHighlightBlock);
+          }
+
           for (let i = 0; i < instructions.length; i++) {
             // 1. Run each of the instructionProcessors sequentially
             for (const execute of executionProcessors.values()) {
