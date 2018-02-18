@@ -17,8 +17,8 @@ import {
  * Hence, it needs this functionality to invoke each of them.
  *
  * @version 1.0.0
- * @param  {Array<CodimoComponent>} staticNumbers Pre builder parameter.
- * @return {Functionality}                        The Functionality itself.
+ * @param {Array<CodimoComponent>} staticNumbers Pre builder parameter.
+ * @return {Functionality} The Functionality itself.
  */
 const lineEmotionsFunctionalityBuilder = (
   staticNumbers: Array<CodimoComponent>,

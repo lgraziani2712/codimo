@@ -1,0 +1,37 @@
+{
+  "doNotUseRootBlock": true,
+  "elements": [
+    {
+      "define": "block",
+      "type": "actor_processor"
+    },
+    {
+      "define": "block",
+      "type": "move_forward"
+    },
+    {
+      "define": "block",
+      "type": "move_backward"
+    },
+    {
+      "define": "block",
+      "type": "move_right"
+    },
+    {
+      "define": "block",
+      "type": "move_left"
+    },
+    {
+      "define": "block",
+      "type": "leave_maze"
+    }
+  ],
+  "blockDefinitions": [
+    "actor_processor",
+    "move_forward",
+    "move_backward",
+    "move_right",
+    "move_left",
+    "leave_maze"
+  ]
+}

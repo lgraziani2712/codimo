@@ -24,9 +24,13 @@ import numericLineGenerator from './components/numericLineGenerator';
  *
  * @version 1.0.0
  * @todo Add link to the metadata shape documentation.
- * @param  {GameDifficulty} difficulty Metadata required by the components.
- * @param  {EngineData}     engineData Metadata required by the components.
- * @return {Engine}                    The new engine.
+ * @param {Metadata} metadata
+ *  The activity specific information.
+ * @param {GameDifficulty} metadata.difficulty
+ *  Metadata required by the components.
+ * @param {EngineData} metadata.engineData
+ *  Metadata required by the components.
+ * @return {Engine} The new engine.
  */
 export default function engine({ difficulty, engineData }: Metadata) {
   const view = new Container();

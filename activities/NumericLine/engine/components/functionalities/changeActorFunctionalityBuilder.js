@@ -13,11 +13,11 @@ import { type GameDifficulty } from 'core/workspaces/blockly/instanciateEveryBlo
  * number between a valid range for a specific difficulty.
  *
  * @version 1.0.0
- * @param  {GameDifficulty} difficulty     Metadata required to verify if the randomizer
- *                                         needs to be called.
- * @param  {Array<number>}  randomizeActor Randomizer function.
- * @param  {number}         actorExitIdx   Index used by the randomizer.
- * @return {FunctionalityBuilder}          The functionality itself.
+ * @param {GameDifficulty} difficulty Metadata required to verify if
+ *                                    the randomizer needs to be called.
+ * @param {Array<number>} randomizeActor Randomizer function.
+ * @param {number} actorExitIdx Index used by the randomizer.
+ * @return {FunctionalityBuilder} The functionality itself.
  */
 const changeActorFunctionalityBuilder = (
   difficulty: GameDifficulty,

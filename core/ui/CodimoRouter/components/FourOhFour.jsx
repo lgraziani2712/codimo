@@ -58,8 +58,8 @@ type FourOhFour$Props = {|
  * The temporal End Game announcer.
  *
  * @version 1.0.0
- * @param  {Object} location React-router location object.
- * @constructor
+ * @param {Object} location React-router location object.
+ * @class
  */
 export default function FourOhFour({ location }: FourOhFour$Props) {
   const actualDifficulty = location.pathname.split('/')[2];

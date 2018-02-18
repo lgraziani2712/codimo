@@ -20,8 +20,13 @@ import instanciateEveryBlock, {
   type GameDifficulty,
 } from 'core/workspaces/blockly/instanciateEveryBlock';
 import { type BlocklyToolboxElement } from 'core/ui/BlocklyApp/components/BlocklyToolbox';
+import { type EngineData } from 'core/engines/pixijs/engineGenerator';
 import ActionBar from 'core/ui/BlocklyApp/components/ActionBar';
 import BlocklyWorkspace from 'core/ui/BlocklyApp/components/BlocklyWorkspace';
+
+// FIXME MonkeyPatch https://github.com/google/blockly/issues/299
+// $FlowDoNotDisturb It's a monkeypatch
+Blockly.WorkspaceAudio.prototype.preload = () => {};
 
 const ID = 'blockly-app';
 
@@ -35,6 +40,7 @@ export type BlocklyData = {|
 type BlocklyApp$Props = {|
   activityName: string,
   difficulty: GameDifficulty,
+  engineData: EngineData,
   blocklyData: BlocklyData,
   handleSetOfInstructions(
     instructions: Instructions,
@@ -59,7 +65,7 @@ type BlocklyApp$State = {|
  * for passing the array of Instructions and one for
  * resetting the game.
  *
- * @version 1.0.1
+ * @version 1.1.0
  */
 export default class BlocklyApp extends React.Component {
   props: BlocklyApp$Props;
@@ -86,6 +92,7 @@ export default class BlocklyApp extends React.Component {
       props.activityName,
       props.difficulty,
       props.blocklyData.blockDefinitions,
+      props.engineData,
     )
       .then(() => {
         this.setState(() => ({ blocksAreLoaded: true }));
@@ -95,8 +102,8 @@ export default class BlocklyApp extends React.Component {
    * This function is the Blockly workspace constructor.
    * Every Blockly configuration must be placed here.
    *
-   * @param {HTMLElement} toolbox   Elements to be used on an exercise.
-   * @returns {void}
+   * @param {HTMLElement} toolbox Elements to be used on an exercise.
+   * @return {void}
    */
   handleWorkspaceCreation = (toolbox: HTMLElement) => {
     this.workspace = Blockly.inject(ID, {
@@ -114,13 +121,14 @@ export default class BlocklyApp extends React.Component {
       this.workspace.highlightBlock(id);
     };
 
-    // 1. Will make orphans a little transparent and they won't be
-    //    executed even when Blockly ask to parse workspaceToCode
+    // Will make orphans a little transparent and they won't be
+    // executed even when Blockly ask to parse workspaceToCode
     this.workspace.addChangeListener(Blockly.Events.disableOrphans);
 
-    // 2. Inject the main block into the workspace
-    Blockly.Xml.domToWorkspace(
-      Blockly.Xml.textToDom(`
+    if (!this.props.blocklyData.doNotUseRootBlock) {
+      // Inject the main block into the workspace
+      Blockly.Xml.domToWorkspace(
+        Blockly.Xml.textToDom(`
         <xml>
           <block type="${ACTION_CONTAINER}">
             <statement name="program">
@@ -129,8 +137,9 @@ export default class BlocklyApp extends React.Component {
           </block>
         </xml>
       `),
-      this.workspace,
-    );
+        this.workspace,
+      );
+    }
   }
   /**
    * This callback will be sent to the reset button.

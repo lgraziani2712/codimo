@@ -1,0 +1,9 @@
+{
+  "name": "codimo-activity-multipliers-and-divisors",
+  "description": "It's a 6-8 years old mathematical activity. The objective is to follow the exercise rule, pick the numbers, move them through the maze and put them into the numeric line.",
+  "version": "1.0.0",
+  "author": "Luciano Graziani @lgraziani2712",
+  "peerDependencies": {
+    "codimo-core": "^1.0.0"
+  }
+}

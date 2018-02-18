@@ -25,12 +25,17 @@ import {
  * It generates the line with static numbers.
  *
  * @version 1.0.0
- * @param   {Array<number | null>}  numbers A list of numbers to create. Null means an empty slot.
- * @param   {number}                size    Block's size.
- * @param   {number}                margin  Block's margin.
- * @return  {CodimoComponent}               The new component.
+ * @param {Array<number | null>} numbers A list of numbers to create.
+ *                                       Null means an empty slot.
+ * @param {number} size Block's size.
+ * @param {number} margin Block's margin.
+ * @return {CodimoComponent} The new component.
  */
-const lineGenerator = (numbers: Array<number | null>, size: number, margin: number) => {
+const lineGenerator = (
+  numbers: Array<number | null>,
+  size: number,
+  margin: number,
+) => {
   const view = new Graphics();
   const width = numbers.length * size + (numbers.length + ONE) * margin;
   const height = size + (margin + margin);

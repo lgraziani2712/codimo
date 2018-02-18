@@ -49,7 +49,10 @@ describe('engines/pixijs/engineGenerator/processors/positioningProcessorBuilder'
 
     const actor =
       componentGenerator(actorView, size, margin)
-        .addFunctionality('positioning', positioningFunctionalityBuilder(initialPosition))
+        .addFunctionality(
+          'positioning',
+          positioningFunctionalityBuilder(initialPosition),
+        )
         .build();
     const beforeUpdateStateCheckers = new Map();
     const positioningProcessor = positioningProcessorBuilder(
@@ -72,7 +75,10 @@ describe('engines/pixijs/engineGenerator/processors/positioningProcessorBuilder'
 
     const actor =
       componentGenerator(actorView, size, margin)
-        .addFunctionality('positioning', positioningFunctionalityBuilder(initialPosition))
+        .addFunctionality(
+          'positioning',
+          positioningFunctionalityBuilder(initialPosition),
+        )
         .build();
     const beforeUpdateStateCheckers = new Map();
     const positioningProcessor = positioningProcessorBuilder(
@@ -95,7 +101,10 @@ describe('engines/pixijs/engineGenerator/processors/positioningProcessorBuilder'
 
     const actor =
       componentGenerator(actorView, size, margin)
-        .addFunctionality('positioning', positioningFunctionalityBuilder(initialPosition))
+        .addFunctionality(
+          'positioning',
+          positioningFunctionalityBuilder(initialPosition),
+        )
         .addFunctionality('hitthewall', hitTheWallFunctionalityBuilder())
         .build();
     const beforeUpdateStateCheckers = new Map([

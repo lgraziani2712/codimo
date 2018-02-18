@@ -1,11 +1,38 @@
 ## HEAD
 
+### 🀄 Blockly Workspace
+
+- ⚙️ [v1.1.0] `instanciateEveryBlock`: Add new param `engineData` used to configure the blocks.
+- ⚙️ [v1.1.0] `parseInstructions`: Add the capability to parse new lines.
+
+### 🤖 PixiJS Engine
+
+- ⚙️ [v1.1.0] `engineGenerator`: Add `addPreExecutionChecker` method. It allow to validate instructions before execution. Solves the problem of duplicated blocks with the same params.
+
+- ⚙️ [v1.1.0] `engineGenerator/processors/processorGenerator`: Add the possibility to receive one `CodimoComponent` or an array of `CodimoComponent`, being able to process all of them. Usefull when the activity has more than one actor.
+  - Processors and checkers which follows the new `ProcessorBuilder` type version:
+    - ⚙️ [v1.1.0] `engineGenerator/processors/theFallenOneResetProcessorBuilder`.
+    - ⚙️ [v1.1.0] `engineGenerator/processors/positioningProcessorBuilder`.
+    - ⚙️ [v1.1.0] `engineGenerator/processors/checkers/hasHitAWallBuilder`.
+    - ⚙️ [v1.1.0] `engineGenerator/processors/checkers/hasBecomeTheFallenOneBuilder`.
+    - ⚙️ [v1.1.0] `engineGenerator/beforeStopExecutionCheckers/starvationCheckerBuilder`.
+
+- ⚙️ [v1.1.0] `components/functionalities/positioningFunctionalityBuilder`:
+  - Add an state in which the actor can be, or not, in movement.
+  - 🆕 Exportable constant `NO_START_POSITION`.
+  - 🆕 Method `setPosition(newPosition: string): void`. It sets the actor in the new position instantly without animation.
+
+### 💅 React UI
+
+- ⚙️ [v1.1.0] `Activity`: Add `props.metadata.exerciseDescription`, an object used with swal to show to the user a useful message about the exercise.
+- ⚙️ [v1.1.0] `BlocklyApp`: Add `props.blocklyData.doNotUseRootBlock` flag to determine if the Root Blocks is going to be used or not.
+
 ## 1.0.0-alpha.2
 
 ### 💅 React UI
 
-- ⚙️ [v1.0.2] `Activity`: Adds the `handleNextLevelRedirection` helper (#59).
-- ⚙️ [v1.1.0] `CodimoRouter`: Adds a 404 page to announce the end game of an activity (#59).
+- ⚙️ [v1.0.2] `Activity`: Add the `handleNextLevelRedirection` helper (#59).
+- ⚙️ [v1.1.0] `CodimoRouter`: Add a 404 page to announce the end game of an activity (#59).
 - 🆕 [v1.0.0] `CodimoRouter/FourOhFour`: 404 page (#59).
 
 ## v1.0.0-alpha.1

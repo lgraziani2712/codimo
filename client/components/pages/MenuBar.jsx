@@ -48,6 +48,12 @@ const ExternalLinksContainer = styled.div`
   }
 `;
 
+const deleteThisActivityTitles = {
+  NumericLine: 'Línea numérica',
+  MultipliersAndDivisors: 'Múltiplos y divisores',
+  HelloCodimo: 'Hola Códimo',
+};
+
 type Props = {|
   routes: Array<Codimo$Route>,
 |};
@@ -56,7 +62,7 @@ type Props = {|
  *
  * @version 1.1.0
  * @param {Array<Codimo$Route>} routes List of routes.
- * @return {React$Element}             Menu bar element.
+ * @return {React$Element} Menu bar element.
  */
 const MenuBar = ({ routes }: Props) => (
   <Background>
@@ -65,21 +71,32 @@ const MenuBar = ({ routes }: Props) => (
 
       <LinksContainer>
         <LocalLinksContainer>
-          {routes.map((route) => {
-            const path =
-              !route.children
-                ? `/${route.activityName}`
-                // $FlowDoNotDisturb difficulty prop exist if the route has children
-                : `/${route.activityName}/${route.difficulty}/${route.children[0].path}`;
+          {Array.from(new Set(routes.map(route => route.activityName))).map(activityName => (
+            <HeaderLink
+              key={activityName}
+              to={activityName}
+              title={deleteThisActivityTitles[activityName]}
+            >
+              {routes.map((route) => {
+                if (route.activityName !== activityName) {
+                  return undefined;
+                }
+                const path =
+                  !route.children
+                    ? `/${activityName}`
+                    // $FlowDoNotDisturb difficulty prop exist if the route has children
+                    : `/${activityName}/${route.difficulty}/${route.children[0].path}`;
 
-            return (
-              <HeaderLink
-                key={path}
-                to={path}
-                title={route.title}
-              />
-            );
-          })}
+                return (
+                  <HeaderLink
+                    key={path}
+                    to={path}
+                    title={route.title}
+                  />
+                );
+              })}
+            </HeaderLink>
+          ))}
         </LocalLinksContainer>
 
         <ExternalLinksContainer>

@@ -27,11 +27,10 @@ export type Generator = {|
  *
  * @todo Add example
  * @version 1.0.0
- * @param  {Container} view   A PixiJS Container.
- * @param  {number}    size   Block's size.
- * @param  {number}    margin Códimo's block margin.
- * @return {Generator}        The component generator object for
- *                            this specific `view`.
+ * @param {Container} view A PixiJS Container.
+ * @param {number} size Block's size.
+ * @param {number} margin Códimo's block margin.
+ * @return {Generator} The component generator object for  this specific `view`.
  */
 export default function componentGenerator(
   view: Container,
@@ -46,10 +45,10 @@ export default function componentGenerator(
      * This makes replacement easy: pass a new function with the same
      * `key` as the one you want to replace.
      *
-     * @param {string}               key           Unique key.
-     * @param {FunctionalityBuilder} functionality A new animation or action for
-     *                                             the component.
-     * @return {Generator}                         This allow chaining calls.
+     * @param {string} key Unique key.
+     * @param {FunctionalityBuilder} functionality
+     *  A new animation or action for the component.
+     * @return {Generator} This allow chaining calls.
      */
     addFunctionality(key: string, functionality: FunctionalityBuilder): Generator {
       functionalities.set(key, functionality);

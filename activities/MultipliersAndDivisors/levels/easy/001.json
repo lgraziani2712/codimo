@@ -1,0 +1,49 @@
+{
+  "difficulty": "easy",
+  "exerciseDescription": {
+    "title": "EJERCICIO DE MÚLTIPLOS",
+    "html": "<p>LLEVÁ HASTA LA RECTA NUMÉRICA LOS DOS MÚLTIPLOS DE 3 QUE FALTAN.</p>",
+    "useVideo": true
+  },
+  "engineData": {
+    "canvas": {
+      "width": 500,
+      "height": 680
+    },
+    "width": 5,
+    "height": 5,
+    "margin": 10,
+    "size": 64,
+    "path": [
+      ["2,4", { "top": true }],
+      ["2,3", { "bottom": true, "top": true }],
+      ["2,2", { "bottom": true, "top": true }],
+      ["2,1", { "bottom": true, "top": true }],
+      ["2,0", { "bottom": true, "left": true, "right": true }],
+      ["1,0", { "right": true, "top": true}],
+      ["3,0", { "left": true, "top": true}]
+    ],
+    "exits": ["1,0", "3,0"],
+    "platformCoords": "2,4",
+    "actors": [
+      {
+        "number": 4
+      },
+      {
+        "number": 6,
+        "endPosition": "1,0"
+      },
+      {
+        "number": 1
+      },
+      {
+        "number": 12,
+        "endPosition": "3,0"
+      }
+    ],
+    "numericLineData": {
+      "statics": [3, null, 9, null, 15],
+      "accesses": [1, 3]
+    }
+  }
+}

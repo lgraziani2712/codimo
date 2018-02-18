@@ -1,5 +1,7 @@
 ## HEAD
 
+- 🐛 Replace metadata atribute `endPositions` with `exits`. It is used by the `hasBecomeTheFallenOne` checker.
+
 ## v1.0.3
 
 - ⛳ Add more games.

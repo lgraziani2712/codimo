@@ -18,7 +18,7 @@ export default {
     block.appendDummyInput()
       .appendField(new Blockly.FieldNumber(ZERO, TWO), CANT_VAR)
       .appendField(REPEAT_X_TITLE);
-    block.setOutput(true);
+    block.setOutput(true, 'repeat');
     block.setColour(PURPLE);
     block.setTooltip(REPEAT_X_TOOLTIP);
   },
@@ -27,8 +27,8 @@ export default {
    * Not an instruction block but a param block. This means it fits
    * into the instruction block's socket.
    *
-   * @param  {Blockly$Block} block The block instance
-   * @return {string}              cant
+   * @param {Blockly$Block} block The block instance
+   * @return {string} cant
    */
   parser(block: Blockly$Block) {
     return block.getFieldValue(CANT_VAR);

@@ -33,6 +33,10 @@ export type Engine = {|
 
 type EngineView = Container;
 export type EngineGenerator = {|
+  addPreExecutionChecker(
+    key: string,
+    checker: PreExecutionChecker,
+  ): EngineGenerator,
   addExecutionProcessor(
     key: string,
     processor: ExecutionProcessor,
@@ -49,35 +53,54 @@ export type EngineGenerator = {|
 |};
 export type WillStopExecutionChecker = () => void;
 
+export type HighlightBlockHandler = (id: string) => void;
+export type PreExecutionChecker = (
+  instructions: Instructions,
+  handleHighlightBlock: HighlightBlockHandler,
+) => void;
+
 /**
  * Returns an EngineGenerator object for generating a specific
  * engine
  *
  * @todo Add example
- * @version v1.0.0
- * @param  {EngineView} view This function returns a consistent view.
+ * @version v1.1.0
+ * @param {EngineView} view This function returns a consistent view.
  * @return {EngineGenerator} The generator object.
  */
 export default function engineGenerator(
   view: EngineView,
 ): EngineGenerator {
+  const preExecutionCheckers = new Map();
   const executionProcessors = new Map();
   const willStopExecutionCheckers = new Map();
   const resetProcessors = new Map();
 
   return {
+    addPreExecutionChecker(key: string, checker: PreExecutionChecker) {
+      preExecutionCheckers.set(key, checker);
+
+      return this;
+    },
     /**
-     * Adds or replace an ExecutionProcessor
+     * Adds or replace an ExecutionProcessor.
      *
-     * @param {string}             key       The processor ID.
+     * @param {string} key The processor ID.
      * @param {ExecutionProcessor} processor The processor object.
-     * @return {EngineGenerator}             For chaining purpose.
+     * @return {EngineGenerator} For chaining purpose.
      */
     addExecutionProcessor(key: string, processor: ExecutionProcessor) {
       executionProcessors.set(key, processor);
 
       return this;
     },
+    /**
+     * Adds or replace a WillStopExecutionChecker.
+     *
+     * @param {string} key The checker ID.
+     * @param {WillStopExecutionChecker} checker The checker function.
+     * @return {EngineGenerator} For chaining purpose.
+     */
     addWillStopExecutionChecker(key: string, checker: WillStopExecutionChecker) {
       willStopExecutionCheckers.set(key, checker);
 
@@ -86,9 +109,9 @@ export default function engineGenerator(
     /**
      * Adds or replace an ResetProcessor
      *
-     * @param {string}         key       The processor ID.
+     * @param {string} key The processor ID.
      * @param {ResetProcessor} processor The processor object.
-     * @return {EngineGenerator}         For chaining purpose.
+     * @return {EngineGenerator} For chaining purpose.
      */
     addResetProcessor(key: string, processor: ResetProcessor) {
       resetProcessors.set(key, processor);
@@ -106,14 +129,18 @@ export default function engineGenerator(
         /**
          * Invokes each of the processors in the corresponding order.
          *
-         * @param  {Instructions}  instructions         An array of instructions.
-         * @param  {Function}      handleHighlightBlock Highlight a block through blockly.
-         * @return {Promise<void>}                      The animation Promise.
+         * @param {Instructions} instructions An array of instructions.
+         * @param {Function} handleHighlightBlock Highlight a block through blockly.
+         * @return {Promise<void>} The animation Promise.
          */
         async excecuteSetOfInstructions (
           instructions: Instructions,
-          handleHighlightBlock: (id: string) => void,
+          handleHighlightBlock: HighlightBlockHandler,
         ) {
+          for (const preExecutionChecker of preExecutionCheckers.values()) {
+            preExecutionChecker(instructions, handleHighlightBlock);
+          }
+
           for (let i = 0; i < instructions.length; i++) {
             // 1. Run each of the instructionProcessors sequentially
             for (const execute of executionProcessors.values()) {

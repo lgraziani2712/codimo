@@ -38,7 +38,7 @@
       ["6,0", { "bottom": true, "top": true }]
     ],
     "startPosition": "3,4",
-    "endPositions": ["0,0", "2,0", "4,0", "6,0"],
+    "exits": ["0,0", "2,0", "4,0", "6,0"],
     "numericLineData": {
       "statics": [null, 20, null, 40, null, 80, null],
       "accesses": [0, 2, 4, 6]

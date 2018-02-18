@@ -6,10 +6,11 @@
  */
 import { END_ACTION } from 'core/constants/colors';
 import { IMAGE_SIZE } from 'core/constants/numbers';
+
 import {
   LEAVE_MAZE_TITLE,
   LEAVE_MAZE_TOOLTIP,
-} from 'activities/NumericLine/constants';
+} from '../../constants';
 
 import JumpAcrossURL from './jump_across.svg';
 

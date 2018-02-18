@@ -24,23 +24,44 @@ const starvationError = engineErrorBuilder('StarvationError', {
  * If the component contains a consistent position, it means it didn't reach
  * its objective. Hence the name `starvation` for the thrown error.
  *
- * @version 1.0.1
- * @param  {CodimoComponent} component Required to verify its position.
- * @return {WillStopExecutionChecker}  The checker itself.
+ * @version 1.1.0
+ * @param {CodimoComponent | Array<CodimoComponent>} components
+ *  Required to verify its position.
+ * @return {WillStopExecutionChecker} The checker itself.
  */
 const starvationCheckerBuilder = (
-  component: CodimoComponent,
+  components: CodimoComponent | Array<CodimoComponent>,
 ): WillStopExecutionChecker => {
-  if (typeof component.position !== 'string') {
-    throw new Error(
-      '`starvation` processor requires the component to have the `positioning` functionality',
-    );
+  if (!Array.isArray(components)) {
+    if (typeof components.position !== 'string') {
+      throw new Error(
+        '`starvation` processor requires the component to have the `positioning` functionality',
+      );
+    }
+  } else {
+    components.forEach(component => {
+      if (typeof component.position !== 'string') {
+        throw new Error(
+          '`starvation` processor requires the component to have the `positioning` functionality',
+        );
+      }
+    });
   }
 
   return () => {
-    if (component.position) {
-      throw starvationError;
+    if (!Array.isArray(components)) {
+      if (components.isMoving) {
+        throw starvationError;
+      }
+
+      return;
     }
+
+    components.forEach(component => {
+      if (component.isMoving) {
+        throw starvationError;
+      }
+    });
   };
 };
 

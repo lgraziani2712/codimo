@@ -15,11 +15,11 @@ import gameTextUI from 'core/constants/localize/es/gameTextUI';
  * If not, it announce the level completeness.
  *
  * @version 1.0.0
- * @param  {string} activityName The activity name.
- * @param  {string} difficulty   The difficulty.
- * @param  {Object} location     The react-router location object.
- * @param  {Object} history      The react-router history object.
- * @return {Promise<void>}       The sweetalert promise.
+ * @param {string} activityName The activity name.
+ * @param {string} difficulty The difficulty.
+ * @param {Object} location The react-router location object.
+ * @param {Object} history The react-router history object.
+ * @return {Promise<void>} The sweetalert promise.
  */
 const handleNextLevelRedirection = (
   activityName: string,

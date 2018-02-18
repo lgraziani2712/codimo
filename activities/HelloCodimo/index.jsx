@@ -2,7 +2,7 @@
  * @author Luciano Graziani @lgraziani2712
  * @license {@link http://www.opensource.org/licenses/mit-license.php|MIT License}
  *
- * Welcome where everything starts!
+ * Welcome where everything begins!
  *
  * @flow
  */
@@ -16,7 +16,6 @@ import metadata from './metadata.json';
 export default function HelloCodimo() {
   return (
     <Activity
-      backgroundImages={[]}
       engine={helloCodimoEngine(metadata)}
       metadata={metadata}
       hasNoEnd={true}

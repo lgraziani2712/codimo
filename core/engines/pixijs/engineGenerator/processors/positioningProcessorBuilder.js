@@ -18,7 +18,7 @@ import {
 import { type ExecutionProcessor, type ResetProcessor } from './processorGenerator';
 
 export type PositioningState = {|
-  instruction: string,
+  instruction: Instruction,
   oldPosition: string,
   newPosition: string,
 |};
@@ -36,35 +36,63 @@ const directions = {
 /* eslint-enable */
 
 /**
- * This ExecutionProcessor updates the component's position
- * while animating it.
+ * Positioning Processor Builder.
  *
  * @todo Add example
- * @version 1.0.0
- * @param  {CodimoComponent}    component The component that will have attached the processor.
- * @param  {CheckersCollection} checkers  A collection of Checker objects.
- * @return {ExecutionProcessor}           The new instance.
+ * @version 1.1.0
+ * @param { CodimoComponent | Array<CodimoComponent> } components
+ *  The component that will have attached the processor.
+ * @param {CheckersCollection} checkers A collection of Checker objects.
+ * @return {ExecutionProcessor} The new instance.
  */
 export const positioningProcessorBuilder = (
-  component: CodimoComponent,
+  components: CodimoComponent | Array<CodimoComponent>,
   checkers: CheckersCollection,
 ): ExecutionProcessor => {
-  if (
-    typeof component.position !== 'string' ||
-    typeof component.updatePosition !== 'function'
-  ) {
-    throw new Error(
-      '`positioning` processor requires the component to have the `positioning` functionality',
-    );
+  if (!Array.isArray(components)) {
+    if (
+      typeof components.position !== 'string' ||
+      typeof components.updatePosition !== 'function'
+    ) {
+      throw new Error(
+        '`positioning` processor requires the component to have the `positioning` functionality',
+      );
+    }
+  } else {
+    components.forEach(component => {
+      if (
+        typeof component.position !== 'string' ||
+        typeof component.updatePosition !== 'function'
+      ) {
+        throw new Error(
+          '`positioning` processor requires the component to have the `positioning` functionality',
+        );
+      }
+    });
   }
 
+  /**
+   * This ExecutionProcessor updates the component's position
+   * while animating it.
+   *
+   * @version 1.1.0
+   * @param {Instruction} instruction The new instruction object.
+   * @param {string} instruction.key The name of the instruction.
+   * @param {Array<string>} instruction.params The instruction parameters.
+   * @return {Promise} An animation promise.
+   */
   return async (instruction: Instruction) => {
     const direction = instruction.key;
-    const times = parseInt(instruction.params[0]);
 
+    // Checks if the name of the instruction is one of those four.
     if (!directions.hasOwnProperty(direction)) {
       return;
     }
+    const times = parseInt(instruction.params[0]);
+    const idxActor = parseInt(instruction.params[1]);
+    const component =
+      Array.isArray(components) ? components[idxActor] : components;
+
     for (let i = 0; i < times; i++) {
       const oldPosition = component.position;
       const newPosition =
@@ -75,7 +103,7 @@ export const positioningProcessorBuilder = (
 
       for (const checker of checkers.values()) {
         await checker({
-          instruction: direction,
+          instruction,
           oldPosition,
           newPosition,
         });
@@ -86,13 +114,43 @@ export const positioningProcessorBuilder = (
   };
 };
 
-export const positionResetProcessorBuilder = (component: CodimoComponent): ResetProcessor => {
-  if (typeof component.resetPosition !== 'function') {
-    throw new Error(
-      '`positioning` reset processor requires the component to have the ' +
-      '`positioning` functionality',
-    );
+/**
+ * Positioning Processor Builder.
+ *
+ * @todo Add example
+ * @version 1.1.0
+ * @param { CodimoComponent | Array<CodimoComponent> } components
+ *  The component that will have attached the processor.
+ * @return {Promise<void>} Promise to reset the component(s)' position.
+ */
+export const positionResetProcessorBuilder = (
+  components: CodimoComponent | Array<CodimoComponent>,
+): ResetProcessor => {
+  if (!Array.isArray(components)) {
+    if (typeof components.resetPosition !== 'function') {
+      throw new Error(
+        '`positioning` reset processor requires the component to have the ' +
+        '`positioning` functionality',
+      );
+    }
+  } else {
+    components.forEach(component => {
+      if (typeof component.resetPosition !== 'function') {
+        throw new Error(
+          '`positioning` reset processor requires the component to have the ' +
+          '`positioning` functionality',
+        );
+      }
+    });
   }
 
-  return () => (Promise.resolve(component.resetPosition()));
+  return () => (
+    !Array.isArray(components)
+      ? Promise.resolve(components.resetPosition())
+      : Promise.resolve(
+        components.forEach(component => {
+          component.resetPosition();
+        }),
+      )
+  );
 };

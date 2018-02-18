@@ -137,7 +137,14 @@ module.exports = {
     'space-infix-ops': 1,
     'space-unary-ops': 1,
     'template-curly-spacing': 1,
-    'valid-jsdoc': 2,
+    'valid-jsdoc': [2, {
+      prefer: {
+        returns: 'return',
+        arg: 'param',
+        argument: 'param',
+        constructor: 'class',
+      },
+    }],
     //////////////////////
     // Filenames
     //////////////////////
@@ -153,6 +160,7 @@ module.exports = {
     //////////////////////////
     'import/extensions': [1, { js: 'never', json: 'always' }],
     'import/imports-first': 1,
+    'import/newline-after-import': 1,
     'import/no-anonymous-default-export': [2, { allowObject: true, allowArray: true }],
     'import/no-deprecated': 2,
     'import/no-duplicates': 2,

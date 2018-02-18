@@ -18,12 +18,14 @@ export const BLOCK_DEFINITIONS = {
   WALL: 0xda4b4b,
 };
 
-export type ActivePathBorders = {|
+export type ActivePathBorders = {
   bottom?: boolean,
   left?: boolean,
   right?: boolean,
   top?: boolean,
-|};
+
+  [any]: empty,
+};
 export type Direction = 'top' | 'right' | 'bottom' | 'left';
 type CornerDirection = 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight';
 
@@ -69,16 +71,15 @@ const blockBuilder = (tint: $Values<typeof BLOCK_DEFINITIONS>, size: number, mar
  * one block to another.
  *
  * @version 1.0.0
- * @param  {number} tint      Block's colour.
- * @param  {number} size      Block's size.
- * @param  {number} margin    Block's margin.
- * @return {CodimoComponent}  A visual component representing a block.
+ * @param {number} tint Block's colour.
+ * @param {number} size Block's size.
+ * @param {number} margin Block's margin.
+ * @return {CodimoComponent} A visual component representing a block.
  */
 const blockGenerator = (
-  tint: $Values<typeof BLOCK_DEFINITIONS>,
+  tint: number,
   size: number,
   margin: number,
-  // $FlowDoNotDisturb @see https://github.com/facebook/flow/issues/2386
 ) => (x: number, y: number, activePathBorders?: ActivePathBorders = {}): CodimoComponent => {
   const view = new Container();
   const block = blockBuilder(tint, size, margin);

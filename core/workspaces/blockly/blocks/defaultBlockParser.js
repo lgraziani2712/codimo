@@ -10,11 +10,15 @@ import { REPEAT_PARAM } from 'core/constants/instructions';
 /**
  * The new function is associated to the `blockName` block.
  * The returning string is an instruction and follow this format:
- *    instruction👋id👋{number}👇
+ *
+ *                instruction👋id👋{number}👇
+ *
+ * Parameter divisor: 👋
+ * Instruction divisor: 👇
  *
  * @version 1.0.0
- * @param  {Blockly$Block} block The block instance
- * @return {string}              Instruction-as-string.
+ * @param {Blockly$Block} block The block instance
+ * @return {string} Instruction-as-string.
  */
 export default function defaultBlockParser(block: Blockly$Block) {
   const iterations = Blockly.JavaScript.valueToCode(

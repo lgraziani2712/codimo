@@ -22,18 +22,25 @@ import PixiApp from '../PixiApp';
 
 import BackgroundImage from './components/BackgroundImage';
 import TwoColumns from './components/TwoColumns';
+import parseExerciseDescription from './helpers/parseExerciseDescription';
 import handleNextLevelRedirection from './helpers/handleNextLevelRedirection';
 
+export type SwalObject = {
+  html: string,
+  imageUrl: string,
+  title: string,
+};
 export type Metadata = {|
   activityName: string,
   difficulty: GameDifficulty,
   engineData: EngineData,
   blocklyData: BlocklyData,
+  exerciseDescription?: SwalObject,
 |};
 type Activity$Props = {|
-  backgroundImages: Array<string>,
   engine: Engine,
   metadata: Metadata,
+  backgroundImages?: Array<string>,
   hasNoEnd?: boolean,
   // react-router props
   history: Object,
@@ -44,7 +51,7 @@ type Activity$Props = {|
 /**
  * The Container is in charge of loading the required activity.
  *
- * @version 1.0.2
+ * @version 1.1.0
  * @todo 1. Subcomponents async loading.
  * @todo 2. Make it more generic.
  * @todo 3. Add example.
@@ -52,26 +59,35 @@ type Activity$Props = {|
 class Activity extends React.Component {
   props: Activity$Props;
 
-  image: string;
+  image: ?string;
   handleNextLevelRedirection: () => Promise<void>;
 
   constructor(props: Activity$Props) {
     super(props);
 
-    this.image = props.backgroundImages[getRandomInt(ZERO, props.backgroundImages.length)];
+    this.image =
+      props.backgroundImages
+      && props.backgroundImages[getRandomInt(ZERO, props.backgroundImages.length)];
     this.handleNextLevelRedirection = handleNextLevelRedirection(
       this.props.metadata.activityName,
       this.props.metadata.difficulty,
       this.props.location,
       this.props.history,
     );
+
+    // If `props.metadata.exerciseDescription` exists, show it
+    // with SweetAlert.
+    props.metadata.exerciseDescription
+      && swal(
+        parseExerciseDescription(props.metadata.exerciseDescription),
+      ).catch(swal.noop);
   }
   /**
    * This callback will be used by the BlocklyApp.
    *
-   * @param  {Instructions} instructions         Aray of Instructions.
-   * @param  {Function}     handleHighlightBlock Highlight a block through blockly.
-   * @return {Promise<void>}                     Animation promise.
+   * @param {Instructions} instructions Aray of Instructions.
+   * @param {Function} handleHighlightBlock Highlight a block through blockly.
+   * @return {Promise<void>} Animation promise.
    */
   handleSetOfInstructions = (
     instructions: Instructions,
@@ -111,6 +127,7 @@ class Activity extends React.Component {
           <BlocklyApp
             activityName={metadata.activityName}
             difficulty={metadata.difficulty}
+            engineData={metadata.engineData}
             blocklyData={metadata.blocklyData}
             handleResetGame={engine.handleResetGame}
             handleSetOfInstructions={this.handleSetOfInstructions}

@@ -1,0 +1,17 @@
+languages:
+  - javascript
+  - jsx
+
+files:
+  - "../../.dev-tools/**/*"
+  - "../../.storybook/**/*"
+  - "../../activities/**/*"
+  - "../../client/**/*"
+  - "../../core/**/*"
+  - "../../.dev-elements/**/*"
+
+output: "../../reports/duplication.xml"
+
+reporter: "xml"
+
+xsl-href: "simple.xsl"

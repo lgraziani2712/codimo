@@ -18,7 +18,7 @@ import {
   positionResetProcessorBuilder,
 } from 'core/engines/pixijs/engineGenerator/processors/positioningProcessorBuilder';
 
-export default function helloCodimoEngine(metadata: Metadata) {
+export default function helloCodimoEngine({ engineData }: Metadata) {
   /////////////////////////////////////
   // 1. Create the actor's view.
   /////////////////////////////////////
@@ -30,19 +30,16 @@ export default function helloCodimoEngine(metadata: Metadata) {
   /////////////////////////////////////
   // 2. Create the actor's component.
   /////////////////////////////////////
-  const actor = componentGenerator(
-    actorView,
-    metadata.engineData.size,
-    metadata.engineData.margin,
-  )
-    /////////////////////////////////////
-    // 2.1. Add a functionality.
-    /////////////////////////////////////
-    .addFunctionality('positioning', positioningFunctionalityBuilder('0,0'))
-    .build();
+  const actor =
+    componentGenerator(actorView, engineData.size, engineData.margin)
+      /////////////////////////////////////
+      // 2.1. Add a functionality.
+      /////////////////////////////////////
+      .addFunctionality('positioning', positioningFunctionalityBuilder('0,0'))
+      .build();
 
   actor.view.anchor.set(ANCHOR_CENTER);
-  actor.view.width = actor.view.height = metadata.engineData.size;
+  actor.view.width = actor.view.height = engineData.size;
 
   /////////////////////////////////////
   // 3. Create the engine.
@@ -54,7 +51,7 @@ export default function helloCodimoEngine(metadata: Metadata) {
     .addExecutionProcessor(
       'positioning',
       processorGenerator(
-        metadata.engineData,
+        engineData,
         actor,
         positioningProcessorBuilder,
       ).build(),

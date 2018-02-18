@@ -10,7 +10,6 @@ import { type Instruction } from 'core/workspaces/blockly/parseInstructions';
 import {
   type CodimoComponent,
 } from 'core/engines/pixijs/components/componentGenerator';
-import { LEAVE_MAZE } from 'activities/NumericLine/constants';
 import { type ExecutionProcessor }
   from 'core/engines/pixijs/engineGenerator/processors/processorGenerator';
 import engineErrorBuilder
@@ -19,6 +18,7 @@ import {
   START_STATE,
 } from 'core/engines/pixijs/components/functionalities/emotionFunctionalityBuilder';
 
+import { LEAVE_MAZE } from '../../constants';
 import { type EngineData$NumericLineData } from '../components/numericLineGenerator';
 import MazeExitErrorURL from '../../images/MazeExitError.png';
 import MazeWrongExitErrorURL from '../../images/MazeWrongExitError.png';
@@ -36,26 +36,27 @@ const mazeWrongExitError = engineErrorBuilder('MazeWrongExitError', {
 });
 
 type Props = {
-  endPositions: Array<string>,
+  exits: Array<string>,
   numericLineData: EngineData$NumericLineData,
 };
 
 /**
  * The NumericLine end-game processor.
- * It verifies if the number has entered the numeric and in which empty slot.
+ * It verifies if the number has entered
+ * the numeric line and in which empty slot.
  * Informs the result to the user.
  *
  * @version 1.0.1
- * @param  {CodimoComponent}            number          The actor.
- * @param  {CodimoComponent}            numericLine     The numeric line which the actor will enter.
- * @param  {Array<string>}              endPositions    An array of possible endings.
- * @param  {EngineData$NumericLineData} numericLineData Metadata required by the numeric line.
- * @return {ExecutionProcessor}                         The new processor.
+ * @param {CodimoComponent} number The actor.
+ * @param {CodimoComponent} numericLine The numeric line which the actor will enter.
+ * @param {Array<string>} exits An array of possible endings.
+ * @param {EngineData$NumericLineData} numericLineData Metadata required by the numeric line.
+ * @return {ExecutionProcessor} The new processor.
  */
 const hasLeftTheMazeProcessorBuilder = (
   number: CodimoComponent,
   numericLine: CodimoComponent,
-  { endPositions, numericLineData }: Props,
+  { exits, numericLineData }: Props,
 ): ExecutionProcessor => {
   if (
     typeof number.position !== 'string' ||
@@ -79,12 +80,12 @@ const hasLeftTheMazeProcessorBuilder = (
     if (instruction.key !== LEAVE_MAZE) {
       return;
     }
-    const exitIdx = endPositions.indexOf(number.position);
+    const exitIdx = exits.indexOf(number.position);
 
     if (exitIdx === NOT_EXIST) {
       throw mazeExitError;
     }
-    const exit = endPositions[exitIdx];
+    const exit = exits[exitIdx];
 
     await numericLine.receiveNumberAtPosition(number, numericLineData.accesses[exitIdx]);
 

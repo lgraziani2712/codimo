@@ -43,10 +43,10 @@ type Props = {
  *
  * @version 1.0.0
  * @todo Add link to the metadata shape documentation.
- * @param  {EngineData$NumericLineData} numericLineData Metadata required by the numeric line.
- * @param  {number}                     size            Block's size.
- * @param  {number}                     margin          Block's margin.
- * @return {CodimoComponent}                            The new component.
+ * @param {EngineData$NumericLineData} numericLineData Metadata required by the numeric line.
+ * @param {number} size Block's size.
+ * @param {number} margin Block's margin.
+ * @return {CodimoComponent} The new component.
  */
 const numericLineGenerator = ({ numericLineData, size, margin }: Props): CodimoComponent => {
   const view = new Container();

@@ -10,14 +10,17 @@ import { type CodimoComponent } from 'core/engines/pixijs/components/componentGe
 import { type EngineData } from '../';
 
 export type Checker = (state: any) => Promise<void | Error>;
-type CheckerBuilder = (actor: CodimoComponent, metadata: EngineData) => Checker;
+type CheckerBuilder = (
+  actors: CodimoComponent | Array<CodimoComponent>,
+  metadata: EngineData,
+) => Checker;
 
 export type ExecutionProcessor = (instruction: Instruction) => Promise<void>;
 export type ResetProcessor = () => Promise<void>;
 type Processors = ExecutionProcessor | ResetProcessor;
 
 type ProcessorBuilder = (
-  actor: CodimoComponent,
+  actors: CodimoComponent | Array<CodimoComponent>,
   beforeUpdateStateCheckers: Map<string, Checker>,
   engineData: EngineData,
 ) => Processors;
@@ -32,18 +35,19 @@ type ProcessorGenerator = {|
 
 /**
  * It helps to generate a new processor.
- * The processor is associated to a specific component.
+ * The processor is associated to a specific component(s).
  *
  * @todo Add example
- * @version 1.0.0
- * @param  {Metadata}         engineData       Required by the ProcessorBuilder.
- * @param  {CodimoComponent}  actor            Required by the ProcessorBuilder.
- * @param  {ProcessorBuilder} processorBuilder The ProcessorBuilder itself.
- * @return {ProcessorGenerator}                The generator object.
+ * @version 1.1.0
+ * @param {Metadata} engineData Required by the ProcessorBuilder.
+ * @param {CodimoComponent | Array<CodimoComponent>} actors
+ *  Required by the ProcessorBuilder.
+ * @param {ProcessorBuilder} processorBuilder The ProcessorBuilder itself.
+ * @return {ProcessorGenerator} The generator object.
  */
 export default function processorGenerator(
   engineData: EngineData,
-  actor: CodimoComponent,
+  actors: CodimoComponent | Array<CodimoComponent>,
   processorBuilder: ProcessorBuilder,
 ): ProcessorGenerator {
   const checkers = new Map();
@@ -52,12 +56,12 @@ export default function processorGenerator(
     /**
      * Adds or replace a Checker for the Processor
      *
-     * @param {string}         key     The checker ID.
+     * @param {string} key The checker ID.
      * @param {CheckerBuilder} checker The builder function.
-     * @return {ProcessorGenerator}    For chaining purpose.
+     * @return {ProcessorGenerator} For chaining purpose.
      */
     addChecker(key: string, checker: CheckerBuilder) {
-      checkers.set(key, checker(actor, engineData));
+      checkers.set(key, checker(actors, engineData));
 
       return this;
     },
@@ -67,7 +71,7 @@ export default function processorGenerator(
      * @return {Processors} The processor object.
      */
     build() {
-      return processorBuilder(actor, checkers, engineData);
+      return processorBuilder(actors, checkers, engineData);
     },
   };
 }
