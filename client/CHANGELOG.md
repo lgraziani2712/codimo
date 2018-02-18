@@ -1,5 +1,9 @@
 ## HEAD
 
+## 1.0.0-alpha.3
+
+- ⚙️ [v1.1.0] `pages/MenuBar`: Allow multiples activities.
+
 ## 1.0.0-alpha.2
 
 - ⚙️ [v1.1.0] `pages/MenuBar`: Make the menu more simple to reflect the new way to access to exercises (#59).

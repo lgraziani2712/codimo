@@ -1,5 +1,7 @@
 ## HEAD
 
+## 1.0.0-alpha.3
+
 ### 🀄 Blockly Workspace
 
 - ⚙️ [v1.1.0] `instanciateEveryBlock`: Add new param `engineData` used to configure the blocks.

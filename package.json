@@ -1,6 +1,6 @@
 {
   "name": "codimo",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "private": true,
   "description": "A simple platform for learning Computational Thinking",
   "main": "client/main.jsx",
