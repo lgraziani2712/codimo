@@ -17,8 +17,8 @@
     "report:duplication": "jscpd -c .dev-tools/config/jscpd.yaml && static-server reports -i duplication.xml",
     "start": "webpack-dev-server --progress --config ./.dev-tools/config/webpack.config.dev.js",
     "stats": "webpack --config ./.dev-tools/config/webpack.config.dev.js --profile --json > stats.json",
-    "storybook:activities": "cross-env STORYBOOK_FOLDER=activities start-storybook -s ./dist -p 6006",
-    "storybook:client": "cross-env STORYBOOK_FOLDER=client start-storybook -s ./dist -p 6006",
+    "storybook:activities": "cross-env STORYBOOK_FOLDER=activities start-storybook -s ./dist -p 6008",
+    "storybook:platform": "cross-env STORYBOOK_FOLDER=client start-storybook -s ./dist -p 6007",
     "storybook:core": "cross-env STORYBOOK_FOLDER=core start-storybook -s ./dist -p 6006",
     "test": "node .dev-tools/scripts/test.js",
     "test:coverage": "node .dev-tools/scripts/test.js --coverage"
