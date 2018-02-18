@@ -57,7 +57,7 @@ const Link = styled(RouterLink)`
   padding: 0 0.5em;
   text-decoration: none;
 
-  ${LinkContainer}:hover > a {
+  ${/*sc-selector*/LinkContainer}:hover > a {
     font-weight: bold;
   }
 `;
