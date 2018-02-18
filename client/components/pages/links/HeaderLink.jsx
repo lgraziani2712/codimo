@@ -4,14 +4,11 @@
  *
  * @flow
  */
-// @see https://github.com/styled-components/stylelint-processor-styled-components/issues/54
-// stylelint-disable
 import React from 'react';
 import { Link as RouterLink, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { COLOR_PALETTE } from 'core/constants/colors';
-import gameTextUI from 'core/constants/localize/es/gameTextUI';
 
 const LinkContainer = styled.li`
   list-style-type: none;
@@ -81,7 +78,7 @@ const ChildrenContainer = styled.ul`
   width: 100%;
   z-index: -1;
 
-  ${LinkContainer}:hover > & {
+  ${/*sc-selector*/LinkContainer}:hover > & {
     opacity: 1;
     transform: translateY(0%);
     transition-delay: 0s, 0s, 0.3s;
@@ -91,13 +88,11 @@ const ChildrenContainer = styled.ul`
 `;
 
 const isActive = (actualUrl: string, url: string) => (
-  actualUrl.split('/')[2] === url.split('/')[2]
+  actualUrl.split('/')[1] === url || actualUrl.split('/')[2] !== undefined && (
+    actualUrl.split('/')[1] === url.split('/')[1]
+    && actualUrl.split('/')[2] === url.split('/')[2]
+  )
 );
-const exerciseTitle = (actualUrl: string) => {
-  const level = parseInt(actualUrl.split('/').pop());
-
-  return `: ${gameTextUI.exercise} ${gameTextUI.levels(level)}`;
-};
 
 type Props = {|
   location: Object,
@@ -110,8 +105,8 @@ const HeaderLink = ({ children, location, to, title }: Props) => {
 
   return (
     <LinkContainer isActive={active}>
-      {active
-        ? <EmptyLink>{title}{exerciseTitle(location.pathname)}</EmptyLink>
+      {active || children
+        ? <EmptyLink>{title}</EmptyLink>
         : <Link to={to}>{title}</Link>
       }
       {!children || (<ChildrenContainer>{children}</ChildrenContainer>)}
