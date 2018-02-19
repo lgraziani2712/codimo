@@ -109,7 +109,6 @@ module.exports = {
     'no-multi-spaces': 1,
     'no-multiple-empty-lines': [1, { max: 1 }],
     'no-new-object': 1,
-    'no-nested-ternary': 2,
     'no-param-reassign': 1,
     'no-template-curly-in-string': 2,
     'no-trailing-spaces': 1,
