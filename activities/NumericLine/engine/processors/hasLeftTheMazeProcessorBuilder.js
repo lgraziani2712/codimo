@@ -96,6 +96,7 @@ const hasLeftTheMazeProcessorBuilder = (
       throw mazeWrongExitError;
     }
 
+    number.isMoving = false;
     number.beHappy(START_STATE);
     numericLine.beHappy(START_STATE);
   };
