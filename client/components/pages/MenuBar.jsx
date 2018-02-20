@@ -49,7 +49,7 @@ const ExternalLinksContainer = styled.div`
 `;
 
 const deleteThisActivityTitles = {
-  NumericLine: 'Línea numérica',
+  NumericLine: 'Recta numérica',
   MultipliersAndDivisors: 'Múltiplos y divisores',
   HelloCodimo: 'Hola Códimo',
 };
