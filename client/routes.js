@@ -9,28 +9,6 @@ import gameTextUI from 'core/constants/localize/es/gameTextUI';
 
 const routes: Array<Codimo$Route> = [
   {
-    activityName: 'MultipliersAndDivisors',
-    difficulty: 'easy',
-    title: 'Uno de múltiplos',
-    children: [
-      {
-        title: `${gameTextUI.levels[0]} ${gameTextUI.exercise}`,
-        path: '001',
-      },
-    ],
-  },
-  {
-    activityName: 'MultipliersAndDivisors',
-    difficulty: 'normal',
-    title: 'Uno de divisores',
-    children: [
-      {
-        title: `${gameTextUI.levels[0]} ${gameTextUI.exercise}`,
-        path: '001',
-      },
-    ],
-  },
-  {
     activityName: 'NumericLine',
     difficulty: 'easy',
     title: gameTextUI.difficulty.easy,
@@ -100,6 +78,28 @@ const routes: Array<Codimo$Route> = [
       {
         title: `${gameTextUI.levels[1]} ${gameTextUI.exercise}`,
         path: '002',
+      },
+    ],
+  },
+  {
+    activityName: 'MultipliersAndDivisors',
+    difficulty: 'easy',
+    title: 'Uno de múltiplos',
+    children: [
+      {
+        title: `${gameTextUI.levels[0]} ${gameTextUI.exercise}`,
+        path: '001',
+      },
+    ],
+  },
+  {
+    activityName: 'MultipliersAndDivisors',
+    difficulty: 'normal',
+    title: 'Uno de divisores',
+    children: [
+      {
+        title: `${gameTextUI.levels[0]} ${gameTextUI.exercise}`,
+        path: '001',
       },
     ],
   },

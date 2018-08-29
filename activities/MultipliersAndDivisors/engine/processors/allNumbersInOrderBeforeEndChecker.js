@@ -20,7 +20,7 @@ import MazeWrongExitErrorURL from '../../images/MazeWrongExitError.png';
 const mazeWrongExitError = engineErrorBuilder('MazeWrongExitError', {
   imageUrl: MazeWrongExitErrorURL,
   title: parseEmoji('👻 ¡UPS! 👻'),
-  html: 'LOS NÚMEROS Y/O SU ORDEN NO ESTÁ BIEN.',
+  html: 'LOS NÚMEROS Y/O SU ORDEN NO ESTÁN BIEN.',
 });
 
 /**

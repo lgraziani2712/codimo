@@ -36,6 +36,9 @@ const numericLineFunctionalities = (
 
     return line.receiveNumberAtPosition(number, position);
   },
+  resetActors() {
+    actorsInTheLine.length = 0;
+  },
   thereAreNoActorsInTheLine: () => !actorsInTheLine.length,
   actorsPositionAreInvalid() {
     for (let i = 0; i < actorsInTheLine.length; i++) {

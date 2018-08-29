@@ -33,6 +33,7 @@ import actorProcessBeforeStartChecker from './processors/actorProcessBeforeStart
 import allNumbersInOrderBeforeEndChecker from './processors/allNumbersInOrderBeforeEndChecker';
 import atLeastOneNumberInTheLineBeforeEndChecker
   from './processors/atLeastOneNumberInTheLineBeforeEndChecker';
+import resetActorsFromNumericLine from './processors/resetActorsFromNumericLine';
 
 /**
  * The MultipliersAndDivisors game engine generator.
@@ -126,6 +127,10 @@ export default function engine({ difficulty, engineData }: Metadata) {
     .addResetProcessor(
       'numericLineEmotions',
       emotionResetProcessorBuilder(numericLine),
+    )
+    .addResetProcessor(
+      'resetActorsFromNumericLine',
+      resetActorsFromNumericLine(numericLine),
     )
     .build();
 }
