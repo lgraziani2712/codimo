@@ -49,9 +49,9 @@ const ExternalLinksContainer = styled.div`
 `;
 
 const deleteThisActivityTitles = {
-  NumericLine: 'Recta numérica',
-  MultipliersAndDivisors: 'Múltiplos y divisores',
-  HelloCodimo: 'Hola Códimo',
+  NumericLine: 'RECTA NUMÉRICA',
+  MultipliersAndDivisors: 'MÚLTIPLOS Y DIVISORES',
+  HelloCodimo: 'HOLA CÓDIMO',
 };
 
 type Props = {|

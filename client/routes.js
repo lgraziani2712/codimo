@@ -84,7 +84,7 @@ const routes: Array<Codimo$Route> = [
   {
     activityName: 'MultipliersAndDivisors',
     difficulty: 'easy',
-    title: 'Uno de múltiplos',
+    title: 'UNO DE MÚLTIPLOS',
     children: [
       {
         title: `${gameTextUI.levels[0]} ${gameTextUI.exercise}`,
@@ -95,7 +95,7 @@ const routes: Array<Codimo$Route> = [
   {
     activityName: 'MultipliersAndDivisors',
     difficulty: 'normal',
-    title: 'Uno de divisores',
+    title: 'UNO DE DIVISORES',
     children: [
       {
         title: `${gameTextUI.levels[0]} ${gameTextUI.exercise}`,
